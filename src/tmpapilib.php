@@ -7,7 +7,7 @@
 
 namespace truckersmp;
 
-final class tmpapilib
+class tmpapilib
 {
     //Connecting and loading stuff.
     private $baseurl = "https://api.truckersmp.com";
