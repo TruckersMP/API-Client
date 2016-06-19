@@ -5,9 +5,9 @@
 * Website: truckersmp.com
 */
 
-namespace truckersmp;
+namespace TruckersMP\API;
 
-class tmpapilib
+class APIClient
 {
     //Connecting and loading stuff.
     private $baseurl = "https://api.truckersmp.com";

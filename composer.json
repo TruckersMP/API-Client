@@ -9,6 +9,12 @@
         "email": "humanewolf@truckersmp.com",
         "homepage": "https://humanewolf.com/",
         "role": "CM/Dev"
+      },
+      {
+        "name": "Thor Erik (Tuxy Fluffyclaws) Lie",
+        "email": "tuxy@truckersmp.com",
+        "homepage": "https://truckersmp.com/",
+        "role": "Dev"
       }
     ],
     "require": {
@@ -16,11 +22,16 @@
     },
     "autoload": {
         "psr-4": {
-            "truckersmp\\": "src/"
+            "TruckersMP\\": "src/"
         },
         "classmap": [
             "src/"
         ]
+    },
+    "autoload-dev": {
+      "psr-4": {
+        "TruckersMP\\Tests\\API\\": "tests/"
+      }
     },
     "require-dev": {
         "phpunit/phpunit": "^5.3",
