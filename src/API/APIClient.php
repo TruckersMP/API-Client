@@ -13,7 +13,8 @@ class APIClient
     private $baseurl = "https://api.truckersmp.com";
 
     private function getHTTP($in)
-    { //Input: $http_response_header[0] - ALWAYS, when using file_get_contents().
+    {
+        //Input: $http_response_header[0] - ALWAYS, when using file_get_contents().
         //Gets HTTP status code on the file_get_contents request.
         preg_match("#HTTP/[0-9\.]+\s+([0-9]+)#", $in, $out);
         return $out['1'];
@@ -60,7 +61,7 @@ class APIClient
         return $load;
     }
 
-    public function game_time()
+    public function gameTime()
     {
         $load = $this->load("/v2/game_time/");
         if ($load['error'] == false) {
