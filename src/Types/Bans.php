@@ -70,6 +70,7 @@ class Bans implements \Iterator, \ArrayAccess
 
     public function offsetSet($offset, $value)
     {
+        // TODO: custom class that gives a better description of the error
         return new \Exception('Can not change bans');
     }
 
@@ -80,6 +81,7 @@ class Bans implements \Iterator, \ArrayAccess
 
     public function offsetUnset($offset)
     {
+        // TODO: custom class that gives a better description of the error
         return new \Exception('Can not change bans');
     }
 
