@@ -34,11 +34,11 @@ class ClientTest extends \PHPUnit_Framework_TestCase
 
     public function testPlayerBans()
     {
-        $player = $this->client->bans($this->testAccount);
+        $bans = $this->client->bans($this->testAccount);
 
-        $this->assertEquals($player['response'][0]['expiration'], '2016-06-19 13:00:00');
-        $this->assertEquals($player['response'][0]['timeAdded'], '2016-06-19 10:08:26');
-        $this->assertEquals($player['response'][0]['reason'], 'Test ban');
+        $this->assertEquals($bans->bans[0]->expires, '2016-06-19 13:00:00');
+        $this->assertEquals($bans->bans[0]->created, '2016-06-19 10:08:26');
+        $this->assertEquals($bans->bans[0]->reason, 'Test ban');
 
     }
 }

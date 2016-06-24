@@ -8,6 +8,7 @@
 namespace TruckersMP\API;
 
 use GuzzleHttp\Client;
+use TruckersMP\Types\Bans;
 use TruckersMP\Types\Player;
 
 class APIClient
@@ -63,8 +64,8 @@ class APIClient
 
     public function bans($id)
     {
-        $load = $this->load("/v2/bans/" . $id);
-        return $load;
+        $result = $this->guzzle->get('bans/' . $id);
+        return new Bans($result);
     }
 
     public function servers()

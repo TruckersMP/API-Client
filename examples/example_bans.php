@@ -1,18 +1,18 @@
 <?php
-require_once("../src/tmpapilib.php"); //Include the library file.
+require_once(__DIR__ . '/../vendor/autoload.php');
 
-use truckersmp\tmpapilib as truckersmp; //Tell PHP to use the library namespace.
+use TruckersMP\API\APIClient;
 
-$api = new truckersmp(); //Load the class into a variable, as defined by "use" above.
-$playerbans = $api->bans(1); //Use the class variable to access one of the class functions, loading the player with ID 1. Also works with SteamID64.
+$client = new APIClient;
+$bans = $client->bans(50);
 
-echo "<p>This player has been banned " . sizeof($playerbans['response']) . " times.<p>";
 
 echo "<h1>Ban reasons:</h1>";
-foreach ($playerbans['response'] as $v)
-{ //Foreach to loop through all bans supplied by the API and print their reasons.
-    echo "<p>" . htmlspecialchars($v['reason']) . "</p>";
+foreach ($bans as $ban)
+{
+    printf('<p>Banned by: %s <br/>', $ban->adminName);
+    printf('Reason: %s<br />', $ban->reason);
+    printf('At: %s<br />', $ban->created);
+    printf('Until: %s</p>', $ban->expires);
 }
 
-echo "<hr>";
-var_dump($playerbans); //Dumping all of the information so you can see what is available.
