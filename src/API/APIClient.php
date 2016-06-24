@@ -8,8 +8,10 @@
 namespace TruckersMP\API;
 
 use GuzzleHttp\Client;
+use phpDocumentor\Reflection\DocBlock\Serializer;
 use TruckersMP\Types\Bans;
 use TruckersMP\Types\Player;
+use TruckersMP\Types\Servers;
 
 class APIClient
 {
@@ -70,8 +72,8 @@ class APIClient
 
     public function servers()
     {
-        $load = $this->load("/v2/servers/");
-        return $load;
+        $result = $this->guzzle->get('servers');
+        return new Servers($result);
     }
 
     public function gameTime()

@@ -41,4 +41,10 @@ class ClientTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($bans[0]->reason, 'Test ban');
 
     }
+
+    public function testServers()
+    {
+        $servers = $this->client->servers();
+        $this->assertEquals($servers[0]->name, 'Europe 1');
+    }
 }
