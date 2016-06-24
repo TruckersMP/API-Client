@@ -7,46 +7,58 @@
 
 namespace TruckersMP\API;
 
+use GuzzleHttp\Client;
+use TruckersMP\Types\Player;
+
 class APIClient
 {
-    //Connecting and loading stuff.
-    private $baseurl = "https://api.truckersmp.com";
+    /**
+     * Base URL for communicating with TruckersMP API
+     * @var string
+     */
+    private $apiEndpoint;
 
-    private function getHTTP($in)
+    /**
+     * API Version to interface with
+     * @var string
+     */
+    private $version;
+
+    /**
+     * GuzzleHTTP Instance
+     * @var Client
+     */
+    private $guzzle;
+
+    /**
+     * APIClient constructor.
+     * @param string $apiEndpoint
+     * @param string $version
+     * @param bool $secure
+     */
+    public function __construct($apiEndpoint = 'api.truckersmp.com', $version = 'v2', $secure = true)
     {
-        //Input: $http_response_header[0] - ALWAYS, when using file_get_contents().
-        //Gets HTTP status code on the file_get_contents request.
-        preg_match("#HTTP/[0-9\.]+\s+([0-9]+)#", $in, $out);
-        return $out['1'];
+        $this->apiEndpoint = $apiEndpoint;
+        $this->version = $version;
+
+        $scheme = $secure ? 'https' : 'http';
+
+        $this->guzzle = new Client([
+            'base_uri' => $scheme . '://' . $this->apiEndpoint . '/' . $this->version . '/'
+        ]);
+
     }
 
-    private function load($endpoint)
-    {
-        if (isset($endpoint)) {
-            $contentjson = file_get_contents($this->baseurl . $endpoint);
-            if ($this->getHTTP($http_response_header[0]) == 200) {
-                if ($content = json_decode($contentjson, true, 512, JSON_BIGINT_AS_STRING)) {
-                    return $content;
-                } else {
-                    $r['error'] = true;
-                    $r['response']['errortype'] = "API";
-                    $r['response']['errordetails'] = "Response not JSON.";
-                    return $r;
-                }
-            } else {
-                $r['error'] = true;
-                $r['response']['errortype'] = "HTTP";
-                $r['response']['errordetails'] = stringval($this->getHTTP($http_response_header[0]));
-                return $r;
-            }
-        }
-    }
-
-    //Specific endpoints.
+    /**
+     * Fetch player information
+     * @param integer $id
+     * @return Player
+     */
     public function player($id)
     {
-        $load = $this->load("/v2/player/" . $id);
-        return $load;
+        $result = $this->guzzle->get('player/'.$id);
+
+        return new Player($result);
     }
 
     public function bans($id)

@@ -21,24 +21,24 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     {
         $player = $this->client->player($this->testAccount); // Special test account that *should* remain static
 
-        $this->assertEquals($player['response']['name'], 'tuxytestaccount');
+        $this->assertEquals($player->name, 'tuxytestaccount');
     }
 
     public function testPlayerGroup()
     {
-      $player = $this->client->player($this->testAccount);
+        $player = $this->client->player($this->testAccount);
 
-      $this->assertEquals($player['response']['groupID'], 1);
-      $this->assertEquals($player['response']['groupName'], 'Player');
+        $this->assertEquals($player->groupID, 1);
+        $this->assertEquals($player->groupName, 'Player');
     }
 
     public function testPlayerBans()
     {
-      $player = $this->client->bans($this->testAccount);
+        $player = $this->client->bans($this->testAccount);
 
-      $this->assertEquals($player['response'][0]['expiration'], '2016-06-19 13:00:00');
-      $this->assertEquals($player['response'][0]['timeAdded'], '2016-06-19 10:08:26');
-      $this->assertEquals($player['response'][0]['reason'], 'Test ban');
+        $this->assertEquals($player['response'][0]['expiration'], '2016-06-19 13:00:00');
+        $this->assertEquals($player['response'][0]['timeAdded'], '2016-06-19 10:08:26');
+        $this->assertEquals($player['response'][0]['reason'], 'Test ban');
 
     }
 }

@@ -7,23 +7,41 @@ This is a PHP library created to simplify development using the [TruckersMP](htt
 ## Requirements  
 
 - PHP 5.6.0 or newer.
+- Composer
 
 ## Installation
 
 This library can be installed using [Composer](http://getcomposer.org/).
 
-Simple method: You can incluse the library in your composer.json requirements list by using the command `composer require truckerspm/api-client`.
+Simple method: You can incluse the library in your composer.json requirements list by using the command `composer require truckersmp/api-client`.
 
 Slightly less simple method: You can also add `truckersmp/api-client` manually to the composer requirements list.
 
 After doing either of the above, open a commandline or terminal in that directory and use the command `composer install`.
 
-## Available functions  
+## Usage
 
-All functions are in the truckersmp/tmpapilib class.
+```
+<?php
 
-Functions follow the naming format  
-`endpointName(Required parameters)`.  
-This means that the servers endpoint can be recieved using the function `servers`, and the player endpoint can be recieved using the function `player(user id)`.
+use TruckersMP/API/APIClient;
+
+
+$client = new APIClient;
+
+// Get player data for player id 50
+$player = $client->player(50);
+
+// Get player data for player with SteamID 76561197965863564
+$player = $client->player(76561197965863564);
+
+// output the user's name
+echo $player->name;
+
+// output the user's group
+echo $player->groupName;
+
+```
+
 
 Please refer to our full [API documentation](https://stats.truckersmp.com/api).
