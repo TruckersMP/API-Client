@@ -61,7 +61,7 @@ class Player
         $json = json_decode((string)$response->getBody(), true, 512, JSON_BIGINT_AS_STRING);
         
         if ($json['error']) {
-            throw new PlayerNotFoundException($json['response']);
+            throw new PlayerNotFoundException($json['descriptor']);
         }
 
         $this->id           = $json['response']['id'];

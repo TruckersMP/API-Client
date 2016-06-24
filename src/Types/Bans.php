@@ -35,7 +35,7 @@ class Bans implements \Iterator, \ArrayAccess
         if ($json['error'] &&
             ($json['descriptor'] == 'No player ID submitted' ||
                 $json['descriptor'] == 'Invalid user ID')) {
-            throw new PlayerNotFoundException($json['response']);
+            throw new PlayerNotFoundException($json['descriptor']);
         }
 
         foreach ($json['response'] as $k => $ban) {

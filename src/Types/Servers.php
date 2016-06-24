@@ -32,7 +32,7 @@ class Servers implements \Iterator, \ArrayAccess
         $json = json_decode((string)$response->getBody(), true, 512, JSON_BIGINT_AS_STRING);
 
         if ($json['error'] == "true" && $json['descriptor'] == 'Unable to fetch servers') {
-            throw new APIErrorException($json['response']);
+            throw new APIErrorException($json['descriptor']);
         }
 
         foreach ($json['response'] as $k => $server) {
