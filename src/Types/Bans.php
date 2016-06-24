@@ -6,7 +6,7 @@ namespace TruckersMP\Types;
 use Psr\Http\Message\ResponseInterface;
 use TruckersMP\Exceptions\PlayerNotFoundException;
 
-class Bans implements \Iterator
+class Bans implements \Iterator, \ArrayAccess
 {
 
     /**
@@ -66,5 +66,25 @@ class Bans implements \Iterator
     public function valid()
     {
         return isset($this->bans[$this->position]);
+    }
+
+    public function offsetSet($offset, $value)
+    {
+        return new \Exception('Can not change bans');
+    }
+
+    public function offsetExists($offset)
+    {
+        return isset($this->bans[$offset]);
+    }
+
+    public function offsetUnset($offset)
+    {
+        return new \Exception('Can not change bans');
+    }
+
+    public function offsetGet($offset)
+    {
+        return isset($this->bans[$offset]) ? $this->bans[$offset] : null;
     }
 }
