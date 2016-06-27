@@ -12,6 +12,7 @@ use phpDocumentor\Reflection\DocBlock\Serializer;
 use TruckersMP\Types\Bans;
 use TruckersMP\Types\Player;
 use TruckersMP\Types\Servers;
+use TruckersMP\Types\Version;
 
 class APIClient
 {
@@ -99,7 +100,7 @@ class APIClient
 
     public function version()
     {
-        $load = $this->load("/v2/version/");
-        return $load;
+        $result = $this->guzzle->get('version');
+        return new Version($result);
     }
 }
