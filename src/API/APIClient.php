@@ -8,7 +8,6 @@
 namespace TruckersMP\API;
 
 use GuzzleHttp\Client;
-use phpDocumentor\Reflection\DocBlock\Serializer;
 use TruckersMP\Types\Bans;
 use TruckersMP\Types\Player;
 use TruckersMP\Types\Servers;
