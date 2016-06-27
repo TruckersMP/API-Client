@@ -8,7 +8,6 @@
 
 namespace TruckersMP\Types;
 
-
 use Carbon\Carbon;
 use Psr\Http\Message\ResponseInterface;
 

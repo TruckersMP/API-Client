@@ -40,6 +40,10 @@
         "squizlabs/php_codesniffer": "^2.6"
     },
 	"scripts": {
-		"test": "./vendor/bin/phpunit"
+		"test": [
+		    "./vendor/bin/phpunit",
+			"./vendor/bin/phpcs src --standard=PSR2",
+			"./vendor/bin/phpcs Tests --standard=PSR2"
+		]
 	}
 }
