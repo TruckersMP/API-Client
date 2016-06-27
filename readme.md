@@ -45,3 +45,7 @@ echo $player->groupName;
 
 
 Please refer to our full [API documentation](https://stats.truckersmp.com/api).
+
+## Tests
+
+To run tests, use `composer test`
