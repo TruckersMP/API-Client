@@ -54,14 +54,4 @@ class Ban
         $this->adminID = $ban['adminID'];
 
     }
-
-    /**
-     * Returns API information on the admin
-     * @return Player
-     */
-    public function admin()
-    {
-        $client = new APIClient();
-        return $client->player($this->adminID);
-    }
 }

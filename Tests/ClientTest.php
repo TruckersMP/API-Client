@@ -4,6 +4,10 @@ namespace TruckersMP\Tests\API;
 
 use Carbon\Carbon;
 use TruckersMP\API\APIClient;
+
+use GuzzleHttp\Client as GuzzleClient;
+use Http\Adapter\Guzzle6\Client as GuzzleAdapter;
+
 use TruckersMP\Types\Version;
 use TruckersMP\Types\Ban;
 use TruckersMP\Types\Bans;
@@ -21,7 +25,14 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     public function __construct()
     {
         parent::__construct();
-        $this->client = new APIClient;
+
+        $config = [
+
+        ];
+        $guzzle = new GuzzleClient($config);
+        $adapter = new GuzzleAdapter($guzzle);
+
+        $this->client = new APIClient($adapter);
     }
 
     public function testPlayer()
@@ -46,7 +57,6 @@ class ClientTest extends \PHPUnit_Framework_TestCase
 
         $this->assertInstanceOf(Bans::class, $bans);
         $this->assertInstanceOf(Ban::class, $bans[0]);
-        $this->assertInstanceOf(Player::class, $bans[0]->admin());
 
     }
 
@@ -73,5 +83,12 @@ class ClientTest extends \PHPUnit_Framework_TestCase
 
         $this->assertNotEmpty($version->support->ets2);
         $this->assertNotEmpty($version->support->ats);
+    }
+
+    public function testGameTime()
+    {
+        $time = $this->client->gameTime();
+
+        $this->assertNotEmpty($time);
     }
 }

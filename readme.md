@@ -26,8 +26,17 @@ After doing either of the above, open a commandline or terminal in that director
 
 use TruckersMP/API/APIClient;
 
+// replace with your prefered HTTP Client if you like.
+use GuzzleHttp\Client as GuzzleClient;
+use Http\Adapter\Guzzle6\Client as GuzzleAdapter;
 
-$client = new APIClient;
+$config = [
+
+];
+$guzzle = new GuzzleClient($config);
+$adapter = new GuzzleAdapter($guzzle);
+
+$this->client = new APIClient($adapter);
 
 // Get player data for player id 50
 $player = $client->player(50);

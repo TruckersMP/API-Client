@@ -7,11 +7,13 @@
 
 namespace TruckersMP\API;
 
-use GuzzleHttp\Client;
+use Http\Client\HttpClient;
+use Http\Message\MessageFactory\GuzzleMessageFactory;
 use TruckersMP\Types\Bans;
 use TruckersMP\Types\Player;
 use TruckersMP\Types\Servers;
 use TruckersMP\Types\Version;
+use TruckersMP\Types\GameTime;
 
 class APIClient
 {
@@ -28,27 +30,38 @@ class APIClient
     private $version;
 
     /**
-     * GuzzleHTTP Instance
-     * @var Client
+     * HttpClient adapter
+     * @var HttpClient
      */
-    private $guzzle;
+    private $adapter;
+
+    /**
+     * Prefixed URL for requests
+     * @var string
+     */
+    private $url;
 
     /**
      * APIClient constructor.
+     * @param HttpClient $adapter
      * @param string $apiEndpoint
      * @param string $version
      * @param bool $secure
      */
-    public function __construct($apiEndpoint = 'api.truckersmp.com', $version = 'v2', $secure = true)
-    {
+    public function __construct(
+        HttpClient $adapter,
+        $apiEndpoint = 'api.truckersmp.com',
+        $version = 'v2',
+        $secure = true
+    ) {
         $this->apiEndpoint = $apiEndpoint;
         $this->version = $version;
 
         $scheme = $secure ? 'https' : 'http';
 
-        $this->guzzle = new Client([
-            'base_uri' => $scheme . '://' . $this->apiEndpoint . '/' . $this->version . '/'
-        ]);
+        $this->url = $scheme . '://' . $this->apiEndpoint . '/' . $this->version . '/';
+
+        $this->adapter = $adapter;
 
     }
 
@@ -59,47 +72,53 @@ class APIClient
      */
     public function player($id)
     {
-        $result = $this->guzzle->get('player/'.$id);
+        $message = new GuzzleMessageFactory();
+
+        $request = $message->createRequest('GET', $this->url . 'player/' . $id);
+
+        $result = $this->adapter->sendRequest($request);
 
         return new Player($result);
     }
 
     public function bans($id)
     {
-        $result = $this->guzzle->get('bans/' . $id);
+        $message = new GuzzleMessageFactory();
+
+        $request = $message->createRequest('GET', $this->url . 'bans/' . $id);
+
+        $result = $this->adapter->sendRequest($request);
         return new Bans($result);
     }
 
     public function servers()
     {
-        $result = $this->guzzle->get('servers');
+        $message = new GuzzleMessageFactory();
+
+        $request = $message->createRequest('GET', $this->url . 'servers');
+
+        $result = $this->adapter->sendRequest($request);
         return new Servers($result);
     }
 
     public function gameTime()
     {
-        $load = $this->load("/v2/game_time/");
-        if ($load['error'] == false) {
-            $load['minutes'] = $load['game_time'];
+        $message = new GuzzleMessageFactory();
 
-            $load['hours'] = $load['minutes'] / 60;
-            $load['minutes'] = $load['minutes'] % 60;
+        $request = $message->createRequest('GET', $this->url . 'game_time');
 
-            $load['days'] = $load['hours'] / 24;
-            $load['hours'] = $load['hours'] % 24;
+        $result = $this->adapter->sendRequest($request);
 
-            $load['months'] = $load['days'] / 30;
-            $load['days'] = $load['days'] % 30;
-
-            $load['years'] = intval($load['months'] / 12);
-            $load['months'] = $load['months'] % 12;
-        }
-        return $load;
+        return new GameTime($result);
     }
 
     public function version()
     {
-        $result = $this->guzzle->get('version');
+        $message = new GuzzleMessageFactory();
+
+        $request = $message->createRequest('GET', $this->url . 'version');
+
+        $result = $this->adapter->sendRequest($request);
         return new Version($result);
     }
 }
