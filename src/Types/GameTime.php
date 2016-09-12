@@ -14,6 +14,8 @@ use Psr\Http\Message\ResponseInterface;
 class GameTime
 {
 
+    public $time;
+
     public function __construct(ResponseInterface $response)
     {
         $json = json_decode((string)$response->getBody(), true, 512, JSON_BIGINT_AS_STRING);
@@ -36,8 +38,7 @@ class GameTime
         $load['years'] = intval($load['months'] / 12);
         $load['months'] = $load['months'] % 12;
 
-        $time = Carbon::create($load['years'], $load['months'], $load['days'], $load['hours'], $load['minutes']);
+        $this->time = Carbon::create($load['years'], $load['months'], $load['days'], $load['hours'], $load['minutes']);
 
-        return $time;
     }
 }
