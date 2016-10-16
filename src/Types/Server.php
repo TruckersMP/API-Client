@@ -54,6 +54,12 @@ class Server
     public $players;
 
     /**
+     * Current queue count
+     * @var int
+     */
+    public $queue;
+    
+    /**
      * Max player count
      * @var int
      */
@@ -79,6 +85,7 @@ class Server
         $this->shortName    = $server['shortname'];
         $this->online       = boolval($server['online']);
         $this->players      = intval($server['players']);
+        $this->queue        = intval($server['queue']);
         $this->maxPlayers   = intval($server['maxplayers']);
         $this->speedLimiter = boolval($server['speedlimiter']);
 
