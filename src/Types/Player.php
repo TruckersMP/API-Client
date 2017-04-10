@@ -22,6 +22,12 @@ class Player
     public $name;
 
     /**
+     * Avatar URL
+     * @var string
+     */
+    public $avatar;
+    
+    /**
      * Date and time user joined
      * @var \DateTime
      */
@@ -66,6 +72,7 @@ class Player
 
         $this->id           = $json['response']['id'];
         $this->name         = $json['response']['name'];
+        $this->avatar       = $json['response']['avatar'];
         $this->joinDate     = $json['response']['joinDate'];
         $this->steamID64    = $json['response']['steamID64'];
         $this->groupID      = $json['response']['groupID'];
