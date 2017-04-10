@@ -13,7 +13,7 @@ This is a PHP library created to simplify development using the [TruckersMP](htt
 
 This library can be installed using [Composer](http://getcomposer.org/).
 
-Simple method: You can incluse the library in your composer.json requirements list by using the command `composer require truckersmp/api-client`.
+Simple method: You can include this library in your `composer.json` requirements list by using the command `composer require truckersmp/api-client`.
 
 Slightly less simple method: You can also add `truckersmp/api-client` manually to the composer requirements list.
 
