@@ -7,7 +7,6 @@
 
 namespace TruckersMP\API;
 
-use Desarrolla2\Cache\Cache;
 use TruckersMP\Types\Bans;
 use TruckersMP\Types\GameTime;
 use TruckersMP\Types\Player;
@@ -18,21 +17,17 @@ class APIClient
 {
     const API_ENDPOINT = 'api.truckersmp.com';
     const API_VERSION = 'v2';
+
     /**
      * @var \TruckersMP\API\Request
      */
     private $request;
 
     /**
-     * @var \TruckersMP\API\FileCache|bool
-     */
-    private $cache;
-
-    /**
      * APIClient constructor.
      *
-     * @param array       $config
-     * @param bool        $secure
+     * @param array $config
+     * @param bool  $secure
      */
 
     public function __construct($config = [], $secure = true)
@@ -55,7 +50,7 @@ class APIClient
      */
     public function player($id)
     {
-        $result = $this->request->execute('player/' . $id, 10 * 60);
+        $result = $this->request->execute('player/' . $id);
 
         return new Player($result);
     }
@@ -70,7 +65,7 @@ class APIClient
      */
     public function bans($id)
     {
-        $result = $this->request->execute('bans/' . $id, 10 * 60);
+        $result = $this->request->execute('bans/' . $id);
 
         return new Bans($result);
     }
@@ -83,7 +78,7 @@ class APIClient
      */
     public function servers()
     {
-        $result = $this->request->execute('servers', 1 * 60);
+        $result = $this->request->execute('servers');
 
         return new Servers($result);
     }
@@ -96,7 +91,7 @@ class APIClient
      */
     public function gameTime()
     {
-        $result = $this->request->execute('game_time', 1 * 60);
+        $result = $this->request->execute('game_time');
 
         return new GameTime($result);
     }
@@ -109,19 +104,8 @@ class APIClient
      */
     public function version()
     {
-        $result = $this->request->execute('version', 60 * 60);
+        $result = $this->request->execute('version');
 
         return new Version($result);
-    }
-
-    public function clearCache()
-    {
-        if ($this->cache !== false) {
-            $this->cache->dropCache();
-
-            return true;
-        }
-
-        return false;
     }
 }

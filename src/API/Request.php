@@ -46,7 +46,7 @@ class Request
     /**
      * @param string $uri URI of API method
      *
-     * @return \Psr\Http\Message\ResponseInterface
+     * @return array
      */
     public function execute($uri)
     {
