@@ -16,24 +16,43 @@ class ClientTest extends \PHPUnit_Framework_TestCase
 
     /**
      * ClientTest constructor.
+     *
      */
     public function __construct()
     {
         parent::__construct();
 
-        $this->client = new APIClient();
+        $cachePath = __DIR__ . '/cache/';
+        $this->client = new APIClient($cachePath);
     }
 
     /**
      * @throws \Exception
      * @throws \Http\Client\Exception
      */
-    public function testPlayer()
+    public function testColdPlayerCache()
     {
-        $player = $this->client->player($this->testAccount); // Special test account that *should* remain static
+        $this->getPlayer();
+    }
+
+    /**
+     * @throws \Exception
+     * @throws \Http\Client\Exception
+     */
+    public function testHotPlayerCache()
+    {
+        $this->getPlayer();
+    }
+
+    /**
+     * @throws \Exception
+     * @throws \Http\Client\Exception
+     */
+    public function getPlayer()
+    {
+        $player = $this->client->player($this->testAccount);
 
         $this->assertEquals($player->name, 'tuxytestaccount');
-
         $this->assertEquals($player->groupID, 1);
         $this->assertEquals($player->groupName, 'Player');
 
@@ -63,6 +82,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     public function testServers()
     {
         $servers = $this->client->servers();
+
         $this->assertEquals($servers[0]->name, 'Europe 1');
     }
 
@@ -94,5 +114,12 @@ class ClientTest extends \PHPUnit_Framework_TestCase
         $time = $this->client->gameTime();
 
         $this->assertNotEmpty($time);
+    }
+
+    public function testCache()
+    {
+        $cache = $this->client->clearCache();
+
+        $this->assertTrue($cache);
     }
 }

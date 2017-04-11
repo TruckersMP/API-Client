@@ -57,10 +57,10 @@ class Ban
     {
         $this->expires = new Carbon($ban['expiration'], 'UTC');
         $this->created = new Carbon($ban['timeAdded'], 'UTC');
-        $this->active = $ban['active'];
+        $this->active  = $ban['active'];
 
-        $this->reason = $ban['reason'];
+        $this->reason    = $ban['reason'];
         $this->adminName = $ban['adminName'];
-        $this->adminID = $ban['adminID'];
+        $this->adminID   = $ban['adminID'];
     }
 }

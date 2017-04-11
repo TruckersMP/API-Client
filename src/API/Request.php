@@ -11,6 +11,7 @@ use GuzzleHttp\Client as GuzzleClient;
 use Http\Adapter\Guzzle6\Client as GuzzleAdapter;
 use Http\Message\MessageFactory\GuzzleMessageFactory;
 
+
 class Request
 {
     /**
@@ -28,29 +29,33 @@ class Request
      */
     private $adapter;
 
+
     /**
      * Request constructor.
      *
      * @param       $apiEndpoint
      * @param array $config
+     *
      */
-    public function __construct($apiEndpoint, $config = [])
+    public function __construct($apiEndpoint, $config)
     {
         $this->message = new GuzzleMessageFactory();
 
         $this->apiEndpoint = $apiEndpoint;
-        $this->adapter = new GuzzleAdapter(new GuzzleClient($config));
+        $this->adapter     = new GuzzleAdapter(new GuzzleClient($config));
+
     }
 
     /**
-     * @param $uri
+     * @param string $uri URI of API method
      *
      * @return \Psr\Http\Message\ResponseInterface
      */
     public function execute($uri)
     {
-        $request = $this->message->createRequest('GET', $this->apiEndpoint.$uri);
+        $request = $this->message->createRequest('GET', $this->apiEndpoint . $uri);
+        $result = $this->adapter->sendRequest($request);
 
-        return $this->adapter->sendRequest($request);
+        return json_decode((string) $result->getBody(), true, 512, JSON_BIGINT_AS_STRING);
     }
 }

@@ -119,25 +119,25 @@ class Server
     /**
      * Server constructor.
      *
-     * @param $server
+     * @param array $server
      */
-    public function __construct($server)
+    public function __construct(array $server)
     {
-        $this->id = intval($server['id']);
-        $this->game = $server['game'];
-        $this->ip = $server['ip'];
-        $this->port = intval($server['port']);
-        $this->name = $server['name'];
-        $this->shortName = $server['shortname'];
-        $this->online = boolval($server['online']);
-        $this->players = intval($server['players']);
-        $this->queue = intval($server['queue']);
-        $this->maxPlayers = intval($server['maxplayers']);
-        $this->speedLimiter = boolval($server['speedlimiter']);
-        $this->collisions = boolval($server['collisions']);
-        $this->carsForPlayers = boolval($server['carsforplayers']);
+        $this->id                   = intval($server['id']);
+        $this->game                 = $server['game'];
+        $this->ip                   = $server['ip'];
+        $this->port                 = intval($server['port']);
+        $this->name                 = $server['name'];
+        $this->shortName            = $server['shortname'];
+        $this->online               = boolval($server['online']);
+        $this->players              = intval($server['players']);
+        $this->queue                = intval($server['queue']);
+        $this->maxPlayers           = intval($server['maxplayers']);
+        $this->speedLimiter         = boolval($server['speedlimiter']);
+        $this->collisions           = boolval($server['collisions']);
+        $this->carsForPlayers       = boolval($server['carsforplayers']);
         $this->policeCarsForPlayers = boolval($server['policecarsforplayers']);
-        $this->afkEnabled = boolval($server['afkenabled']);
-        $this->syncDelay = intval($server['syncdelay']);
+        $this->afkEnabled           = boolval($server['afkenabled']);
+        $this->syncDelay            = intval($server['syncdelay']);
     }
 }

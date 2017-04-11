@@ -2,7 +2,6 @@
 
 namespace TruckersMP\Types;
 
-use Psr\Http\Message\ResponseInterface;
 use TruckersMP\Exceptions\PlayerNotFoundException;
 
 class Player
@@ -66,25 +65,23 @@ class Player
     /**
      * Player constructor.
      *
-     * @param ResponseInterface $response
+     * @param array $response
      *
-     * @throws PlayerNotFoundException
+     * @throws \TruckersMP\Exceptions\PlayerNotFoundException
      */
-    public function __construct(ResponseInterface $response)
+    public function __construct(array $response)
     {
-        $json = json_decode((string) $response->getBody(), true, 512, JSON_BIGINT_AS_STRING);
-
-        if ($json['error']) {
-            throw new PlayerNotFoundException($json['response']);
+        if ($response['error']) {
+            throw new PlayerNotFoundException($response['response']);
         }
 
-        $this->id = $json['response']['id'];
-        $this->name = $json['response']['name'];
-        $this->avatar = $json['response']['avatar'];
-        $this->joinDate = $json['response']['joinDate'];
-        $this->steamID64 = $json['response']['steamID64'];
-        $this->groupID = $json['response']['groupID'];
-        $this->groupName = $json['response']['groupName'];
-        $this->inGameAdmin = $json['response']['permissions']['isGameAdmin'];
+        $this->id          = $response['response']['id'];
+        $this->name        = $response['response']['name'];
+        $this->avatar      = $response['response']['avatar'];
+        $this->joinDate    = $response['response']['joinDate'];
+        $this->steamID64   = $response['response']['steamID64'];
+        $this->groupID     = $response['response']['groupID'];
+        $this->groupName   = $response['response']['groupName'];
+        $this->inGameAdmin = $response['response']['permissions']['isGameAdmin'];
     }
 }

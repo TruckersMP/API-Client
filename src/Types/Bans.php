@@ -23,24 +23,22 @@ class Bans implements \Iterator, \ArrayAccess
     /**
      * Bans constructor.
      *
-     * @param ResponseInterface $response
+     * @param array $response
      *
-     * @throws PlayerNotFoundException
+     * @throws \TruckersMP\Exceptions\PlayerNotFoundException
      */
-    public function __construct(ResponseInterface $response)
+    public function __construct(array $response)
     {
         $this->position = 0;
 
-        $json = json_decode((string) $response->getBody(), true, 512, JSON_BIGINT_AS_STRING);
-
-        if ($json['error'] &&
-            ($json['descriptor'] == 'No player ID submitted' ||
-                $json['descriptor'] == 'Invalid user ID')
+        if ($response['error'] &&
+            ($response['descriptor'] == 'No player ID submitted' ||
+                $response['descriptor'] == 'Invalid user ID')
         ) {
-            throw new PlayerNotFoundException($json['descriptor']);
+            throw new PlayerNotFoundException($response['descriptor']);
         }
 
-        foreach ($json['response'] as $k => $ban) {
+        foreach ($response['response'] as $k => $ban) {
             $this->bans[$k] = new Ban($ban);
         }
     }

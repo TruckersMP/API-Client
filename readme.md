@@ -28,14 +28,15 @@ After doing either of the above, execute the command `composer install`.
 
 ## Usage
 
-Please refer to our full [API documentation](https://stats.truckersmp.com/api).
+Please note, that library uses File cache to take care about responsible API usage.
 
 ```php
 <?php
 
 use TruckersMP/API/APIClient;
 
-$client = new APIClient();
+$cachePath = '/cache'; // path to cache folder 
+$client = new APIClient($cachePath);
 
 // Get player data for player id 50
 $player = $client->player(50);
@@ -53,14 +54,18 @@ echo $player->groupName;
 
 ## Configuration
 
+APIClient has Cache and Guzzle configuration.
+
 We use [Guzzle](https://github.com/guzzle/guzzle) for gathering data from API endpoint. If you want to change Guzzle [configuration](http://guzzlephp.org/), you can pass config array on Client initialization.
 
 ```php
+<?php 
 
-$client = new ApiClient([
-    // your settings
-]);
+$client = new APIClient(); // Cache is disables, Guzzle settings by default
 
+$client = new APIClient($cachePath); // Cache init, Guzzle settings by default
+
+$client = new APIClient($cachePath, []); // Cache init, Guzzle init
 ```
 
 ## Tests

@@ -1,6 +1,7 @@
 ### Composer ###
 composer.phar
 /vendor/
-/.idea
+/.idea/
+/Tests/cache/
 
 
