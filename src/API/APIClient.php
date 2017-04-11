@@ -38,13 +38,7 @@ class APIClient
      * @throws \phpFastCache\Exceptions\phpFastCacheDriverCheckException
      */
 
-    public function __construct(
-        $cache = false,
-        $config = [],
-        $apiEndpoint = 'api.truckersmp.com',
-        $version = 'v2',
-        $secure = true
-    )
+    public function __construct($cache = false, $config = [], $apiEndpoint = 'api.truckersmp.com', $version = 'v2', $secure = true)
     {
         $scheme = $secure ? 'https' : 'http';
         $url    = $scheme . '://' . $apiEndpoint . '/' . $version . '/';
