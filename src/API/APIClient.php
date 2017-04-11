@@ -26,22 +26,24 @@ class APIClient
      */
     private $cache;
 
+    const API_ENDPOINT = 'api.truckersmp.com';
+
+    const API_VERSION = 'v2';
+
     /**
      * APIClient constructor.
      *
      * @param string|bool $cache
      * @param array       $config
-     * @param string      $apiEndpoint
-     * @param string      $version
      * @param bool        $secure
      *
      * @throws \phpFastCache\Exceptions\phpFastCacheDriverCheckException
      */
 
-    public function __construct($cache = false, $config = [], $apiEndpoint = 'api.truckersmp.com', $version = 'v2', $secure = true)
+    public function __construct($cache = false, $config = [], $secure = true)
     {
         $scheme = $secure ? 'https' : 'http';
-        $url    = $scheme . '://' . $apiEndpoint . '/' . $version . '/';
+        $url    = $scheme . '://' . self::API_ENDPOINT . '/' . self::API_VERSION . '/';
 
         $this->request = new Request($url, $config);
 
