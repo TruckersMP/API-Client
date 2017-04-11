@@ -10,7 +10,6 @@ use TruckersMP\Types\Player;
 
 class ClientTest extends \PHPUnit_Framework_TestCase
 {
-
     private $testAccount = 585204;
 
     private $client;
@@ -55,7 +54,6 @@ class ClientTest extends \PHPUnit_Framework_TestCase
 
         $this->assertInstanceOf(Bans::class, $bans);
         $this->assertInstanceOf(Ban::class, $bans[0]);
-
     }
 
     /**
