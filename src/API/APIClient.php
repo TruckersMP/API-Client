@@ -33,26 +33,26 @@ class APIClient
         $apiEndpoint = 'api.truckersmp.com',
         $version = 'v2',
         $secure = true
-    )
-    {
+    ) {
         $scheme = $secure ? 'https' : 'http';
-        $url    = $scheme . '://' . $apiEndpoint . '/' . $version . '/';
+        $url = $scheme.'://'.$apiEndpoint.'/'.$version.'/';
 
         $this->request = new Request($url, $config);
     }
 
     /**
-     * Fetch player information
+     * Fetch player information.
      *
-     * @param integer $id
+     * @param int $id
      *
-     * @return \TruckersMP\Types\Player
      * @throws \Exception
      * @throws \Http\Client\Exception
+     *
+     * @return \TruckersMP\Types\Player
      */
     public function player($id)
     {
-        $result = $this->request->execute('player/' . $id);
+        $result = $this->request->execute('player/'.$id);
 
         return new Player($result);
     }
@@ -60,21 +60,23 @@ class APIClient
     /**
      * @param $id
      *
-     * @return \TruckersMP\Types\Bans
      * @throws \Exception
      * @throws \Http\Client\Exception
+     *
+     * @return \TruckersMP\Types\Bans
      */
     public function bans($id)
     {
-        $result = $this->request->execute('bans/' . $id);
+        $result = $this->request->execute('bans/'.$id);
 
         return new Bans($result);
     }
 
     /**
-     * @return \TruckersMP\Types\Servers
      * @throws \Exception
      * @throws \Http\Client\Exception
+     *
+     * @return \TruckersMP\Types\Servers
      */
     public function servers()
     {
@@ -84,9 +86,10 @@ class APIClient
     }
 
     /**
-     * @return \TruckersMP\Types\GameTime
      * @throws \Exception
      * @throws \Http\Client\Exception
+     *
+     * @return \TruckersMP\Types\GameTime
      */
     public function gameTime()
     {
@@ -96,9 +99,10 @@ class APIClient
     }
 
     /**
-     * @return \TruckersMP\Types\Version
      * @throws \Exception
      * @throws \Http\Client\Exception
+     *
+     * @return \TruckersMP\Types\Version
      */
     public function version()
     {

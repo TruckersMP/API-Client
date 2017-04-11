@@ -1,6 +1,5 @@
 <?php
 
-
 namespace TruckersMP\Types;
 
 use Carbon\Carbon;
@@ -22,30 +21,30 @@ class Ban
     public $created;
 
     /**
-     * True if ban is currently active
+     * True if ban is currently active.
      *
-     * @var boolean
+     * @var bool
      */
     public $active;
 
     /**
-     * Reason for the ban
+     * Reason for the ban.
      *
      * @var string
      */
     public $reason;
 
     /**
-     * Admin's name
+     * Admin's name.
      *
      * @var string
      */
     public $adminName;
 
     /**
-     * Admin's ID
+     * Admin's ID.
      *
-     * @var integer
+     * @var int
      */
     public $adminID;
 
@@ -58,11 +57,10 @@ class Ban
     {
         $this->expires = new Carbon($ban['expiration'], 'UTC');
         $this->created = new Carbon($ban['timeAdded'], 'UTC');
-        $this->active  = $ban['active'];
+        $this->active = $ban['active'];
 
-        $this->reason    = $ban['reason'];
+        $this->reason = $ban['reason'];
         $this->adminName = $ban['adminName'];
-        $this->adminID   = $ban['adminID'];
-
+        $this->adminID = $ban['adminID'];
     }
 }

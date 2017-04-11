@@ -1,6 +1,5 @@
 <?php
 
-
 namespace TruckersMP\Types;
 
 use Psr\Http\Message\ResponseInterface;
@@ -8,15 +7,14 @@ use TruckersMP\Exceptions\PlayerNotFoundException;
 
 class Bans implements \Iterator, \ArrayAccess
 {
-
     /**
-     * Array of bans
+     * Array of bans.
      *
      * @var array
      */
     public $bans;
     /**
-     * Iterator position
+     * Iterator position.
      *
      * @var int
      */
@@ -33,7 +31,7 @@ class Bans implements \Iterator, \ArrayAccess
     {
         $this->position = 0;
 
-        $json = json_decode((string)$response->getBody(), true, 512, JSON_BIGINT_AS_STRING);
+        $json = json_decode((string) $response->getBody(), true, 512, JSON_BIGINT_AS_STRING);
 
         if ($json['error'] &&
             ($json['descriptor'] == 'No player ID submitted' ||

@@ -7,16 +7,15 @@ use TruckersMP\Exceptions\APIErrorException;
 
 class Servers implements \Iterator, \ArrayAccess
 {
-
     /**
-     * Array of servers
+     * Array of servers.
      *
      * @var array
      */
     public $servers;
 
     /**
-     * Iterator position
+     * Iterator position.
      *
      * @var int
      */
@@ -33,9 +32,9 @@ class Servers implements \Iterator, \ArrayAccess
     {
         $this->position = 0;
 
-        $json = json_decode((string)$response->getBody(), true, 512, JSON_BIGINT_AS_STRING);
+        $json = json_decode((string) $response->getBody(), true, 512, JSON_BIGINT_AS_STRING);
 
-        if ($json['error'] == "true" && $json['descriptor'] == 'Unable to fetch servers') {
+        if ($json['error'] == 'true' && $json['descriptor'] == 'Unable to fetch servers') {
             throw new APIErrorException($json['descriptor']);
         }
 
