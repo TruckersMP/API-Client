@@ -26,13 +26,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     {
         parent::__construct();
 
-        $config = [
-
-        ];
-        $guzzle = new GuzzleClient($config);
-        $adapter = new GuzzleAdapter($guzzle);
-
-        $this->client = new APIClient($adapter);
+        $this->client = new APIClient();
     }
 
     public function testPlayer()

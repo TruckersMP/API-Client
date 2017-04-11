@@ -7,118 +7,103 @@
 
 namespace TruckersMP\API;
 
-use Http\Client\HttpClient;
-use Http\Message\MessageFactory\GuzzleMessageFactory;
 use TruckersMP\Types\Bans;
+use TruckersMP\Types\GameTime;
 use TruckersMP\Types\Player;
 use TruckersMP\Types\Servers;
 use TruckersMP\Types\Version;
-use TruckersMP\Types\GameTime;
 
 class APIClient
 {
     /**
-     * Base URL for communicating with TruckersMP API
-     * @var string
+     * @var \TruckersMP\API\Request
      */
-    private $apiEndpoint;
-
-    /**
-     * API Version to interface with
-     * @var string
-     */
-    private $version;
-
-    /**
-     * HttpClient adapter
-     * @var HttpClient
-     */
-    private $adapter;
-
-    /**
-     * Prefixed URL for requests
-     * @var string
-     */
-    private $url;
+    private $request;
 
     /**
      * APIClient constructor.
-     * @param HttpClient $adapter
+     *
+     * @param array  $config
      * @param string $apiEndpoint
      * @param string $version
-     * @param bool $secure
+     * @param bool   $secure
      */
     public function __construct(
-        HttpClient $adapter,
+        $config = [],
         $apiEndpoint = 'api.truckersmp.com',
         $version = 'v2',
         $secure = true
-    ) {
-        $this->apiEndpoint = $apiEndpoint;
-        $this->version = $version;
-
+    )
+    {
         $scheme = $secure ? 'https' : 'http';
+        $url    = $scheme . '://' . $apiEndpoint . '/' . $version . '/';
 
-        $this->url = $scheme . '://' . $this->apiEndpoint . '/' . $this->version . '/';
-
-        $this->adapter = $adapter;
-
+        $this->request = new Request($url, $config);
     }
 
     /**
      * Fetch player information
+     *
      * @param integer $id
-     * @return Player
+     *
+     * @return \TruckersMP\Types\Player
+     * @throws \Exception
+     * @throws \Http\Client\Exception
      */
     public function player($id)
     {
-        $message = new GuzzleMessageFactory();
-
-        $request = $message->createRequest('GET', $this->url . 'player/' . $id);
-
-        $result = $this->adapter->sendRequest($request);
+        $result = $this->request->execute('player/' . $id);
 
         return new Player($result);
     }
 
+    /**
+     * @param $id
+     *
+     * @return \TruckersMP\Types\Bans
+     * @throws \Exception
+     * @throws \Http\Client\Exception
+     */
     public function bans($id)
     {
-        $message = new GuzzleMessageFactory();
+        $result = $this->request->execute('bans/' . $id);
 
-        $request = $message->createRequest('GET', $this->url . 'bans/' . $id);
-
-        $result = $this->adapter->sendRequest($request);
         return new Bans($result);
     }
 
+    /**
+     * @return \TruckersMP\Types\Servers
+     * @throws \Exception
+     * @throws \Http\Client\Exception
+     */
     public function servers()
     {
-        $message = new GuzzleMessageFactory();
+        $result = $this->request->execute('servers');
 
-        $request = $message->createRequest('GET', $this->url . 'servers');
-
-        $result = $this->adapter->sendRequest($request);
         return new Servers($result);
     }
 
+    /**
+     * @return \TruckersMP\Types\GameTime
+     * @throws \Exception
+     * @throws \Http\Client\Exception
+     */
     public function gameTime()
     {
-        $message = new GuzzleMessageFactory();
-
-        $request = $message->createRequest('GET', $this->url . 'game_time');
-
-        $result = $this->adapter->sendRequest($request);
+        $result = $this->request->execute('game_time');
 
         return new GameTime($result);
     }
 
+    /**
+     * @return \TruckersMP\Types\Version
+     * @throws \Exception
+     * @throws \Http\Client\Exception
+     */
     public function version()
     {
-        $message = new GuzzleMessageFactory();
+        $result = $this->request->execute('version');
 
-        $request = $message->createRequest('GET', $this->url . 'version');
-
-        $result = $this->adapter->sendRequest($request);
         return new Version($result);
     }
 }

@@ -9,20 +9,24 @@ class Servers implements \Iterator, \ArrayAccess
 {
 
     /**
-     * Iterator position
-     * @var int
-     */
-    private $position = 0;
-
-    /**
      * Array of servers
+     *
      * @var array
      */
     public $servers;
 
     /**
+     * Iterator position
+     *
+     * @var int
+     */
+    private $position = 0;
+
+    /**
      * Servers constructor.
+     *
      * @param ResponseInterface $response
+     *
      * @throws APIErrorException
      */
     public function __construct(ResponseInterface $response)
