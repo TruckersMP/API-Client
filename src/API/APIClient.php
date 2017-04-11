@@ -7,7 +7,7 @@
 
 namespace TruckersMP\API;
 
-use phpFastCache\CacheManager;
+use Desarrolla2\Cache\Cache;
 use TruckersMP\Types\Bans;
 use TruckersMP\Types\GameTime;
 use TruckersMP\Types\Player;
@@ -16,44 +16,31 @@ use TruckersMP\Types\Version;
 
 class APIClient
 {
+    const API_ENDPOINT = 'api.truckersmp.com';
+    const API_VERSION = 'v2';
     /**
      * @var \TruckersMP\API\Request
      */
     private $request;
 
     /**
-     * @var \phpFastCache\Cache\ExtendedCacheItemPoolInterface|bool
+     * @var \TruckersMP\API\FileCache|bool
      */
     private $cache;
-
-    const API_ENDPOINT = 'api.truckersmp.com';
-
-    const API_VERSION = 'v2';
 
     /**
      * APIClient constructor.
      *
-     * @param string|bool $cache
      * @param array       $config
      * @param bool        $secure
-     *
-     * @throws \phpFastCache\Exceptions\phpFastCacheDriverCheckException
      */
 
-    public function __construct($cache = false, $config = [], $secure = true)
+    public function __construct($config = [], $secure = true)
     {
         $scheme = $secure ? 'https' : 'http';
         $url    = $scheme . '://' . self::API_ENDPOINT . '/' . self::API_VERSION . '/';
 
         $this->request = new Request($url, $config);
-
-        if ($cache !== false) {
-            $this->cache = CacheManager::getInstance('files', [
-                'path' => $cache,
-            ]);
-        } else {
-            $this->cache = false;
-        }
     }
 
     /**
@@ -68,26 +55,9 @@ class APIClient
      */
     public function player($id)
     {
-        $result = $this->execute('player/' . $id, 10 * 60);
+        $result = $this->request->execute('player/' . $id, 10 * 60);
 
         return new Player($result);
-    }
-
-    public function execute($uri, $ttl)
-    {
-        if ($this->cache !== false) {
-            $cached = $this->cache->getItem(urlencode($uri));
-
-            if (is_null($cached->get())) {
-                $request = $this->request->execute($uri);
-                $cached->set($request)->expiresAfter($ttl);
-                $this->cache->save($cached);
-            }
-
-            return $cached->get();
-        }
-
-        return $this->request->execute($uri);
     }
 
     /**
@@ -100,8 +70,7 @@ class APIClient
      */
     public function bans($id)
     {
-        $result = $this->execute('bans/' . $id, 10 * 60);
-        var_dump($result);
+        $result = $this->request->execute('bans/' . $id, 10 * 60);
 
         return new Bans($result);
     }
@@ -114,7 +83,7 @@ class APIClient
      */
     public function servers()
     {
-        $result = $this->execute('servers', 1 * 60);
+        $result = $this->request->execute('servers', 1 * 60);
 
         return new Servers($result);
     }
@@ -127,7 +96,7 @@ class APIClient
      */
     public function gameTime()
     {
-        $result = $this->execute('game_time', 1 * 60);
+        $result = $this->request->execute('game_time', 1 * 60);
 
         return new GameTime($result);
     }
@@ -140,7 +109,7 @@ class APIClient
      */
     public function version()
     {
-        $result = $this->execute('version', 60 * 60);
+        $result = $this->request->execute('version', 60 * 60);
 
         return new Version($result);
     }
@@ -148,7 +117,7 @@ class APIClient
     public function clearCache()
     {
         if ($this->cache !== false) {
-            $this->cache->clear();
+            $this->cache->dropCache();
 
             return true;
         }

@@ -22,33 +22,14 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     {
         parent::__construct();
 
-        $cachePath = __DIR__ . '/cache/';
-        $this->client = new APIClient($cachePath);
+        $this->client = new APIClient();
     }
 
     /**
      * @throws \Exception
      * @throws \Http\Client\Exception
      */
-    public function testColdPlayerCache()
-    {
-        $this->getPlayer();
-    }
-
-    /**
-     * @throws \Exception
-     * @throws \Http\Client\Exception
-     */
-    public function testHotPlayerCache()
-    {
-        $this->getPlayer();
-    }
-
-    /**
-     * @throws \Exception
-     * @throws \Http\Client\Exception
-     */
-    public function getPlayer()
+    public function testPlayer()
     {
         $player = $this->client->player($this->testAccount);
 

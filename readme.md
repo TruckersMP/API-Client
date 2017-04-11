@@ -28,15 +28,15 @@ After doing either of the above, execute the command `composer install`.
 
 ## Usage
 
-Please note, that library uses File cache to take care about responsible API usage.
+
+> **Please note: this examples doesn't use caching. You should cache your requests in order to use API responsibly. Some examples can be found in `examples\cache` folder.**  
 
 ```php
 <?php
 
 use TruckersMP/API/APIClient;
 
-$cachePath = '/cache'; // path to cache folder 
-$client = new APIClient($cachePath);
+$client = new APIClient();
 
 // Get player data for player id 50
 $player = $client->player(50);
@@ -54,19 +54,17 @@ echo $player->groupName;
 
 ## Configuration
 
-APIClient has Cache and Guzzle configuration.
-
 We use [Guzzle](https://github.com/guzzle/guzzle) for gathering data from API endpoint. If you want to change Guzzle [configuration](http://guzzlephp.org/), you can pass config array on Client initialization.
 
 ```php
 <?php 
 
-$client = new APIClient(); // Cache is disables, Guzzle settings by default
-
-$client = new APIClient($cachePath); // Cache init, Guzzle settings by default
-
-$client = new APIClient($cachePath, []); // Cache init, Guzzle init
+$client = new APIClient([
+    // Guzzle config
+]);
 ```
+
+All other settings you can find in `APIClient.php` constructor.
 
 ## Tests
 
