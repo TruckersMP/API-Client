@@ -7,35 +7,36 @@ use TruckersMP\Exceptions\APIErrorException;
 
 class Servers implements \Iterator, \ArrayAccess
 {
-
     /**
-     * Iterator position
-     * @var int
-     */
-    private $position = 0;
-
-    /**
-     * Array of servers
+     * Array of servers.
+     *
      * @var array
      */
     public $servers;
 
     /**
+     * Iterator position.
+     *
+     * @var int
+     */
+    private $position = 0;
+
+    /**
      * Servers constructor.
-     * @param ResponseInterface $response
+     *
+     * @param array $response
+     *
      * @throws APIErrorException
      */
-    public function __construct(ResponseInterface $response)
+    public function __construct(array $response)
     {
         $this->position = 0;
 
-        $json = json_decode((string)$response->getBody(), true, 512, JSON_BIGINT_AS_STRING);
-
-        if ($json['error'] == "true" && $json['descriptor'] == 'Unable to fetch servers') {
-            throw new APIErrorException($json['descriptor']);
+        if ($response['error'] == 'true' && $response['descriptor'] == 'Unable to fetch servers') {
+            throw new APIErrorException($response['descriptor']);
         }
 
-        foreach ($json['response'] as $k => $server) {
+        foreach ($response['response'] as $k => $server) {
             $this->servers[$k] = new Server($server);
         }
     }

@@ -4,108 +4,124 @@ namespace TruckersMP\Types;
 
 class Server
 {
-
     /**
-     * Game server ID
+     * Game server ID.
+     *
      * @var int
      */
     public $id;
 
     /**
-     * Game
+     * Game.
+     *
      * @var string
      */
     public $game;
 
     /**
-     * IP or Hostname of server
+     * IP or Hostname of server.
+     *
      * @var string
      */
     public $ip;
 
     /**
-     * Port
+     * Port.
+     *
      * @var int
      */
     public $port;
 
     /**
-     * Game server name
+     * Game server name.
+     *
      * @var string
      */
     public $name;
 
     /**
-     * Game server short name
+     * Game server short name.
+     *
      * @var string
      */
     public $shortName;
 
     /**
-     * Online status
+     * Online status.
+     *
      * @var bool
      */
     public $online;
 
     /**
-     * Current player count
+     * Current player count.
+     *
      * @var int
      */
     public $players;
 
     /**
-     * Current queue count
+     * Current queue count.
+     *
      * @var int
      */
     public $queue;
 
     /**
-     * Max player count
+     * Max player count.
+     *
      * @var int
      */
     public $maxPlayers;
 
     /**
-     * Speed limiter
+     * Speed limiter.
+     *
      * @var bool
      */
     public $speedLimiter;
 
     /**
-     * Collisions
+     * Collisions.
+     *
      * @var bool
      */
     public $collisions;
 
     /**
-     * Will cars be available for all players
+     * Will cars be available for all players.
+     *
      * @var bool
      */
     public $carsForPlayers;
 
     /**
-     * Will police cars be available for all players
+     * Will police cars be available for all players.
+     *
      * @var bool
      */
     public $policeCarsForPlayers;
 
     /**
-     * "Away from keyboard" status
+     * "Away from keyboard" status.
+     *
      * @var bool
      */
     public $afkEnabled;
 
     /**
-     * Sync delay (tick rate)
+     * Sync delay (tick rate).
+     *
      * @var bool
      */
     public $syncDelay;
 
     /**
      * Server constructor.
-     * @param $server
+     *
+     * @param array $server
      */
-    public function __construct($server)
+    public function __construct(array $server)
     {
         $this->id                   = intval($server['id']);
         $this->game                 = $server['game'];

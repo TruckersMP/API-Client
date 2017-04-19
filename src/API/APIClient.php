@@ -7,118 +7,105 @@
 
 namespace TruckersMP\API;
 
-use Http\Client\HttpClient;
-use Http\Message\MessageFactory\GuzzleMessageFactory;
 use TruckersMP\Types\Bans;
+use TruckersMP\Types\GameTime;
 use TruckersMP\Types\Player;
 use TruckersMP\Types\Servers;
 use TruckersMP\Types\Version;
-use TruckersMP\Types\GameTime;
 
 class APIClient
 {
-    /**
-     * Base URL for communicating with TruckersMP API
-     * @var string
-     */
-    private $apiEndpoint;
+    const API_ENDPOINT = 'api.truckersmp.com';
+    const API_VERSION = 'v2';
 
     /**
-     * API Version to interface with
-     * @var string
+     * @var \TruckersMP\API\Request
      */
-    private $version;
-
-    /**
-     * HttpClient adapter
-     * @var HttpClient
-     */
-    private $adapter;
-
-    /**
-     * Prefixed URL for requests
-     * @var string
-     */
-    private $url;
+    private $request;
 
     /**
      * APIClient constructor.
-     * @param HttpClient $adapter
-     * @param string $apiEndpoint
-     * @param string $version
-     * @param bool $secure
+     *
+     * @param array $config
+     * @param bool  $secure
      */
-    public function __construct(
-        HttpClient $adapter,
-        $apiEndpoint = 'api.truckersmp.com',
-        $version = 'v2',
-        $secure = true
-    ) {
-        $this->apiEndpoint = $apiEndpoint;
-        $this->version = $version;
 
+    public function __construct($config = [], $secure = true)
+    {
         $scheme = $secure ? 'https' : 'http';
+        $url    = $scheme . '://' . self::API_ENDPOINT . '/' . self::API_VERSION . '/';
 
-        $this->url = $scheme . '://' . $this->apiEndpoint . '/' . $this->version . '/';
-
-        $this->adapter = $adapter;
-
+        $this->request = new Request($url, $config);
     }
 
     /**
-     * Fetch player information
-     * @param integer $id
-     * @return Player
+     * Fetch player information.
+     *
+     * @param int $id
+     *
+     * @throws \Exception
+     * @throws \Http\Client\Exception
+     *
+     * @return \TruckersMP\Types\Player
      */
     public function player($id)
     {
-        $message = new GuzzleMessageFactory();
-
-        $request = $message->createRequest('GET', $this->url . 'player/' . $id);
-
-        $result = $this->adapter->sendRequest($request);
+        $result = $this->request->execute('player/' . $id);
 
         return new Player($result);
     }
 
+    /**
+     * @param $id
+     *
+     * @throws \Exception
+     * @throws \Http\Client\Exception
+     *
+     * @return \TruckersMP\Types\Bans
+     */
     public function bans($id)
     {
-        $message = new GuzzleMessageFactory();
+        $result = $this->request->execute('bans/' . $id);
 
-        $request = $message->createRequest('GET', $this->url . 'bans/' . $id);
-
-        $result = $this->adapter->sendRequest($request);
         return new Bans($result);
     }
 
+    /**
+     * @throws \Exception
+     * @throws \Http\Client\Exception
+     *
+     * @return \TruckersMP\Types\Servers
+     */
     public function servers()
     {
-        $message = new GuzzleMessageFactory();
+        $result = $this->request->execute('servers');
 
-        $request = $message->createRequest('GET', $this->url . 'servers');
-
-        $result = $this->adapter->sendRequest($request);
         return new Servers($result);
     }
 
+    /**
+     * @throws \Exception
+     * @throws \Http\Client\Exception
+     *
+     * @return \TruckersMP\Types\GameTime
+     */
     public function gameTime()
     {
-        $message = new GuzzleMessageFactory();
-
-        $request = $message->createRequest('GET', $this->url . 'game_time');
-
-        $result = $this->adapter->sendRequest($request);
+        $result = $this->request->execute('game_time');
 
         return new GameTime($result);
     }
 
+    /**
+     * @throws \Exception
+     * @throws \Http\Client\Exception
+     *
+     * @return \TruckersMP\Types\Version
+     */
     public function version()
     {
-        $message = new GuzzleMessageFactory();
+        $result = $this->request->execute('version');
 
-        $request = $message->createRequest('GET', $this->url . 'version');
-
-        $result = $this->adapter->sendRequest($request);
         return new Version($result);
     }
 }

@@ -4,49 +4,46 @@ namespace TruckersMP\Tests\API;
 
 use Carbon\Carbon;
 use TruckersMP\API\APIClient;
-
-use GuzzleHttp\Client as GuzzleClient;
-use Http\Adapter\Guzzle6\Client as GuzzleAdapter;
-
-use TruckersMP\Types\Version;
 use TruckersMP\Types\Ban;
 use TruckersMP\Types\Bans;
 use TruckersMP\Types\Player;
-use TruckersMP\Types\Servers;
-use TruckersMP\Types\Server;
 
 class ClientTest extends \PHPUnit_Framework_TestCase
 {
-
     private $testAccount = 585204;
 
     private $client;
 
+    /**
+     * ClientTest constructor.
+     *
+     */
     public function __construct()
     {
         parent::__construct();
 
-        $config = [
-
-        ];
-        $guzzle = new GuzzleClient($config);
-        $adapter = new GuzzleAdapter($guzzle);
-
-        $this->client = new APIClient($adapter);
+        $this->client = new APIClient();
     }
 
+    /**
+     * @throws \Exception
+     * @throws \Http\Client\Exception
+     */
     public function testPlayer()
     {
-        $player = $this->client->player($this->testAccount); // Special test account that *should* remain static
+        $player = $this->client->player($this->testAccount);
 
         $this->assertEquals($player->name, 'tuxytestaccount');
-
         $this->assertEquals($player->groupID, 1);
         $this->assertEquals($player->groupName, 'Player');
 
         $this->assertInstanceOf(Player::class, $player);
     }
 
+    /**
+     * @throws \Exception
+     * @throws \Http\Client\Exception
+     */
     public function testPlayerBans()
     {
         $bans = $this->client->bans($this->testAccount);
@@ -57,15 +54,23 @@ class ClientTest extends \PHPUnit_Framework_TestCase
 
         $this->assertInstanceOf(Bans::class, $bans);
         $this->assertInstanceOf(Ban::class, $bans[0]);
-
     }
 
+    /**
+     * @throws \Exception
+     * @throws \Http\Client\Exception
+     */
     public function testServers()
     {
         $servers = $this->client->servers();
+
         $this->assertEquals($servers[0]->name, 'Europe 1');
     }
 
+    /**
+     * @throws \Exception
+     * @throws \Http\Client\Exception
+     */
     public function testVersion()
     {
         $version = $this->client->version();

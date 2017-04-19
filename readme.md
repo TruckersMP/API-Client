@@ -2,41 +2,40 @@
 
 [![Build Status](https://travis-ci.org/TruckersMP/API-Client.svg?branch=master)](https://travis-ci.org/TruckersMP/API-Client)
 
-This is a PHP library created to simplify development using the [TruckersMP](http://truckersmp.com/) API. This client library provides functions to connect and gather data from each API endpoint, and returns the data as an array.
+This is a PHP library created to simplify development using the [TruckersMP](http://truckersmp.com/) API. This client library provides functions to connect and gather data from each API endpoint, and returns the data as an object.
+
+> If you want to use API without library (or if you have advanced knowledge of PHP), check out [API documentation](https://stats.truckersmp.com/api).
+
+## Warning!
+
+Please use our service responsibly. API Consumers who require high rates of requests against our APIs should contact TruckersMP Staff with a rationale and contact email for high-rate usage.
+
 
 ## Requirements  
 
-- PHP 5.6.0 or newer.
+- PHP 5.6.0 or newer
 - Composer
 
 ## Installation
 
 This library can be installed using [Composer](http://getcomposer.org/).
 
-Simple method: You can include this library in your `composer.json` requirements list by using the command `composer require truckersmp/api-client`.
+Two ways:
+1. Execute command `composer require truckersmp/api-client`
+2. Add `truckersmp/api-client` manually to the composer requirements list.
 
-Slightly less simple method: You can also add `truckersmp/api-client` manually to the composer requirements list.
-
-After doing either of the above, open a commandline or terminal in that directory and use the command `composer install`.
+After doing either of the above, execute the command `composer install`.
 
 ## Usage
 
-```
+> **Please note: this examples doesn't use caching. You should cache your requests in order to use API responsibly. Some examples can be found in `examples\cache` folder.**  
+
+```php
 <?php
 
 use TruckersMP/API/APIClient;
 
-// replace with your prefered HTTP Client if you like.
-use GuzzleHttp\Client as GuzzleClient;
-use Http\Adapter\Guzzle6\Client as GuzzleAdapter;
-
-$config = [
-
-];
-$guzzle = new GuzzleClient($config);
-$adapter = new GuzzleAdapter($guzzle);
-
-$this->client = new APIClient($adapter);
+$client = new APIClient();
 
 // Get player data for player id 50
 $player = $client->player(50);
@@ -52,9 +51,33 @@ echo $player->groupName;
 
 ```
 
+## Methods
 
-Please refer to our full [API documentation](https://stats.truckersmp.com/api).
+`player()` - find player by TruckersMP ID or Steam ID
 
-## Tests
+`bans()` - view bans by TruckersMP ID
 
-To run tests, use `composer test`
+`servers()` - servers list
+
+`gameTime()` - gameserver time (uses [Carbon](http://carbon.nesbot.com/docs/))
+
+`version()`- TruckersMP version info
+
+## Configuration
+
+We use [Guzzle](https://github.com/guzzle/guzzle) for gathering data from API endpoint. If you want to change Guzzle [configuration](http://guzzlephp.org/), you can pass config array on Client initialization.
+
+```php
+<?php 
+
+$client = new APIClient([
+    // Guzzle config
+]);
+```
+
+All other settings you can find in `APIClient.php` constructor.
+
+
+## Need Help?
+
+If you have any questions about library usage, you can create new issue or make a topic on [our forum](https://forum.truckersmp.com/index.php?/forum/198-developer-portal/).
