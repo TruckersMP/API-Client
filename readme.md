@@ -1,6 +1,12 @@
 # TruckersMP REST API Library
 
 [![Build Status](https://travis-ci.org/TruckersMP/API-Client.svg?branch=master)](https://travis-ci.org/TruckersMP/API-Client)
+[![Latest Stable Version](https://poser.pugx.org/truckersmp/api-client/v/stable)](https://packagist.org/packages/truckersmp/api-client)
+[![Latest Unstable Version](https://poser.pugx.org/truckersmp/api-client/v/unstable)](https://packagist.org/packages/truckersmp/api-client)
+[![License](https://poser.pugx.org/truckersmp/api-client/license)](https://packagist.org/packages/truckersmp/api-client)
+[![Monthly Downloads](https://poser.pugx.org/truckersmp/api-client/d/monthly)](https://packagist.org/packages/truckersmp/api-client)
+[![Total Downloads](https://poser.pugx.org/truckersmp/api-client/downloads)](https://packagist.org/packages/truckersmp/api-client)
+
 
 This is a PHP library created to simplify development using the [TruckersMP](http://truckersmp.com/) API. This client library provides functions to connect and gather data from each API endpoint, and returns the data as an object.
 
