@@ -9,7 +9,7 @@ class Ban
     /**
      * Time and Date when the ban expires.
      *
-     * @var Carbon
+     * @var Carbon|null
      */
     public $expires;
 
@@ -55,9 +55,23 @@ class Ban
      */
     public function __construct($ban)
     {
-        $this->expires = new Carbon($ban['expiration'], 'UTC');
+        // Expiration
+        if ($ban['expiration'] === null) {
+            $this->expires = null;
+        } else {
+            $this->expires = new Carbon($ban['expiration'], 'UTC');
+        }
+
+        // Time Added
         $this->created = new Carbon($ban['timeAdded'], 'UTC');
-        $this->active  = $ban['active'];
+
+        // Active
+        $this->active = $ban['active'];
+        if (!is_null($this->expires) && $this->active) {
+            if (!$this->expires->greaterThan(Carbon::now('UTC'))) {
+                $this->active = false;
+            }
+        }
 
         $this->reason    = $ban['reason'];
         $this->adminName = $ban['adminName'];
