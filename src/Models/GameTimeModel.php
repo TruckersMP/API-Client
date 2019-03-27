@@ -3,6 +3,7 @@
 namespace TruckersMP\Models;
 
 use Carbon\Carbon;
+use TruckersMP\Exceptions\APIErrorException;
 
 class GameTimeModel
 {
@@ -20,7 +21,7 @@ class GameTimeModel
     public function __construct(array $response)
     {
         if ($response['error']) {
-            throw new \Exception($response['error']);
+            throw new APIErrorException($response['error']);
         }
 
         $load['minutes'] = $response['game_time'];
