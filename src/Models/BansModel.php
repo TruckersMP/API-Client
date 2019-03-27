@@ -20,11 +20,15 @@ class BansModel extends GroupedModel
      * BansModel constructor.
      *
      * @param array $response
-     *
      * @throws \TruckersMP\Exceptions\PlayerNotFoundException
      */
     public function __construct(array $response)
     {
+        // Make sure our grouped variable is kept updated
+        $this->registerEvent('write', 'bans', function(){
+            $this->groupedValue = $this->bans;
+        });
+
         $this->position = 0;
 
         if ($response['error'] &&
@@ -37,7 +41,5 @@ class BansModel extends GroupedModel
         foreach ($response['response'] as $k => $ban) {
             $this->bans[$k] = new BanModel($ban);
         }
-
-        $this->groupedValue = $this->bans;
     }
 }
