@@ -1,7 +1,11 @@
-### Composer ###
+# Composer
 composer.phar
 /vendor/
+
+# PHPStorm
 /.idea/
+
+# Unit Tests
 /Tests/cache/
 
 
