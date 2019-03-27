@@ -10,16 +10,16 @@
 
 This is a PHP library created to simplify development using the [TruckersMP](http://truckersmp.com/) API. This client library provides functions to connect and gather data from each API endpoint, and returns the data as an object.
 
-> If you want to use API without library (or if you have advanced knowledge of PHP), check out [API documentation](https://stats.truckersmp.com/api).
+> If you want to use the API without a library (or if you have advanced knowledge of PHP), check out our [API documentation](https://stats.truckersmp.com/api).
 
 ## Warning!
 
-Please use our service responsibly. API Consumers who require high rates of requests against our APIs should contact TruckersMP Staff with a rationale and contact email for high-rate usage.
+Please use our service responsibly. People who make lots of requests to our API should contact TruckersMP Staff with a rationale and contact email.
 
 
 ## Requirements  
 
-- PHP 5.6.0 or newer
+- PHP 7.1.0 or newer
 - Composer
 
 ## Installation
@@ -39,7 +39,7 @@ After doing either of the above, execute the command `composer install`.
 ```php
 <?php
 
-use TruckersMP/API/APIClient;
+use TruckersMP/APIClient;
 
 $client = new APIClient();
 
@@ -86,4 +86,4 @@ All other settings you can find in `APIClient.php` constructor.
 
 ## Need Help?
 
-If you have any questions about library usage, you can create new issue or make a topic on [our forum](https://forum.truckersmp.com/index.php?/forum/198-developer-portal/).
+If you have any questions about library usage, you can create a new issue or make a topic on [our forum](https://forum.truckersmp.com/index.php?/forum/198-developer-portal/).
