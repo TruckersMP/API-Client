@@ -73,8 +73,8 @@ class BanModel
             }
         }
 
-        $this->reason    = $ban['reason'];
+        $this->reason = $ban['reason'];
         $this->adminName = $ban['adminName'];
-        $this->adminID   = $ban['adminID'];
+        $this->adminID = $ban['adminID'];
     }
 }
