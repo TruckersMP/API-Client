@@ -1,12 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: thor
- * Date: 12.07.16
- * Time: 09:55.
- */
 
-namespace TruckersMP\Types;
+namespace TruckersMP\Models;
 
 use Carbon\Carbon;
 

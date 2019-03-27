@@ -1,11 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * Date: 11.04.2017
- * Time: 09:52.
- */
 
-namespace TruckersMP\API;
+namespace TruckersMP\Helpers;
 
 use GuzzleHttp\Client as GuzzleClient;
 use Http\Adapter\Guzzle6\Client as GuzzleAdapter;
@@ -40,7 +35,7 @@ class Request
         $this->message = new GuzzleMessageFactory();
 
         $this->apiEndpoint = $apiEndpoint;
-        $this->adapter     = new GuzzleAdapter(new GuzzleClient($config));
+        $this->adapter = new GuzzleAdapter(new GuzzleClient($config));
     }
 
     /**

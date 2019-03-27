@@ -3,10 +3,10 @@
 namespace TruckersMP\Tests\API;
 
 use Carbon\Carbon;
-use TruckersMP\API\APIClient;
-use TruckersMP\Types\Ban;
-use TruckersMP\Types\Bans;
-use TruckersMP\Types\Player;
+use TruckersMP\Helpers\APIClient;
+use TruckersMP\Models\Ban;
+use TruckersMP\Models\Bans;
+use TruckersMP\Models\Player;
 
 class ClientTest extends \PHPUnit_Framework_TestCase
 {

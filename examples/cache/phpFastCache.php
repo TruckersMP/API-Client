@@ -7,7 +7,7 @@
  */
 
 use phpFastCache\CacheManager;
-use TruckersMP\API\APIClient;
+use TruckersMP\Helpers\APIClient;
 
 // Setup File Path on your config files
 CacheManager::setup([

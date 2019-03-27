@@ -21,10 +21,16 @@
       "email": "me@cjmaxik.ru",
       "homepage": "https://cjmaxik.ru",
       "role": "IGA/Dev"
+    },
+    {
+      "name": "Alex Blackham (B3none)",
+      "email": "ablackham2000@gmail.com",
+      "homepage": "https://github.com/b3none",
+      "role": "Dev"
     }
   ],
   "require": {
-    "php": ">=5.6.0",
+    "php": ">=7.1.0",
     "nesbot/carbon": "^1.21",
     "php-http/message": "^1.2",
     "guzzlehttp/psr7": "^1.3"

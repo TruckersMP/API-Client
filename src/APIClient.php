@@ -1,17 +1,17 @@
 <?php
 
-/*
-* TruckersMP REST API Library
-* Website: truckersmp.com
-*/
+/**
+ * TruckersMP REST API Library
+ * Website: truckersmp.com
+ */
 
-namespace TruckersMP\API;
+namespace TruckersMP\Helpers;
 
-use TruckersMP\Types\Bans;
-use TruckersMP\Types\GameTime;
-use TruckersMP\Types\Player;
-use TruckersMP\Types\Servers;
-use TruckersMP\Types\Version;
+use TruckersMP\Models\Bans;
+use TruckersMP\Models\GameTime;
+use TruckersMP\Models\Player;
+use TruckersMP\Models\Servers;
+use TruckersMP\Models\Version;
 
 class APIClient
 {
@@ -19,18 +19,17 @@ class APIClient
     const API_VERSION = 'v2';
 
     /**
-     * @var \TruckersMP\API\Request
+     * @var \TruckersMP\Helpers\Request
      */
-    private $request;
+    protected $request;
 
     /**
      * APIClient constructor.
      *
      * @param array $config
-     * @param bool  $secure
+     * @param bool $secure
      */
-
-    public function __construct($config = [], $secure = true)
+    public function __construct(array $config = [], bool $secure = true)
     {
         $scheme = $secure ? 'https' : 'http';
         $url    = $scheme . '://' . self::API_ENDPOINT . '/' . self::API_VERSION . '/';
@@ -39,16 +38,13 @@ class APIClient
     }
 
     /**
-     * Fetch player information.
+     * Get player information by ID.
      *
      * @param int $id
-     *
      * @throws \Exception
-     * @throws \Http\Client\Exception
-     *
-     * @return \TruckersMP\Types\Player
+     * @return \TruckersMP\Models\Player
      */
-    public function player($id)
+    public function player(int $id): Player
     {
         $result = $this->request->execute('player/' . $id);
 
@@ -56,14 +52,13 @@ class APIClient
     }
 
     /**
-     * @param $id
+     * Get bans information by player ID.
      *
+     * @param int $id
      * @throws \Exception
-     * @throws \Http\Client\Exception
-     *
-     * @return \TruckersMP\Types\Bans
+     * @return \TruckersMP\Models\Bans
      */
-    public function bans($id)
+    public function bans(int $id): Bans
     {
         $result = $this->request->execute('bans/' . $id);
 
@@ -71,12 +66,12 @@ class APIClient
     }
 
     /**
-     * @throws \Exception
-     * @throws \Http\Client\Exception
+     * Get server information.
      *
-     * @return \TruckersMP\Types\Servers
+     * @throws \Exception
+     * @return \TruckersMP\Models\Servers
      */
-    public function servers()
+    public function servers(): Servers
     {
         $result = $this->request->execute('servers');
 
@@ -84,12 +79,12 @@ class APIClient
     }
 
     /**
-     * @throws \Exception
-     * @throws \Http\Client\Exception
+     * Get the current game time
      *
-     * @return \TruckersMP\Types\GameTime
+     * @throws \Exception
+     * @return \TruckersMP\Models\GameTime
      */
-    public function gameTime()
+    public function gameTime(): GameTime
     {
         $result = $this->request->execute('game_time');
 
@@ -98,11 +93,9 @@ class APIClient
 
     /**
      * @throws \Exception
-     * @throws \Http\Client\Exception
-     *
-     * @return \TruckersMP\Types\Version
+     * @return \TruckersMP\Models\Version
      */
-    public function version()
+    public function version(): Version
     {
         $result = $this->request->execute('version');
 

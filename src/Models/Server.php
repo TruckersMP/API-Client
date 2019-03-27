@@ -1,6 +1,6 @@
 <?php
 
-namespace TruckersMP\Types;
+namespace TruckersMP\Models;
 
 class Server
 {

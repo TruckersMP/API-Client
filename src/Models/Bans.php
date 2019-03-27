@@ -1,6 +1,6 @@
 <?php
 
-namespace TruckersMP\Types;
+namespace TruckersMP\Models;
 
 use Psr\Http\Message\ResponseInterface;
 use TruckersMP\Exceptions\PlayerNotFoundException;
