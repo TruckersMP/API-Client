@@ -4,7 +4,7 @@ namespace TruckersMP\Models;
 
 use Carbon\Carbon;
 
-class Ban
+class BanModel
 {
     /**
      * Time and Date when the ban expires.
@@ -49,7 +49,7 @@ class Ban
     public $adminID;
 
     /**
-     * Ban constructor.
+     * BanModel constructor.
      *
      * @param array $ban
      */

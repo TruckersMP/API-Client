@@ -5,7 +5,7 @@ namespace TruckersMP\Models;
 use Psr\Http\Message\ResponseInterface;
 use TruckersMP\Exceptions\PlayerNotFoundException;
 
-class Bans implements \Iterator, \ArrayAccess
+class BansModel implements \Iterator, \ArrayAccess
 {
     /**
      * Array of bans.
@@ -21,7 +21,7 @@ class Bans implements \Iterator, \ArrayAccess
     private $position = 0;
 
     /**
-     * Bans constructor.
+     * BansModel constructor.
      *
      * @param array $response
      *
@@ -39,7 +39,7 @@ class Bans implements \Iterator, \ArrayAccess
         }
 
         foreach ($response['response'] as $k => $ban) {
-            $this->bans[$k] = new Ban($ban);
+            $this->bans[$k] = new BanModel($ban);
         }
     }
 

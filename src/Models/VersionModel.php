@@ -4,7 +4,7 @@ namespace TruckersMP\Models;
 
 use Carbon\Carbon;
 
-class Version
+class VersionModel
 {
     public $version;
 
@@ -15,7 +15,7 @@ class Version
     public $support;
 
     /**
-     * Version constructor.
+     * VersionModel constructor.
      *
      * @param array $response
      */

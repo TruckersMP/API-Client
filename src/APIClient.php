@@ -7,11 +7,11 @@
 
 namespace TruckersMP\Helpers;
 
-use TruckersMP\Models\Bans;
-use TruckersMP\Models\GameTime;
-use TruckersMP\Models\Player;
-use TruckersMP\Models\Servers;
-use TruckersMP\Models\Version;
+use TruckersMP\Models\BansModel;
+use TruckersMP\Models\GameTimeModel;
+use TruckersMP\Models\PlayerModel;
+use TruckersMP\Models\ServersModel;
+use TruckersMP\Models\VersionModel;
 
 class APIClient
 {
@@ -19,7 +19,7 @@ class APIClient
     const API_VERSION = 'v2';
 
     /**
-     * @var \TruckersMP\Helpers\Request
+     * @var \TruckersMP\Helpers\RequestHelper
      */
     protected $request;
 
@@ -34,7 +34,7 @@ class APIClient
         $scheme = $secure ? 'https' : 'http';
         $url    = $scheme . '://' . self::API_ENDPOINT . '/' . self::API_VERSION . '/';
 
-        $this->request = new Request($url, $config);
+        $this->request = new RequestHelper($url, $config);
     }
 
     /**
@@ -42,13 +42,13 @@ class APIClient
      *
      * @param int $id
      * @throws \Exception
-     * @return \TruckersMP\Models\Player
+     * @return \TruckersMP\Models\PlayerModel
      */
-    public function player(int $id): Player
+    public function player(int $id): PlayerModel
     {
         $result = $this->request->execute('player/' . $id);
 
-        return new Player($result);
+        return new PlayerModel($result);
     }
 
     /**
@@ -56,49 +56,49 @@ class APIClient
      *
      * @param int $id
      * @throws \Exception
-     * @return \TruckersMP\Models\Bans
+     * @return \TruckersMP\Models\BansModel
      */
-    public function bans(int $id): Bans
+    public function bans(int $id): BansModel
     {
         $result = $this->request->execute('bans/' . $id);
 
-        return new Bans($result);
+        return new BansModel($result);
     }
 
     /**
      * Get server information.
      *
      * @throws \Exception
-     * @return \TruckersMP\Models\Servers
+     * @return \TruckersMP\Models\ServersModel
      */
-    public function servers(): Servers
+    public function servers(): ServersModel
     {
         $result = $this->request->execute('servers');
 
-        return new Servers($result);
+        return new ServersModel($result);
     }
 
     /**
      * Get the current game time
      *
      * @throws \Exception
-     * @return \TruckersMP\Models\GameTime
+     * @return \TruckersMP\Models\GameTimeModel
      */
-    public function gameTime(): GameTime
+    public function gameTime(): GameTimeModel
     {
         $result = $this->request->execute('game_time');
 
-        return new GameTime($result);
+        return new GameTimeModel($result);
     }
 
     /**
      * @throws \Exception
-     * @return \TruckersMP\Models\Version
+     * @return \TruckersMP\Models\VersionModel
      */
-    public function version(): Version
+    public function version(): VersionModel
     {
         $result = $this->request->execute('version');
 
-        return new Version($result);
+        return new VersionModel($result);
     }
 }

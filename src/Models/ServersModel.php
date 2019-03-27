@@ -4,7 +4,7 @@ namespace TruckersMP\Models;
 
 use TruckersMP\Exceptions\APIErrorException;
 
-class Servers implements \Iterator, \ArrayAccess
+class ServersModel implements \Iterator, \ArrayAccess
 {
     /**
      * Array of servers.
@@ -21,7 +21,7 @@ class Servers implements \Iterator, \ArrayAccess
     private $position = 0;
 
     /**
-     * Servers constructor.
+     * ServersModel constructor.
      *
      * @param array $response
      *
@@ -36,7 +36,7 @@ class Servers implements \Iterator, \ArrayAccess
         }
 
         foreach ($response['response'] as $k => $server) {
-            $this->servers[$k] = new Server($server);
+            $this->servers[$k] = new ServerModel($server);
         }
     }
 

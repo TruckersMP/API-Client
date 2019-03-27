@@ -4,12 +4,12 @@ namespace TruckersMP\Models;
 
 use Carbon\Carbon;
 
-class GameTime
+class GameTimeModel
 {
     public $time;
 
     /**
-     * GameTime constructor.
+     * GameTimeModel constructor.
      *
      * @param array $response
      *

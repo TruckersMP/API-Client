@@ -6,7 +6,7 @@ use GuzzleHttp\Client as GuzzleClient;
 use Http\Adapter\Guzzle6\Client as GuzzleAdapter;
 use Http\Message\MessageFactory\GuzzleMessageFactory;
 
-class Request
+class RequestHelper
 {
     /**
      * @var \Http\Message\MessageFactory\GuzzleMessageFactory
@@ -24,7 +24,7 @@ class Request
     private $adapter;
 
     /**
-     * Request constructor.
+     * RequestHelper constructor.
      *
      * @param       $apiEndpoint
      * @param array $config

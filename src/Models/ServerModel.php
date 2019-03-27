@@ -2,7 +2,7 @@
 
 namespace TruckersMP\Models;
 
-class Server
+class ServerModel
 {
     /**
      * Game server ID.
@@ -117,7 +117,7 @@ class Server
     public $syncDelay;
 
     /**
-     * Server constructor.
+     * ServerModel constructor.
      *
      * @param array $server
      */

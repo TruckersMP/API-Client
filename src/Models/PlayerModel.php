@@ -4,7 +4,7 @@ namespace TruckersMP\Models;
 
 use TruckersMP\Exceptions\PlayerNotFoundException;
 
-class Player
+class PlayerModel
 {
     /**
      * User ID.
@@ -63,7 +63,7 @@ class Player
     public $inGameAdmin;
 
     /**
-     * Player constructor.
+     * PlayerModel constructor.
      *
      * @param array $response
      *

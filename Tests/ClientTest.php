@@ -4,19 +4,24 @@ namespace TruckersMP\Tests\API;
 
 use Carbon\Carbon;
 use TruckersMP\Helpers\APIClient;
-use TruckersMP\Models\Ban;
-use TruckersMP\Models\Bans;
-use TruckersMP\Models\Player;
+use TruckersMP\Models\BanModel;
+use TruckersMP\Models\BansModel;
+use TruckersMP\Models\PlayerModel;
 
 class ClientTest extends \PHPUnit_Framework_TestCase
 {
-    private $testAccount = 585204;
+    /**
+     * @var int
+     */
+    protected $testAccount = 585204;
 
-    private $client;
+    /**
+     * @var APIClient
+     */
+    protected $client;
 
     /**
      * ClientTest constructor.
-     *
      */
     public function __construct()
     {
@@ -27,24 +32,22 @@ class ClientTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @throws \Exception
-     * @throws \Http\Client\Exception
      */
-    public function testPlayer()
+    public function testPlayer(): void
     {
         $player = $this->client->player($this->testAccount);
 
         $this->assertEquals($player->name, 'tuxytestaccount');
         $this->assertEquals($player->groupID, 1);
-        $this->assertEquals($player->groupName, 'Player');
+        $this->assertEquals($player->groupName, 'PlayerModel');
 
-        $this->assertInstanceOf(Player::class, $player);
+        $this->assertInstanceOf(PlayerModel::class, $player);
     }
 
     /**
      * @throws \Exception
-     * @throws \Http\Client\Exception
      */
-    public function testPlayerBans()
+    public function testPlayerBans(): void
     {
         $bans = $this->client->bans($this->testAccount);
 
@@ -52,15 +55,14 @@ class ClientTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($bans[0]->created, '2016-06-19 10:08:26');
         $this->assertEquals($bans[0]->reason, 'Test ban');
 
-        $this->assertInstanceOf(Bans::class, $bans);
-        $this->assertInstanceOf(Ban::class, $bans[0]);
+        $this->assertInstanceOf(BansModel::class, $bans);
+        $this->assertInstanceOf(BanModel::class, $bans[0]);
     }
 
     /**
      * @throws \Exception
-     * @throws \Http\Client\Exception
      */
-    public function testServers()
+    public function testServers(): void
     {
         $servers = $this->client->servers();
 
@@ -69,9 +71,8 @@ class ClientTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @throws \Exception
-     * @throws \Http\Client\Exception
      */
-    public function testVersion()
+    public function testVersion(): void
     {
         $version = $this->client->version();
 
@@ -90,7 +91,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
         $this->assertNotEmpty($version->support->ats);
     }
 
-    public function testGameTime()
+    public function testGameTime(): void
     {
         $time = $this->client->gameTime();
 
