@@ -6,12 +6,24 @@ use Carbon\Carbon;
 
 class VersionModel
 {
+    /**
+     * @var \stdClass
+     */
     public $version;
 
+    /**
+     * @var \stdClass
+     */
     public $checksum;
 
+    /**
+     * @var Carbon
+     */
     public $released;
 
+    /**
+     * @var \stdClass
+     */
     public $support;
 
     /**

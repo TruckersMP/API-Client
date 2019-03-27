@@ -6,6 +6,9 @@ use Carbon\Carbon;
 
 class GameTimeModel
 {
+    /**
+     * @var Carbon
+     */
     public $time;
 
     /**

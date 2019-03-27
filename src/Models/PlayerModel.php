@@ -66,7 +66,6 @@ class PlayerModel
      * PlayerModel constructor.
      *
      * @param array $response
-     *
      * @throws \TruckersMP\Exceptions\PlayerNotFoundException
      */
     public function __construct(array $response)
@@ -75,13 +74,13 @@ class PlayerModel
             throw new PlayerNotFoundException($response['response']);
         }
 
-        $this->id          = $response['response']['id'];
-        $this->name        = $response['response']['name'];
-        $this->avatar      = $response['response']['avatar'];
-        $this->joinDate    = $response['response']['joinDate'];
-        $this->steamID64   = $response['response']['steamID64'];
-        $this->groupID     = $response['response']['groupID'];
-        $this->groupName   = $response['response']['groupName'];
+        $this->id = $response['response']['id'];
+        $this->name = $response['response']['name'];
+        $this->avatar = $response['response']['avatar'];
+        $this->joinDate = $response['response']['joinDate'];
+        $this->steamID64 = $response['response']['steamID64'];
+        $this->groupID = $response['response']['groupID'];
+        $this->groupName = $response['response']['groupName'];
         $this->inGameAdmin = $response['response']['permissions']['isGameAdmin'];
     }
 }

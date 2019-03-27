@@ -33,7 +33,8 @@
     "php": ">=7.1.0",
     "nesbot/carbon": "^1.21",
     "php-http/message": "^1.2",
-    "guzzlehttp/psr7": "^1.3"
+    "guzzlehttp/psr7": "^1.3",
+    "leedavis81/vent": "dev-master"
   },
   "require-dev": {
     "phpunit/phpunit": "^5.3",

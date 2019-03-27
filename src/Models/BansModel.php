@@ -2,23 +2,19 @@
 
 namespace TruckersMP\Models;
 
-use Psr\Http\Message\ResponseInterface;
 use TruckersMP\Exceptions\PlayerNotFoundException;
+use Vent\VentTrait;
 
-class BansModel implements \Iterator, \ArrayAccess
+class BansModel extends GroupedModel
 {
+    use VentTrait;
+
     /**
      * Array of bans.
      *
      * @var array
      */
-    public $bans;
-    /**
-     * Iterator position.
-     *
-     * @var int
-     */
-    private $position = 0;
+    public $bans = [];
 
     /**
      * BansModel constructor.
@@ -41,82 +37,7 @@ class BansModel implements \Iterator, \ArrayAccess
         foreach ($response['response'] as $k => $ban) {
             $this->bans[$k] = new BanModel($ban);
         }
-    }
 
-    public function rewind()
-    {
-        $this->position = 0;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function current()
-    {
-        return $this->bans[$this->position];
-    }
-
-    /**
-     * @return int
-     */
-    public function key()
-    {
-        return $this->position;
-    }
-
-    public function next()
-    {
-        ++$this->position;
-    }
-
-    /**
-     * @return bool
-     */
-    public function valid()
-    {
-        return isset($this->bans[$this->position]);
-    }
-
-    /**
-     * @param mixed $offset
-     * @param mixed $value
-     *
-     * @return \Exception
-     */
-    public function offsetSet($offset, $value)
-    {
-        // TODO: custom class that gives a better description of the error
-        return new \Exception('Can not change bans');
-    }
-
-    /**
-     * @param mixed $offset
-     *
-     * @return bool
-     */
-    public function offsetExists($offset)
-    {
-        return isset($this->bans[$offset]);
-    }
-
-    /**
-     * @param mixed $offset
-     *
-     * @return \Exception
-     */
-    public function offsetUnset($offset)
-    {
-        // TODO: custom class that gives a better description of the error
-        return new \Exception('Can not change bans');
-    }
-
-    /**
-     * @param mixed $offset
-     *
-     * @return mixed|null
-     */
-    public function offsetGet($offset)
-    {
-        return isset($this->bans[$offset]) ? $this->bans[$offset] : null;
+        $this->groupedValue = $this->bans;
     }
 }
