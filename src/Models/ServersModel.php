@@ -31,7 +31,7 @@ class ServersModel extends GroupedModel
     }
 
     /**
-     * @return array
+     * @return ServerModel[]
      */
     public function getServers(): array
     {

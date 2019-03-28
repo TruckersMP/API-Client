@@ -29,7 +29,7 @@ class BansModel extends GroupedModel
     }
 
     /**
-     * @return array
+     * @return BanModel[]
      */
     public function getBans(): array
     {

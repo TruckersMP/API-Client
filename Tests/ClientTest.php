@@ -13,10 +13,7 @@ use TruckersMP\Models\RulesModel;
 
 class ClientTest extends TestCase
 {
-    /**
-     * @var int
-     */
-    protected $testAccount = 585204;
+    const TEST_ACCOUNT = 585204;
 
     /**
      * @var Client
@@ -39,11 +36,11 @@ class ClientTest extends TestCase
      */
     public function testPlayer(): void
     {
-        $player = $this->client->player($this->testAccount);
+        $player = $this->client->player(self::TEST_ACCOUNT);
 
-        $this->assertEquals($player->name, 'tuxytestaccount');
-        $this->assertEquals($player->groupID, 1);
-        $this->assertEquals($player->groupName, 'Player');
+        $this->assertEquals($player->getName(), 'tuxytestaccount');
+        $this->assertEquals($player->getGroupID(), 1);
+        $this->assertEquals($player->getGroupName(), 'Player');
 
         $this->assertInstanceOf(PlayerModel::class, $player);
     }
@@ -54,19 +51,16 @@ class ClientTest extends TestCase
      */
     public function testPlayerBans(): void
     {
-        /**
-         * @var $bans BanModel[]
-         */
-        $bans = $this->client->bans($this->testAccount);
+        $bans = $this->client->bans(self::TEST_ACCOUNT);
 
-        if (count($bans->bans) > 0) {
-            $this->assertTrue(is_string($bans[0]->created));
-            $this->assertTrue(is_string($bans[0]->expires));
-            $this->assertTrue(is_string($bans[0]->reason));
+        if (count($bans->getBans()) > 0) {
+            $this->assertTrue(is_string($bans->getBans()[0]->getCreated()));
+            $this->assertTrue(is_string($bans->getBans()[0]->getExpires()));
+            $this->assertTrue(is_string($bans->getBans()[0]->getReason()));
 
             $this->assertInstanceOf(BanModel::class, $bans[0]);
         } else {
-            $this->assertEquals($bans->bans, []);
+            $this->assertEquals($bans->getBans(), []);
         }
 
         $this->assertInstanceOf(BansModel::class, $bans);
@@ -80,7 +74,7 @@ class ClientTest extends TestCase
     {
         $servers = $this->client->servers();
 
-        $this->assertEquals($servers[0]->name, 'Europe 1 [Simulation]');
+        $this->assertEquals($servers->getServers()[0]->getName(), 'Europe 1 [Simulation]');
     }
 
     /**
@@ -91,19 +85,19 @@ class ClientTest extends TestCase
     {
         $version = $this->client->version();
 
-        $this->assertNotEmpty($version->version->human);
-        $this->assertNotEmpty($version->version->stage);
-        $this->assertNotEmpty($version->version->nummeric);
+        $this->assertNotEmpty($version->getVersion()->human);
+        $this->assertNotEmpty($version->getVersion()->stage);
+        $this->assertNotEmpty($version->getVersion()->nummeric);
 
-        $this->assertNotEmpty($version->checksum->atsmp->dll);
-        $this->assertNotEmpty($version->checksum->atsmp->adb);
-        $this->assertNotEmpty($version->checksum->ets2mp->dll);
-        $this->assertNotEmpty($version->checksum->ets2mp->adb);
+        $this->assertNotEmpty($version->getChecksum()->atsmp->dll);
+        $this->assertNotEmpty($version->getChecksum()->atsmp->adb);
+        $this->assertNotEmpty($version->getChecksum()->ets2mp->dll);
+        $this->assertNotEmpty($version->getChecksum()->ets2mp->adb);
 
-        $this->assertInstanceOf(Carbon::class, $version->released);
+        $this->assertInstanceOf(Carbon::class, $version->getReleased());
 
-        $this->assertNotEmpty($version->support->ets2);
-        $this->assertNotEmpty($version->support->ats);
+        $this->assertNotEmpty($version->getSupport()->ets2);
+        $this->assertNotEmpty($version->getSupport()->ats);
     }
 
     /**
@@ -115,7 +109,7 @@ class ClientTest extends TestCase
 
         $this->assertNotEmpty($time);
 
-        $this->assertInstanceOf(Carbon::class, $time->time);
+        $this->assertInstanceOf(Carbon::class, $time->getTime());
 
         $this->assertInstanceOf(GameTimeModel::class, $time);
     }
@@ -128,8 +122,8 @@ class ClientTest extends TestCase
     {
         $rules = $this->client->rules();
 
-        $this->assertTrue(is_string($rules->rules));
-        $this->assertTrue(is_int($rules->revision));
+        $this->assertTrue(is_string($rules->getRules()));
+        $this->assertTrue(is_int($rules->getRevision()));
 
         $this->assertInstanceOf(RulesModel::class, $rules);
     }
