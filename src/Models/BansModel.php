@@ -29,10 +29,11 @@ class BansModel extends GroupedModel
     }
 
     /**
+     * @param int|null $index
      * @return BanModel[]
      */
-    public function getBans(): array
+    public function getBans(?int $index = null): array
     {
-        return $this->groupedValue;
+        return $index ? $this->groupedValue[$index] : $this->groupedValue;
     }
 }

@@ -31,10 +31,11 @@ class ServersModel extends GroupedModel
     }
 
     /**
+     * @param null|int $index
      * @return ServerModel[]
      */
-    public function getServers(): array
+    public function getServers(?int $index = null): array
     {
-        return $this->groupedValue;
+        return $index ? $this->groupedValue[$index] : $this->groupedValue;
     }
 }
