@@ -7,7 +7,7 @@
  */
 
 use phpFastCache\CacheManager;
-use TruckersMP\Helpers\APIClient;
+use TruckersMP\Helpers\Client;
 
 // Setup File Path on your config files
 CacheManager::setup([
@@ -17,7 +17,7 @@ CacheManager::setup([
 // In your class, function, you can call the Cache
 $InstanceCache = CacheManager::getInstance('files');
 
-$client = new APIClient();
+$client = new Client();
 
 /**
  * Try to get $products from Caching First

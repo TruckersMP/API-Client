@@ -4,7 +4,7 @@ namespace TruckersMP\Tests\API;
 
 use Carbon\Carbon;
 use PHPUnit\Framework\TestCase;
-use TruckersMP\Helpers\APIClient;
+use TruckersMP\Helpers\Client;
 use TruckersMP\Models\BanModel;
 use TruckersMP\Models\BansModel;
 use TruckersMP\Models\PlayerModel;
@@ -17,7 +17,7 @@ class ClientTest extends TestCase
     protected $testAccount = 585204;
 
     /**
-     * @var APIClient
+     * @var Client
      */
     protected $client;
 
@@ -28,7 +28,7 @@ class ClientTest extends TestCase
     {
         parent::__construct();
 
-        $this->client = new APIClient();
+        $this->client = new Client();
     }
 
     /**
@@ -70,7 +70,7 @@ class ClientTest extends TestCase
     {
         $servers = $this->client->servers();
 
-        $this->assertEquals($servers[0]->name, 'Europe 1');
+        $this->assertEquals($servers[0]->name, 'Europe 1 [Simulation]');
     }
 
     /**

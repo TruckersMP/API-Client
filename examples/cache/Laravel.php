@@ -11,14 +11,14 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use Cache;
 use Illuminate\Http\Request;
-use TruckersMP\Helpers\APIClient;
+use TruckersMP\Helpers\Client;
 
 class SearchController extends Controller
 {
 
     public function find_user(Request $request)
     {
-        $client = new APIClient();
+        $client = new Client();
         $needle = $request->input('needle');
 
         /**

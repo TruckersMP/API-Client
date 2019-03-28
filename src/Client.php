@@ -13,7 +13,7 @@ use TruckersMP\Models\PlayerModel;
 use TruckersMP\Models\ServersModel;
 use TruckersMP\Models\VersionModel;
 
-class APIClient
+class Client
 {
     const API_ENDPOINT = 'api.truckersmp.com';
     const API_VERSION = 'v2';
@@ -24,7 +24,7 @@ class APIClient
     protected $request;
 
     /**
-     * APIClient constructor.
+     * Client constructor.
      *
      * @param array $config
      * @param bool $secure

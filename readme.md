@@ -39,9 +39,9 @@ After doing either of the above, execute the command `composer install`.
 ```php
 <?php
 
-use TruckersMP/APIClient;
+use TruckersMP\Client;
 
-$client = new APIClient();
+$client = new Client();
 
 // Get player data for player id 50
 $player = $client->player(50);
