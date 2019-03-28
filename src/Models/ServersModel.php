@@ -3,6 +3,7 @@
 namespace TruckersMP\Models;
 
 use TruckersMP\Exceptions\APIErrorException;
+use TruckersMP\Exceptions\IndexNotFoundException;
 
 class ServersModel extends GroupedModel
 {
@@ -33,9 +34,10 @@ class ServersModel extends GroupedModel
     /**
      * @param null|int $index
      * @return ServerModel[]
+     * @throws IndexNotFoundException
      */
     public function getServers(?int $index = null): array
     {
-        return $index ? $this->groupedValue[$index] : $this->groupedValue;
+        return $this->getGroupedValue($index);
     }
 }

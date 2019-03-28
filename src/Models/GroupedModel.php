@@ -2,6 +2,8 @@
 
 namespace TruckersMP\Models;
 
+use TruckersMP\Exceptions\IndexNotFoundException;
+
 abstract class GroupedModel implements \Iterator, \ArrayAccess
 {
     /**
@@ -18,6 +20,24 @@ abstract class GroupedModel implements \Iterator, \ArrayAccess
      * @var string
      */
     protected $exceptionMessage = 'You do not have access to modify this grouped value.';
+
+    /**
+     * @param int|null $index
+     * @return array
+     * @throws IndexNotFoundException
+     */
+    public function getGroupedValue(int $index = null): array
+    {
+        if ($index) {
+            if (isset($this->groupedValue[$index])) {
+                return $this->groupedValue[$index];
+            }
+
+            throw new IndexNotFoundException();
+        }
+
+        return $this->groupedValue;
+    }
 
     /**
      * @return void

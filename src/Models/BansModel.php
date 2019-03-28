@@ -2,6 +2,7 @@
 
 namespace TruckersMP\Models;
 
+use TruckersMP\Exceptions\IndexNotFoundException;
 use TruckersMP\Exceptions\PlayerNotFoundException;
 
 class BansModel extends GroupedModel
@@ -31,9 +32,10 @@ class BansModel extends GroupedModel
     /**
      * @param int|null $index
      * @return BanModel[]
+     * @throws IndexNotFoundException
      */
     public function getBans(?int $index = null): array
     {
-        return $index ? $this->groupedValue[$index] : $this->groupedValue;
+        return $this->getGroupedValue($index);
     }
 }
