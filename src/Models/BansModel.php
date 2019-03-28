@@ -25,7 +25,7 @@ class BansModel extends GroupedModel
     public function __construct(array $response)
     {
         // Make sure our grouped variable is kept updated
-        $this->registerEvent('write', 'bans', function(){
+        $this->registerEvent('write', 'bans', function () {
             $this->groupedValue = $this->bans;
         });
 

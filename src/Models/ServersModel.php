@@ -30,7 +30,7 @@ class ServersModel extends GroupedModel
     public function __construct(array $response)
     {
         // Make sure our grouped variable is kept updated
-        $this->registerEvent('write', 'servers', function(){
+        $this->registerEvent('write', 'servers', function () {
             $this->groupedValue = $this->servers;
         });
 
