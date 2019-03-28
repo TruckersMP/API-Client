@@ -23,7 +23,7 @@ $client = new Client();
  * Try to get $products from Caching First
  * product_page is "identity keyword";
  */
-$key           = "player_" . $player_id;
+$key = "player_" . $player_id;
 $CachedRequest = $InstanceCache->getItem($key);
 
 if (is_null($CachedRequest->get())) {
