@@ -25,7 +25,7 @@ class RulesModel
      */
     public function __construct(array $response)
     {
-        $this->rules = $response['response']['rules'];
-        $this->revision = $response['response']['revision'];
+        $this->rules = $response['rules'];
+        $this->revision = $response['revision'];
     }
 }
