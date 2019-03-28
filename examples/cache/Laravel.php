@@ -11,7 +11,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use Cache;
 use Illuminate\Http\Request;
-use TruckersMP\Helpers\Client;
+use TruckersMP\Client;
 
 class SearchController extends Controller
 {

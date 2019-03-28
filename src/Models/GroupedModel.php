@@ -2,7 +2,7 @@
 
 namespace TruckersMP\Models;
 
-class GroupedModel implements \Iterator, \ArrayAccess
+abstract class GroupedModel implements \Iterator, \ArrayAccess
 {
     /**
      * @var int

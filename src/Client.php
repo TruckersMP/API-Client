@@ -5,8 +5,9 @@
  * Website: truckersmp.com
  */
 
-namespace TruckersMP\Helpers;
+namespace TruckersMP;
 
+use TruckersMP\Helpers\RequestHelper;
 use TruckersMP\Models\BansModel;
 use TruckersMP\Models\GameTimeModel;
 use TruckersMP\Models\PlayerModel;
