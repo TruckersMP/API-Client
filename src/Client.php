@@ -51,9 +51,9 @@ class Client
      */
     public function player(int $id): PlayerModel
     {
-        $result = $this->request->execute('player/' . $id);
-
-        return new PlayerModel($result);
+        return new PlayerModel(
+            $this->request->execute(__FUNCTION__ . '/' . $id)
+        );
     }
 
     /**
@@ -68,9 +68,9 @@ class Client
      */
     public function bans(int $id): BansModel
     {
-        $result = $this->request->execute('bans/' . $id);
-
-        return new BansModel($result);
+        return new BansModel(
+            $this->request->execute(__FUNCTION__ . '/' . $id)
+        );
     }
 
     /**
@@ -84,9 +84,9 @@ class Client
      */
     public function servers(): ServersModel
     {
-        $result = $this->request->execute('servers');
-
-        return new ServersModel($result);
+        return new ServersModel(
+            $this->request->execute(__FUNCTION__)
+        );
     }
 
     /**
@@ -100,9 +100,9 @@ class Client
      */
     public function gameTime(): GameTimeModel
     {
-        $result = $this->request->execute('game_time');
-
-        return new GameTimeModel($result);
+        return new GameTimeModel(
+            $this->request->execute(strtolower(preg_replace('/(?<!^)[A-Z]/', '_$0', __FUNCTION__)))
+        );
     }
 
     /**
@@ -118,9 +118,9 @@ class Client
      */
     public function version(): VersionModel
     {
-        $result = $this->request->execute('version');
-
-        return new VersionModel($result);
+        return new VersionModel(
+            $this->request->execute(__FUNCTION__)
+        );
     }
 
     /**
@@ -134,8 +134,8 @@ class Client
      */
     public function rules(): RulesModel
     {
-        $result = $this->request->execute('rules');
-
-        return new RulesModel($result);
+        return new RulesModel(
+            $this->request->execute(__FUNCTION__)
+        );
     }
 }
