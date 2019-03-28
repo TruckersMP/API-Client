@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "63c614b6973ce1d74728010a9497b41b",
+    "content-hash": "b54a90e0e918c2b5657ba9a681bce8d9",
     "packages": [
         {
             "name": "clue/stream-filter",
@@ -124,54 +124,6 @@
                 "url"
             ],
             "time": "2018-12-04T20:46:45+00:00"
-        },
-        {
-            "name": "leedavis81/vent",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/leedavis81/vent.git",
-                "reference": "b2e7892960df93260e0e3d0e58ba95228b2c30d3"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/leedavis81/vent/zipball/b2e7892960df93260e0e3d0e58ba95228b2c30d3",
-                "reference": "b2e7892960df93260e0e3d0e58ba95228b2c30d3",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.4"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "3.7.*",
-                "satooshi/php-coveralls": "~0.6"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Vent\\": "src/",
-                    "VentTest\\": "tests/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Lee Davis",
-                    "email": "leedavis81@hotmail.com",
-                    "homepage": "http://leedavis81.github.io",
-                    "role": "Developer"
-                }
-            ],
-            "description": "PHP variable events.",
-            "keywords": [
-                "event",
-                "php",
-                "variable"
-            ],
-            "time": "2014-03-04T17:17:50+00:00"
         },
         {
             "name": "nesbot/carbon",
@@ -2480,9 +2432,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "leedavis81/vent": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
