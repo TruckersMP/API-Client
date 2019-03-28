@@ -7,7 +7,9 @@ use PHPUnit\Framework\TestCase;
 use TruckersMP\Client;
 use TruckersMP\Models\BanModel;
 use TruckersMP\Models\BansModel;
+use TruckersMP\Models\GameTimeModel;
 use TruckersMP\Models\PlayerModel;
+use TruckersMP\Models\RulesModel;
 
 class ClientTest extends TestCase
 {
@@ -52,12 +54,15 @@ class ClientTest extends TestCase
      */
     public function testPlayerBans(): void
     {
+        /**
+         * @var $bans BanModel[]
+         */
         $bans = $this->client->bans($this->testAccount);
 
         if (count($bans->bans) > 0) {
-            $this->assertEquals(gettype($bans[0]->expires), 'string');
-            $this->assertEquals(gettype($bans[0]->expires), 'string');
-            $this->assertEquals(gettype($bans[0]->expires), 'string');
+            $this->assertTrue(is_string($bans[0]->created));
+            $this->assertTrue(is_string($bans[0]->expires));
+            $this->assertTrue(is_string($bans[0]->reason));
 
             $this->assertInstanceOf(BanModel::class, $bans[0]);
         } else {
@@ -109,5 +114,23 @@ class ClientTest extends TestCase
         $time = $this->client->gameTime();
 
         $this->assertNotEmpty($time);
+
+        $this->assertInstanceOf(Carbon::class, $time->time);
+
+        $this->assertInstanceOf(GameTimeModel::class, $time);
+    }
+
+    /**
+     * @throws \Http\Client\Exception
+     * @throws \TruckersMP\Exceptions\APIErrorException
+     */
+    public function testRules(): void
+    {
+        $rules = $this->client->rules();
+
+        $this->assertTrue(is_string($rules->rules));
+        $this->assertTrue(is_int($rules->revision));
+
+        $this->assertInstanceOf(RulesModel::class, $rules);
     }
 }
