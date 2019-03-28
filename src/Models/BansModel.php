@@ -3,19 +3,9 @@
 namespace TruckersMP\Models;
 
 use TruckersMP\Exceptions\PlayerNotFoundException;
-use Vent\VentTrait;
 
 class BansModel extends GroupedModel
 {
-    use VentTrait;
-
-    /**
-     * Array of bans.
-     *
-     * @var array
-     */
-    public $bans = [];
-
     /**
      * BansModel constructor.
      *
@@ -24,11 +14,6 @@ class BansModel extends GroupedModel
      */
     public function __construct(array $response)
     {
-        // Make sure our grouped variable is kept updated
-        $this->registerEvent('write', 'bans', function () {
-            $this->groupedValue = $this->bans;
-        });
-
         $this->position = 0;
 
         if ($response['error'] &&
@@ -39,7 +24,15 @@ class BansModel extends GroupedModel
         }
 
         foreach ($response['response'] as $k => $ban) {
-            $this->bans[$k] = new BanModel($ban);
+            $this->groupedValue[$k] = new BanModel($ban);
         }
+    }
+
+    /**
+     * @return array
+     */
+    public function getBans(): array
+    {
+        return $this->groupedValue;
     }
 }

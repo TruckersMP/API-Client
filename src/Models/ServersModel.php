@@ -3,19 +3,9 @@
 namespace TruckersMP\Models;
 
 use TruckersMP\Exceptions\APIErrorException;
-use Vent\VentTrait;
 
 class ServersModel extends GroupedModel
 {
-    use VentTrait;
-
-    /**
-     * Array of servers.
-     *
-     * @var array
-     */
-    public $servers = [];
-
     /**
      * @var string
      */
@@ -29,11 +19,6 @@ class ServersModel extends GroupedModel
      */
     public function __construct(array $response)
     {
-        // Make sure our grouped variable is kept updated
-        $this->registerEvent('write', 'servers', function () {
-            $this->groupedValue = $this->servers;
-        });
-
         $this->position = 0;
 
         if ($response['error'] == 'true' && $response['descriptor'] == 'Unable to fetch servers') {
@@ -41,9 +26,15 @@ class ServersModel extends GroupedModel
         }
 
         foreach ($response['response'] as $k => $server) {
-            $this->servers[$k] = new ServerModel($server);
+            $this->groupedValue[$k] = new ServerModel($server);
         }
+    }
 
-        $this->groupedValue = $this->servers;
+    /**
+     * @return array
+     */
+    public function getServers(): array
+    {
+        return $this->groupedValue;
     }
 }

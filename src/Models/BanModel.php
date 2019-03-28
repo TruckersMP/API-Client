@@ -7,46 +7,46 @@ use Carbon\Carbon;
 class BanModel
 {
     /**
-     * Time and Date when the ban expires.
+     * The Time and Date when the ban expires.
      *
      * @var Carbon|null
      */
-    public $expires;
+    protected $expires;
 
     /**
-     * Time and Date when the ban was created.
+     * The Time and Date when the ban was created.
      *
      * @var Carbon
      */
-    public $created;
+    protected $created;
 
     /**
-     * True if ban is currently active.
+     * Is the ban currently active?
      *
      * @var bool
      */
-    public $active;
+    protected $active;
 
     /**
-     * Reason for the ban.
+     * The ban reason.
      *
      * @var string
      */
-    public $reason;
+    protected $reason;
 
     /**
-     * Admin's name.
+     * The Admin's name.
      *
      * @var string
      */
-    public $adminName;
+    protected $adminName;
 
     /**
      * Admin's ID.
      *
      * @var int
      */
-    public $adminID;
+    protected $adminID;
 
     /**
      * BanModel constructor.
@@ -76,5 +76,53 @@ class BanModel
         $this->reason = $ban['reason'];
         $this->adminName = $ban['adminName'];
         $this->adminID = $ban['adminID'];
+    }
+
+    /**
+     * @return Carbon|null
+     */
+    public function getExpires(): ?Carbon
+    {
+        return $this->expires;
+    }
+
+    /**
+     * @return Carbon
+     */
+    public function getCreated(): Carbon
+    {
+        return $this->created;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isActive(): bool
+    {
+        return $this->active;
+    }
+
+    /**
+     * @return string
+     */
+    public function getReason(): string
+    {
+        return $this->reason;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAdminName(): string
+    {
+        return $this->adminName;
+    }
+
+    /**
+     * @return int
+     */
+    public function getAdminID(): int
+    {
+        return $this->adminID;
     }
 }

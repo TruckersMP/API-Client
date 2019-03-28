@@ -11,56 +11,56 @@ class PlayerModel
      *
      * @var int
      */
-    public $id;
+    protected $id;
 
     /**
      * Username.
      *
      * @var string
      */
-    public $name;
+    protected $name;
 
     /**
      * Avatar URL.
      *
      * @var string
      */
-    public $avatar;
+    protected $avatar;
 
     /**
      * Date and time user joined.
      *
      * @var \DateTime
      */
-    public $joinDate;
+    protected $joinDate;
 
     /**
      * User's associated SteamID.
      *
      * @var string
      */
-    public $steamID64;
+    protected $steamID64;
 
     /**
      * Group ID of user.
      *
      * @var int
      */
-    public $groupID;
+    protected $groupID;
 
     /**
      * Human readable group name.
      *
      * @var string
      */
-    public $groupName;
+    protected $groupName;
 
     /**
      * If user is an in-game admin.
      *
      * @var bool
      */
-    public $inGameAdmin;
+    protected $inGameAdmin;
 
     /**
      * PlayerModel constructor.
@@ -74,13 +74,79 @@ class PlayerModel
             throw new PlayerNotFoundException($response['response']);
         }
 
-        $this->id = $response['response']['id'];
-        $this->name = $response['response']['name'];
-        $this->avatar = $response['response']['avatar'];
-        $this->joinDate = $response['response']['joinDate'];
-        $this->steamID64 = $response['response']['steamID64'];
-        $this->groupID = $response['response']['groupID'];
-        $this->groupName = $response['response']['groupName'];
-        $this->inGameAdmin = $response['response']['permissions']['isGameAdmin'];
+        $response = $response['response'];
+
+        $this->id = $response['id'];
+        $this->name = $response['name'];
+        $this->avatar = $response['avatar'];
+        $this->joinDate = $response['joinDate'];
+        $this->steamID64 = $response['steamID64'];
+        $this->groupID = $response['groupID'];
+        $this->groupName = $response['groupName'];
+        $this->inGameAdmin = $response['permissions']['isGameAdmin'];
+    }
+
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAvatar(): string
+    {
+        return $this->avatar;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getJoinDate(): \DateTime
+    {
+        return $this->joinDate;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSteamID64(): string
+    {
+        return $this->steamID64;
+    }
+
+    /**
+     * @return int
+     */
+    public function getGroupID(): int
+    {
+        return $this->groupID;
+    }
+
+    /**
+     * @return string
+     */
+    public function getGroupName(): string
+    {
+        return $this->groupName;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isAdmin(): bool
+    {
+        return $this->inGameAdmin;
     }
 }

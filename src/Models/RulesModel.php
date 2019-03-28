@@ -11,14 +11,14 @@ class RulesModel
      *
      * @var string
      */
-    public $rules;
+    protected $rules;
 
     /**
      * The current rules revision.
      *
      * @var int
      */
-    public $revision;
+    protected $revision;
 
     /**
      * RulesModel constructor.
@@ -34,5 +34,21 @@ class RulesModel
 
         $this->rules = $response['rules'];
         $this->revision = $response['revision'];
+    }
+
+    /**
+     * @return string
+     */
+    public function getRules(): string
+    {
+        return $this->rules;
+    }
+
+    /**
+     * @return int
+     */
+    public function getRevision(): int
+    {
+        return $this->revision;
     }
 }

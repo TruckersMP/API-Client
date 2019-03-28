@@ -10,7 +10,7 @@ class GameTimeModel
     /**
      * @var Carbon
      */
-    public $time;
+    protected $time;
 
     /**
      * GameTimeModel constructor.
@@ -39,5 +39,13 @@ class GameTimeModel
         $load['months'] = $load['months'] % 12;
 
         $this->time = Carbon::create($load['years'], $load['months'], $load['days'], $load['hours'], $load['minutes']);
+    }
+
+    /**
+     * @return Carbon
+     */
+    public function getTime(): Carbon
+    {
+        return $this->time;
     }
 }

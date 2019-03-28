@@ -5,116 +5,116 @@ namespace TruckersMP\Models;
 class ServerModel
 {
     /**
-     * Game server ID.
+     * Server ID.
      *
      * @var int
      */
-    public $id;
+    protected $id;
 
     /**
-     * Game.
+     * Server game.
      *
      * @var string
      */
-    public $game;
+    protected $game;
 
     /**
-     * IP or Hostname of server.
+     * Server IP or Hostname.
      *
      * @var string
      */
-    public $ip;
+    protected $ip;
 
     /**
-     * Port.
+     * Server port.
      *
      * @var int
      */
-    public $port;
+    protected $port;
 
     /**
-     * Game server name.
+     * Server name.
      *
      * @var string
      */
-    public $name;
+    protected $name;
 
     /**
-     * Game server short name.
+     * Server short name.
      *
      * @var string
      */
-    public $shortName;
+    protected $shortName;
 
     /**
-     * Online status.
+     * Server Online status.
      *
      * @var bool
      */
-    public $online;
+    protected $online;
 
     /**
-     * Current player count.
+     * Server current player count.
      *
      * @var int
      */
-    public $players;
+    protected $players;
 
     /**
-     * Current queue count.
+     * Server current queue count.
      *
      * @var int
      */
-    public $queue;
+    protected $queue;
 
     /**
-     * Max player count.
+     * Server max players.
      *
      * @var int
      */
-    public $maxPlayers;
+    protected $maxPlayers;
 
     /**
-     * Speed limiter.
+     * Server speed limit?
      *
      * @var bool
      */
-    public $speedLimiter;
+    protected $speedLimiter;
 
     /**
-     * Collisions.
+     * Server collisions?
      *
      * @var bool
      */
-    public $collisions;
+    protected $collisions;
 
     /**
-     * Will cars be available for all players.
+     * Are cars available to all players?
      *
      * @var bool
      */
-    public $carsForPlayers;
+    protected $carsForPlayers;
 
     /**
-     * Will police cars be available for all players.
+     * Are police cars available to all players?
      *
      * @var bool
      */
-    public $policeCarsForPlayers;
+    protected $policeCarsForPlayers;
 
     /**
-     * "Away from keyboard" status.
+     * Server "Away from keyboard" status.
      *
      * @var bool
      */
-    public $afkEnabled;
+    protected $afkEnabled;
 
     /**
-     * Sync delay (tick rate).
+     * Server sync delay (tick rate).
      *
      * @var bool
      */
-    public $syncDelay;
+    protected $syncDelay;
 
     /**
      * ServerModel constructor.
@@ -139,5 +139,133 @@ class ServerModel
         $this->policeCarsForPlayers = boolval($server['policecarsforplayers']);
         $this->afkEnabled = boolval($server['afkenabled']);
         $this->syncDelay = intval($server['syncdelay']);
+    }
+
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getGame(): string
+    {
+        return $this->game;
+    }
+
+    /**
+     * @return string
+     */
+    public function getIp(): string
+    {
+        return $this->ip;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPort(): int
+    {
+        return $this->port;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getShortName(): string
+    {
+        return $this->shortName;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isOnline(): bool
+    {
+        return $this->online;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPlayers(): int
+    {
+        return $this->players;
+    }
+
+    /**
+     * @return int
+     */
+    public function getQueue(): int
+    {
+        return $this->queue;
+    }
+
+    /**
+     * @return int
+     */
+    public function getMaxPlayers(): int
+    {
+        return $this->maxPlayers;
+    }
+
+    /**
+     * @return bool
+     */
+    public function hasSpeedLimit(): bool
+    {
+        return $this->speedLimiter;
+    }
+
+    /**
+     * @return bool
+     */
+    public function hasCollisions(): bool
+    {
+        return $this->collisions;
+    }
+
+    /**
+     * @return bool
+     */
+    public function canPlayersHaveCars(): bool
+    {
+        return $this->carsForPlayers;
+    }
+
+    /**
+     * @return bool
+     */
+    public function canPlayersHavePoliceCars(): bool
+    {
+        return $this->policeCarsForPlayers;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isAfkEnabled(): bool
+    {
+        return $this->afkEnabled;
+    }
+
+    /**
+     * @return bool
+     */
+    public function hasSyncDelay(): bool
+    {
+        return $this->syncDelay;
     }
 }
