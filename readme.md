@@ -8,7 +8,8 @@
 [![Total Downloads](https://poser.pugx.org/truckersmp/api-client/downloads)](https://packagist.org/packages/truckersmp/api-client)
 
 
-This is a PHP library created to simplify development using the [TruckersMP](http://truckersmp.com/) API. This client library provides functions to connect and gather data from each API endpoint, and returns the data as an object.
+This is a PHP library created to simplify development using the [TruckersMP](http://truckersmp.com/) API. 
+This library provides functions to connect and gather data from each API endpoint, and returns the data as a class with getting functions.
 
 > If you want to use the API without a library (or if you have advanced knowledge of PHP), check out our [API documentation](https://stats.truckersmp.com/api).
 
