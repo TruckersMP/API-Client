@@ -21,7 +21,7 @@ class Client
     const API_VERSION = 'v2';
 
     /**
-     * @var \TruckersMP\Helpers\RequestHelper
+     * @var RequestHelper
      */
     protected $request;
 
@@ -47,7 +47,7 @@ class Client
      * @param int $id
      * @throws \Exception
      * @throws \Http\Client\Exception
-     * @return \TruckersMP\Models\PlayerModel
+     * @return PlayerModel
      */
     public function player(int $id): PlayerModel
     {
@@ -64,7 +64,7 @@ class Client
      * @param int $id
      * @throws \Exception
      * @throws \Http\Client\Exception
-     * @return \TruckersMP\Models\BansModel
+     * @return BansModel
      */
     public function bans(int $id): BansModel
     {
@@ -80,7 +80,7 @@ class Client
      *
      * @throws \Exception
      * @throws \Http\Client\Exception
-     * @return \TruckersMP\Models\ServersModel
+     * @return ServersModel
      */
     public function servers(): ServersModel
     {
@@ -96,7 +96,7 @@ class Client
      *
      * @throws \Exception
      * @throws \Http\Client\Exception
-     * @return \TruckersMP\Models\GameTimeModel
+     * @return GameTimeModel
      */
     public function gameTime(): GameTimeModel
     {
@@ -114,7 +114,7 @@ class Client
      *
      * @throws \Exception
      * @throws \Http\Client\Exception
-     * @return \TruckersMP\Models\VersionModel
+     * @return VersionModel
      */
     public function version(): VersionModel
     {
@@ -128,8 +128,9 @@ class Client
      *
      * https://stats.truckersmp.com/api#truckersmp_rules
      *
-     * @return RulesModel
      * @throws \Http\Client\Exception
+     * @throws Exceptions\APIErrorException
+     * @return RulesModel
      */
     public function rules(): RulesModel
     {
