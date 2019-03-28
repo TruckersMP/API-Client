@@ -34,7 +34,6 @@
     "nesbot/carbon": "^1.21",
     "php-http/message": "^1.2",
     "guzzlehttp/psr7": "^1.3",
-    "leedavis81/vent": "dev-master",
     "ext-json": "*"
   },
   "require-dev": {
