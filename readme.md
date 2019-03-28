@@ -34,7 +34,7 @@ After doing either of the above, execute the command `composer install`.
 
 ## Usage
 
-> **Please note: this examples doesn't use caching. You should cache your requests in order to use API responsibly. Some examples can be found in `examples\cache` folder.**  
+> **Please note: this example doesn't use caching. You should cache your requests in order to use API responsibly. Some examples can be found in `examples\cache` folder.**  
 
 ```php
 <?php
@@ -50,35 +50,95 @@ $player = $client->player(50);
 $player = $client->player(76561197965863564);
 
 // output the user's name
-echo $player->name;
+echo $player->getName();
 
 // output the user's group
-echo $player->groupName;
+echo $player->getGroupName();
 
 ```
 
 ## Methods
 
-`player()` - find player by TruckersMP ID or Steam ID
+All timestamps in this project return a [Carbon](http://carbon.nesbot.com/docs/) class.
 
-`bans()` - view bans by TruckersMP ID
+- `player(int $id): PlayerModel` - Get player info by either TruckersMP ID or Steam ID
+- `bans(int $id): BansModel` - Get bans for a player by player ID
+- `servers(): ServersModel` - Get a list of servers
+- `gameTime(): GameTimeModel` - Get the server time
+- `version(): VersionModel`- *DEPRECATED* Get the TruckersMP version info
+- `rules(): RulesModel` - Get the TruckersMP rules
 
-`servers()` - servers list
+## Models
 
-`gameTime()` - gameserver time (uses [Carbon](http://carbon.nesbot.com/docs/))
+### BanModel Methods
+- `getExpires(): ?Carbon`
+- `getCreated(): Carbon`
+- `isActive(): bool`
+- `getReason(): string`
+- `getAdminName(): string`
+- `getAdminID(): int`
 
-`version()`- TruckersMP version info
+### BansModel
+Contains an array of BanModels.
+
+### GameTimeModel Methods
+- `getTime(): Carbon`
+
+### PlayerModel Methods
+- `getId(): int`
+- `getName(): string`
+- `getAvatar(): string`
+- `getJoinDate(): Carbon`
+- `getSteamID64(): string`
+- `getGroupID(): int`
+- `getGroupName(): string`
+- `isAdmin(): bool`
+
+### RulesModel Methods
+- `getRules(): string`
+- `getRevision(): int`
+
+### ServerModel Methods
+- `getId(): int`
+- `getGame(): string`
+- `getIp(): string`
+- `getPort(): int`
+- `getName(): string`
+- `getShortName(): string`
+- `isOnline(): bool`
+- `getPlayers(): int`
+- `getQueue(): int`
+- `getMaxPlayers(): int`
+- `hasSpeedLimit(): bool`
+- `hasCollisions(): bool`
+- `canPlayersHaveCars(): bool`
+- `canPlayersHavePoliceCars(): bool`
+- `isAfkEnabled(): bool`
+- `hasSyncDelay(): bool`
+
+### ServersModel
+Contains an array of ServerModels.
+
+### VersionModel
+- `getVersion(): stdClass`
+- `getChecksum(): stdClass`
+- `getReleased(): Carbon`
+- `getSupport(): stdClass`
 
 ## Configuration
 
-We use [Guzzle](https://github.com/guzzle/guzzle) for gathering data from API endpoint. If you want to change Guzzle [configuration](http://guzzlephp.org/), you can pass config array on Client initialization.
+We use [Guzzle](https://github.com/guzzle/guzzle) to get data from an API endpoint. If you want to change the Guzzle [configuration](http://guzzlephp.org/) then you can pass config array during Client intialization.
+
+You can also pass a second parameter to specify `HTTP` (false) or `HTTPS` (true) requests. This is true by default.
 
 ```php
 <?php 
 
+$shouldUseHTTPS = true;
+
 $client = new APIClient([
     // Guzzle config
-]);
+], $shouldUseHTTPS);
 ```
 
 All other settings you can find in `APIClient.php` constructor.

@@ -2,6 +2,7 @@
 
 namespace TruckersMP\Models;
 
+use Carbon\Carbon;
 use TruckersMP\Exceptions\PlayerNotFoundException;
 
 class PlayerModel
@@ -30,7 +31,7 @@ class PlayerModel
     /**
      * Date and time user joined.
      *
-     * @var \DateTime
+     * @var Carbon
      */
     protected $joinDate;
 
@@ -79,7 +80,7 @@ class PlayerModel
         $this->id = $response['id'];
         $this->name = $response['name'];
         $this->avatar = $response['avatar'];
-        $this->joinDate = $response['joinDate'];
+        $this->joinDate = new Carbon($response['joinDate'], 'UTC');
         $this->steamID64 = $response['steamID64'];
         $this->groupID = $response['groupID'];
         $this->groupName = $response['groupName'];
@@ -111,9 +112,9 @@ class PlayerModel
     }
 
     /**
-     * @return \DateTime
+     * @return Carbon
      */
-    public function getJoinDate(): \DateTime
+    public function getJoinDate(): Carbon
     {
         return $this->joinDate;
     }
