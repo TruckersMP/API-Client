@@ -97,6 +97,8 @@ class Client
     }
 
     /**
+     * @deprecated
+     *
      * @throws \Exception
      * @throws \Http\Client\Exception
      * @return \TruckersMP\Models\VersionModel
