@@ -4,7 +4,7 @@ namespace TruckersMP\Tests\API;
 
 use Carbon\Carbon;
 use PHPUnit\Framework\TestCase;
-use TruckersMP\Helpers\Client;
+use TruckersMP\Client;
 use TruckersMP\Models\BanModel;
 use TruckersMP\Models\BansModel;
 use TruckersMP\Models\PlayerModel;

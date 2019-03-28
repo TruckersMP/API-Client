@@ -7,12 +7,12 @@
  */
 
 use phpFastCache\CacheManager;
-use TruckersMP\Helpers\Client;
+use TruckersMP\Client;
 
 // Setup File Path on your config files
 CacheManager::setup([
-                        "path" => '/path/to/your/cache/folder',
-                    ]);
+    "path" => '/path/to/your/cache/folder',
+]);
 
 // In your class, function, you can call the Cache
 $InstanceCache = CacheManager::getInstance('files');
