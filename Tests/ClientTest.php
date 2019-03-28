@@ -14,7 +14,7 @@ class ClientTest extends TestCase
     /**
      * @var int
      */
-    protected $testAccount = 162950;
+    protected $testAccount = 585204;
 
     /**
      * @var Client
@@ -39,7 +39,7 @@ class ClientTest extends TestCase
     {
         $player = $this->client->player($this->testAccount);
 
-        $this->assertEquals($player->name, 'caff!!!');
+        $this->assertEquals($player->name, 'tuxytestaccount');
         $this->assertEquals($player->groupID, 1);
         $this->assertEquals($player->groupName, 'Player');
 
@@ -54,12 +54,17 @@ class ClientTest extends TestCase
     {
         $bans = $this->client->bans($this->testAccount);
 
-        $this->assertEquals($bans[0]->expires, '2016-05-04 20:40:00');
-        $this->assertEquals($bans[0]->created, '2016-05-03 20:41:40');
-        $this->assertEquals($bans[0]->reason, 'Car carrying trailer - http://i.imgur.com/9MZ7DzC.jpg');
+        if (count($bans->bans) > 0) {
+            $this->assertEquals(gettype($bans[0]->expires), 'string');
+            $this->assertEquals(gettype($bans[0]->expires), 'string');
+            $this->assertEquals(gettype($bans[0]->expires), 'string');
+
+            $this->assertInstanceOf(BanModel::class, $bans[0]);
+        } else {
+            $this->assertEquals($bans->bans, []);
+        }
 
         $this->assertInstanceOf(BansModel::class, $bans);
-        $this->assertInstanceOf(BanModel::class, $bans[0]);
     }
 
     /**
