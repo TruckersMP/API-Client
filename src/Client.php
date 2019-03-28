@@ -11,6 +11,7 @@ use TruckersMP\Helpers\RequestHelper;
 use TruckersMP\Models\BansModel;
 use TruckersMP\Models\GameTimeModel;
 use TruckersMP\Models\PlayerModel;
+use TruckersMP\Models\RulesModel;
 use TruckersMP\Models\ServersModel;
 use TruckersMP\Models\VersionModel;
 
@@ -41,6 +42,8 @@ class Client
     /**
      * Get player information by ID.
      *
+     * https://stats.truckersmp.com/api#players_lookup
+     *
      * @param int $id
      * @throws \Exception
      * @throws \Http\Client\Exception
@@ -55,6 +58,8 @@ class Client
 
     /**
      * Get bans information by player ID.
+     *
+     * https://stats.truckersmp.com/api#ban_lookup
      *
      * @param int $id
      * @throws \Exception
@@ -71,6 +76,8 @@ class Client
     /**
      * Get server information.
      *
+     * https://stats.truckersmp.com/api#servers_list
+     *
      * @throws \Exception
      * @throws \Http\Client\Exception
      * @return \TruckersMP\Models\ServersModel
@@ -84,6 +91,8 @@ class Client
 
     /**
      * Get the current game time
+     *
+     * https://stats.truckersmp.com/api#game_time
      *
      * @throws \Exception
      * @throws \Http\Client\Exception
@@ -99,6 +108,10 @@ class Client
     /**
      * @deprecated
      *
+     * Information about the current TruckersMP version for ETS2 and ATS
+     *
+     * https://stats.truckersmp.com/api#truckersmp_version
+     *
      * @throws \Exception
      * @throws \Http\Client\Exception
      * @return \TruckersMP\Models\VersionModel
@@ -108,5 +121,20 @@ class Client
         $result = $this->request->execute('version');
 
         return new VersionModel($result);
+    }
+
+    /**
+     * Get the current in-game rules.
+     *
+     * https://stats.truckersmp.com/api#truckersmp_rules
+     *
+     * @return RulesModel
+     * @throws \Http\Client\Exception
+     */
+    public function rules(): RulesModel
+    {
+        $result = $this->request->execute('rules');
+
+        return new RulesModel($result);
     }
 }
