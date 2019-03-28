@@ -3,12 +3,13 @@
 namespace TruckersMP\Tests\API;
 
 use Carbon\Carbon;
+use PHPUnit\Framework\TestCase;
 use TruckersMP\Helpers\APIClient;
 use TruckersMP\Models\BanModel;
 use TruckersMP\Models\BansModel;
 use TruckersMP\Models\PlayerModel;
 
-class ClientTest extends \PHPUnit_Framework_TestCase
+class ClientTest extends TestCase
 {
     /**
      * @var int
@@ -95,6 +96,9 @@ class ClientTest extends \PHPUnit_Framework_TestCase
         $this->assertNotEmpty($version->support->ats);
     }
 
+    /**
+     * @throws \Http\Client\Exception
+     */
     public function testGameTime(): void
     {
         $time = $this->client->gameTime();
