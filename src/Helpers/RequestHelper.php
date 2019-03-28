@@ -11,17 +11,17 @@ class RequestHelper
     /**
      * @var \Http\Message\MessageFactory\GuzzleMessageFactory
      */
-    private $message;
+    protected $message;
 
     /**
      * @var string
      */
-    private $apiEndpoint;
+    protected $apiEndpoint;
 
     /**
      * @var \Http\Adapter\Guzzle6\Client
      */
-    private $adapter;
+    protected $adapter;
 
     /**
      * RequestHelper constructor.
@@ -30,23 +30,22 @@ class RequestHelper
      * @param array $config
      *
      */
-    public function __construct($apiEndpoint, $config)
+    public function __construct($apiEndpoint, array $config)
     {
         $this->message = new GuzzleMessageFactory();
-
         $this->apiEndpoint = $apiEndpoint;
         $this->adapter = new GuzzleAdapter(new GuzzleClient($config));
     }
 
     /**
      * @param string $uri URI of API method
-     *
      * @return array
+     * @throws \Http\Client\Exception
      */
-    public function execute($uri)
+    public function execute(string $uri): array
     {
         $request = $this->message->createRequest('GET', $this->apiEndpoint . $uri);
-        $result  = $this->adapter->sendRequest($request);
+        $result = $this->adapter->sendRequest($request);
 
         return json_decode((string)$result->getBody(), true, 512, JSON_BIGINT_AS_STRING);
     }

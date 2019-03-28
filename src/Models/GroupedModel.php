@@ -89,9 +89,9 @@ class GroupedModel implements \Iterator, \ArrayAccess
 
     /**
      * @param mixed $offset
-     * @return bool|null
+     * @return mixed
      */
-    public function offsetGet($offset): ?bool
+    public function offsetGet($offset)
     {
         return isset($this->groupedValue[$offset]) ? $this->groupedValue[$offset] : null;
     }

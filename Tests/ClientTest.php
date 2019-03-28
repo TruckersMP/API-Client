@@ -32,6 +32,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @throws \Exception
+     * @throws \Http\Client\Exception
      */
     public function testPlayer(): void
     {
@@ -39,13 +40,14 @@ class ClientTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals($player->name, 'tuxytestaccount');
         $this->assertEquals($player->groupID, 1);
-        $this->assertEquals($player->groupName, 'PlayerModel');
+        $this->assertEquals($player->groupName, 'Player');
 
         $this->assertInstanceOf(PlayerModel::class, $player);
     }
 
     /**
      * @throws \Exception
+     * @throws \Http\Client\Exception
      */
     public function testPlayerBans(): void
     {
@@ -61,6 +63,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @throws \Exception
+     * @throws \Http\Client\Exception
      */
     public function testServers(): void
     {
@@ -71,6 +74,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @throws \Exception
+     * @throws \Http\Client\Exception
      */
     public function testVersion(): void
     {

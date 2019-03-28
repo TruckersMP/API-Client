@@ -53,7 +53,7 @@ class BanModel
      *
      * @param array $ban
      */
-    public function __construct($ban)
+    public function __construct(array $ban)
     {
         // Expiration
         if ($ban['expiration'] === null) {

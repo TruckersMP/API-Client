@@ -42,6 +42,7 @@ class APIClient
      *
      * @param int $id
      * @throws \Exception
+     * @throws \Http\Client\Exception
      * @return \TruckersMP\Models\PlayerModel
      */
     public function player(int $id): PlayerModel
@@ -56,6 +57,7 @@ class APIClient
      *
      * @param int $id
      * @throws \Exception
+     * @throws \Http\Client\Exception
      * @return \TruckersMP\Models\BansModel
      */
     public function bans(int $id): BansModel
@@ -69,6 +71,7 @@ class APIClient
      * Get server information.
      *
      * @throws \Exception
+     * @throws \Http\Client\Exception
      * @return \TruckersMP\Models\ServersModel
      */
     public function servers(): ServersModel
@@ -82,6 +85,7 @@ class APIClient
      * Get the current game time
      *
      * @throws \Exception
+     * @throws \Http\Client\Exception
      * @return \TruckersMP\Models\GameTimeModel
      */
     public function gameTime(): GameTimeModel
@@ -93,6 +97,7 @@ class APIClient
 
     /**
      * @throws \Exception
+     * @throws \Http\Client\Exception
      * @return \TruckersMP\Models\VersionModel
      */
     public function version(): VersionModel
