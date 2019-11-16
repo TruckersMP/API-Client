@@ -103,4 +103,34 @@ class PlayerTest extends TestCase
     {
         $this->assertIsBool($this->player->isAdmin());
     }
+
+    /** @test */
+    public function testWeCanGetThePlayersVTCId()
+    {
+        $this->assertIsInt($this->player->getVTC()->id);
+    }
+
+    /** @test */
+    public function testWeCanGetThePlayersVTCName()
+    {
+        $this->assertIsString($this->player->getVTC()->name);
+    }
+
+    /** @test */
+    public function testWeCanGetThePlayersVTCTag()
+    {
+        $this->assertIsString($this->player->getVTC()->tag);
+    }
+
+    /** @test */
+    public function testIfThePlayerIsInAVTC()
+    {
+        $this->assertIsBool($this->player->getVTC()->inVTC);
+    }
+
+    /** @test */
+    public function testWeCanGetThePlayersVTCMemberID()
+    {
+        $this->assertIsInt($this->player->getVTC()->memberID);
+    }
 }

@@ -3,6 +3,7 @@
 namespace TruckersMP\Models;
 
 use Carbon\Carbon;
+use stdClass;
 use TruckersMP\Exceptions\PlayerNotFoundException;
 
 class PlayerModel
@@ -85,6 +86,13 @@ class PlayerModel
     protected $inGameAdmin;
 
     /**
+     * The players VTC information.
+     *
+     * @var \stdClass
+     */
+    protected $vtc;
+
+    /**
      * PlayerModel constructor.
      *
      * @param array $response
@@ -109,6 +117,13 @@ class PlayerModel
         $this->bannedUntil = new Carbon($response['bannedUntil'], 'UTC');
         $this->displayBans = $response['displayBans'];
         $this->inGameAdmin = $response['permissions']['isGameAdmin'];
+
+        $this->vtc = new stdClass();
+        $this->vtc->id = $response['vtc']['id'];
+        $this->vtc->name = $response['vtc']['name'];
+        $this->vtc->tag = $response['vtc']['tag'];
+        $this->vtc->inVTC = $response['vtc']['inVTC'];
+        $this->vtc->memberID = $response['vtc']['memberID'];
     }
 
     /**
@@ -197,5 +212,13 @@ class PlayerModel
     public function isAdmin(): bool
     {
         return $this->inGameAdmin;
+    }
+
+    /**
+     * @return \stdClass
+     */
+    public function getVTC(): stdClass
+    {
+        return $this->vtc;
     }
 }
