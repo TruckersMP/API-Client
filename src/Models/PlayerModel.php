@@ -57,6 +57,27 @@ class PlayerModel
     protected $groupName;
 
     /**
+     * If user is banned.
+     *
+     * @var bool
+     */
+    protected $isBanned;
+
+    /**
+     * The date and time the ban will expire.
+     *
+     * @var \Carbon\Carbon
+     */
+    protected $bannedUntil;
+
+    /**
+     * If the user has their bans hidden.
+     *
+     * @var bool
+     */
+    protected $displayBans;
+
+    /**
      * If user is an in-game admin.
      *
      * @var bool
@@ -84,6 +105,9 @@ class PlayerModel
         $this->steamID64 = $response['steamID64'];
         $this->groupID = $response['groupID'];
         $this->groupName = $response['groupName'];
+        $this->isBanned = $response['banned'];
+        $this->bannedUntil = new Carbon($response['bannedUntil'], 'UTC');
+        $this->displayBans = $response['displayBans'];
         $this->inGameAdmin = $response['permissions']['isGameAdmin'];
     }
 
@@ -141,6 +165,30 @@ class PlayerModel
     public function getGroupName(): string
     {
         return $this->groupName;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isBanned(): bool
+    {
+        return $this->isBanned;
+    }
+
+    /**
+     * @return \Carbon\Carbon
+     */
+    public function isBannedUntil(): Carbon
+    {
+        return $this->bannedUntil;
+    }
+
+    /**
+     * @return bool
+     */
+    public function hasBansHidden(): bool
+    {
+        return !$this->displayBans;
     }
 
     /**

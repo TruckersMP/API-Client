@@ -92,6 +92,9 @@ Contains an array of BanModels.
 - `getJoinDate(): Carbon`
 - `getSteamID64(): string`
 - `getGroupID(): int`
+- `isBanned(): bool`
+- `isBannedUntil(): bool`
+- `hasBansHidden(): bool`
 - `getGroupName(): string`
 - `isAdmin(): bool`
 

@@ -68,16 +68,34 @@ class PlayerTest extends TestCase
         $this->assertIsString($this->player->getSteamID64());
     }
 
-    /** @test  */
+    /** @test */
     public function testWeCanGetThePlayersGroupName()
     {
         $this->assertIsString($this->player->getGroupName());
     }
 
-    /** @test  */
+    /** @test */
     public function testWeCanGetThePlayersGroupID()
     {
         $this->assertIsInt($this->player->getGroupID());
+    }
+
+    /** @test */
+    public function testWeCanGetIfThePlayerIsBanned()
+    {
+        $this->assertIsBool($this->player->isBanned());
+    }
+
+    /** @test */
+    public function testWeCanGetWhenThePlayerIsBannedTill()
+    {
+        $this->assertInstanceOf(Carbon::class, $this->player->isBannedUntil());
+    }
+
+    /** @test */
+    public function testWeCanGetIfThePlayersBansArePublic()
+    {
+        $this->assertIsBool($this->player->hasBansHidden());
     }
 
     /** @test */
