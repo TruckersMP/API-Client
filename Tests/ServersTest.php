@@ -54,16 +54,24 @@ class ServersTest extends TestCase
         $this->assertIsString($server->getName());
         $this->assertIsString($server->getShortName());
 
+        if ($server->getIdPrefix() != null) {
+            $this->assertIsString($server->getIdPrefix());
+        }
+
         $this->assertIsBool($server->isOnline());
         $this->assertIsInt($server->getPlayers());
         $this->assertIsInt($server->getQueue());
         $this->assertIsInt($server->getMaxPlayers());
+        $this->assertIsInt($server->getDisplayOrder());
 
         $this->assertIsBool($server->hasSpeedLimit());
         $this->assertIsBool($server->hasCollisions());
         $this->assertIsBool($server->canPlayersHaveCars());
         $this->assertIsBool($server->canPlayersHavePoliceCars());
         $this->assertIsBool($server->isAfkEnabled());
+        $this->assertIsBool($server->isEvent());
+        $this->assertIsBool($server->isSpecialEvent());
+        $this->assertIsBool($server->isPromods());
 
         $this->assertIsBool($server->hasSyncDelay());
     }

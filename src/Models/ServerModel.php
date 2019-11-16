@@ -47,6 +47,13 @@ class ServerModel
     protected $shortName;
 
     /**
+     * Server ID prefix.
+     *
+     * @var string|null
+     */
+    protected $idPrefix;
+
+    /**
      * Server Online status.
      *
      * @var bool
@@ -73,6 +80,13 @@ class ServerModel
      * @var int
      */
     protected $maxPlayers;
+
+    /**
+     * Server display order.
+     *
+     * @var int
+     */
+    protected $displayOrder;
 
     /**
      * Server speed limit?
@@ -110,6 +124,27 @@ class ServerModel
     protected $afkEnabled;
 
     /**
+     * Server is an event server.
+     *
+     * @var bool
+     */
+    protected $isEvent;
+
+    /**
+     * Server is a special event.
+     *
+     * @var bool
+     */
+    protected $isSpecialEvent;
+
+    /**
+     * Server is a promods servers.
+     *
+     * @var bool
+     */
+    protected $promods;
+
+    /**
      * Server sync delay (tick rate).
      *
      * @var bool
@@ -129,15 +164,20 @@ class ServerModel
         $this->port = intval($server['port']);
         $this->name = $server['name'];
         $this->shortName = $server['shortname'];
+        $this->idPrefix = $server['idprefix'];
         $this->online = boolval($server['online']);
         $this->players = intval($server['players']);
         $this->queue = intval($server['queue']);
         $this->maxPlayers = intval($server['maxplayers']);
+        $this->displayOrder = intval($server['displayorder']);
         $this->speedLimiter = boolval($server['speedlimiter']);
         $this->collisions = boolval($server['collisions']);
         $this->carsForPlayers = boolval($server['carsforplayers']);
         $this->policeCarsForPlayers = boolval($server['policecarsforplayers']);
         $this->afkEnabled = boolval($server['afkenabled']);
+        $this->isEvent = boolval($server['event']);
+        $this->isSpecialEvent = boolval($server['specialEvent']);
+        $this->promods = boolval($server['promods']);
         $this->syncDelay = intval($server['syncdelay']);
     }
 
@@ -190,6 +230,14 @@ class ServerModel
     }
 
     /**
+     * @return string|null
+     */
+    public function getIdPrefix()
+    {
+        return $this->idPrefix;
+    }
+
+    /**
      * @return bool
      */
     public function isOnline(): bool
@@ -219,6 +267,14 @@ class ServerModel
     public function getMaxPlayers(): int
     {
         return $this->maxPlayers;
+    }
+
+    /**
+     * @return int
+     */
+    public function getDisplayOrder(): int
+    {
+        return $this->displayOrder;
     }
 
     /**
@@ -259,6 +315,30 @@ class ServerModel
     public function isAfkEnabled(): bool
     {
         return $this->afkEnabled;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isEvent(): bool
+    {
+        return $this->isEvent;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isSpecialEvent(): bool
+    {
+        return $this->isSpecialEvent;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isPromods(): bool
+    {
+        return $this->promods;
     }
 
     /**

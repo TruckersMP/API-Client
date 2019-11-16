@@ -109,6 +109,7 @@ Contains an array of BanModels.
 - `getPort(): int`
 - `getName(): string`
 - `getShortName(): string`
+- `getIdPrefix(): string`
 - `isOnline(): bool`
 - `getPlayers(): int`
 - `getQueue(): int`
@@ -118,6 +119,9 @@ Contains an array of BanModels.
 - `canPlayersHaveCars(): bool`
 - `canPlayersHavePoliceCars(): bool`
 - `isAfkEnabled(): bool`
+- `isEvent(): bool`
+- `isSpecialEvent(): bool`
+- `isPromods(): bool`
 - `hasSyncDelay(): bool`
 
 ### ServersModel
