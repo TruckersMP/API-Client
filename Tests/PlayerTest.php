@@ -89,7 +89,7 @@ class PlayerTest extends TestCase
     /** @test */
     public function testWeCanGetWhenThePlayerIsBannedTill()
     {
-        $this->assertInstanceOf(Carbon::class, $this->player->isBannedUntil());
+        $this->assertInstanceOf(Carbon::class, $this->player->getBannedUntil());
     }
 
     /** @test */

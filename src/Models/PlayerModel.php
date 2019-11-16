@@ -193,7 +193,7 @@ class PlayerModel
     /**
      * @return \Carbon\Carbon
      */
-    public function isBannedUntil(): Carbon
+    public function getBannedUntil(): Carbon
     {
         return $this->bannedUntil;
     }

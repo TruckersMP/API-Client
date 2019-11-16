@@ -93,7 +93,7 @@ Contains an array of BanModels.
 - `getSteamID64(): string`
 - `getGroupID(): int`
 - `isBanned(): bool`
-- `isBannedUntil(): bool`
+- `getBannedUntil(): bool`
 - `hasBansHidden(): bool`
 - `getGroupName(): string`
 - `isAdmin(): bool`
@@ -114,6 +114,7 @@ Contains an array of BanModels.
 - `getPlayers(): int`
 - `getQueue(): int`
 - `getMaxPlayers(): int`
+- `getDisplayOrder(): int`
 - `hasSpeedLimit(): bool`
 - `hasCollisions(): bool`
 - `canPlayersHaveCars(): bool`
