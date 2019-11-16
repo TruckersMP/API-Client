@@ -31,10 +31,9 @@ class Client
      * @param array $config
      * @param bool $secure
      */
-    public function __construct(array $config = [], bool $secure = true)
+    public function __construct(array $config = [])
     {
-        $scheme = $secure ? 'https' : 'http';
-        $url = $scheme . '://' . self::API_ENDPOINT . '/' . self::API_VERSION . '/';
+        $url = 'https://' . self::API_ENDPOINT . '/' . self::API_VERSION . '/';
 
         $this->request = new RequestHelper($url, $config);
     }
