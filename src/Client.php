@@ -8,13 +8,12 @@
 namespace TruckersMP;
 
 use TruckersMP\Collections\BansCollection;
-use TruckersMP\Helpers\RequestHelper;
-use TruckersMP\Models\GameTimeModel;
+use TruckersMP\Helpers\Request;
+use TruckersMP\Models\GameTime;
 use TruckersMP\Models\PlayerModel;
-use TruckersMP\Models\RulesModel;
+use TruckersMP\Models\Rule;
 use TruckersMP\Models\ServersModel;
 use TruckersMP\Models\Version;
-use TruckersMP\Models\VersionModel;
 
 class Client
 {
@@ -22,7 +21,7 @@ class Client
     const API_VERSION = 'v2';
 
     /**
-     * @var RequestHelper
+     * @var Request
      */
     protected $request;
 
@@ -36,7 +35,7 @@ class Client
     {
         $url = 'https://' . self::API_ENDPOINT . '/' . self::API_VERSION . '/';
 
-        $this->request = new RequestHelper($url, $config);
+        $this->request = new Request($url, $config);
     }
 
     /**
@@ -96,11 +95,11 @@ class Client
      *
      * @throws \Exception
      * @throws \Http\Client\Exception
-     * @return GameTimeModel
+     * @return GameTime
      */
-    public function gameTime(): GameTimeModel
+    public function gameTime(): GameTime
     {
-        return new GameTimeModel(
+        return new GameTime(
             $this->request->execute(strtolower(preg_replace('/(?<!^)[A-Z]/', '_$0', __FUNCTION__)))
         );
     }
@@ -130,11 +129,11 @@ class Client
      *
      * @throws \Http\Client\Exception
      * @throws Exceptions\APIErrorException
-     * @return RulesModel
+     * @return Rule
      */
-    public function rules(): RulesModel
+    public function rules(): Rule
     {
-        return new RulesModel(
+        return new Rule(
             $this->request->execute(__FUNCTION__)
         );
     }
