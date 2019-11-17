@@ -12,6 +12,7 @@ class PlayerTest extends TestCase
 
     /**
      * @throws \Http\Client\Exception
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
      */
     public function testWeCanGetThePlayer()
     {
@@ -22,6 +23,7 @@ class PlayerTest extends TestCase
 
     /**
      * @throws \Http\Client\Exception
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
      */
     public function testItHasAnId()
     {
@@ -32,6 +34,7 @@ class PlayerTest extends TestCase
 
     /**
      * @throws \Http\Client\Exception
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
      */
     public function testItHasAName()
     {
@@ -42,6 +45,7 @@ class PlayerTest extends TestCase
 
     /**
      * @throws \Http\Client\Exception
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
      */
     public function testItHasAnAvatar()
     {
@@ -52,6 +56,7 @@ class PlayerTest extends TestCase
 
     /**
      * @throws \Http\Client\Exception
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
      */
     public function testItHasAJoinDate()
     {
@@ -62,6 +67,7 @@ class PlayerTest extends TestCase
 
     /**
      * @throws \Http\Client\Exception
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
      */
     public function testItHasASteamId()
     {
@@ -72,6 +78,7 @@ class PlayerTest extends TestCase
 
     /**
      * @throws \Http\Client\Exception
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
      */
     public function testItHasAGroupName()
     {
@@ -82,6 +89,7 @@ class PlayerTest extends TestCase
 
     /**
      * @throws \Http\Client\Exception
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
      */
     public function testItHasAGroupId()
     {
@@ -92,6 +100,7 @@ class PlayerTest extends TestCase
 
     /**
      * @throws \Http\Client\Exception
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
      */
     public function testIfItIsBanned()
     {
@@ -102,6 +111,7 @@ class PlayerTest extends TestCase
 
     /**
      * @throws \Http\Client\Exception
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
      */
     public function testItHasABannedUntilDate()
     {
@@ -112,6 +122,7 @@ class PlayerTest extends TestCase
 
     /**
      * @throws \Http\Client\Exception
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
      */
     public function testIfBansAreHidden()
     {
@@ -122,6 +133,7 @@ class PlayerTest extends TestCase
 
     /**
      * @throws \Http\Client\Exception
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
      */
     public function testItHasIfAdmin()
     {

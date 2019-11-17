@@ -10,10 +10,11 @@ class GameTimeTest extends TestCase
 {
     /**
      * @throws \Http\Client\Exception
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
      */
     public function testWeCanGetTheGameTime()
     {
-        $time = $this->client->gameTime();
+        $time = $this->gameTime();
 
         $this->assertInstanceOf(GameTime::class, $time);
         $this->assertInstanceOf(Carbon::class, $time->getTime());

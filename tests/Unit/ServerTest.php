@@ -10,10 +10,11 @@ class ServerTest extends TestCase
 {
     /**
      * @throws \Http\Client\Exception
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
      */
     public function testWeCanGetAllServers()
     {
-        $servers = $this->client->servers();
+        $servers = $this->servers();
 
         $this->assertInstanceOf(ServerCollection::class, $servers);
     }
@@ -21,10 +22,11 @@ class ServerTest extends TestCase
     /**
      * @throws \Http\Client\Exception
      * @throws \TruckersMP\Exceptions\IndexNotFoundException
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
      */
     public function testWeCanGetASpecificServer()
     {
-        $servers = $this->client->servers();
+        $servers = $this->servers();
 
         if (count($servers->getServers()) > 0) {
             $server = $servers->getServers()[0];
@@ -38,10 +40,11 @@ class ServerTest extends TestCase
     /**
      * @throws \Http\Client\Exception
      * @throws \TruckersMP\Exceptions\IndexNotFoundException
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
      */
     public function testItHasAnId()
     {
-        $server = $this->client->servers()->getServers()[0];
+        $server = $this->servers()->getServers()[0];
 
         $this->assertIsInt($server->getId());
     }
@@ -49,10 +52,11 @@ class ServerTest extends TestCase
     /**
      * @throws \Http\Client\Exception
      * @throws \TruckersMP\Exceptions\IndexNotFoundException
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
      */
     public function testItHasAGame()
     {
-        $server = $this->client->servers()->getServers()[0];
+        $server = $this->servers()->getServers()[0];
 
         $this->assertIsString($server->getGame());
     }
@@ -60,10 +64,11 @@ class ServerTest extends TestCase
     /**
      * @throws \Http\Client\Exception
      * @throws \TruckersMP\Exceptions\IndexNotFoundException
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
      */
     public function testItHasAnIp()
     {
-        $server = $this->client->servers()->getServers()[0];
+        $server = $this->servers()->getServers()[0];
 
         $this->assertIsString($server->getIp());
     }
@@ -71,10 +76,11 @@ class ServerTest extends TestCase
     /**
      * @throws \Http\Client\Exception
      * @throws \TruckersMP\Exceptions\IndexNotFoundException
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
      */
     public function testItHasAPort()
     {
-        $server = $this->client->servers()->getServers()[0];
+        $server = $this->servers()->getServers()[0];
 
         $this->assertIsInt($server->getPort());
     }
@@ -82,10 +88,11 @@ class ServerTest extends TestCase
     /**
      * @throws \Http\Client\Exception
      * @throws \TruckersMP\Exceptions\IndexNotFoundException
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
      */
     public function testItHasAName()
     {
-        $server = $this->client->servers()->getServers()[0];
+        $server = $this->servers()->getServers()[0];
 
         $this->assertIsString($server->getName());
     }
@@ -93,10 +100,11 @@ class ServerTest extends TestCase
     /**
      * @throws \Http\Client\Exception
      * @throws \TruckersMP\Exceptions\IndexNotFoundException
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
      */
     public function testItHasAShortName()
     {
-        $server = $this->client->servers()->getServers()[0];
+        $server = $this->servers()->getServers()[0];
 
         $this->assertIsString($server->getShortName());
     }
@@ -104,10 +112,11 @@ class ServerTest extends TestCase
     /**
      * @throws \Http\Client\Exception
      * @throws \TruckersMP\Exceptions\IndexNotFoundException
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
      */
     public function testItHasAnIdPrefix()
     {
-        $server = $this->client->servers()->getServers()[0];
+        $server = $this->servers()->getServers()[0];
 
         if ($server->getIdPrefix() != null) {
             $this->assertIsString($server->getIdPrefix());
@@ -119,10 +128,11 @@ class ServerTest extends TestCase
     /**
      * @throws \Http\Client\Exception
      * @throws \TruckersMP\Exceptions\IndexNotFoundException
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
      */
     public function testItHasAnOnlineState()
     {
-        $server = $this->client->servers()->getServers()[0];
+        $server = $this->servers()->getServers()[0];
 
         $this->assertIsBool($server->isOnline());
     }
@@ -130,10 +140,11 @@ class ServerTest extends TestCase
     /**
      * @throws \Http\Client\Exception
      * @throws \TruckersMP\Exceptions\IndexNotFoundException
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
      */
     public function testItHasPlayers()
     {
-        $server = $this->client->servers()->getServers()[0];
+        $server = $this->servers()->getServers()[0];
 
         $this->assertIsInt($server->getPlayers());
     }
@@ -141,10 +152,11 @@ class ServerTest extends TestCase
     /**
      * @throws \Http\Client\Exception
      * @throws \TruckersMP\Exceptions\IndexNotFoundException
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
      */
     public function testItHasAQueue()
     {
-        $server = $this->client->servers()->getServers()[0];
+        $server = $this->servers()->getServers()[0];
 
         $this->assertIsInt($server->getQueue());
     }
@@ -152,10 +164,11 @@ class ServerTest extends TestCase
     /**
      * @throws \Http\Client\Exception
      * @throws \TruckersMP\Exceptions\IndexNotFoundException
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
      */
     public function testItHasMaxPlayers()
     {
-        $server = $this->client->servers()->getServers()[0];
+        $server = $this->servers()->getServers()[0];
 
         $this->assertIsInt($server->getMaxPlayers());
     }
@@ -163,10 +176,11 @@ class ServerTest extends TestCase
     /**
      * @throws \Http\Client\Exception
      * @throws \TruckersMP\Exceptions\IndexNotFoundException
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
      */
     public function testItHasADisplayOrder()
     {
-        $server = $this->client->servers()->getServers()[0];
+        $server = $this->servers()->getServers()[0];
 
         $this->assertIsInt($server->getDisplayOrder());
     }
@@ -174,10 +188,11 @@ class ServerTest extends TestCase
     /**
      * @throws \Http\Client\Exception
      * @throws \TruckersMP\Exceptions\IndexNotFoundException
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
      */
     public function testItHasASpeedLimit()
     {
-        $server = $this->client->servers()->getServers()[0];
+        $server = $this->servers()->getServers()[0];
 
         $this->assertIsBool($server->hasSpeedLimit());
     }
@@ -185,10 +200,11 @@ class ServerTest extends TestCase
     /**
      * @throws \Http\Client\Exception
      * @throws \TruckersMP\Exceptions\IndexNotFoundException
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
      */
     public function testItHasCollisions()
     {
-        $server = $this->client->servers()->getServers()[0];
+        $server = $this->servers()->getServers()[0];
 
         $this->assertIsBool($server->hasCollisions());
     }
@@ -196,10 +212,11 @@ class ServerTest extends TestCase
     /**
      * @throws \Http\Client\Exception
      * @throws \TruckersMP\Exceptions\IndexNotFoundException
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
      */
     public function testItHasCarsForPlayers()
     {
-        $server = $this->client->servers()->getServers()[0];
+        $server = $this->servers()->getServers()[0];
 
         $this->assertIsBool($server->canPlayersHaveCars());
     }
@@ -207,10 +224,11 @@ class ServerTest extends TestCase
     /**
      * @throws \Http\Client\Exception
      * @throws \TruckersMP\Exceptions\IndexNotFoundException
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
      */
     public function testItHasPoliceCarsForPlayers()
     {
-        $server = $this->client->servers()->getServers()[0];
+        $server = $this->servers()->getServers()[0];
 
         $this->assertIsBool($server->canPlayersHavePoliceCars());
     }
@@ -218,10 +236,11 @@ class ServerTest extends TestCase
     /**
      * @throws \Http\Client\Exception
      * @throws \TruckersMP\Exceptions\IndexNotFoundException
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
      */
     public function testItHasAfkEnable()
     {
-        $server = $this->client->servers()->getServers()[0];
+        $server = $this->servers()->getServers()[0];
 
         $this->assertIsBool($server->isAfkEnabled());
     }
@@ -229,10 +248,11 @@ class ServerTest extends TestCase
     /**
      * @throws \Http\Client\Exception
      * @throws \TruckersMP\Exceptions\IndexNotFoundException
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
      */
     public function testItHasAnEvent()
     {
-        $server = $this->client->servers()->getServers()[0];
+        $server = $this->servers()->getServers()[0];
 
         $this->assertIsBool($server->isEvent());
     }
@@ -240,10 +260,11 @@ class ServerTest extends TestCase
     /**
      * @throws \Http\Client\Exception
      * @throws \TruckersMP\Exceptions\IndexNotFoundException
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
      */
     public function testItHasASpecialEvent()
     {
-        $server = $this->client->servers()->getServers()[0];
+        $server = $this->servers()->getServers()[0];
 
         $this->assertIsBool($server->isSpecialEvent());
     }
@@ -251,10 +272,11 @@ class ServerTest extends TestCase
     /**
      * @throws \Http\Client\Exception
      * @throws \TruckersMP\Exceptions\IndexNotFoundException
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
      */
     public function testItHasPromods()
     {
-        $server = $this->client->servers()->getServers()[0];
+        $server = $this->servers()->getServers()[0];
 
         $this->assertIsBool($server->hasPromods());
     }
@@ -262,10 +284,11 @@ class ServerTest extends TestCase
     /**
      * @throws \Http\Client\Exception
      * @throws \TruckersMP\Exceptions\IndexNotFoundException
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
      */
     public function testItHasSyncDelay()
     {
-        $server = $this->client->servers()->getServers()[0];
+        $server = $this->servers()->getServers()[0];
 
         $this->assertIsBool($server->hasSyncDelay());
     }

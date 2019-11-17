@@ -14,140 +14,154 @@ class CompanyTest extends TestCase
 
     /**
      * @throws \Http\Client\Exception
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
      */
     public function testWeCanGetACompany()
     {
-        $company = $this->client->company(self::TEST_COMPANY);
+        $company = $this->company(self::TEST_COMPANY);
 
         $this->assertInstanceOf(Company::class, $company);
     }
 
     /**
      * @throws \Http\Client\Exception
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
      */
     public function testItHasAnId()
     {
-        $company = $this->client->company(self::TEST_COMPANY);
+        $company = $this->company(self::TEST_COMPANY);
 
         $this->assertIsInt($company->getId());
     }
 
     /**
      * @throws \Http\Client\Exception
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
      */
     public function testItHasAName()
     {
-        $company = $this->client->company(self::TEST_COMPANY);
+        $company = $this->company(self::TEST_COMPANY);
 
         $this->assertIsString($company->getName());
     }
 
     /**
      * @throws \Http\Client\Exception
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
      */
     public function testItHasAnOwnerId()
     {
-        $company = $this->client->company(self::TEST_COMPANY);
+        $company = $this->company(self::TEST_COMPANY);
 
         $this->assertIsInt($company->getOwnerId());
     }
 
     /**
      * @throws \Http\Client\Exception
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
      */
     public function testItHasAnOwnerName()
     {
-        $company = $this->client->company(self::TEST_COMPANY);
+        $company = $this->company(self::TEST_COMPANY);
 
         $this->assertIsString($company->getOwnerName());
     }
 
     /**
      * @throws \Http\Client\Exception
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
      */
     public function testItHasASlogan()
     {
-        $company = $this->client->company(self::TEST_COMPANY);
+        $company = $this->company(self::TEST_COMPANY);
 
         $this->assertIsString($company->getSlogan());
     }
 
     /**
      * @throws \Http\Client\Exception
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
      */
     public function testItHasATag()
     {
-        $company = $this->client->company(self::TEST_COMPANY);
+        $company = $this->company(self::TEST_COMPANY);
 
         $this->assertIsString($company->getTag());
     }
 
     /**
      * @throws \Http\Client\Exception
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
      */
     public function testItHasALogo()
     {
-        $company = $this->client->company(self::TEST_COMPANY);
+        $company = $this->company(self::TEST_COMPANY);
 
         $this->assertIsString($company->getLogo());
     }
 
     /**
      * @throws \Http\Client\Exception
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
      */
     public function testItHasACover()
     {
-        $company = $this->client->company(self::TEST_COMPANY);
+        $company = $this->company(self::TEST_COMPANY);
 
         $this->assertIsString($company->getCover());
     }
 
     /**
      * @throws \Http\Client\Exception
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
      */
     public function testItHasInformation()
     {
-        $company = $this->client->company(self::TEST_COMPANY);
+        $company = $this->company(self::TEST_COMPANY);
 
         $this->assertIsString($company->getInformation());
     }
 
     /**
      * @throws \Http\Client\Exception
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
      */
     public function testItHasRules()
     {
-        $company = $this->client->company(self::TEST_COMPANY);
+        $company = $this->company(self::TEST_COMPANY);
 
         $this->assertIsString($company->getRules());
     }
 
     /**
      * @throws \Http\Client\Exception
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
      */
     public function testItHasRequirements()
     {
-        $company = $this->client->company(self::TEST_COMPANY);
+        $company = $this->company(self::TEST_COMPANY);
 
         $this->assertIsString($company->getRequirements());
     }
 
     /**
      * @throws \Http\Client\Exception
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
      */
     public function testItHasAWebsite()
     {
-        $company = $this->client->company(self::TEST_COMPANY);
+        $company = $this->company(self::TEST_COMPANY);
 
         $this->assertIsString($company->getWebsite());
     }
 
     /**
      * @throws \Http\Client\Exception
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
      */
     public function testItHasSocialInformation()
     {
-        $company = $this->client->company(self::TEST_COMPANY);
+        $company = $this->company(self::TEST_COMPANY);
 
         $this->assertInstanceOf(Social::class, $company->getSocial());
 
@@ -189,10 +203,11 @@ class CompanyTest extends TestCase
 
     /**
      * @throws \Http\Client\Exception
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
      */
     public function testItHasSupportedGames()
     {
-        $company = $this->client->company(self::TEST_COMPANY);
+        $company = $this->company(self::TEST_COMPANY);
 
         $this->assertInstanceOf(Game::class, $company->getGames());
 
@@ -202,50 +217,55 @@ class CompanyTest extends TestCase
 
     /**
      * @throws \Http\Client\Exception
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
      */
     public function testItHasMemberCount()
     {
-        $company = $this->client->company(self::TEST_COMPANY);
+        $company = $this->company(self::TEST_COMPANY);
 
         $this->assertIsInt($company->getMembersCount());
     }
 
     /**
      * @throws \Http\Client\Exception
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
      */
     public function testItHasARecruitmentState()
     {
-        $company = $this->client->company(self::TEST_COMPANY);
+        $company = $this->company(self::TEST_COMPANY);
 
         $this->assertIsString($company->getRecruitment());
     }
 
     /**
      * @throws \Http\Client\Exception
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
      */
     public function testItHasALanguage()
     {
-        $company = $this->client->company(self::TEST_COMPANY);
+        $company = $this->company(self::TEST_COMPANY);
 
         $this->assertIsString($company->getLanguage());
     }
 
     /**
      * @throws \Http\Client\Exception
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
      */
     public function testIfItsVerified()
     {
-        $company = $this->client->company(self::TEST_COMPANY);
+        $company = $this->company(self::TEST_COMPANY);
 
         $this->assertIsBool($company->isVerified());
     }
 
     /**
      * @throws \Http\Client\Exception
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
      */
     public function testItHasACreatedDate()
     {
-        $company = $this->client->company(self::TEST_COMPANY);
+        $company = $this->company(self::TEST_COMPANY);
 
         $this->assertInstanceOf(Carbon::class, $company->getCreatedDate());
     }
