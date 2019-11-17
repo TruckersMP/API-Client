@@ -64,7 +64,7 @@
         "test": [
             "./vendor/bin/phpunit",
             "./vendor/bin/phpcs src --standard=PSR2",
-            "./vendor/bin/phpcs Tests --standard=PSR2"
+            "./vendor/bin/phpcs tests/Unit --standard=PSR2"
         ]
     }
 }

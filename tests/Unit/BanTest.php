@@ -9,12 +9,12 @@ use TruckersMP\Models\Ban;
 
 class BanTest extends TestCase
 {
-    const TEST_ACCOUNT = 505253;
+    const TEST_ACCOUNT = 28159;
 
     /**
      * @throws \Http\Client\Exception
      */
-    public function testCanGetAllBans()
+    public function testWeCanGetAllBans()
     {
         $bans = $this->client->bans(self::TEST_ACCOUNT);
 
@@ -25,7 +25,7 @@ class BanTest extends TestCase
      * @throws \Http\Client\Exception
      * @throws \TruckersMP\Exceptions\IndexNotFoundException
      */
-    public function testCanGetSpecificBan()
+    public function testWeCanGetASpecificBan()
     {
         $bans = $this->client->bans(self::TEST_ACCOUNT);
 
@@ -42,7 +42,7 @@ class BanTest extends TestCase
      * @throws \Http\Client\Exception
      * @throws \TruckersMP\Exceptions\IndexNotFoundException
      */
-    public function testCanHaveExpiryDate()
+    public function testItHasAnExpiryDate()
     {
         $bans = $this->client->bans(self::TEST_ACCOUNT);
 
@@ -63,7 +63,7 @@ class BanTest extends TestCase
      * @throws \Http\Client\Exception
      * @throws \TruckersMP\Exceptions\IndexNotFoundException
      */
-    public function testHasCreatedDate()
+    public function testItHasACreatedDate()
     {
         $bans = $this->client->bans(self::TEST_ACCOUNT);
 
@@ -80,7 +80,7 @@ class BanTest extends TestCase
      * @throws \Http\Client\Exception
      * @throws \TruckersMP\Exceptions\IndexNotFoundException
      */
-    public function testHasActiveState()
+    public function testItHasAnActiveState()
     {
         $bans = $this->client->bans(self::TEST_ACCOUNT);
 
@@ -97,7 +97,7 @@ class BanTest extends TestCase
      * @throws \Http\Client\Exception
      * @throws \TruckersMP\Exceptions\IndexNotFoundException
      */
-    public function testHasReason()
+    public function testItHasAReason()
     {
         $bans = $this->client->bans(self::TEST_ACCOUNT);
 
@@ -114,7 +114,7 @@ class BanTest extends TestCase
      * @throws \Http\Client\Exception
      * @throws \TruckersMP\Exceptions\IndexNotFoundException
      */
-    public function testHasNameOfAdmin()
+    public function testItHasTheNameOfTheAdmin()
     {
         $bans = $this->client->bans(self::TEST_ACCOUNT);
 
@@ -131,7 +131,7 @@ class BanTest extends TestCase
      * @throws \Http\Client\Exception
      * @throws \TruckersMP\Exceptions\IndexNotFoundException
      */
-    public function testHasIdOfAdmin()
+    public function testItHasTheIdOfTheAdmin()
     {
         $bans = $this->client->bans(self::TEST_ACCOUNT);
 

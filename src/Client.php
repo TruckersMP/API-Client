@@ -13,6 +13,7 @@ use TruckersMP\Models\GameTimeModel;
 use TruckersMP\Models\PlayerModel;
 use TruckersMP\Models\RulesModel;
 use TruckersMP\Models\ServersModel;
+use TruckersMP\Models\Version;
 use TruckersMP\Models\VersionModel;
 
 class Client
@@ -63,7 +64,7 @@ class Client
      * @param int $id
      * @throws \Exception
      * @throws \Http\Client\Exception
-     * @return BansModel
+     * @return BansCollection
      */
     public function bans(int $id): BansCollection
     {
@@ -113,11 +114,11 @@ class Client
      *
      * @throws \Exception
      * @throws \Http\Client\Exception
-     * @return VersionModel
+     * @return Version
      */
-    public function version(): VersionModel
+    public function version(): Version
     {
-        return new VersionModel(
+        return new Version(
             $this->request->execute(__FUNCTION__)
         );
     }
