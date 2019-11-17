@@ -15,7 +15,7 @@ class PlayerTest extends TestCase
      */
     public function testWeCanGetThePlayer()
     {
-        $player = $this->client->player(self::TEST_ACCOUNT);
+        $player = $this->player(self::TEST_ACCOUNT);
 
         $this->assertInstanceOf(Player::class, $player);
     }
@@ -25,7 +25,7 @@ class PlayerTest extends TestCase
      */
     public function testItHasAnId()
     {
-        $player = $this->client->player(self::TEST_ACCOUNT);
+        $player = $this->player(self::TEST_ACCOUNT);
 
         $this->assertIsInt($player->getId());
     }
@@ -35,7 +35,7 @@ class PlayerTest extends TestCase
      */
     public function testItHasAName()
     {
-        $player = $this->client->player(self::TEST_ACCOUNT);
+        $player = $this->player(self::TEST_ACCOUNT);
 
         $this->assertIsString($player->getName());
     }
@@ -45,7 +45,7 @@ class PlayerTest extends TestCase
      */
     public function testItHasAnAvatar()
     {
-        $player = $this->client->player(self::TEST_ACCOUNT);
+        $player = $this->player(self::TEST_ACCOUNT);
 
         $this->assertIsString($player->getAvatar());
     }
@@ -55,7 +55,7 @@ class PlayerTest extends TestCase
      */
     public function testItHasAJoinDate()
     {
-        $player = $this->client->player(self::TEST_ACCOUNT);
+        $player = $this->player(self::TEST_ACCOUNT);
 
         $this->assertInstanceOf(Carbon::class, $player->getJoinDate());
     }
@@ -65,7 +65,7 @@ class PlayerTest extends TestCase
      */
     public function testItHasASteamId()
     {
-        $player = $this->client->player(self::TEST_ACCOUNT);
+        $player = $this->player(self::TEST_ACCOUNT);
 
         $this->assertIsString($player->getSteamID64());
     }
@@ -75,7 +75,7 @@ class PlayerTest extends TestCase
      */
     public function testItHasAGroupName()
     {
-        $player = $this->client->player(self::TEST_ACCOUNT);
+        $player = $this->player(self::TEST_ACCOUNT);
 
         $this->assertIsString($player->getGroupName());
     }
@@ -85,7 +85,7 @@ class PlayerTest extends TestCase
      */
     public function testItHasAGroupId()
     {
-        $player = $this->client->player(self::TEST_ACCOUNT);
+        $player = $this->player(self::TEST_ACCOUNT);
 
         $this->assertIsInt($player->getGroupID());
     }
@@ -95,7 +95,7 @@ class PlayerTest extends TestCase
      */
     public function testIfItIsBanned()
     {
-        $player = $this->client->player(self::TEST_ACCOUNT);
+        $player = $this->player(self::TEST_ACCOUNT);
 
         $this->assertIsBool($player->isBanned());
     }
@@ -105,7 +105,7 @@ class PlayerTest extends TestCase
      */
     public function testItHasABannedUntilDate()
     {
-        $player = $this->client->player(self::TEST_ACCOUNT);
+        $player = $this->player(self::TEST_ACCOUNT);
 
         $this->assertInstanceOf(Carbon::class, $player->getBannedUntilDate());
     }
@@ -115,7 +115,7 @@ class PlayerTest extends TestCase
      */
     public function testIfBansAreHidden()
     {
-        $player = $this->client->player(self::TEST_ACCOUNT);
+        $player = $this->player(self::TEST_ACCOUNT);
 
         $this->assertIsBool($player->hasBansHidden());
     }
@@ -125,7 +125,7 @@ class PlayerTest extends TestCase
      */
     public function testItHasIfAdmin()
     {
-        $player = $this->client->player(self::TEST_ACCOUNT);
+        $player = $this->player(self::TEST_ACCOUNT);
 
         $this->assertIsBool($player->isAdmin());
     }
