@@ -39,7 +39,7 @@ class Collection implements Iterator, ArrayAccess
      */
     public function getValue(int $index = null): array
     {
-        if ($index) {
+        if ($index != null) {
             if (! isset($this->collection[$index])) {
                 throw new IndexNotFoundException();
             }

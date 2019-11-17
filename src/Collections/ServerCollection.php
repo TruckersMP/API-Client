@@ -2,12 +2,12 @@
 
 namespace TruckersMP\Collections;
 
-use TruckersMP\Models\Ban;
+use TruckersMP\Models\Server;
 
-class BansCollection extends Collection
+class ServerCollection extends Collection
 {
     /**
-     * Create a new BansCollection instance.
+     * Create a new ServerCollection instance.
      *
      * @param  array  $response
      */
@@ -17,19 +17,19 @@ class BansCollection extends Collection
 
         // handle error
 
-        foreach ($response['response'] as $key => $ban) {
-            $this->collection[$key] = new Ban($ban);
+        foreach ($response['response'] as $key => $server) {
+            $this->collection[$key] = new Server($server);
         }
     }
 
     /**
-     * Get the players bans.
+     * Get the servers.
      *
      * @param  int|null  $index
-     * @return Ban[]
+     * @return Server[]
      * @throws \TruckersMP\Exceptions\IndexNotFoundException
      */
-    public function getBans(?int $index = null): array
+    public function getServers(?int $index = null): array
     {
         return $this->getValue($index);
     }

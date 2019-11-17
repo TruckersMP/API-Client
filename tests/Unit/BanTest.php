@@ -4,7 +4,7 @@ namespace Tests\Unit;
 
 use Carbon\Carbon;
 use Tests\TestCase;
-use TruckersMP\Collections\BansCollection;
+use TruckersMP\Collections\BanCollection;
 use TruckersMP\Models\Ban;
 
 class BanTest extends TestCase
@@ -18,7 +18,7 @@ class BanTest extends TestCase
     {
         $bans = $this->client->bans(self::TEST_ACCOUNT);
 
-        $this->assertInstanceOf(BansCollection::class, $bans);
+        $this->assertInstanceOf(BanCollection::class, $bans);
     }
 
     /**

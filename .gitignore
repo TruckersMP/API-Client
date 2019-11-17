@@ -6,6 +6,6 @@ composer.phar
 /.idea/
 
 # Unit Tests
-/Tests/cache/
+/tests/cache/
 
 

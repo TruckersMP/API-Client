@@ -7,12 +7,12 @@
 
 namespace TruckersMP;
 
-use TruckersMP\Collections\BansCollection;
+use TruckersMP\Collections\BanCollection;
+use TruckersMP\Collections\ServerCollection;
 use TruckersMP\Helpers\Request;
 use TruckersMP\Models\GameTime;
-use TruckersMP\Models\PlayerModel;
+use TruckersMP\Models\Player;
 use TruckersMP\Models\Rule;
-use TruckersMP\Models\ServersModel;
 use TruckersMP\Models\Version;
 
 class Client
@@ -46,11 +46,11 @@ class Client
      * @param int $id
      * @throws \Exception
      * @throws \Http\Client\Exception
-     * @return PlayerModel
+     * @return Player
      */
-    public function player(int $id): PlayerModel
+    public function player(int $id): Player
     {
-        return new PlayerModel(
+        return new Player(
             $this->request->execute(__FUNCTION__ . '/' . $id)
         );
     }
@@ -61,13 +61,14 @@ class Client
      * https://stats.truckersmp.com/api#ban_lookup
      *
      * @param int $id
+     *
+     * @return BanCollection
+     *@throws \Http\Client\Exception
      * @throws \Exception
-     * @throws \Http\Client\Exception
-     * @return BansCollection
      */
-    public function bans(int $id): BansCollection
+    public function bans(int $id): BanCollection
     {
-        return new BansCollection(
+        return new BanCollection(
             $this->request->execute(__FUNCTION__ . '/' . $id)
         );
     }
@@ -79,11 +80,11 @@ class Client
      *
      * @throws \Exception
      * @throws \Http\Client\Exception
-     * @return ServersModel
+     * @return ServerCollection
      */
-    public function servers(): ServersModel
+    public function servers(): ServerCollection
     {
-        return new ServersModel(
+        return new ServerCollection(
             $this->request->execute(__FUNCTION__)
         );
     }
