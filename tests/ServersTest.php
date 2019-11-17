@@ -1,6 +1,6 @@
 <?php
 
-namespace TruckersMP\Tests\API;
+namespace TruckersMP\Tests\tests;
 
 use PHPUnit\Framework\TestCase;
 use TruckersMP\Client;

@@ -57,7 +57,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "TruckersMP\\Tests\\API\\": "tests/"
+            "Tests\\": "tests/"
         }
     },
     "scripts": {

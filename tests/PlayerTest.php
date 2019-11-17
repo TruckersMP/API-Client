@@ -1,6 +1,6 @@
 <?php
 
-namespace TruckersMP\Tests\API;
+namespace TruckersMP\Tests\tests;
 
 use Carbon\Carbon;
 use PHPUnit\Framework\TestCase;

@@ -7,8 +7,8 @@
 
 namespace TruckersMP;
 
+use TruckersMP\Collections\BansCollection;
 use TruckersMP\Helpers\RequestHelper;
-use TruckersMP\Models\BansModel;
 use TruckersMP\Models\GameTimeModel;
 use TruckersMP\Models\PlayerModel;
 use TruckersMP\Models\RulesModel;
@@ -65,9 +65,9 @@ class Client
      * @throws \Http\Client\Exception
      * @return BansModel
      */
-    public function bans(int $id): BansModel
+    public function bans(int $id): BansCollection
     {
-        return new BansModel(
+        return new BansCollection(
             $this->request->execute(__FUNCTION__ . '/' . $id)
         );
     }

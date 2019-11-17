@@ -72,8 +72,8 @@ All timestamps in this project return a [Carbon](http://carbon.nesbot.com/docs/)
 ## Models
 
 ### BanModel Methods
-- `getExpires(): ?Carbon`
-- `getCreated(): Carbon`
+- `getExpirationDate(): ?Carbon`
+- `getCreatedDate(): Carbon`
 - `isActive(): bool`
 - `getReason(): string`
 - `getAdminName(): string`
