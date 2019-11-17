@@ -10,6 +10,7 @@ namespace TruckersMP;
 use TruckersMP\Collections\BanCollection;
 use TruckersMP\Collections\ServerCollection;
 use TruckersMP\Helpers\Request;
+use TruckersMP\Models\Company;
 use TruckersMP\Models\GameTime;
 use TruckersMP\Models\Player;
 use TruckersMP\Models\Rule;
@@ -102,6 +103,22 @@ class Client
     {
         return new GameTime(
             $this->request->execute(strtolower(preg_replace('/(?<!^)[A-Z]/', '_$0', __FUNCTION__)))
+        );
+    }
+
+    /**
+     * Get the company information for the company with the specified ID.
+     *
+     * https://stats.truckersmp.com/api#vtc_info
+     *
+     * @param int $id
+     * @return \TruckersMP\Models\Company
+     * @throws \Http\Client\Exception
+     */
+    public function company(int $id): Company
+    {
+        return new Company(
+            $this->request->execute('vtc/' . $id)
         );
     }
 
