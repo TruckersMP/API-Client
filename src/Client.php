@@ -106,8 +106,6 @@ class Client
     }
 
     /**
-     * @deprecated
-     *
      * Information about the current TruckersMP version for ETS2 and ATS
      *
      * https://stats.truckersmp.com/api#truckersmp_version
