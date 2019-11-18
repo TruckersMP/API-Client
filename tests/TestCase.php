@@ -14,7 +14,10 @@ use TruckersMP\Models\Version;
 
 class TestCase extends BaseTestCase
 {
-    const CACHE_SECONDS = 3600;
+    /**
+     * The number of seconds we should cache the data for.
+     */
+    private const CACHE_SECONDS = 3600;
 
     /**
      * @var \TruckersMP\Client

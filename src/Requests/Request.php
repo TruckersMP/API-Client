@@ -8,8 +8,15 @@ use Http\Message\MessageFactory\GuzzleMessageFactory;
 
 abstract class Request
 {
-    const API_ENDPOINT = 'api.truckersmp.com';
-    const API_VERSION = 'v2';
+    /**
+     * The API endpoint URL to retrieve the data form.
+     */
+    private const API_ENDPOINT = 'api.truckersmp.com';
+
+    /**
+     * The version of the API to use.
+     */
+    private const API_VERSION = 'v2';
 
     /**
      * @var \Http\Message\MessageFactory\GuzzleMessageFactory
