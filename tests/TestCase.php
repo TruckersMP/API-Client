@@ -6,9 +6,6 @@ use Phpfastcache\CacheManager;
 use Phpfastcache\Config\ConfigurationOption;
 use PHPUnit\Framework\TestCase as BaseTestCase;
 use TruckersMP\Client;
-use TruckersMP\Collections\BanCollection;
-use TruckersMP\Collections\CompanyCollection;
-use TruckersMP\Collections\ServerCollection;
 use TruckersMP\Models\Company;
 use TruckersMP\Models\GameTime;
 use TruckersMP\Models\Player;
@@ -17,6 +14,8 @@ use TruckersMP\Models\Version;
 
 class TestCase extends BaseTestCase
 {
+    const CACHE_SECONDS = 3600;
+
     /**
      * @var \TruckersMP\Client
      */
@@ -29,6 +28,13 @@ class TestCase extends BaseTestCase
 
     /**
      * Create a new TestCase instance.
+     *
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheDriverCheckException
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheDriverException
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheDriverNotFoundException
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidConfigurationException
+     * @throws \ReflectionException
      */
     public function __construct()
     {
@@ -44,21 +50,20 @@ class TestCase extends BaseTestCase
     }
 
     /**
-     * Get or cache the player.
+     * Get or cache the given player.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \TruckersMP\Models\Player
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
      */
     public function player(int $id): Player
     {
-        $key = 'player_' . $id;
-
-        $cachedPlayer = $this->cache->getItem($key);
+        $cachedPlayer = $this->cache->getItem('player_' . $id);
 
         if (! $cachedPlayer->isHit()) {
-            $cachedPlayer->set($this->client->player($id))->expiresAfter(60);
+            $cachedPlayer->set($this->client->player($id)->get())->expiresAfter(self::CACHE_SECONDS);
             $this->cache->save($cachedPlayer);
         }
 
@@ -68,19 +73,18 @@ class TestCase extends BaseTestCase
     /**
      * Get or cache the bans for the player.
      *
-     * @param  int  $id
-     * @return \TruckersMP\Collections\BanCollection
-     * @throws \Http\Client\Exception
+     * @param int $id
+     *
+     * @return \TruckersMP\Models\Ban[]
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     * @throws \Http\Client\Exception
      */
-    public function bans(int $id): BanCollection
+    public function bans(int $id): array
     {
-        $key = 'bans_' . $id;
-
-        $cachedBans = $this->cache->getItem($key);
+        $cachedBans = $this->cache->getItem('bans_' . $id);
 
         if (! $cachedBans->isHit()) {
-            $cachedBans->set($this->client->bans($id))->expiresAfter(60);
+            $cachedBans->set($this->client->bans($id)->get())->expiresAfter(self::CACHE_SECONDS);
             $this->cache->save($cachedBans);
         }
 
@@ -88,18 +92,18 @@ class TestCase extends BaseTestCase
     }
 
     /**
-     * Get or cache the servers.
+     * Get or cache the server request.
      *
-     * @return ServerCollection
+     * @return \TruckersMP\Models\Server[]
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
      */
-    public function servers(): ServerCollection
+    public function servers(): array
     {
         $cachedServers = $this->cache->getItem('servers');
 
         if (! $cachedServers->isHit()) {
-            $cachedServers->set($this->client->servers())->expiresAfter(60);
+            $cachedServers->set($this->client->servers()->get())->expiresAfter(self::CACHE_SECONDS);
             $this->cache->save($cachedServers);
         }
 
@@ -107,7 +111,7 @@ class TestCase extends BaseTestCase
     }
 
     /**
-     * Get or cache the game in time.
+     * Get or cache the game time.
      *
      * @return \TruckersMP\Models\GameTime
      * @throws \Http\Client\Exception
@@ -118,41 +122,28 @@ class TestCase extends BaseTestCase
         $cachedGameTime = $this->cache->getItem('game_time');
 
         if (! $cachedGameTime->isHit()) {
-            $cachedGameTime->set($this->client->gameTime())->expiresAfter(60);
+            $cachedGameTime->set($this->client->gameTime()->get())->expiresAfter(self::CACHE_SECONDS);
             $this->cache->save($cachedGameTime);
         }
 
         return $cachedGameTime->get();
     }
 
-    public function companies(): CompanyCollection
-    {
-        $cachedCompanies = $this->cache->getItem('cache');
-
-        if (! $cachedCompanies->isHit()) {
-            $cachedCompanies->set($this->client->companies())->expiresAfter(60);
-            $this->cache->save($cachedCompanies);
-        }
-
-        return $cachedCompanies->get();
-    }
-
     /**
-     * Get or cache the company.
+     * Get or cache the company with the specified id.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \TruckersMP\Models\Company
-     * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     * @throws \Http\Client\Exception
      */
     public function company(int $id): Company
     {
-        $key = 'company_' . $id;
-
-        $cachedCompany = $this->cache->getItem($key);
+        $cachedCompany = $this->cache->getItem('company_' . $id);
 
         if (! $cachedCompany->isHit()) {
-            $cachedCompany->set($this->client->company($id))->expiresAfter(60);
+            $cachedCompany->set($this->client->company($id)->get())->expiresAfter(self::CACHE_SECONDS);
             $this->cache->save($cachedCompany);
         }
 
@@ -160,7 +151,7 @@ class TestCase extends BaseTestCase
     }
 
     /**
-     * Get or cache the version.
+     * Get or cache the TruckersMP version.
      *
      * @return \TruckersMP\Models\Version
      * @throws \Http\Client\Exception
@@ -171,7 +162,7 @@ class TestCase extends BaseTestCase
         $cachedVersion = $this->cache->getItem('version');
 
         if (! $cachedVersion->isHit()) {
-            $cachedVersion->set($this->client->version())->expiresAfter(60);
+            $cachedVersion->set($this->client->version()->get())->expiresAfter(self::CACHE_SECONDS);
             $this->cache->save($cachedVersion);
         }
 
@@ -184,14 +175,13 @@ class TestCase extends BaseTestCase
      * @return \TruckersMP\Models\Rule
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\Exceptions\APIErrorException
      */
     public function rules(): Rule
     {
         $cachedRules = $this->cache->getItem('rules');
 
         if (! $cachedRules->isHit()) {
-            $cachedRules->set($this->client->rules())->expiresAfter(60);
+            $cachedRules->set($this->client->rules()->get())->expiresAfter(self::CACHE_SECONDS);
             $this->cache->save($cachedRules);
         }
 

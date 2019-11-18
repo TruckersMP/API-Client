@@ -1,149 +1,110 @@
 <?php
 
-/**
- * TruckersMP REST API Library
- * Website: truckersmp.com
- */
-
 namespace TruckersMP;
 
-use TruckersMP\Collections\BanCollection;
-use TruckersMP\Collections\CompanyCollection;
-use TruckersMP\Collections\ServerCollection;
-use TruckersMP\Helpers\Request;
-use TruckersMP\Models\Company;
 use TruckersMP\Models\GameTime;
-use TruckersMP\Models\Player;
-use TruckersMP\Models\Rule;
-use TruckersMP\Models\Version;
+use TruckersMP\Requests\BanRequest;
+use TruckersMP\Requests\CompanyRequest;
+use TruckersMP\Requests\GameTimeRequest;
+use TruckersMP\Requests\PlayerRequest;
+use TruckersMP\Requests\RuleRequest;
+use TruckersMP\Requests\ServerRequest;
+use TruckersMP\Requests\VersionRequest;
 
 class Client
 {
-    const API_ENDPOINT = 'api.truckersmp.com';
-    const API_VERSION = 'v2';
-
     /**
-     * @var Request
-     */
-    protected $request;
-
-    /**
-     * Client constructor.
+     * The configuration to use for Guzzle.
      *
-     * @param array $config
-     * @param bool $secure
+     * @var array
+     */
+    protected $config = [];
+
+    /**
+     * Create a new Client instance.
+     *
+     * @param  array  $config
      */
     public function __construct(array $config = [])
     {
-        $url = 'https://' . self::API_ENDPOINT . '/' . self::API_VERSION . '/';
-
-        $this->request = new Request($url, $config);
+        $this->config = $config;
     }
 
     /**
-     * Get player information by ID.
+     * Get the information for the player with the specified ID.
      *
      * https://stats.truckersmp.com/api#players_lookup
      *
      * @param int $id
-     * @throws \Exception
-     * @throws \Http\Client\Exception
-     * @return Player
+     * @return \TruckersMP\Requests\PlayerRequest
      */
-    public function player(int $id): Player
+    public function player(int $id): PlayerRequest
     {
-        return new Player(
-            $this->request->execute(__FUNCTION__ . '/' . $id)
-        );
+        return new PlayerRequest($this->config, $id);
     }
 
     /**
-     * Get bans information by player ID.
+     * Get the bans for the player with the specified ID.
      *
      * https://stats.truckersmp.com/api#ban_lookup
      *
      * @param int $id
      *
-     * @return BanCollection
-     *@throws \Http\Client\Exception
-     * @throws \Exception
+     * @return \TruckersMP\Requests\BanRequest
      */
-    public function bans(int $id): BanCollection
+    public function bans(int $id): BanRequest
     {
-        return new BanCollection(
-            $this->request->execute(__FUNCTION__ . '/' . $id)
-        );
+        return new BanRequest($this->config, $id);
     }
 
     /**
-     * Get server information.
+     * Get the information about the servers.
      *
      * https://stats.truckersmp.com/api#servers_list
      *
-     * @throws \Exception
-     * @throws \Http\Client\Exception
-     * @return ServerCollection
+     * @return \TruckersMP\Requests\ServerRequest
      */
-    public function servers(): ServerCollection
+    public function servers(): ServerRequest
     {
-        return new ServerCollection(
-            $this->request->execute(__FUNCTION__)
-        );
+        return new ServerRequest($this->config);
     }
 
     /**
-     * Get the current game time
+     * Get the current game time.
      *
      * https://stats.truckersmp.com/api#game_time
      *
-     * @throws \Exception
-     * @throws \Http\Client\Exception
-     * @return GameTime
+     * @return \TruckersMP\Requests\GameTimeRequest
      */
-    public function gameTime(): GameTime
+    public function gameTime(): \TruckersMP\Requests\GameTimeRequest
     {
-        return new GameTime(
-            $this->request->execute(strtolower(preg_replace('/(?<!^)[A-Z]/', '_$0', __FUNCTION__)))
-        );
-    }
-
-    public function companies(): CompanyCollection
-    {
-        return new CompanyCollection(
-            $this->request->execute('vtc')
-        );
+        return new GameTimeRequest($this->config);
     }
 
     /**
-     * Get the company information for the company with the specified ID.
+     * Get the information for the company with the specified ID.
      *
      * https://stats.truckersmp.com/api#vtc_info
      *
      * @param int $id
-     * @return \TruckersMP\Models\Company
-     * @throws \Http\Client\Exception
+     *
+     * @return \TruckersMP\Requests\CompanyRequest
      */
-    public function company(int $id): Company
+    public function company(int $id): CompanyRequest
     {
-        return new Company(
-            $this->request->execute('vtc/' . $id)
-        );
+        return new CompanyRequest($this->config, $id);
     }
 
     /**
-     * Information about the current TruckersMP version for ETS2 and ATS
+     * Get the TruckersMP version for ETS2 and ATS.
      *
      * https://stats.truckersmp.com/api#truckersmp_version
      *
-     * @throws \Exception
-     * @throws \Http\Client\Exception
-     * @return Version
+     * @return \TruckersMP\Requests\VersionRequest
      */
-    public function version(): Version
+    public function version(): VersionRequest
     {
-        return new Version(
-            $this->request->execute(__FUNCTION__)
-        );
+        return new VersionRequest($this->config);
     }
 
     /**
@@ -151,14 +112,10 @@ class Client
      *
      * https://stats.truckersmp.com/api#truckersmp_rules
      *
-     * @throws \Http\Client\Exception
-     * @throws Exceptions\APIErrorException
-     * @return Rule
+     * @return \TruckersMP\Requests\RuleRequest
      */
-    public function rules(): Rule
+    public function rules(): RuleRequest
     {
-        return new Rule(
-            $this->request->execute(__FUNCTION__)
-        );
+        return new RuleRequest($this->config);
     }
 }

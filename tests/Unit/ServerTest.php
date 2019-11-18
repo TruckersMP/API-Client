@@ -3,7 +3,6 @@
 namespace Tests\Unit;
 
 use Tests\TestCase;
-use TruckersMP\Collections\ServerCollection;
 use TruckersMP\Models\Server;
 
 class ServerTest extends TestCase
@@ -12,28 +11,14 @@ class ServerTest extends TestCase
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
      */
-    public function testWeCanGetAllServers()
+    public function testWeCanGetAllTheServers()
     {
         $servers = $this->servers();
 
-        $this->assertInstanceOf(ServerCollection::class, $servers);
-    }
+        $this->assertIsArray($servers);
 
-    /**
-     * @throws \Http\Client\Exception
-     * @throws \TruckersMP\Exceptions\IndexNotFoundException
-     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     */
-    public function testWeCanGetASpecificServer()
-    {
-        $servers = $this->servers();
-
-        if (count($servers->getServers()) > 0) {
-            $server = $servers->getServers()[0];
-
-            $this->assertInstanceOf(Server::class, $server);
-        } else {
-            $this->assertCount(0, $servers->getServers());
+        if (count($servers) > 0) {
+            $this->assertInstanceOf(Server::class, $servers[0]);
         }
     }
 
@@ -44,7 +29,7 @@ class ServerTest extends TestCase
      */
     public function testItHasAnId()
     {
-        $server = $this->servers()->getServers()[0];
+        $server = $this->servers()[0];
 
         $this->assertIsInt($server->getId());
     }
@@ -56,7 +41,7 @@ class ServerTest extends TestCase
      */
     public function testItHasAGame()
     {
-        $server = $this->servers()->getServers()[0];
+        $server = $this->servers()[0];
 
         $this->assertIsString($server->getGame());
     }
@@ -68,7 +53,7 @@ class ServerTest extends TestCase
      */
     public function testItHasAnIp()
     {
-        $server = $this->servers()->getServers()[0];
+        $server = $this->servers()[0];
 
         $this->assertIsString($server->getIp());
     }
@@ -80,7 +65,7 @@ class ServerTest extends TestCase
      */
     public function testItHasAPort()
     {
-        $server = $this->servers()->getServers()[0];
+        $server = $this->servers()[0];
 
         $this->assertIsInt($server->getPort());
     }
@@ -92,7 +77,7 @@ class ServerTest extends TestCase
      */
     public function testItHasAName()
     {
-        $server = $this->servers()->getServers()[0];
+        $server = $this->servers()[0];
 
         $this->assertIsString($server->getName());
     }
@@ -104,7 +89,7 @@ class ServerTest extends TestCase
      */
     public function testItHasAShortName()
     {
-        $server = $this->servers()->getServers()[0];
+        $server = $this->servers()[0];
 
         $this->assertIsString($server->getShortName());
     }
@@ -116,7 +101,7 @@ class ServerTest extends TestCase
      */
     public function testItHasAnIdPrefix()
     {
-        $server = $this->servers()->getServers()[0];
+        $server = $this->servers()[0];
 
         if ($server->getIdPrefix() != null) {
             $this->assertIsString($server->getIdPrefix());
@@ -132,7 +117,7 @@ class ServerTest extends TestCase
      */
     public function testItHasAnOnlineState()
     {
-        $server = $this->servers()->getServers()[0];
+        $server = $this->servers()[0];
 
         $this->assertIsBool($server->isOnline());
     }
@@ -144,7 +129,7 @@ class ServerTest extends TestCase
      */
     public function testItHasPlayers()
     {
-        $server = $this->servers()->getServers()[0];
+        $server = $this->servers()[0];
 
         $this->assertIsInt($server->getPlayers());
     }
@@ -156,7 +141,7 @@ class ServerTest extends TestCase
      */
     public function testItHasAQueue()
     {
-        $server = $this->servers()->getServers()[0];
+        $server = $this->servers()[0];
 
         $this->assertIsInt($server->getQueue());
     }
@@ -168,7 +153,7 @@ class ServerTest extends TestCase
      */
     public function testItHasMaxPlayers()
     {
-        $server = $this->servers()->getServers()[0];
+        $server = $this->servers()[0];
 
         $this->assertIsInt($server->getMaxPlayers());
     }
@@ -180,7 +165,7 @@ class ServerTest extends TestCase
      */
     public function testItHasADisplayOrder()
     {
-        $server = $this->servers()->getServers()[0];
+        $server = $this->servers()[0];
 
         $this->assertIsInt($server->getDisplayOrder());
     }
@@ -192,7 +177,7 @@ class ServerTest extends TestCase
      */
     public function testItHasASpeedLimit()
     {
-        $server = $this->servers()->getServers()[0];
+        $server = $this->servers()[0];
 
         $this->assertIsBool($server->hasSpeedLimit());
     }
@@ -204,7 +189,7 @@ class ServerTest extends TestCase
      */
     public function testItHasCollisions()
     {
-        $server = $this->servers()->getServers()[0];
+        $server = $this->servers()[0];
 
         $this->assertIsBool($server->hasCollisions());
     }
@@ -216,7 +201,7 @@ class ServerTest extends TestCase
      */
     public function testItHasCarsForPlayers()
     {
-        $server = $this->servers()->getServers()[0];
+        $server = $this->servers()[0];
 
         $this->assertIsBool($server->canPlayersHaveCars());
     }
@@ -228,7 +213,7 @@ class ServerTest extends TestCase
      */
     public function testItHasPoliceCarsForPlayers()
     {
-        $server = $this->servers()->getServers()[0];
+        $server = $this->servers()[0];
 
         $this->assertIsBool($server->canPlayersHavePoliceCars());
     }
@@ -240,7 +225,7 @@ class ServerTest extends TestCase
      */
     public function testItHasAfkEnable()
     {
-        $server = $this->servers()->getServers()[0];
+        $server = $this->servers()[0];
 
         $this->assertIsBool($server->isAfkEnabled());
     }
@@ -252,7 +237,7 @@ class ServerTest extends TestCase
      */
     public function testItHasAnEvent()
     {
-        $server = $this->servers()->getServers()[0];
+        $server = $this->servers()[0];
 
         $this->assertIsBool($server->isEvent());
     }
@@ -264,7 +249,7 @@ class ServerTest extends TestCase
      */
     public function testItHasASpecialEvent()
     {
-        $server = $this->servers()->getServers()[0];
+        $server = $this->servers()[0];
 
         $this->assertIsBool($server->isSpecialEvent());
     }
@@ -276,7 +261,7 @@ class ServerTest extends TestCase
      */
     public function testItHasPromods()
     {
-        $server = $this->servers()->getServers()[0];
+        $server = $this->servers()[0];
 
         $this->assertIsBool($server->hasPromods());
     }
@@ -288,7 +273,7 @@ class ServerTest extends TestCase
      */
     public function testItHasSyncDelay()
     {
-        $server = $this->servers()->getServers()[0];
+        $server = $this->servers()[0];
 
         $this->assertIsBool($server->hasSyncDelay());
     }

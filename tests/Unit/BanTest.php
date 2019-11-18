@@ -19,24 +19,10 @@ class BanTest extends TestCase
     {
         $bans = $this->bans(self::TEST_ACCOUNT);
 
-        $this->assertInstanceOf(BanCollection::class, $bans);
-    }
+        $this->assertIsArray($bans);
 
-    /**
-     * @throws \Http\Client\Exception
-     * @throws \TruckersMP\Exceptions\IndexNotFoundException
-     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     */
-    public function testWeCanGetASpecificBan()
-    {
-        $bans = $this->bans(self::TEST_ACCOUNT);
-
-        if (count($bans->getBans()) > 0) {
-            $ban = $bans->getBans()[0];
-
-            $this->assertInstanceOf(Ban::class, $ban);
-        } else {
-            $this->assertCount(0, $bans->getBans());
+        if (count($bans) > 0) {
+            $this->assertInstanceOf(Ban::class, $bans[0]);
         }
     }
 
@@ -49,8 +35,8 @@ class BanTest extends TestCase
     {
         $bans = $this->bans(self::TEST_ACCOUNT);
 
-        if (count($bans->getBans()) > 0) {
-            $ban = $bans->getBans()[0];
+        if (count($bans) > 0) {
+            $ban = $bans[0];
 
             if ($ban->getExpirationDate() != null) {
                 $this->assertInstanceOf(Carbon::class, $ban->getExpirationDate());
@@ -58,7 +44,7 @@ class BanTest extends TestCase
                 $this->assertNull($ban->getExpirationDate());
             }
         } else {
-            $this->assertCount(0, $bans->getBans());
+            $this->assertCount(0, $bans);
         }
     }
 
@@ -71,12 +57,12 @@ class BanTest extends TestCase
     {
         $bans = $this->bans(self::TEST_ACCOUNT);
 
-        if (count($bans->getBans()) > 0) {
-            $ban = $bans->getBans()[0];
+        if (count($bans) > 0) {
+            $ban = $bans[0];
 
             $this->assertInstanceOf(Carbon::class, $ban->getCreatedDate());
         } else {
-            $this->assertCount(0, $bans->getBans());
+            $this->assertCount(0, $bans);
         }
     }
 
@@ -89,12 +75,12 @@ class BanTest extends TestCase
     {
         $bans = $this->bans(self::TEST_ACCOUNT);
 
-        if (count($bans->getBans()) > 0) {
-            $ban = $bans->getBans()[0];
+        if (count($bans) > 0) {
+            $ban = $bans[0];
 
             $this->assertIsBool($ban->isActive());
         } else {
-            $this->assertCount(0, $bans->getBans());
+            $this->assertCount(0, $bans);
         }
     }
 
@@ -107,48 +93,48 @@ class BanTest extends TestCase
     {
         $bans = $this->bans(self::TEST_ACCOUNT);
 
-        if (count($bans->getBans()) > 0) {
-            $ban = $bans->getBans()[0];
+        if (count($bans) > 0) {
+            $ban = $bans[0];
 
             $this->assertIsString($ban->getReason());
         } else {
-            $this->assertCount(0, $bans->getBans());
+            $this->assertCount(0, $bans);
         }
     }
 
     /**
-     * @throws \Http\Client\Exception
      * @throws \TruckersMP\Exceptions\IndexNotFoundException
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     * @throws \Http\Client\Exception
      */
     public function testItHasTheNameOfTheAdmin()
     {
         $bans = $this->bans(self::TEST_ACCOUNT);
 
-        if (count($bans->getBans()) > 0) {
-            $ban = $bans->getBans()[0];
+        if (count($bans) > 0) {
+            $ban = $bans[0];
 
             $this->assertIsString($ban->getAdminName());
         } else {
-            $this->assertCount(0, $bans->getBans());
+            $this->assertCount(0, $bans);
         }
     }
 
     /**
-     * @throws \Http\Client\Exception
      * @throws \TruckersMP\Exceptions\IndexNotFoundException
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     * @throws \Http\Client\Exception
      */
     public function testItHasTheIdOfTheAdmin()
     {
         $bans = $this->bans(self::TEST_ACCOUNT);
 
-        if (count($bans->getBans()) > 0) {
-            $ban = $bans->getBans()[0];
+        if (count($bans) > 0) {
+            $ban = $bans[0];
 
             $this->assertIsInt($ban->getAdminId());
         } else {
-            $this->assertCount(0, $bans->getBans());
+            $this->assertCount(0, $bans);
         }
     }
 }
