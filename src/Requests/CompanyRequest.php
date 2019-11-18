@@ -1,8 +1,6 @@
 <?php
 
-
 namespace TruckersMP\Requests;
-
 
 use TruckersMP\Models\Company;
 
