@@ -2,7 +2,9 @@
 
 namespace TruckersMP\Requests;
 
+use TruckersMP\Collections\ServerCollection;
 use TruckersMP\Models\Server;
+use function GuzzleHttp\Promise\all;
 
 class ServerRequest extends Request
 {
@@ -24,15 +26,10 @@ class ServerRequest extends Request
      */
     public function get(): array
     {
-        $servers = [];
-        $results = $this->call();
+        $servers = new ServerCollection(
+            $this->call()
+        );
 
-        // TODO: handle any errors / exceptions
-
-        foreach ($results['response'] as $key => $server) {
-            $servers[$key] = new Server($server);
-        }
-
-        return $servers;
+        return $servers->all();
     }
 }
