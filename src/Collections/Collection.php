@@ -14,11 +14,11 @@ abstract class Collection implements ArrayAccess
     protected $items = [];
 
     /**
-     * Return all the items in the collection.
+     * Get the items in the collection.
      *
      * @return mixed
      */
-    public function all()
+    public function get()
     {
         return $this->items;
     }

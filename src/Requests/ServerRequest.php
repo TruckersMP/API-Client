@@ -30,6 +30,6 @@ class ServerRequest extends Request
             $this->call()
         );
 
-        return $servers->all();
+        return $servers->get();
     }
 }
