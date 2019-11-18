@@ -4,6 +4,7 @@ namespace Tests\Unit;
 
 use Carbon\Carbon;
 use Tests\TestCase;
+use TruckersMP\Collections\CompanyCollection;
 use TruckersMP\Models\Company;
 use TruckersMP\Models\Game;
 use TruckersMP\Models\Social;
@@ -11,6 +12,34 @@ use TruckersMP\Models\Social;
 class CompanyTest extends TestCase
 {
     const TEST_COMPANY = 1;
+
+    /** @test */
+    public function testWeCanGetTheCompanies()
+    {
+        $companies = $this->companies();
+
+        $this->assertInstanceOf(CompanyCollection::class, $companies);
+    }
+
+    /** @test */
+    public function testWeCanGetTheRecentCompanies()
+    {
+        $companies = $this->companies()->getRecent();
+
+        $this->assertNotEmpty($companies);
+
+        $this->assertInstanceOf(Company::class, $companies[0]);
+    }
+
+    /** @test */
+    public function testWeCanGetTheFeaturedCompanies()
+    {
+        $companies = $this->companies()->getFeatured();
+
+        $this->assertNotEmpty($companies);
+
+        $this->assertInstanceOf(Company::class, $companies[0]);
+    }
 
     /**
      * @throws \Http\Client\Exception

@@ -7,6 +7,7 @@ use Phpfastcache\Config\ConfigurationOption;
 use PHPUnit\Framework\TestCase as BaseTestCase;
 use TruckersMP\Client;
 use TruckersMP\Collections\BanCollection;
+use TruckersMP\Collections\CompanyCollection;
 use TruckersMP\Collections\ServerCollection;
 use TruckersMP\Models\Company;
 use TruckersMP\Models\GameTime;
@@ -122,6 +123,18 @@ class TestCase extends BaseTestCase
         }
 
         return $cachedGameTime->get();
+    }
+
+    public function companies(): CompanyCollection
+    {
+        $cachedCompanies = $this->cache->getItem('cache');
+
+        if (! $cachedCompanies->isHit()) {
+            $cachedCompanies->set($this->client->companies())->expiresAfter(60);
+            $this->cache->save($cachedCompanies);
+        }
+
+        return $cachedCompanies->get();
     }
 
     /**

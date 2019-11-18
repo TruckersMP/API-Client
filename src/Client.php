@@ -8,6 +8,7 @@
 namespace TruckersMP;
 
 use TruckersMP\Collections\BanCollection;
+use TruckersMP\Collections\CompanyCollection;
 use TruckersMP\Collections\ServerCollection;
 use TruckersMP\Helpers\Request;
 use TruckersMP\Models\Company;
@@ -103,6 +104,13 @@ class Client
     {
         return new GameTime(
             $this->request->execute(strtolower(preg_replace('/(?<!^)[A-Z]/', '_$0', __FUNCTION__)))
+        );
+    }
+
+    public function companies(): CompanyCollection
+    {
+        return new CompanyCollection(
+            $this->request->execute('vtc')
         );
     }
 

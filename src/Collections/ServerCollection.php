@@ -15,7 +15,7 @@ class ServerCollection extends Collection
     {
         $this->position = 0;
 
-        // handle error
+        // TODO: handle any errors / exceptions
 
         foreach ($response['response'] as $key => $server) {
             $this->collection[$key] = new Server($server);

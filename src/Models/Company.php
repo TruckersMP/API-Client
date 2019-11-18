@@ -146,7 +146,9 @@ class Company
      */
     public function __construct(array $company)
     {
-        $company = $company['response'];
+        if (isset($company['response'])) {
+            $company = $company['response'];
+        }
 
         $this->id = $company['id'];
         $this->name = $company['name'];
@@ -154,11 +156,27 @@ class Company
         $this->ownerName = $company['owner_username'];
         $this->slogan = $company['slogan'];
         $this->tag = $company['tag'];
-        $this->logo = $company['logo'];
-        $this->cover = $company['cover'];
-        $this->information = $company['information'];
-        $this->rules = $company['rules'];
-        $this->requirements = $company['requirements'];
+
+        if (array_key_exists('logo', $company)) {
+            $this->logo = $company['logo'];
+        }
+
+        if (array_key_exists('cover', $company)) {
+            $this->cover = $company['cover'];
+        }
+
+        if (array_key_exists('information', $company)) {
+            $this->information = $company['information'];
+        }
+
+        if (array_key_exists('rules', $company)) {
+            $this->rules = $company['rules'];
+        }
+
+        if (array_key_exists('requirements', $company)) {
+            $this->requirements = $company['requirements'];
+        }
+
         $this->website = $company['website'];
 
         $this->social = new Social(

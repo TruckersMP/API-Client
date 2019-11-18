@@ -15,7 +15,7 @@ class BanCollection extends Collection
     {
         $this->position = 0;
 
-        // handle error
+        // TODO: handle any errors / exceptions
 
         foreach ($response['response'] as $key => $ban) {
             $this->collection[$key] = new Ban($ban);
