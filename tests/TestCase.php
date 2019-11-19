@@ -6,6 +6,7 @@ use Phpfastcache\CacheManager;
 use Phpfastcache\Config\ConfigurationOption;
 use PHPUnit\Framework\TestCase as BaseTestCase;
 use TruckersMP\Client;
+use TruckersMP\Collections\ServerCollection;
 use TruckersMP\Models\Company;
 use TruckersMP\Models\GameTime;
 use TruckersMP\Models\Player;
@@ -97,11 +98,11 @@ class TestCase extends BaseTestCase
     /**
      * Get or cache the server request.
      *
-     * @return \TruckersMP\Models\Server[]
+     * @return \TruckersMP\Collections\ServerCollection|\TruckersMP\Models\Server[]
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
      */
-    public function servers(): array
+    public function servers(): ServerCollection
     {
         $cachedServers = $this->cache->getItem('servers');
 

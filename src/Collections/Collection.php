@@ -3,8 +3,10 @@
 namespace TruckersMP\Collections;
 
 use ArrayAccess;
+use Countable;
+use Iterator;
 
-abstract class Collection implements ArrayAccess
+class Collection implements ArrayAccess, Iterator, Countable
 {
     /**
      * The items contained in the collection.
@@ -14,13 +16,18 @@ abstract class Collection implements ArrayAccess
     protected $items = [];
 
     /**
-     * Get the items in the collection.
+     * The current position in the collection.
      *
-     * @return mixed
+     * @var int
      */
-    public function get()
+    protected $position;
+
+    /**
+     * Create a new Collection instance.
+     */
+    public function __construct()
     {
-        return $this->items;
+        $this->position = 0;
     }
 
     /**
@@ -70,5 +77,65 @@ abstract class Collection implements ArrayAccess
     public function offsetUnset($key)
     {
         unset($this->items[$key]);
+    }
+
+    /**
+     * Return the current element.
+     *
+     * @return mixed
+     */
+    public function current()
+    {
+        return $this->items[$this->position];
+    }
+
+    /**
+     * Move forward to next element.
+     *
+     * @return void
+     */
+    public function next()
+    {
+        ++$this->position;
+    }
+
+    /**
+     * Return the key of the current element.
+     *
+     * @return int
+     */
+    public function key(): int
+    {
+        return $this->position;
+    }
+
+    /**
+     * Checks if current position is valid.
+     *
+     * @return bool
+     */
+    public function valid(): bool
+    {
+        return isset($this->items[$this->position]);
+    }
+
+    /**
+     * Rewind the Iterator to the first element.
+     *
+     * @return void
+     */
+    public function rewind()
+    {
+        $this->position = 0;
+    }
+
+    /**
+     * Count elements of an object.
+     *
+     * @return int
+     */
+    public function count(): int
+    {
+        return count($this->items);
     }
 }

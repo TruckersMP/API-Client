@@ -1,8 +1,6 @@
 <?php
 
-
 namespace TruckersMP\Collections;
-
 
 use TruckersMP\Models\Server;
 

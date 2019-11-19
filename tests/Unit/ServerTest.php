@@ -3,6 +3,7 @@
 namespace Tests\Unit;
 
 use Tests\TestCase;
+use TruckersMP\Collections\ServerCollection;
 use TruckersMP\Models\Server;
 
 class ServerTest extends TestCase
@@ -15,9 +16,9 @@ class ServerTest extends TestCase
     {
         $servers = $this->servers();
 
-        $this->assertIsArray($servers);
+        $this->assertInstanceOf(ServerCollection::class, $servers);
 
-        if (count($servers) > 0) {
+        if ($servers->count() > 0) {
             $this->assertInstanceOf(Server::class, $servers[0]);
         }
     }

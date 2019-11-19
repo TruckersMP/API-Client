@@ -21,15 +21,13 @@ class ServerRequest extends Request
     /**
      * Get the data for the request.
      *
-     * @return Server[]
+     * @return \TruckersMP\Collections\ServerCollection|Server[]
      * @throws \Http\Client\Exception
      */
-    public function get(): array
+    public function get(): ServerCollection
     {
-        $servers = new ServerCollection(
+        return new ServerCollection(
             $this->call()
         );
-
-        return $servers->get();
     }
 }
