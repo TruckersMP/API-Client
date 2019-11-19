@@ -2,10 +2,10 @@
 
 namespace TruckersMP\Requests\Companies;
 
-use TruckersMP\Collections\PostsCollection;
+use TruckersMP\Models\CompanyRole;
 use TruckersMP\Requests\Request;
 
-class NewsRequest extends Request
+class RoleRequest extends Request
 {
     /**
      * The ID of the requested company.
@@ -15,16 +15,24 @@ class NewsRequest extends Request
     protected $companyId;
 
     /**
-     * Create a new NewsRequest instance.
+     * The ID of the requested role.
+     *
+     * @var int
+     */
+    protected $roleId;
+
+    /**
+     * Create a new RolesRequest instance.
      *
      * @param array $config
      * @param int $companyId
      */
-    public function __construct(array $config, int $companyId)
+    public function __construct(array $config, int $companyId, int $roleId)
     {
         parent::__construct($config);
 
         $this->companyId = $companyId;
+        $this->roleId = $roleId;
     }
 
     /**
@@ -34,18 +42,18 @@ class NewsRequest extends Request
      */
     public function getEndpoint(): string
     {
-        return 'vtc/' . $this->companyId . '/news';
+        return 'vtc/' . $this->companyId . '/role/' . $this->roleId;
     }
 
     /**
      * Get the data for the request.
      *
-     * @return PostsCollection|\TruckersMP\Models\CompanyPost[]
+     * @return CompanyRole
      * @throws \Http\Client\Exception
      */
-    public function get(): PostsCollection
+    public function get(): CompanyRole
     {
-        return new PostsCollection(
+        return new CompanyRole(
             $this->call()
         );
     }

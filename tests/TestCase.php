@@ -8,9 +8,11 @@ use PHPUnit\Framework\TestCase as BaseTestCase;
 use TruckersMP\Client;
 use TruckersMP\Collections\CompanyCollection;
 use TruckersMP\Collections\PostsCollection;
+use TruckersMP\Collections\RoleCollection;
 use TruckersMP\Collections\ServerCollection;
 use TruckersMP\Models\Company;
 use TruckersMP\Models\CompanyPost;
+use TruckersMP\Models\CompanyRole;
 use TruckersMP\Models\GameTime;
 use TruckersMP\Models\Player;
 use TruckersMP\Models\Rule;
@@ -240,6 +242,52 @@ class TestCase extends BaseTestCase
         }
 
         return $cachedPost->get();
+    }
+
+    /**
+     * Get or cache the company roles.
+     *
+     * @param int $companyId
+     *
+     * @return \TruckersMP\Collections\RoleCollection|\TruckersMP\Models\CompanyRole[]
+     * @throws \Http\Client\Exception
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     */
+    public function companyRoles(int $companyId): RoleCollection
+    {
+        $cachedRoles = $this->cache->getItem('company_roles_' . $companyId);
+
+        if (! $cachedRoles->isHit()) {
+            $cachedRoles->set($this->client->company($companyId)->roles()->get())->expiresAfter(self::CACHE_SECONDS);
+            $this->cache->save($cachedRoles);
+        }
+
+        return $cachedRoles->get();
+    }
+
+    /**
+     * Get or cache the company role.
+     *
+     * @param int $companyId
+     * @param int $roleId
+     *
+     * @return \TruckersMP\Models\CompanyRole
+     * @throws \Http\Client\Exception
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     */
+    public function companyRole(int $companyId, int $roleId): CompanyRole
+    {
+        $cachedRoles = $this->cache->getItem('company_' . $roleId . '_roles_' . $companyId);
+
+        if (! $cachedRoles->isHit()) {
+            $cachedRoles->set(
+                $this->client->company($companyId)->role($roleId)->get()
+            )->expiresAfter(self::CACHE_SECONDS);
+
+            $this->cache->save($cachedRoles);
+        }
+
+        return $cachedRoles->get();
     }
 
     /**

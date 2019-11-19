@@ -7,7 +7,7 @@ use TruckersMP\Models\Company;
 class CompanyCollection extends Collection
 {
     /**
-     * Create a new CompanyCollection instance.
+     * Create a new Collection instance.
      *
      * @param array $response
      * @param string $type

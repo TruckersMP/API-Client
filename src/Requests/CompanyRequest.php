@@ -5,6 +5,8 @@ namespace TruckersMP\Requests;
 use TruckersMP\Models\Company;
 use TruckersMP\Requests\Companies\NewsRequest;
 use TruckersMP\Requests\Companies\PostRequest;
+use TruckersMP\Requests\Companies\RoleRequest;
+use TruckersMP\Requests\Companies\RolesRequest;
 
 class CompanyRequest extends Request
 {
@@ -81,6 +83,35 @@ class CompanyRequest extends Request
     public function post(int $id): PostRequest
     {
         return new PostRequest(
+            $this->config,
+            $this->id,
+            $id
+        );
+    }
+
+    /**
+     * Get the roles for the company.
+     *
+     * @return \TruckersMP\Requests\Companies\RolesRequest
+     */
+    public function roles(): RolesRequest
+    {
+        return new RolesRequest(
+            $this->config,
+            $this->id
+        );
+    }
+
+    /**
+     * Get the requested company role.
+     *
+     * @param int $id
+     *
+     * @return \TruckersMP\Requests\Companies\RoleRequest
+     */
+    public function role(int $id): RoleRequest
+    {
+        return new RoleRequest(
             $this->config,
             $this->id,
             $id

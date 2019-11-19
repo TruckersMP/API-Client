@@ -2,9 +2,9 @@
 
 namespace TruckersMP\Collections;
 
-use TruckersMP\Models\CompanyPost;
+use TruckersMP\Models\CompanyRole;
 
-class PostsCollection extends Collection
+class RoleCollection extends Collection
 {
     /**
      * Create a new Collection instance.
@@ -17,8 +17,8 @@ class PostsCollection extends Collection
 
         // TODO: handle any errors or exceptions
 
-        foreach ($response['response']['news'] as $key => $post) {
-            $this->items[$key] = new CompanyPost($post);
+        foreach ($response['response']['roles'] as $key => $role) {
+            $this->items[$key] = new CompanyRole($role);
         }
     }
 }
