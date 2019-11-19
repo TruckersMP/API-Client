@@ -160,7 +160,7 @@ class TestCase extends BaseTestCase
      *
      * @param int $id
      *
-     * @return NewsCollection|\TruckersMP\Models\Post[]
+     * @return NewsCollection|\TruckersMP\Models\CompanyPost[]
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
      */

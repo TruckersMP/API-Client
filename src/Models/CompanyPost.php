@@ -2,7 +2,7 @@
 
 namespace TruckersMP\Models;
 
-class Post
+class CompanyPost
 {
     /**
      * The ID of the post.

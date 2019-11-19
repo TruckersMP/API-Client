@@ -2,7 +2,7 @@
 
 namespace TruckersMP\Collections;
 
-use TruckersMP\Models\Post;
+use TruckersMP\Models\CompanyPost;
 
 class NewsCollection extends Collection
 {
@@ -18,7 +18,7 @@ class NewsCollection extends Collection
         // TODO: handle any errors or exceptions
 
         foreach ($response['response']['news'] as $key => $post) {
-            $this->items[$key] = new Post($post);
+            $this->items[$key] = new CompanyPost($post);
         }
     }
 }
