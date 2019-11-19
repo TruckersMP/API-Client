@@ -59,11 +59,11 @@ class CompanyRequest extends Request
     /**
      * Get the news posts for the company.
      *
-     * @return \TruckersMP\Requests\NewsRequest
+     * @return \TruckersMP\Requests\CompanyPostsRequest
      */
-    public function news()
+    public function posts()
     {
-        return new NewsRequest(
+        return new CompanyPostsRequest(
             $this->config,
             $this->id
         );

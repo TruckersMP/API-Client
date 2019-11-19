@@ -3,14 +3,15 @@
 namespace Tests\Unit;
 
 use Tests\TestCase;
-use TruckersMP\Collections\NewsCollection;
+use TruckersMP\Collections\PostsCollection;
+use TruckersMP\Models\CompanyPost;
 
-class NewsTest extends TestCase
+class CompanyPostTest extends TestCase
 {
     /**
      * The ID of the company to use in the tests.
      */
-    private const TEST_COMPANY = 1;
+    private const TEST_COMPANY = 17;
 
     /**
      * @throws \Http\Client\Exception
@@ -20,7 +21,7 @@ class NewsTest extends TestCase
     {
         $posts = $this->companyNews(self::TEST_COMPANY);
 
-        $this->assertInstanceOf(NewsCollection::class, $posts);
+        $this->assertInstanceOf(PostsCollection::class, $posts);
 
         if ($posts->count() > 0) {
             $post = $posts[0];

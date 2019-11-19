@@ -6,7 +6,7 @@ use Phpfastcache\CacheManager;
 use Phpfastcache\Config\ConfigurationOption;
 use PHPUnit\Framework\TestCase as BaseTestCase;
 use TruckersMP\Client;
-use TruckersMP\Collections\NewsCollection;
+use TruckersMP\Collections\PostsCollection;
 use TruckersMP\Collections\ServerCollection;
 use TruckersMP\Models\Company;
 use TruckersMP\Models\GameTime;
@@ -160,16 +160,16 @@ class TestCase extends BaseTestCase
      *
      * @param int $id
      *
-     * @return NewsCollection|\TruckersMP\Models\CompanyPost[]
+     * @return PostsCollection|\TruckersMP\Models\CompanyPost[]
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
      */
-    public function companyNews(int $id): NewsCollection
+    public function companyNews(int $id): PostsCollection
     {
         $cachedNews = $this->cache->getItem('company_news_' . $id);
 
         if (! $cachedNews->isHit()) {
-            $cachedNews->set($this->client->company($id)->news()->get())->expiresAfter(self::CACHE_SECONDS);
+            $cachedNews->set($this->client->company($id)->posts()->get())->expiresAfter(self::CACHE_SECONDS);
             $this->cache->save($cachedNews);
         }
 

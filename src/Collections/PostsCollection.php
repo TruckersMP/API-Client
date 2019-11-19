@@ -4,7 +4,7 @@ namespace TruckersMP\Collections;
 
 use TruckersMP\Models\CompanyPost;
 
-class NewsCollection extends Collection
+class PostsCollection extends Collection
 {
     /**
      * Create a new NewsCollection instance.

@@ -2,9 +2,9 @@
 
 namespace TruckersMP\Requests;
 
-use TruckersMP\Collections\NewsCollection;
+use TruckersMP\Collections\PostsCollection;
 
-class NewsRequest extends Request
+class CompanyPostsRequest extends Request
 {
     /**
      * The ID of the requested company.
@@ -43,7 +43,7 @@ class NewsRequest extends Request
      */
     public function get()
     {
-        return new NewsCollection(
+        return new PostsCollection(
             $this->call()
         );
     }
