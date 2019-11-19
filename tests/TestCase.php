@@ -6,6 +6,7 @@ use Phpfastcache\CacheManager;
 use Phpfastcache\Config\ConfigurationOption;
 use PHPUnit\Framework\TestCase as BaseTestCase;
 use TruckersMP\Client;
+use TruckersMP\Collections\NewsCollection;
 use TruckersMP\Collections\ServerCollection;
 use TruckersMP\Models\Company;
 use TruckersMP\Models\GameTime;
@@ -152,6 +153,27 @@ class TestCase extends BaseTestCase
         }
 
         return $cachedCompany->get();
+    }
+
+    /**
+     * Get the news posts for the specified company.
+     *
+     * @param int $id
+     *
+     * @return NewsCollection|\TruckersMP\Models\Post[]
+     * @throws \Http\Client\Exception
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     */
+    public function companyNews(int $id): NewsCollection
+    {
+        $cachedNews = $this->cache->getItem('company_news_' . $id);
+
+        if (! $cachedNews->isHit()) {
+            $cachedNews->set($this->client->company($id)->news()->get())->expiresAfter(self::CACHE_SECONDS);
+            $this->cache->save($cachedNews);
+        }
+
+        return $cachedNews->get();
     }
 
     /**

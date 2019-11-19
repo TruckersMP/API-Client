@@ -11,6 +11,9 @@ use TruckersMP\Models\Social;
 
 class CompanyTest extends TestCase
 {
+    /**
+     * The ID of the company to use in the tests.
+     */
     const TEST_COMPANY = 1;
 
     /** @test */

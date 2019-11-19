@@ -4,12 +4,14 @@ namespace Tests\Unit;
 
 use Carbon\Carbon;
 use Tests\TestCase;
-use TruckersMP\Collections\BanCollection;
 use TruckersMP\Models\Ban;
 
 class BanTest extends TestCase
 {
-    const TEST_ACCOUNT = 28159;
+    /**
+     * The ID of the player to use in the tests.
+     */
+    private const TEST_ACCOUNT = 28159;
 
     /**
      * @throws \Http\Client\Exception

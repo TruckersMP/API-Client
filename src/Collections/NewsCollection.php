@@ -2,12 +2,12 @@
 
 namespace TruckersMP\Collections;
 
-use TruckersMP\Models\Server;
+use TruckersMP\Models\Post;
 
-class ServerCollection extends Collection
+class NewsCollection extends Collection
 {
     /**
-     * Create a new Collection instance
+     * Create a new NewsCollection instance.
      *
      * @param array $response
      */
@@ -17,8 +17,8 @@ class ServerCollection extends Collection
 
         // TODO: handle any errors or exceptions
 
-        foreach ($response['response'] as $key => $server) {
-            $this->items[$key] = new Server($server);
+        foreach ($response['response']['news'] as $key => $post) {
+            $this->items[$key] = new Post($post);
         }
     }
 }

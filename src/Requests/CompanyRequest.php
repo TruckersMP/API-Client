@@ -14,6 +14,13 @@ class CompanyRequest extends Request
     protected $id;
 
     /**
+     * The configuration to use for Guzzle.
+     *
+     * @var array
+     */
+    protected $config = [];
+
+    /**
      * Create a new CompanyRequest instance.
      *
      * @param array $config
@@ -46,6 +53,19 @@ class CompanyRequest extends Request
     {
         return new Company(
             $this->call()
+        );
+    }
+
+    /**
+     * Get the news posts for the company.
+     *
+     * @return \TruckersMP\Requests\NewsRequest
+     */
+    public function news()
+    {
+        return new NewsRequest(
+            $this->config,
+            $this->id
         );
     }
 }

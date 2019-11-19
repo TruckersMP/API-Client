@@ -2,7 +2,6 @@
 
 namespace TruckersMP;
 
-use TruckersMP\Models\GameTime;
 use TruckersMP\Requests\BanRequest;
 use TruckersMP\Requests\CompanyRequest;
 use TruckersMP\Requests\GameTimeRequest;
@@ -76,7 +75,7 @@ class Client
      *
      * @return \TruckersMP\Requests\GameTimeRequest
      */
-    public function gameTime(): \TruckersMP\Requests\GameTimeRequest
+    public function gameTime(): GameTimeRequest
     {
         return new GameTimeRequest($this->config);
     }

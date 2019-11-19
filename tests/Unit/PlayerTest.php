@@ -8,7 +8,10 @@ use TruckersMP\Models\Player;
 
 class PlayerTest extends TestCase
 {
-    const TEST_ACCOUNT = 28159;
+    /**
+     * The ID of the player to use in the tests.
+     */
+    private const TEST_ACCOUNT = 28159;
 
     /**
      * @throws \Http\Client\Exception
