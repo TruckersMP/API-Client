@@ -1,0 +1,56 @@
+<?php
+
+namespace TruckersMP\Requests;
+
+use TruckersMP\Collections\CompanyCollection;
+
+class CompaniesRequest extends Request
+{
+    /**
+     * Get the endpoint of the request.
+     *
+     * @return string
+     */
+    public function getEndpoint(): string
+    {
+        return 'vtc';
+    }
+
+    /**
+     * Get the data for the request.
+     *
+     * @return mixed
+     */
+    public function get()
+    {
+        // TODO: Implement get() method.
+    }
+
+    /**
+     * Get the recent companies.
+     *
+     * @return \TruckersMP\Collections\CompanyCollection
+     * @throws \Http\Client\Exception
+     */
+    public function recent(): CompanyCollection
+    {
+        return new CompanyCollection(
+            $this->call(),
+            'recent'
+        );
+    }
+
+    /**
+     * Get the featured companies.
+     *
+     * @return \TruckersMP\Collections\CompanyCollection
+     * @throws \Http\Client\Exception
+     */
+    public function featured(): CompanyCollection
+    {
+        return new CompanyCollection(
+            $this->call(),
+            'featured',
+        );
+    }
+}

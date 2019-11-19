@@ -16,44 +16,42 @@ class CompanyTest extends TestCase
      */
     private const TEST_COMPANY = 1;
 
-    /** @test */
-    /**public function testWeCanGetTheCompanies()
+    /**
+     * @throws \Http\Client\Exception
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     */
+    public function testWeCanGetTheRecentCompanies()
     {
-        $companies = $this->companies();
+        $companies = $this->recentCompanies();
+
+        $this->assertNotEmpty($companies);
 
         $this->assertInstanceOf(CompanyCollection::class, $companies);
-    }*/
-
-    /** @test */
-    /*public function testWeCanGetTheRecentCompanies()
-    {
-        $companies = $this->companies()->getRecent();
-
-        $this->assertNotEmpty($companies);
-
-        $this->assertInstanceOf(Company::class, $companies[0]);
-    }*/
-
-    /** @test */
-    /*public function testWeCanGetTheFeaturedCompanies()
-    {
-        $companies = $this->companies()->getFeatured();
-
-        $this->assertNotEmpty($companies);
-
-        $this->assertInstanceOf(Company::class, $companies[0]);
-    }*/
+    }
 
     /**
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
      */
-    /*public function testWeCanGetACompany()
+    public function testWeCanGetTheFeaturedCompanies()
+    {
+        $companies = $this->featuredCompanies();
+
+        $this->assertNotEmpty($companies);
+
+        $this->assertInstanceOf(CompanyCollection::class, $companies);
+    }
+
+    /**
+     * @throws \Http\Client\Exception
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     */
+    public function testWeCanGetACompany()
     {
         $company = $this->company(self::TEST_COMPANY);
 
         $this->assertInstanceOf(Company::class, $company);
-    }*/
+    }
 
     /**
      * @throws \Http\Client\Exception

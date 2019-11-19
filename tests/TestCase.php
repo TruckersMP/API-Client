@@ -6,6 +6,7 @@ use Phpfastcache\CacheManager;
 use Phpfastcache\Config\ConfigurationOption;
 use PHPUnit\Framework\TestCase as BaseTestCase;
 use TruckersMP\Client;
+use TruckersMP\Collections\CompanyCollection;
 use TruckersMP\Collections\PostsCollection;
 use TruckersMP\Collections\ServerCollection;
 use TruckersMP\Models\Company;
@@ -134,6 +135,44 @@ class TestCase extends BaseTestCase
         }
 
         return $cachedGameTime->get();
+    }
+
+    /**
+     * Get or cache the recent companies.
+     *
+     * @return \TruckersMP\Collections\CompanyCollection|Company[]
+     * @throws \Http\Client\Exception
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     */
+    public function recentCompanies(): CompanyCollection
+    {
+        $cachedCompanies = $this->cache->getItem('recent_companies');
+
+        if (! $cachedCompanies->isHit()) {
+            $cachedCompanies->set($this->client->companies()->recent());
+            $this->cache->save($cachedCompanies);
+        }
+
+        return $cachedCompanies->get();
+    }
+
+    /**
+     * Get or cache the featured companies.
+     *
+     * @return \TruckersMP\Collections\CompanyCollection
+     * @throws \Http\Client\Exception
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     */
+    public function featuredCompanies(): CompanyCollection
+    {
+        $cachedCompanies = $this->cache->getItem('featured_companies');
+
+        if (! $cachedCompanies->isHit()) {
+            $cachedCompanies->set($this->client->companies()->featured());
+            $this->cache->save($cachedCompanies);
+        }
+
+        return $cachedCompanies->get();
     }
 
     /**

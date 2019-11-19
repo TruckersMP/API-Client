@@ -2,7 +2,9 @@
 
 namespace TruckersMP;
 
+use TruckersMP\Collections\CompanyCollection;
 use TruckersMP\Requests\BanRequest;
+use TruckersMP\Requests\CompaniesRequest;
 use TruckersMP\Requests\CompanyRequest;
 use TruckersMP\Requests\GameTimeRequest;
 use TruckersMP\Requests\PlayerRequest;
@@ -78,6 +80,18 @@ class Client
     public function gameTime(): GameTimeRequest
     {
         return new GameTimeRequest($this->config);
+    }
+
+    /**
+     * Get the recent and featured companies.
+     *
+     * https://stats.truckersmp.com/api#vtc_index
+     *
+     * @return \TruckersMP\Requests\CompaniesRequest
+     */
+    public function companies(): CompaniesRequest
+    {
+        return new CompaniesRequest($this->config);
     }
 
     /**
