@@ -1,10 +1,11 @@
 <?php
 
-namespace TruckersMP\Requests;
+namespace TruckersMP\Requests\Companies;
 
 use TruckersMP\Collections\PostsCollection;
+use TruckersMP\Requests\Request;
 
-class CompanyPostsRequest extends Request
+class NewsRequest extends Request
 {
     /**
      * The ID of the requested company.

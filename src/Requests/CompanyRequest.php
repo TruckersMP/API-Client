@@ -3,6 +3,8 @@
 namespace TruckersMP\Requests;
 
 use TruckersMP\Models\Company;
+use TruckersMP\Requests\Companies\NewsRequest;
+use TruckersMP\Requests\Companies\PostRequest;
 
 class CompanyRequest extends Request
 {
@@ -59,13 +61,29 @@ class CompanyRequest extends Request
     /**
      * Get the news posts for the company.
      *
-     * @return \TruckersMP\Requests\CompanyPostsRequest
+     * @return \TruckersMP\Requests\Companies\NewsRequest
      */
-    public function posts()
+    public function posts(): NewsRequest
     {
-        return new CompanyPostsRequest(
+        return new NewsRequest(
             $this->config,
             $this->id
+        );
+    }
+
+    /**
+     * Get the post for the company with the specified ID.
+     *
+     * @param int $id
+     *
+     * @return \TruckersMP\Requests\Companies\PostRequest
+     */
+    public function post(int $id): PostRequest
+    {
+        return new PostRequest(
+            $this->config,
+            $this->id,
+            $id
         );
     }
 }

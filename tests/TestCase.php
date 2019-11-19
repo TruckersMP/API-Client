@@ -9,10 +9,12 @@ use TruckersMP\Client;
 use TruckersMP\Collections\PostsCollection;
 use TruckersMP\Collections\ServerCollection;
 use TruckersMP\Models\Company;
+use TruckersMP\Models\CompanyPost;
 use TruckersMP\Models\GameTime;
 use TruckersMP\Models\Player;
 use TruckersMP\Models\Rule;
 use TruckersMP\Models\Version;
+use TruckersMP\Requests\Companies\PostRequest;
 
 class TestCase extends BaseTestCase
 {
@@ -164,9 +166,9 @@ class TestCase extends BaseTestCase
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
      */
-    public function companyNews(int $id): PostsCollection
+    public function companyPosts(int $id): PostsCollection
     {
-        $cachedNews = $this->cache->getItem('company_news_' . $id);
+        $cachedNews = $this->cache->getItem('company_posts_' . $id);
 
         if (! $cachedNews->isHit()) {
             $cachedNews->set($this->client->company($id)->posts()->get())->expiresAfter(self::CACHE_SECONDS);
@@ -174,6 +176,31 @@ class TestCase extends BaseTestCase
         }
 
         return $cachedNews->get();
+    }
+
+    /**
+     * Get or Cache the specified company post.
+     *
+     * @param int $companyId
+     * @param int $postId
+     *
+     * @return CompanyPost
+     * @throws \Http\Client\Exception
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     */
+    public function companyPost(int $companyId, int $postId): CompanyPost
+    {
+        $cachedPost = $this->cache->getItem('company_' . $companyId . '_post_' . $postId);
+
+        if (! $cachedPost->isHit()) {
+            $cachedPost->set(
+                $this->client->company($companyId)->post($postId)->get()
+            )->expiresAfter(self::CACHE_SECONDS);
+
+            $this->cache->save($cachedPost);
+        }
+
+        return $cachedPost->get();
     }
 
     /**

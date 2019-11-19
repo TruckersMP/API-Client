@@ -26,6 +26,13 @@ class CompanyPost
     protected $summary;
 
     /**
+     * The content of the post.
+     *
+     * @var string
+     */
+    protected $content;
+
+    /**
      * The ID of the author who wrote the post.
      *
      * @var int
@@ -53,9 +60,20 @@ class CompanyPost
      */
     public function __construct(array $post)
     {
+        // If the data is being passed directly from an API call, then we need to get
+        // the data from the response element.
+        if (isset($post['response'])) {
+            $post = $post['response'];
+        }
+
         $this->id = $post['id'];
         $this->title = $post['title'];
         $this->summary = $post['content_summary'];
+
+        if (isset($post['content'])) {
+            $this->content = $post['content'];
+        }
+
         $this->authorId = $post['author_id'];
         $this->author = $post['author'];
         $this->pinned = $post['pinned'];
@@ -83,6 +101,14 @@ class CompanyPost
     public function getSummary(): string
     {
         return $this->summary;
+    }
+
+    /**
+     * @return string
+     */
+    public function getContent(): string
+    {
+        return $this->content;
     }
 
     /**

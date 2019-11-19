@@ -14,12 +14,17 @@ class CompanyPostTest extends TestCase
     private const TEST_COMPANY = 17;
 
     /**
+     * The ID of the post to use in the tests.
+     */
+    private const TEST_POST = 121;
+
+    /**
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
      */
     public function testWeCanGetAllTheNewsPosts()
     {
-        $posts = $this->companyNews(self::TEST_COMPANY);
+        $posts = $this->companyPosts(self::TEST_COMPANY);
 
         $this->assertInstanceOf(PostsCollection::class, $posts);
 
@@ -28,5 +33,93 @@ class CompanyPostTest extends TestCase
 
             $this->assertInstanceOf(CompanyPost::class, $post);
         }
+    }
+
+    /**
+     * @throws \Http\Client\Exception
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     */
+    public function testWeCanGetAPost()
+    {
+        $post = $this->companyPost(self::TEST_COMPANY, self::TEST_POST);
+
+        $this->assertInstanceOf(CompanyPost::class, $post);
+    }
+
+    /**
+     * @throws \Http\Client\Exception
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     */
+    public function testItHasAnId()
+    {
+        $post = $this->companyPost(self::TEST_COMPANY, self::TEST_POST);
+
+        $this->assertIsInt($post->getId());
+    }
+
+    /**
+     * @throws \Http\Client\Exception
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     */
+    public function testItHasATitle()
+    {
+        $post = $this->companyPost(self::TEST_COMPANY, self::TEST_POST);
+
+        $this->assertIsString($post->getTitle());
+    }
+
+    /**
+     * @throws \Http\Client\Exception
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     */
+    public function testItHasASummary()
+    {
+        $post = $this->companyPost(self::TEST_COMPANY, self::TEST_POST);
+
+        $this->assertIsString($post->getSummary());
+    }
+
+    /**
+     * @throws \Http\Client\Exception
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     */
+    public function testItHasCotent()
+    {
+        $post = $this->companyPost(self::TEST_COMPANY, self::TEST_POST);
+
+        $this->assertIsString($post->getContent());
+    }
+
+    /**
+     * @throws \Http\Client\Exception
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     */
+    public function testItHasAnAuthorId()
+    {
+        $post = $this->companyPost(self::TEST_COMPANY, self::TEST_POST);
+
+        $this->assertIsInt($post->getAuthorId());
+    }
+
+    /**
+     * @throws \Http\Client\Exception
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     */
+    public function testItHasAnAuthor()
+    {
+        $post = $this->companyPost(self::TEST_COMPANY, self::TEST_POST);
+
+        $this->assertIsString($post->getAuthor());
+    }
+
+    /**
+     * @throws \Http\Client\Exception
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     */
+    public function testIfThePostIsPinned()
+    {
+        $post = $this->companyPost(self::TEST_COMPANY, self::TEST_POST);
+
+        $this->assertIsBool($post->isPinned());
     }
 }
