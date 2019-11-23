@@ -43,7 +43,7 @@ enabled:
   - normalize_index_brace
   - nullable_type_declarations
   - phpdoc_add_missing_param_annotation
-  - phpdoc_align
+  - phpdoc_indent
   - phpdoc_inline_tag
   - phpdoc_link_to_see
   - phpdoc_scalar
