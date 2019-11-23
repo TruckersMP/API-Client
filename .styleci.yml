@@ -51,7 +51,6 @@ enabled:
   - phpdoc_trim
   - phpdoc_type_to_var
   - phpdoc_types
-  - property_visibility_required
   - short_array_syntax
   - short_list_syntax
   - short_scalar_cast
