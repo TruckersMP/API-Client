@@ -21,6 +21,8 @@ class VersionRequest extends Request
      *
      * @return Version
      * @throws \Http\Client\Exception
+     * @throws \TruckersMP\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\Exceptions\RequestException
      */
     public function get(): Version
     {

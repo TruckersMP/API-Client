@@ -42,6 +42,8 @@ class RolesRequest extends Request
      *
      * @return RoleCollection|\TruckersMP\Models\CompanyRole[]
      * @throws \Http\Client\Exception
+     * @throws \TruckersMP\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\Exceptions\RequestException
      */
     public function get(): RoleCollection
     {

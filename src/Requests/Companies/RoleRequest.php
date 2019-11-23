@@ -50,6 +50,8 @@ class RoleRequest extends Request
      *
      * @return CompanyRole
      * @throws \Http\Client\Exception
+     * @throws \TruckersMP\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\Exceptions\RequestException
      */
     public function get(): CompanyRole
     {

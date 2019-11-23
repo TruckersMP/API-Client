@@ -23,6 +23,8 @@ class ServerRequest extends Request
      *
      * @return \TruckersMP\Collections\ServerCollection|Server[]
      * @throws \Http\Client\Exception
+     * @throws \TruckersMP\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\Exceptions\RequestException
      */
     public function get(): ServerCollection
     {

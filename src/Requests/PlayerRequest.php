@@ -41,6 +41,8 @@ class PlayerRequest extends Request
      *
      * @return Player
      * @throws \Http\Client\Exception
+     * @throws \TruckersMP\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\Exceptions\RequestException
      */
     public function get(): Player
     {

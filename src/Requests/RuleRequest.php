@@ -21,6 +21,8 @@ class RuleRequest extends Request
      *
      * @return Rule
      * @throws \Http\Client\Exception
+     * @throws \TruckersMP\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\Exceptions\RequestException
      */
     public function get(): Rule
     {

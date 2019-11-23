@@ -31,6 +31,8 @@ class CompaniesRequest extends Request
      *
      * @return \TruckersMP\Collections\CompanyCollection
      * @throws \Http\Client\Exception
+     * @throws \TruckersMP\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\Exceptions\RequestException
      */
     public function recent(): CompanyCollection
     {

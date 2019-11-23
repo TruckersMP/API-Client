@@ -67,6 +67,8 @@ class TestCase extends BaseTestCase
      * @return \TruckersMP\Models\Player
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     * @throws \TruckersMP\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\Exceptions\RequestException
      */
     public function player(int $id): Player
     {
@@ -86,8 +88,10 @@ class TestCase extends BaseTestCase
      * @param int $id
      *
      * @return \TruckersMP\Models\Ban[]
-     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
      * @throws \Http\Client\Exception
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     * @throws \TruckersMP\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\Exceptions\RequestException
      */
     public function bans(int $id): array
     {
@@ -107,6 +111,8 @@ class TestCase extends BaseTestCase
      * @return \TruckersMP\Collections\ServerCollection|\TruckersMP\Models\Server[]
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     * @throws \TruckersMP\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\Exceptions\RequestException
      */
     public function servers(): ServerCollection
     {
@@ -126,6 +132,8 @@ class TestCase extends BaseTestCase
      * @return \TruckersMP\Models\GameTime
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     * @throws \TruckersMP\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\Exceptions\RequestException
      */
     public function gameTime(): GameTime
     {
@@ -145,6 +153,8 @@ class TestCase extends BaseTestCase
      * @return \TruckersMP\Collections\CompanyCollection|Company[]
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     * @throws \TruckersMP\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\Exceptions\RequestException
      */
     public function recentCompanies(): CompanyCollection
     {
@@ -183,8 +193,10 @@ class TestCase extends BaseTestCase
      * @param int $id
      *
      * @return \TruckersMP\Models\Company
-     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
      * @throws \Http\Client\Exception
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     * @throws \TruckersMP\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\Exceptions\RequestException
      */
     public function company(int $id): Company
     {
@@ -206,6 +218,8 @@ class TestCase extends BaseTestCase
      * @return PostsCollection|\TruckersMP\Models\CompanyPost[]
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     * @throws \TruckersMP\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\Exceptions\RequestException
      */
     public function companyPosts(int $id): PostsCollection
     {
@@ -228,6 +242,8 @@ class TestCase extends BaseTestCase
      * @return CompanyPost
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     * @throws \TruckersMP\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\Exceptions\RequestException
      */
     public function companyPost(int $companyId, int $postId): CompanyPost
     {
@@ -252,6 +268,8 @@ class TestCase extends BaseTestCase
      * @return \TruckersMP\Collections\RoleCollection|\TruckersMP\Models\CompanyRole[]
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     * @throws \TruckersMP\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\Exceptions\RequestException
      */
     public function companyRoles(int $companyId): RoleCollection
     {
@@ -274,6 +292,8 @@ class TestCase extends BaseTestCase
      * @return \TruckersMP\Models\CompanyRole
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     * @throws \TruckersMP\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\Exceptions\RequestException
      */
     public function companyRole(int $companyId, int $roleId): CompanyRole
     {
@@ -296,6 +316,8 @@ class TestCase extends BaseTestCase
      * @return \TruckersMP\Models\Version
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     * @throws \TruckersMP\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\Exceptions\RequestException
      */
     public function version(): Version
     {
@@ -315,6 +337,8 @@ class TestCase extends BaseTestCase
      * @return \TruckersMP\Models\Rule
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     * @throws \TruckersMP\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\Exceptions\RequestException
      */
     public function rules(): Rule
     {

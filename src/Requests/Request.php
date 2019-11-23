@@ -4,7 +4,9 @@ namespace TruckersMP\Requests;
 
 use GuzzleHttp\Client as GuzzleClient;
 use Http\Adapter\Guzzle6\Client as GuzzleAdapter;
+use Http\Client\Exception\HttpException;
 use Http\Message\MessageFactory\GuzzleMessageFactory;
+use TruckersMP\ApiErrorHandler;
 
 abstract class Request
 {
@@ -67,11 +69,19 @@ abstract class Request
      *
      * @return  array
      * @throws \Http\Client\Exception
+     * @throws \TruckersMP\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\Exceptions\RequestException
      */
     public function call(): array
     {
         $request = $this->message->createRequest('GET', $this->url . $this->getEndpoint());
-        $result = $this->adapter->sendRequest($request);
+        $result = null;
+
+        try {
+            $result = $this->adapter->sendRequest($request);
+        } catch (HttpException $exception) {
+            ApiErrorHandler::check($exception->getResponse()->getBody(), $exception->getCode());
+        }
 
         return json_decode((string)$result->getBody(), true, 512, JSON_BIGINT_AS_STRING);
     }

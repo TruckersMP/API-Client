@@ -51,6 +51,8 @@ class PostRequest extends Request
      *
      * @return CompanyPost
      * @throws \Http\Client\Exception
+     * @throws \TruckersMP\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\Exceptions\RequestException
      */
     public function get(): CompanyPost
     {

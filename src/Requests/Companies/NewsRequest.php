@@ -42,6 +42,8 @@ class NewsRequest extends Request
      *
      * @return PostsCollection|\TruckersMP\Models\CompanyPost[]
      * @throws \Http\Client\Exception
+     * @throws \TruckersMP\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\Exceptions\RequestException
      */
     public function get(): PostsCollection
     {

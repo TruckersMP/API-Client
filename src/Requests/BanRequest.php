@@ -41,6 +41,8 @@ class BanRequest extends Request
      *
      * @return \TruckersMP\Models\Ban[]
      * @throws \Http\Client\Exception
+     * @throws \TruckersMP\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\Exceptions\RequestException
      */
     public function get(): array
     {

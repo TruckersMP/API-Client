@@ -22,6 +22,8 @@ class GameTimeRequest extends Request
      *
      * @return GameTime
      * @throws \Http\Client\Exception
+     * @throws \TruckersMP\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\Exceptions\RequestException
      */
     public function get(): GameTime
     {
