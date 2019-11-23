@@ -33,7 +33,6 @@ class Request
      *
      * @param       $apiEndpoint
      * @param array $config
-     *
      */
     public function __construct($apiEndpoint, $config)
     {
@@ -53,6 +52,6 @@ class Request
         $request = $this->message->createRequest('GET', $this->apiEndpoint . $uri);
         $result  = $this->adapter->sendRequest($request);
 
-        return json_decode((string)$result->getBody(), true, 512, JSON_BIGINT_AS_STRING);
+        return json_decode((string) $result->getBody(), true, 512, JSON_BIGINT_AS_STRING);
     }
 }

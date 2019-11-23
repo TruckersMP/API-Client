@@ -2,7 +2,6 @@
 
 namespace TruckersMP\Types;
 
-use Psr\Http\Message\ResponseInterface;
 use TruckersMP\Exceptions\APIErrorException;
 
 class Servers implements \Iterator, \ArrayAccess
@@ -32,7 +31,7 @@ class Servers implements \Iterator, \ArrayAccess
     {
         $this->position = 0;
 
-        if ($response['error'] == 'true' && $response['descriptor'] == 'Unable to fetch servers') {
+        if ($response['error'] === 'true' && $response['descriptor'] === 'Unable to fetch servers') {
             throw new APIErrorException($response['descriptor']);
         }
 
