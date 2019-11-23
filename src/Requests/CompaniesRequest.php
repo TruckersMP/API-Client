@@ -19,6 +19,7 @@ class CompaniesRequest extends Request
     /**
      * Get the data for the request.
      *
+     *
      * @return mixed
      */
     public function get()
@@ -52,7 +53,7 @@ class CompaniesRequest extends Request
     {
         return new CompanyCollection(
             $this->call(),
-            'featured',
+            'featured'
         );
     }
 }
