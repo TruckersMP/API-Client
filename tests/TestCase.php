@@ -10,6 +10,7 @@ use TruckersMP\Collections\CompanyCollection;
 use TruckersMP\Collections\PostsCollection;
 use TruckersMP\Collections\RoleCollection;
 use TruckersMP\Collections\ServerCollection;
+use TruckersMP\Models\Companies;
 use TruckersMP\Models\Company;
 use TruckersMP\Models\CompanyPost;
 use TruckersMP\Models\CompanyRole;
@@ -150,37 +151,18 @@ class TestCase extends BaseTestCase
     /**
      * Get or cache the recent companies.
      *
-     * @return \TruckersMP\Collections\CompanyCollection|Company[]
+     * @return \TruckersMP\Models\Companies
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
      * @throws \TruckersMP\Exceptions\PageNotFoundException
      * @throws \TruckersMP\Exceptions\RequestException
      */
-    public function recentCompanies(): CompanyCollection
+    public function companies(): Companies
     {
         $cachedCompanies = $this->cache->getItem('recent_companies');
 
         if (! $cachedCompanies->isHit()) {
-            $cachedCompanies->set($this->client->companies()->recent());
-            $this->cache->save($cachedCompanies);
-        }
-
-        return $cachedCompanies->get();
-    }
-
-    /**
-     * Get or cache the featured companies.
-     *
-     * @return \TruckersMP\Collections\CompanyCollection
-     * @throws \Http\Client\Exception
-     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     */
-    public function featuredCompanies(): CompanyCollection
-    {
-        $cachedCompanies = $this->cache->getItem('featured_companies');
-
-        if (! $cachedCompanies->isHit()) {
-            $cachedCompanies->set($this->client->companies()->featured());
+            $cachedCompanies->set($this->client->companies()->get());
             $this->cache->save($cachedCompanies);
         }
 

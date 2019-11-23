@@ -9,16 +9,13 @@ class CompanyCollection extends Collection
     /**
      * Create a new Collection instance.
      *
-     * @param array $response
-     * @param string $type
+     * @param array $companies
      */
-    public function __construct(array $response, string $type)
+    public function __construct(array $companies)
     {
         parent::__construct();
 
-        // TODO: handle any errors or exceptions
-
-        foreach ($response['response'][$type] as $key => $company) {
+        foreach ($companies as $key => $company) {
             $this->items[$key] = new Company($company);
         }
     }

@@ -2,7 +2,7 @@
 
 namespace TruckersMP\Requests;
 
-use TruckersMP\Collections\CompanyCollection;
+use TruckersMP\Models\Companies;
 
 class CompaniesRequest extends Request
 {
@@ -19,43 +19,15 @@ class CompaniesRequest extends Request
     /**
      * Get the data for the request.
      *
-     *
      * @return mixed
-     */
-    public function get()
-    {
-        // TODO: Implement get() method.
-    }
-
-    /**
-     * Get the recent companies.
-     *
-     * @return \TruckersMP\Collections\CompanyCollection
      * @throws \Http\Client\Exception
      * @throws \TruckersMP\Exceptions\PageNotFoundException
      * @throws \TruckersMP\Exceptions\RequestException
      */
-    public function recent(): CompanyCollection
+    public function get(): Companies
     {
-        return new CompanyCollection(
-            $this->send(),
-            'recent'
-        );
-    }
-
-    /**
-     * Get the featured companies.
-     *
-     * @return \TruckersMP\Collections\CompanyCollection
-     * @throws \Http\Client\Exception
-     * @throws \TruckersMP\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\Exceptions\RequestException
-     */
-    public function featured(): CompanyCollection
-    {
-        return new CompanyCollection(
-            $this->send(),
-            'featured'
+        return new Companies(
+            $this->send()['response']
         );
     }
 }
