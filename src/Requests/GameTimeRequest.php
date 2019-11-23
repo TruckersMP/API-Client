@@ -28,7 +28,7 @@ class GameTimeRequest extends Request
     public function get(): GameTime
     {
         return new GameTime(
-            $this->call()
+            $this->send()
         );
     }
 }

@@ -146,10 +146,6 @@ class Company
      */
     public function __construct(array $company)
     {
-        if (isset($company['response'])) {
-            $company = $company['response'];
-        }
-
         $this->id = $company['id'];
         $this->name = $company['name'];
         $this->ownerId = $company['owner_id'];

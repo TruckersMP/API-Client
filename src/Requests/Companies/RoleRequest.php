@@ -56,7 +56,7 @@ class RoleRequest extends Request
     public function get(): CompanyRole
     {
         return new CompanyRole(
-            $this->call()
+            $this->send()['response']
         );
     }
 }

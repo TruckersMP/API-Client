@@ -58,7 +58,7 @@ class CompanyRequest extends Request
     public function get(): Company
     {
         return new Company(
-            $this->call()
+            $this->send()['response']
         );
     }
 

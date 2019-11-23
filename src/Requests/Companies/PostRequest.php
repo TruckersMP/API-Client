@@ -57,7 +57,7 @@ class PostRequest extends Request
     public function get(): CompanyPost
     {
         return new CompanyPost(
-            $this->call()
+            $this->send()['response']
         );
     }
 }

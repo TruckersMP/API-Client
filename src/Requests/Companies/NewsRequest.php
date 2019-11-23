@@ -48,7 +48,7 @@ class NewsRequest extends Request
     public function get(): PostsCollection
     {
         return new PostsCollection(
-            $this->call()
+            $this->send()
         );
     }
 }

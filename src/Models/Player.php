@@ -90,8 +90,6 @@ class Player
      */
     public function __construct(array $player)
     {
-        $player = $player['response'];
-
         $this->id = $player['id'];
         $this->name = $player['name'];
         $this->avatar = $player['avatar'];

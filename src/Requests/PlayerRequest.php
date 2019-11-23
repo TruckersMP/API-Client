@@ -47,7 +47,7 @@ class PlayerRequest extends Request
     public function get(): Player
     {
         return new Player(
-            $this->call()
+            $this->send()['response']
         );
     }
 }

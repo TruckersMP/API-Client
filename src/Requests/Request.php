@@ -65,14 +65,14 @@ abstract class Request
     abstract public function get();
 
     /**
-     * Call the API endpoint and get the result.
+     * Send the request to the API endpoint and get the result.
      *
      * @return  array
      * @throws \Http\Client\Exception
      * @throws \TruckersMP\Exceptions\PageNotFoundException
      * @throws \TruckersMP\Exceptions\RequestException
      */
-    public function call(): array
+    public function send(): array
     {
         $request = $this->message->createRequest('GET', $this->url . $this->getEndpoint());
         $result = null;

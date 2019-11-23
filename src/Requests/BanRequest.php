@@ -47,7 +47,7 @@ class BanRequest extends Request
     public function get(): array
     {
         $bans = [];
-        $results = $this->call();
+        $results = $this->send();
 
         // TODO: handle any errors / exceptions
 

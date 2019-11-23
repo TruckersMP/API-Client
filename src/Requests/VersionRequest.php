@@ -27,7 +27,7 @@ class VersionRequest extends Request
     public function get(): Version
     {
         return new Version(
-            $this->call()
+            $this->send()['response']
         );
     }
 }

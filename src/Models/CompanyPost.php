@@ -60,12 +60,6 @@ class CompanyPost
      */
     public function __construct(array $post)
     {
-        // If the data is being passed directly from an API call, then we need to get
-        // the data from the response element.
-        if (isset($post['response'])) {
-            $post = $post['response'];
-        }
-
         $this->id = $post['id'];
         $this->title = $post['title'];
         $this->summary = $post['content_summary'];

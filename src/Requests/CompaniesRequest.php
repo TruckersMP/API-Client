@@ -38,7 +38,7 @@ class CompaniesRequest extends Request
     public function recent(): CompanyCollection
     {
         return new CompanyCollection(
-            $this->call(),
+            $this->send(),
             'recent'
         );
     }
@@ -48,11 +48,13 @@ class CompaniesRequest extends Request
      *
      * @return \TruckersMP\Collections\CompanyCollection
      * @throws \Http\Client\Exception
+     * @throws \TruckersMP\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\Exceptions\RequestException
      */
     public function featured(): CompanyCollection
     {
         return new CompanyCollection(
-            $this->call(),
+            $this->send(),
             'featured'
         );
     }

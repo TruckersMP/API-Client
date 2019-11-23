@@ -55,12 +55,6 @@ class CompanyRole
      */
     public function __construct(array $role)
     {
-        // If the data is being passed directly from an API call, then we need to get
-        // the data from the response element.
-        if (isset($role['response'])) {
-            $role = $role['response'];
-        }
-
         $this->id = $role['id'];
         $this->name = $role['name'];
         $this->order = $role['order'];
