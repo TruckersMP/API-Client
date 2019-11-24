@@ -64,6 +64,7 @@ enabled:
   - ternary_operator_spaces
   - trailing_comma_in_multiline_array
   - trim_array_spaces
+  - unalign_equals
 
 finder:
   exclude:

@@ -69,11 +69,9 @@ class Player
      *
      * @throws \TruckersMP\Exceptions\PlayerNotFoundException
      */
-    public function __construct(array $response)
-    {
-        if ($response['error']) {
+    public function __construct(array $response) {
+        if($response['error'])
             throw new PlayerNotFoundException($response['response']);
-        }
 
         $this->id          = $response['response']['id'];
         $this->name        = $response['response']['name'];
