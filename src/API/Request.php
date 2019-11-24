@@ -39,7 +39,7 @@ class Request
         $this->message = new GuzzleMessageFactory();
 
         $this->apiEndpoint = $apiEndpoint;
-        $this->adapter     = new GuzzleAdapter(new GuzzleClient($config));
+        $this->adapter = new GuzzleAdapter(new GuzzleClient($config));
     }
 
     /**
@@ -50,7 +50,7 @@ class Request
     public function execute($uri)
     {
         $request = $this->message->createRequest('GET', $this->apiEndpoint . $uri);
-        $result  = $this->adapter->sendRequest($request);
+        $result = $this->adapter->sendRequest($request);
 
         return json_decode((string) $result->getBody(), true, 512, JSON_BIGINT_AS_STRING);
     }

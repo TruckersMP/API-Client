@@ -33,7 +33,7 @@ class APIClient
     public function __construct($config = [], $secure = true)
     {
         $scheme = $secure ? 'https' : 'http';
-        $url    = $scheme . '://' . self::API_ENDPOINT . '/' . self::API_VERSION . '/';
+        $url = $scheme . '://' . self::API_ENDPOINT . '/' . self::API_VERSION . '/';
 
         $this->request = new Request($url, $config);
     }
