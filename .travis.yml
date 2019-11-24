@@ -18,11 +18,7 @@ before_install:
 install:
   - composer install
 
-before_script:
-
 script:
   - vendor/bin/phpunit
   - vendor/bin/phpcs src --standard=PSR2
   - vendor/bin/phpcs Tests --standard=PSR2
-
-

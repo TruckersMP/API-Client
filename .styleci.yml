@@ -1,4 +1,5 @@
 preset: psr2
+
 enabled:
   - align_phpdoc
   - alpha_ordered_imports
@@ -63,6 +64,7 @@ enabled:
   - ternary_operator_spaces
   - trailing_comma_in_multiline_array
   - trim_array_spaces
+
 finder:
   exclude:
     - examples
