@@ -1,6 +1,7 @@
 # TruckersMP REST API Library
 
 [![Build Status](https://travis-ci.org/TruckersMP/API-Client.svg?branch=master)](https://travis-ci.org/TruckersMP/API-Client)
+[![StyleCI Status](https://github.styleci.io/repos/57324164/shield?branch=master)](https://github.styleci.io/repos/57324164)
 [![Latest Stable Version](https://poser.pugx.org/truckersmp/api-client/v/stable)](https://packagist.org/packages/truckersmp/api-client)
 [![Latest Unstable Version](https://poser.pugx.org/truckersmp/api-client/v/unstable)](https://packagist.org/packages/truckersmp/api-client)
 [![License](https://poser.pugx.org/truckersmp/api-client/license)](https://packagist.org/packages/truckersmp/api-client)
@@ -19,7 +20,7 @@ Please use our service responsibly. API Consumers who require high rates of requ
 
 ## Requirements  
 
-- PHP 5.6.0 or newer
+- PHP 7.1.0 or newer
 - Composer
 
 ## Installation
