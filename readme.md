@@ -20,7 +20,7 @@ Please use our service responsibly. People who make lots of requests to our API 
 
 ## Requirements  
 
-- PHP 7.1.0 or newer
+- PHP 7.2.0 or newer
 - Composer
 
 ## Installation

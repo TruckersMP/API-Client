@@ -11,6 +11,8 @@ class ServerTest extends TestCase
     /**
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     * @throws \TruckersMP\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\Exceptions\RequestException
      */
     public function testWeCanGetAllTheServers()
     {
@@ -25,8 +27,9 @@ class ServerTest extends TestCase
 
     /**
      * @throws \Http\Client\Exception
-     * @throws \TruckersMP\Exceptions\IndexNotFoundException
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     * @throws \TruckersMP\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\Exceptions\RequestException
      */
     public function testItHasAnId()
     {
@@ -37,8 +40,9 @@ class ServerTest extends TestCase
 
     /**
      * @throws \Http\Client\Exception
-     * @throws \TruckersMP\Exceptions\IndexNotFoundException
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     * @throws \TruckersMP\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\Exceptions\RequestException
      */
     public function testItHasAGame()
     {
@@ -49,8 +53,9 @@ class ServerTest extends TestCase
 
     /**
      * @throws \Http\Client\Exception
-     * @throws \TruckersMP\Exceptions\IndexNotFoundException
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     * @throws \TruckersMP\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\Exceptions\RequestException
      */
     public function testItHasAnIp()
     {
@@ -61,8 +66,9 @@ class ServerTest extends TestCase
 
     /**
      * @throws \Http\Client\Exception
-     * @throws \TruckersMP\Exceptions\IndexNotFoundException
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     * @throws \TruckersMP\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\Exceptions\RequestException
      */
     public function testItHasAPort()
     {
@@ -73,8 +79,9 @@ class ServerTest extends TestCase
 
     /**
      * @throws \Http\Client\Exception
-     * @throws \TruckersMP\Exceptions\IndexNotFoundException
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     * @throws \TruckersMP\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\Exceptions\RequestException
      */
     public function testItHasAName()
     {
@@ -85,8 +92,9 @@ class ServerTest extends TestCase
 
     /**
      * @throws \Http\Client\Exception
-     * @throws \TruckersMP\Exceptions\IndexNotFoundException
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     * @throws \TruckersMP\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\Exceptions\RequestException
      */
     public function testItHasAShortName()
     {
@@ -97,8 +105,9 @@ class ServerTest extends TestCase
 
     /**
      * @throws \Http\Client\Exception
-     * @throws \TruckersMP\Exceptions\IndexNotFoundException
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     * @throws \TruckersMP\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\Exceptions\RequestException
      */
     public function testItHasAnIdPrefix()
     {
@@ -113,8 +122,9 @@ class ServerTest extends TestCase
 
     /**
      * @throws \Http\Client\Exception
-     * @throws \TruckersMP\Exceptions\IndexNotFoundException
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     * @throws \TruckersMP\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\Exceptions\RequestException
      */
     public function testItHasAnOnlineState()
     {
@@ -125,8 +135,9 @@ class ServerTest extends TestCase
 
     /**
      * @throws \Http\Client\Exception
-     * @throws \TruckersMP\Exceptions\IndexNotFoundException
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     * @throws \TruckersMP\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\Exceptions\RequestException
      */
     public function testItHasPlayers()
     {
@@ -137,8 +148,9 @@ class ServerTest extends TestCase
 
     /**
      * @throws \Http\Client\Exception
-     * @throws \TruckersMP\Exceptions\IndexNotFoundException
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     * @throws \TruckersMP\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\Exceptions\RequestException
      */
     public function testItHasAQueue()
     {
@@ -149,8 +161,9 @@ class ServerTest extends TestCase
 
     /**
      * @throws \Http\Client\Exception
-     * @throws \TruckersMP\Exceptions\IndexNotFoundException
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     * @throws \TruckersMP\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\Exceptions\RequestException
      */
     public function testItHasMaxPlayers()
     {
@@ -161,8 +174,9 @@ class ServerTest extends TestCase
 
     /**
      * @throws \Http\Client\Exception
-     * @throws \TruckersMP\Exceptions\IndexNotFoundException
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     * @throws \TruckersMP\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\Exceptions\RequestException
      */
     public function testItHasADisplayOrder()
     {
@@ -173,8 +187,9 @@ class ServerTest extends TestCase
 
     /**
      * @throws \Http\Client\Exception
-     * @throws \TruckersMP\Exceptions\IndexNotFoundException
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     * @throws \TruckersMP\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\Exceptions\RequestException
      */
     public function testItHasASpeedLimit()
     {
@@ -185,8 +200,9 @@ class ServerTest extends TestCase
 
     /**
      * @throws \Http\Client\Exception
-     * @throws \TruckersMP\Exceptions\IndexNotFoundException
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     * @throws \TruckersMP\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\Exceptions\RequestException
      */
     public function testItHasCollisions()
     {
@@ -197,8 +213,9 @@ class ServerTest extends TestCase
 
     /**
      * @throws \Http\Client\Exception
-     * @throws \TruckersMP\Exceptions\IndexNotFoundException
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     * @throws \TruckersMP\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\Exceptions\RequestException
      */
     public function testItHasCarsForPlayers()
     {
@@ -209,8 +226,9 @@ class ServerTest extends TestCase
 
     /**
      * @throws \Http\Client\Exception
-     * @throws \TruckersMP\Exceptions\IndexNotFoundException
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     * @throws \TruckersMP\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\Exceptions\RequestException
      */
     public function testItHasPoliceCarsForPlayers()
     {
@@ -221,8 +239,9 @@ class ServerTest extends TestCase
 
     /**
      * @throws \Http\Client\Exception
-     * @throws \TruckersMP\Exceptions\IndexNotFoundException
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     * @throws \TruckersMP\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\Exceptions\RequestException
      */
     public function testItHasAfkEnable()
     {
@@ -233,8 +252,9 @@ class ServerTest extends TestCase
 
     /**
      * @throws \Http\Client\Exception
-     * @throws \TruckersMP\Exceptions\IndexNotFoundException
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     * @throws \TruckersMP\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\Exceptions\RequestException
      */
     public function testItHasAnEvent()
     {
@@ -245,8 +265,9 @@ class ServerTest extends TestCase
 
     /**
      * @throws \Http\Client\Exception
-     * @throws \TruckersMP\Exceptions\IndexNotFoundException
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     * @throws \TruckersMP\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\Exceptions\RequestException
      */
     public function testItHasASpecialEvent()
     {
@@ -257,8 +278,9 @@ class ServerTest extends TestCase
 
     /**
      * @throws \Http\Client\Exception
-     * @throws \TruckersMP\Exceptions\IndexNotFoundException
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     * @throws \TruckersMP\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\Exceptions\RequestException
      */
     public function testItHasPromods()
     {
@@ -269,8 +291,9 @@ class ServerTest extends TestCase
 
     /**
      * @throws \Http\Client\Exception
-     * @throws \TruckersMP\Exceptions\IndexNotFoundException
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     * @throws \TruckersMP\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\Exceptions\RequestException
      */
     public function testItHasSyncDelay()
     {

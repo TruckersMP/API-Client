@@ -16,6 +16,8 @@ class BanTest extends TestCase
     /**
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     * @throws \TruckersMP\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\Exceptions\RequestException
      */
     public function testWeCanGetAllBans()
     {
@@ -30,8 +32,9 @@ class BanTest extends TestCase
 
     /**
      * @throws \Http\Client\Exception
-     * @throws \TruckersMP\Exceptions\IndexNotFoundException
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     * @throws \TruckersMP\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\Exceptions\RequestException
      */
     public function testItHasAnExpiryDate()
     {
@@ -52,8 +55,9 @@ class BanTest extends TestCase
 
     /**
      * @throws \Http\Client\Exception
-     * @throws \TruckersMP\Exceptions\IndexNotFoundException
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     * @throws \TruckersMP\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\Exceptions\RequestException
      */
     public function testItHasACreatedDate()
     {
@@ -62,7 +66,7 @@ class BanTest extends TestCase
         if (count($bans) > 0) {
             $ban = $bans[0];
 
-            $this->assertInstanceOf(Carbon::class, $ban->getCreatedDate());
+            $this->assertInstanceOf(Carbon::class, $ban->getCreatedAt());
         } else {
             $this->assertCount(0, $bans);
         }
@@ -70,8 +74,9 @@ class BanTest extends TestCase
 
     /**
      * @throws \Http\Client\Exception
-     * @throws \TruckersMP\Exceptions\IndexNotFoundException
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     * @throws \TruckersMP\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\Exceptions\RequestException
      */
     public function testItHasAnActiveState()
     {
@@ -88,8 +93,9 @@ class BanTest extends TestCase
 
     /**
      * @throws \Http\Client\Exception
-     * @throws \TruckersMP\Exceptions\IndexNotFoundException
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     * @throws \TruckersMP\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\Exceptions\RequestException
      */
     public function testItHasAReason()
     {
@@ -105,9 +111,10 @@ class BanTest extends TestCase
     }
 
     /**
-     * @throws \TruckersMP\Exceptions\IndexNotFoundException
-     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
      * @throws \Http\Client\Exception
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     * @throws \TruckersMP\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\Exceptions\RequestException
      */
     public function testItHasTheNameOfTheAdmin()
     {
@@ -123,9 +130,10 @@ class BanTest extends TestCase
     }
 
     /**
-     * @throws \TruckersMP\Exceptions\IndexNotFoundException
-     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
      * @throws \Http\Client\Exception
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     * @throws \TruckersMP\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\Exceptions\RequestException
      */
     public function testItHasTheIdOfTheAdmin()
     {

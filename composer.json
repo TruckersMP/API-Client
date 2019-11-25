@@ -36,7 +36,7 @@
         }
     ],
     "require": {
-        "php": ">=7.1.0",
+        "php": ">=7.2.9",
         "nesbot/carbon": "^2.16",
         "ext-json": "*",
         "phpfastcache/phpfastcache": "^7.1",

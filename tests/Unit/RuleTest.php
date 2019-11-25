@@ -9,8 +9,9 @@ class RuleTest extends TestCase
 {
     /**
      * @throws \Http\Client\Exception
-     * @throws \TruckersMP\Exceptions\APIErrorException
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     * @throws \TruckersMP\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\Exceptions\RequestException
      */
     public function testWeCanGetTheRules()
     {
@@ -21,8 +22,9 @@ class RuleTest extends TestCase
 
     /**
      * @throws \Http\Client\Exception
-     * @throws \TruckersMP\Exceptions\APIErrorException
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     * @throws \TruckersMP\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\Exceptions\RequestException
      */
     public function testItHasTheRules()
     {
@@ -33,8 +35,9 @@ class RuleTest extends TestCase
 
     /**
      * @throws \Http\Client\Exception
-     * @throws \TruckersMP\Exceptions\APIErrorException
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     * @throws \TruckersMP\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\Exceptions\RequestException
      */
     public function testItHasTheRevision()
     {
