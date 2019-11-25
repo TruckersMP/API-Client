@@ -29,7 +29,7 @@ class ServerRequest extends Request
     public function get(): ServerCollection
     {
         return new ServerCollection(
-            $this->send()
+            $this->send()['response']
         );
     }
 }

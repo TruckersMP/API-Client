@@ -16,6 +16,8 @@ class PlayerTest extends TestCase
     /**
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     * @throws \TruckersMP\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\Exceptions\RequestException
      */
     public function testWeCanGetThePlayer()
     {
@@ -27,6 +29,8 @@ class PlayerTest extends TestCase
     /**
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     * @throws \TruckersMP\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\Exceptions\RequestException
      */
     public function testItHasAnId()
     {
@@ -38,6 +42,8 @@ class PlayerTest extends TestCase
     /**
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     * @throws \TruckersMP\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\Exceptions\RequestException
      */
     public function testItHasAName()
     {
@@ -49,17 +55,25 @@ class PlayerTest extends TestCase
     /**
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     * @throws \TruckersMP\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\Exceptions\RequestException
      */
     public function testItHasAnAvatar()
     {
         $player = $this->player(self::TEST_ACCOUNT);
 
         $this->assertIsString($player->getAvatar());
+
+        if ($player->getSmallAvatar() != null) {
+            $this->assertIsString($player->getSmallAvatar());
+        }
     }
 
     /**
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     * @throws \TruckersMP\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\Exceptions\RequestException
      */
     public function testItHasAJoinDate()
     {
@@ -71,6 +85,8 @@ class PlayerTest extends TestCase
     /**
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     * @throws \TruckersMP\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\Exceptions\RequestException
      */
     public function testItHasASteamId()
     {
@@ -82,6 +98,8 @@ class PlayerTest extends TestCase
     /**
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     * @throws \TruckersMP\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\Exceptions\RequestException
      */
     public function testItHasAGroupName()
     {
@@ -93,17 +111,21 @@ class PlayerTest extends TestCase
     /**
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     * @throws \TruckersMP\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\Exceptions\RequestException
      */
     public function testItHasAGroupId()
     {
         $player = $this->player(self::TEST_ACCOUNT);
 
-        $this->assertIsInt($player->getGroupID());
+        $this->assertIsInt($player->getGroupId());
     }
 
     /**
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     * @throws \TruckersMP\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\Exceptions\RequestException
      */
     public function testIfItIsBanned()
     {
@@ -115,6 +137,8 @@ class PlayerTest extends TestCase
     /**
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     * @throws \TruckersMP\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\Exceptions\RequestException
      */
     public function testItHasABannedUntilDate()
     {
@@ -126,6 +150,8 @@ class PlayerTest extends TestCase
     /**
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     * @throws \TruckersMP\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\Exceptions\RequestException
      */
     public function testIfBansAreHidden()
     {
@@ -137,6 +163,8 @@ class PlayerTest extends TestCase
     /**
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     * @throws \TruckersMP\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\Exceptions\RequestException
      */
     public function testItHasIfAdmin()
     {

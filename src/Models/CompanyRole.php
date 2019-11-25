@@ -51,7 +51,9 @@ class CompanyRole
     /**
      * Create a new CompanyRole instance.
      *
-     * @param array $role
+     * @param  array  $role
+     *
+     * @throws \Exception
      */
     public function __construct(array $role)
     {
@@ -98,7 +100,7 @@ class CompanyRole
     /**
      * @return \Carbon\Carbon
      */
-    public function getCreatedAt(): \Carbon\Carbon
+    public function getCreatedAt(): Carbon
     {
         return $this->createdAt;
     }
@@ -106,7 +108,7 @@ class CompanyRole
     /**
      * @return \Carbon\Carbon
      */
-    public function getUpdatedAt(): \Carbon\Carbon
+    public function getUpdatedAt(): Carbon
     {
         return $this->updatedAt;
     }

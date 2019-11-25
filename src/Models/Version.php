@@ -66,6 +66,8 @@ class Version
      * Create a new Version instance.
      *
      * @param  array  $version
+     *
+     * @throws \Exception
      */
     public function __construct(array $version)
     {
@@ -74,13 +76,11 @@ class Version
         $this->stage = $version['stage'];
 
         $this->ets2mpChecksum = new Checksum(
-            $version['ets2mp_checksum']['dll'],
-            $version['ets2mp_checksum']['adb']
+            $version['ets2mp_checksum']
         );
 
         $this->atsmpChecksum = new Checksum(
-            $version['atsmp_checksum']['dll'],
-            $version['atsmp_checksum']['adb']
+            $version['atsmp_checksum']
         );
 
         $this->time = new Carbon($version['time'], 'UTC');

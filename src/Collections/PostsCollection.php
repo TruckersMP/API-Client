@@ -15,9 +15,7 @@ class PostsCollection extends Collection
     {
         parent::__construct();
 
-        // TODO: handle any errors or exceptions
-
-        foreach ($response['response']['news'] as $key => $post) {
+        foreach ($response['news'] as $key => $post) {
             $this->items[$key] = new CompanyPost($post);
         }
     }

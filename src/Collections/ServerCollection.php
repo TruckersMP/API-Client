@@ -15,9 +15,7 @@ class ServerCollection extends Collection
     {
         parent::__construct();
 
-        // TODO: handle any errors or exceptions
-
-        foreach ($response['response'] as $key => $server) {
+        foreach ($response as $key => $server) {
             $this->items[$key] = new Server($server);
         }
     }

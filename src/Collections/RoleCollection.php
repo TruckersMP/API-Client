@@ -15,9 +15,7 @@ class RoleCollection extends Collection
     {
         parent::__construct();
 
-        // TODO: handle any errors or exceptions
-
-        foreach ($response['response']['roles'] as $key => $role) {
+        foreach ($response['roles'] as $key => $role) {
             $this->items[$key] = new CompanyRole($role);
         }
     }

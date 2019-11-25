@@ -28,6 +28,13 @@ class Player
     protected $avatar;
 
     /**
+     * URL to the small avatar on the website;
+     *
+     * @var string
+     */
+    protected $smallAvatar;
+
+    /**
      * The date and time the user registered (UTC).
      *
      * @var Carbon
@@ -46,7 +53,7 @@ class Player
      *
      * @var int
      */
-    protected $groupID;
+    protected $groupId;
 
     /**
      * The name of the group the user belongs to.
@@ -87,15 +94,18 @@ class Player
      * Create a new Player instance.
      *
      * @param  array  $player
+     *
+     * @throws \Exception
      */
     public function __construct(array $player)
     {
         $this->id = $player['id'];
         $this->name = $player['name'];
         $this->avatar = $player['avatar'];
+        $this->smallAvatar = $player['smallAvatar'];
         $this->joinDate = new Carbon($player['joinDate'], 'UTC');
         $this->steamID64 = $player['steamID64'];
-        $this->groupID = $player['groupID'];
+        $this->groupId = $player['groupID'];
         $this->groupName = $player['groupName'];
         $this->isBanned = $player['banned'];
         $this->bannedUntil = new Carbon($player['bannedUntil'], 'UTC');
@@ -128,6 +138,14 @@ class Player
     }
 
     /**
+     * @return string
+     */
+    public function getSmallAvatar(): string
+    {
+        return $this->smallAvatar;
+    }
+
+    /**
      * @return Carbon
      */
     public function getJoinDate(): Carbon
@@ -146,9 +164,9 @@ class Player
     /**
      * @return int
      */
-    public function getGroupID(): int
+    public function getGroupId(): int
     {
-        return $this->groupID;
+        return $this->groupId;
     }
 
     /**

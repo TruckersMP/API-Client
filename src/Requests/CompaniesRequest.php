@@ -2,7 +2,7 @@
 
 namespace TruckersMP\Requests;
 
-use TruckersMP\Models\Companies;
+use TruckersMP\Models\CompanyIndex;
 
 class CompaniesRequest extends Request
 {
@@ -24,9 +24,9 @@ class CompaniesRequest extends Request
      * @throws \TruckersMP\Exceptions\PageNotFoundException
      * @throws \TruckersMP\Exceptions\RequestException
      */
-    public function get(): Companies
+    public function get(): CompanyIndex
     {
-        return new Companies(
+        return new CompanyIndex(
             $this->send()['response']
         );
     }

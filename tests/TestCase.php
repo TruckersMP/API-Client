@@ -6,19 +6,18 @@ use Phpfastcache\CacheManager;
 use Phpfastcache\Config\ConfigurationOption;
 use PHPUnit\Framework\TestCase as BaseTestCase;
 use TruckersMP\Client;
-use TruckersMP\Collections\CompanyCollection;
 use TruckersMP\Collections\PostsCollection;
 use TruckersMP\Collections\RoleCollection;
 use TruckersMP\Collections\ServerCollection;
-use TruckersMP\Models\Companies;
 use TruckersMP\Models\Company;
+use TruckersMP\Models\CompanyIndex;
 use TruckersMP\Models\CompanyPost;
 use TruckersMP\Models\CompanyRole;
 use TruckersMP\Models\GameTime;
 use TruckersMP\Models\Player;
 use TruckersMP\Models\Rule;
 use TruckersMP\Models\Version;
-use TruckersMP\Requests\Companies\PostRequest;
+use TruckersMP\Requests\CompaniesRequest;
 
 class TestCase extends BaseTestCase
 {
@@ -151,13 +150,13 @@ class TestCase extends BaseTestCase
     /**
      * Get or cache the recent companies.
      *
-     * @return \TruckersMP\Models\Companies
+     * @return \TruckersMP\Models\CompanyIndex
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
      * @throws \TruckersMP\Exceptions\PageNotFoundException
      * @throws \TruckersMP\Exceptions\RequestException
      */
-    public function companies(): Companies
+    public function companies(): CompanyIndex
     {
         $cachedCompanies = $this->cache->getItem('recent_companies');
 

@@ -52,6 +52,8 @@ class Ban
      * Create a new Ban instance.
      *
      * @param  array  $ban
+     *
+     * @throws \Exception
      */
     public function __construct(array $ban)
     {
@@ -89,7 +91,7 @@ class Ban
     /**
      * @return \Carbon\Carbon
      */
-    public function getCreatedDate(): Carbon
+    public function getCreatedAt(): Carbon
     {
         return $this->timeAdded;
     }

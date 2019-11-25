@@ -48,7 +48,7 @@ class RolesRequest extends Request
     public function get(): RoleCollection
     {
         return new RoleCollection(
-            $this->send()
+            $this->send()['response']
         );
     }
 }

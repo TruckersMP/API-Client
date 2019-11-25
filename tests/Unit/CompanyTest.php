@@ -5,7 +5,7 @@ namespace Tests\Unit;
 use Carbon\Carbon;
 use Tests\TestCase;
 use TruckersMP\Collections\CompanyCollection;
-use TruckersMP\Models\Companies;
+use TruckersMP\Models\CompanyIndex;
 use TruckersMP\Models\Company;
 use TruckersMP\Models\Game;
 use TruckersMP\Models\Social;
@@ -27,7 +27,7 @@ class CompanyTest extends TestCase
     {
         $companies = $this->companies();
 
-        $this->assertInstanceOf(Companies::class, $companies);
+        $this->assertInstanceOf(CompanyIndex::class, $companies);
     }
 
     /**

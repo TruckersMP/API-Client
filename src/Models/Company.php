@@ -143,6 +143,8 @@ class Company
      * Create a new Company instance.
      *
      * @param  array  $company
+     *
+     * @throws \Exception
      */
     public function __construct(array $company)
     {
@@ -176,11 +178,7 @@ class Company
         $this->website = $company['website'];
 
         $this->social = new Social(
-            $company['socials']['twitter'],
-            $company['socials']['facebook'],
-            $company['socials']['playstv'],
-            $company['socials']['discord'],
-            $company['socials']['youtube']
+            $company['socials']
         );
 
         $this->games = new Game(

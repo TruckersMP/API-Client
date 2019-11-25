@@ -4,7 +4,7 @@ namespace TruckersMP\Models;
 
 use TruckersMP\Collections\CompanyCollection;
 
-class Companies
+class CompanyIndex
 {
     /**
      * The recently created companies.
@@ -60,7 +60,7 @@ class Companies
     /**
      * @return \TruckersMP\Collections\CompanyCollection
      */
-    public function getFeaturedCovered(): \TruckersMP\Collections\CompanyCollection
+    public function getFeaturedCovered(): CompanyCollection
     {
         return $this->featuredCovered;
     }

@@ -32,25 +32,15 @@ class Social
     /**
      * Create a new Social instance.
      *
-     * @param  string|null  $twitter
-     * @param  string|null  $facebook
-     * @param  string|null  $plays
-     * @param  string|null  $discord
-     * @param  string|null  $youtube
+     * @param  array  $social
      */
-    public function __construct(
-        string $twitter = null,
-        string $facebook = null,
-        string $plays = null,
-        string $discord = null,
-        string $youtube = null
-    ) {
-
-        $this->twitter = $twitter;
-        $this->facebook = $facebook;
-        $this->plays = $plays;
-        $this->discord = $discord;
-        $this->youtube = $youtube;
+    public function __construct(array $social)
+    {
+        $this->twitter = $social['twitter'];
+        $this->facebook = $social['facebook'];
+        $this->plays = $social['playstv'];
+        $this->discord = $social['discord'];
+        $this->youtube = $social['youtube'];
     }
 
     /**
@@ -88,7 +78,7 @@ class Social
     /**
      * @return string|null
      */
-    public function getYoutube(): ?string
+    public function getYouTube(): ?string
     {
         return $this->youtube;
     }

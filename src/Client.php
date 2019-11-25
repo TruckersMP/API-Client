@@ -5,6 +5,7 @@ namespace TruckersMP;
 use TruckersMP\Collections\CompanyCollection;
 use TruckersMP\Requests\BanRequest;
 use TruckersMP\Requests\CompaniesRequest;
+use TruckersMP\Requests\IndexRequest;
 use TruckersMP\Requests\CompanyRequest;
 use TruckersMP\Requests\GameTimeRequest;
 use TruckersMP\Requests\PlayerRequest;
