@@ -8,7 +8,6 @@ enabled:
   - logical_operators
   - multiline_comment_opening_closing
   - no_blank_lines_after_return
-  - no_closing_tag
   - no_extra_block_blank_lines
   - no_spaces_after_function_name
   - no_useless_else
