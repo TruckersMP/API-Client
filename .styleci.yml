@@ -1,70 +1,33 @@
-preset: psr2
+preset: recommended
 
 enabled:
-  - align_phpdoc
-  - alpha_ordered_imports
-  - binary_operator_spaces
-  - blank_line_after_opening_tag
-  - blank_line_before_return
-  - cast_spaces
   - concat_with_spaces
   - const_separation
   - const_visibility_required
-  - function_typehint_space
   - linebreak_after_opening_tag
   - logical_operators
-  - lowercase_cast
   - multiline_comment_opening_closing
-  - new_with_braces
-  - no_blank_lines_after_class_opening
-  - no_blank_lines_after_phpdoc
   - no_blank_lines_after_return
-  - no_blank_lines_after_throw
-  - no_blank_lines_between_imports
-  - no_blank_lines_between_traits
-  - no_empty_phpdoc
-  - no_empty_statement
+  - no_closing_tag
   - no_extra_block_blank_lines
-  - no_extra_consecutive_blank_lines
-  - no_leading_import_slash
-  - no_leading_namespace_whitespace
-  - no_multiline_whitespace_around_double_arrow
-  - no_multiline_whitespace_before_semicolons
-  - no_short_bool_cast
-  - no_singleline_whitespace_before_semicolons
-  - no_spaces_inside_offset
-  - no_trailing_comma_in_list_call
-  - no_trailing_comma_in_singleline_array
-  - no_unused_imports
+  - no_spaces_after_function_name
   - no_useless_else
-  - no_useless_return
-  - no_whitespace_before_comma_in_array
-  - no_whitespace_in_blank_line
   - non_printable_character
-  - normalize_index_brace
   - nullable_type_declarations
   - phpdoc_add_missing_param_annotation
-  - phpdoc_align
-  - phpdoc_indent
-  - phpdoc_inline_tag
   - phpdoc_link_to_see
-  - phpdoc_scalar
-  - phpdoc_separation
-  - phpdoc_trim
-  - phpdoc_type_to_var
-  - phpdoc_types
-  - short_array_syntax
   - short_list_syntax
-  - short_scalar_cast
   - simple_to_complex_string_variable
-  - single_blank_line_before_namespace
-  - single_quote
-  - standardize_not_equals
   - strict_comparison
-  - ternary_operator_spaces
-  - trailing_comma_in_multiline_array
-  - trim_array_spaces
-  - unalign_equals
+
+disabled:
+  - concat_without_spaces
+  - no_unneeded_control_parentheses
+  # PHP documentation should not be that strict
+  - phpdoc_no_access
+  - phpdoc_no_package
+  - phpdoc_no_useless_inheritdoc
+  - phpdoc_order
 
 finder:
   exclude:

@@ -24,7 +24,7 @@
     }
   ],
   "require": {
-    "php": ">=7.1.0",
+    "php": "^7.1",
     "nesbot/carbon": "^1.21",
     "php-http/message": "^1.2",
     "guzzlehttp/psr7": "^1.3",
