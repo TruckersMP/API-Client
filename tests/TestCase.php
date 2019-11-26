@@ -11,6 +11,7 @@ use TruckersMP\Collections\RoleCollection;
 use TruckersMP\Collections\ServerCollection;
 use TruckersMP\Models\Company;
 use TruckersMP\Models\CompanyIndex;
+use TruckersMP\Models\CompanyMember;
 use TruckersMP\Models\CompanyPost;
 use TruckersMP\Models\CompanyRole;
 use TruckersMP\Models\GameTime;
@@ -278,17 +279,44 @@ class TestCase extends BaseTestCase
      */
     public function companyRole(int $companyId, int $roleId): CompanyRole
     {
-        $cachedRoles = $this->cache->getItem('company_' . $roleId . '_roles_' . $companyId);
+        $cachedRole = $this->cache->getItem('company_' . $companyId . '_roles_' . $roleId);
 
-        if (! $cachedRoles->isHit()) {
-            $cachedRoles->set(
+        if (! $cachedRole->isHit()) {
+            $cachedRole->set(
                 $this->client->company($companyId)->role($roleId)->get()
             )->expiresAfter(self::CACHE_SECONDS);
 
-            $this->cache->save($cachedRoles);
+            $this->cache->save($cachedRole);
         }
 
-        return $cachedRoles->get();
+        return $cachedRole->get();
+    }
+
+    /**
+     * Get or cache the company member.
+     *
+     * @param  int  $companyId
+     * @param  int  $memberId
+     *
+     * @return \TruckersMP\Models\CompanyMember
+     * @throws \Http\Client\Exception
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     * @throws \TruckersMP\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\Exceptions\RequestException
+     */
+    public function companyMember(int $companyId, int $memberId): CompanyMember
+    {
+        $cachedMember = $this->cache->getItem('company_member_' . $memberId);
+
+        if (! $cachedMember->isHit()) {
+            $cachedMember->set(
+                $this->client->company($companyId)->member($memberId)->get()
+            )->expiresAfter(self::CACHE_SECONDS);
+
+            $this->cache->save($cachedMember);
+        }
+
+        return $cachedMember->get();
     }
 
     /**
