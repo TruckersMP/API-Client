@@ -65,7 +65,7 @@ class Bans implements \Iterator, \ArrayAccess
 
     public function next()
     {
-        ++$this->position;
+        $this->position++;
     }
 
     /**
