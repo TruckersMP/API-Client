@@ -12,6 +12,7 @@ use TruckersMP\Collections\ServerCollection;
 use TruckersMP\Models\Company;
 use TruckersMP\Models\CompanyIndex;
 use TruckersMP\Models\CompanyMember;
+use TruckersMP\Models\CompanyMemberIndex;
 use TruckersMP\Models\CompanyPost;
 use TruckersMP\Models\CompanyRole;
 use TruckersMP\Models\GameTime;
@@ -290,6 +291,32 @@ class TestCase extends BaseTestCase
         }
 
         return $cachedRole->get();
+    }
+
+    /**
+     * Get or cache the company members.
+     *
+     * @param  int  $companyId
+     *
+     * @return mixed
+     * @throws \Http\Client\Exception
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     * @throws \TruckersMP\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\Exceptions\RequestException
+     */
+    public function companyMembers(int $companyId): CompanyMemberIndex
+    {
+        $cachedMembers = $this->cache->getItem('company_members_' . $companyId);
+
+        if (! $cachedMembers->isHit()) {
+            $cachedMembers->set(
+                $this->client->company($companyId)->members()->get()
+            );
+
+            $this->cache->save($cachedMembers);
+        }
+
+        return $cachedMembers->get();
     }
 
     /**

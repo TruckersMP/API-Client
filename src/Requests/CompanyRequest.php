@@ -4,6 +4,7 @@ namespace TruckersMP\Requests;
 
 use TruckersMP\Models\Company;
 use TruckersMP\Requests\Companies\MemberRequest;
+use TruckersMP\Requests\Companies\MembersRequest;
 use TruckersMP\Requests\Companies\NewsRequest;
 use TruckersMP\Requests\Companies\PostRequest;
 use TruckersMP\Requests\Companies\RoleRequest;
@@ -118,6 +119,19 @@ class CompanyRequest extends Request
             $this->config,
             $this->id,
             $id
+        );
+    }
+
+    /**
+     * Get the members for the company.
+     *
+     * @return \TruckersMP\Requests\Companies\MembersRequest
+     */
+    public function members(): MembersRequest
+    {
+        return new MembersRequest(
+            $this->config,
+            $this->id
         );
     }
 

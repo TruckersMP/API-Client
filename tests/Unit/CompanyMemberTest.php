@@ -4,7 +4,10 @@ namespace Tests\Unit;
 
 use Carbon\Carbon;
 use Tests\TestCase;
+use TruckersMP\Collections\CompanyCollection;
+use TruckersMP\Collections\MemberCollection;
 use TruckersMP\Models\CompanyMember;
+use TruckersMP\Models\CompanyMemberIndex;
 
 class CompanyMemberTest extends TestCase
 {
@@ -17,6 +20,22 @@ class CompanyMemberTest extends TestCase
      * The ID of the member to use in the tests.
      */
     private const TEST_MEMBER = 1579;
+
+    /**
+     * @throws \Http\Client\Exception
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     * @throws \TruckersMP\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\Exceptions\RequestException
+     */
+    public function testWeCanAllTheMembers()
+    {
+        $members = $this->companyMembers(self::TEST_COMPANY);
+
+        $this->assertInstanceOf(CompanyMemberIndex::class, $members);
+
+        $this->assertInstanceOf(MemberCollection::class, $members->getMembers());
+        $this->assertIsInt($members->getCount());
+    }
 
     /**
      * @throws \Http\Client\Exception
