@@ -2,7 +2,6 @@
 
 namespace TruckersMP\Types;
 
-use Psr\Http\Message\ResponseInterface;
 use TruckersMP\Exceptions\PlayerNotFoundException;
 
 class Bans implements \Iterator, \ArrayAccess
@@ -32,8 +31,8 @@ class Bans implements \Iterator, \ArrayAccess
         $this->position = 0;
 
         if ($response['error'] &&
-            ($response['descriptor'] == 'No player ID submitted' ||
-                $response['descriptor'] == 'Invalid user ID')
+            ($response['descriptor'] === 'No player ID submitted' ||
+                $response['descriptor'] === 'Invalid user ID')
         ) {
             throw new PlayerNotFoundException($response['descriptor']);
         }
@@ -66,7 +65,7 @@ class Bans implements \Iterator, \ArrayAccess
 
     public function next()
     {
-        ++$this->position;
+        $this->position++;
     }
 
     /**

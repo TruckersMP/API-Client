@@ -15,8 +15,9 @@ use TruckersMP\Types\Version;
 
 class APIClient
 {
-    const API_ENDPOINT = 'api.truckersmp.com';
-    const API_VERSION = 'v2';
+    public const API_ENDPOINT = 'api.truckersmp.com';
+
+    public const API_VERSION = 'v2';
 
     /**
      * @var \TruckersMP\API\Request
@@ -29,11 +30,10 @@ class APIClient
      * @param array $config
      * @param bool  $secure
      */
-
     public function __construct($config = [], $secure = true)
     {
         $scheme = $secure ? 'https' : 'http';
-        $url    = $scheme . '://' . self::API_ENDPOINT . '/' . self::API_VERSION . '/';
+        $url = $scheme . '://' . self::API_ENDPOINT . '/' . self::API_VERSION . '/';
 
         $this->request = new Request($url, $config);
     }
