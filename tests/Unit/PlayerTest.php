@@ -64,7 +64,7 @@ class PlayerTest extends TestCase
 
         $this->assertIsString($player->getAvatar());
 
-        if ($player->getSmallAvatar() != null) {
+        if ($player->getSmallAvatar() !== null) {
             $this->assertIsString($player->getSmallAvatar());
         }
     }

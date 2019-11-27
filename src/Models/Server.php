@@ -96,7 +96,7 @@ class Server
     protected $speedLimiter;
 
     /**
-     * If server wide collisions is enabled
+     * If server wide collisions is enabled.
      *
      * @var bool
      */
@@ -131,7 +131,7 @@ class Server
     protected $event;
 
     /**
-     * Determine whether the server hosts special event file
+     * Determine whether the server hosts special event file.
      *
      * @var bool
      */

@@ -43,7 +43,7 @@ class BanTest extends TestCase
         if (count($bans) > 0) {
             $ban = $bans[0];
 
-            if ($ban->getExpirationDate() != null) {
+            if ($ban->getExpirationDate() !== null) {
                 $this->assertInstanceOf(Carbon::class, $ban->getExpirationDate());
             } else {
                 $this->assertNull($ban->getExpirationDate());

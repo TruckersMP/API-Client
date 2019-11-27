@@ -17,7 +17,7 @@ class BanRequest extends Request
      * Create a new BanRequest instance.
      *
      * @param array $config
-     * @param int $id
+     * @param int   $id
      */
     public function __construct(array $config, int $id)
     {
@@ -40,6 +40,7 @@ class BanRequest extends Request
      * Get the data for the request.
      *
      * @return \TruckersMP\Models\Ban[]
+     *
      * @throws \Http\Client\Exception
      * @throws \TruckersMP\Exceptions\PageNotFoundException
      * @throws \TruckersMP\Exceptions\RequestException

@@ -25,7 +25,7 @@ class PostRequest extends Request
      * Create a new PostRequest instance.
      *
      * @param array $config
-     * @param int $companyId
+     * @param int   $companyId
      * @param $postId
      */
     public function __construct(array $config, int $companyId, $postId)
@@ -50,6 +50,7 @@ class PostRequest extends Request
      * Get the data for the request.
      *
      * @return CompanyPost
+     *
      * @throws \Http\Client\Exception
      * @throws \TruckersMP\Exceptions\PageNotFoundException
      * @throws \TruckersMP\Exceptions\RequestException

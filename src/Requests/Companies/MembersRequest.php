@@ -2,7 +2,6 @@
 
 namespace TruckersMP\Requests\Companies;
 
-use TruckersMP\Collections\MemberCollection;
 use TruckersMP\Models\CompanyMemberIndex;
 use TruckersMP\Requests\Request;
 
@@ -18,8 +17,8 @@ class MembersRequest extends Request
     /**
      * Create a new MembersRequest instance.
      *
-     * @param  array  $config
-     * @param  int  $id
+     * @param array $config
+     * @param int   $id
      */
     public function __construct(array $config, int $id)
     {
@@ -42,6 +41,7 @@ class MembersRequest extends Request
      * Get the data for the request.
      *
      * @return CompanyMemberIndex
+     *
      * @throws \Http\Client\Exception
      * @throws \TruckersMP\Exceptions\PageNotFoundException
      * @throws \TruckersMP\Exceptions\RequestException

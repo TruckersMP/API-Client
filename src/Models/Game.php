@@ -17,8 +17,8 @@ class Game
     /**
      * Create a new Game instance.
      *
-     * @param  bool  $ats
-     * @param  bool  $ets
+     * @param bool $ats
+     * @param bool $ets
      */
     public function __construct(bool $ats, bool $ets)
     {

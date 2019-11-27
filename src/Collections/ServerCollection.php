@@ -7,7 +7,7 @@ use TruckersMP\Models\Server;
 class ServerCollection extends Collection
 {
     /**
-     * Create a new Collection instance
+     * Create a new Collection instance.
      *
      * @param array $response
      */

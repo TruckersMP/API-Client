@@ -5,8 +5,8 @@ namespace Tests\Unit;
 use Carbon\Carbon;
 use Tests\TestCase;
 use TruckersMP\Collections\CompanyCollection;
-use TruckersMP\Models\CompanyIndex;
 use TruckersMP\Models\Company;
+use TruckersMP\Models\CompanyIndex;
 use TruckersMP\Models\Game;
 use TruckersMP\Models\Social;
 
@@ -257,35 +257,35 @@ class CompanyTest extends TestCase
         $this->assertInstanceOf(Social::class, $company->getSocial());
 
         // Twitter
-        if ($company->getSocial()->getTwitter() != null) {
+        if ($company->getSocial()->getTwitter() !== null) {
             $this->assertIsString($company->getSocial()->getTwitter());
         } else {
             $this->assertNull($company->getSocial()->getTwitter());
         }
 
         // Facebook
-        if ($company->getSocial()->getFacebook() != null) {
+        if ($company->getSocial()->getFacebook() !== null) {
             $this->assertIsString($company->getSocial()->getFacebook());
         } else {
             $this->assertNull($company->getSocial()->getFacebook());
         }
 
         // PlaysTV
-        if ($company->getSocial()->getPlays() != null) {
+        if ($company->getSocial()->getPlays() !== null) {
             $this->assertIsString($company->getSocial()->getPlays());
         } else {
             $this->assertNull($company->getSocial()->getPlays());
         }
 
         // Discord
-        if ($company->getSocial()->getDiscord() != null) {
+        if ($company->getSocial()->getDiscord() !== null) {
             $this->assertIsString($company->getSocial()->getDiscord());
         } else {
             $this->assertNull($company->getSocial()->getDiscord());
         }
 
         // YouTube
-        if ($company->getSocial()->getYouTube() != null) {
+        if ($company->getSocial()->getYouTube() !== null) {
             $this->assertIsString($company->getSocial()->getYouTube());
         } else {
             $this->assertNull($company->getSocial()->getYouTube());

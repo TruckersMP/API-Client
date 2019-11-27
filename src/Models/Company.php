@@ -142,7 +142,7 @@ class Company
     /**
      * Create a new Company instance.
      *
-     * @param  array  $company
+     * @param array $company
      *
      * @throws \Exception
      */

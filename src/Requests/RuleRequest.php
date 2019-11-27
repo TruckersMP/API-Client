@@ -20,6 +20,7 @@ class RuleRequest extends Request
      * Get the data for the request.
      *
      * @return Rule
+     *
      * @throws \Http\Client\Exception
      * @throws \TruckersMP\Exceptions\PageNotFoundException
      * @throws \TruckersMP\Exceptions\RequestException

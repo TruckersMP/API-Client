@@ -20,6 +20,7 @@ class CompaniesRequest extends Request
      * Get the data for the request.
      *
      * @return mixed
+     *
      * @throws \Http\Client\Exception
      * @throws \TruckersMP\Exceptions\PageNotFoundException
      * @throws \TruckersMP\Exceptions\RequestException

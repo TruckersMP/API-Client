@@ -2,10 +2,8 @@
 
 namespace TruckersMP;
 
-use TruckersMP\Collections\CompanyCollection;
 use TruckersMP\Requests\BanRequest;
 use TruckersMP\Requests\CompaniesRequest;
-use TruckersMP\Requests\IndexRequest;
 use TruckersMP\Requests\CompanyRequest;
 use TruckersMP\Requests\GameTimeRequest;
 use TruckersMP\Requests\PlayerRequest;
@@ -25,7 +23,7 @@ class Client
     /**
      * Create a new Client instance.
      *
-     * @param  array  $config
+     * @param array $config
      */
     public function __construct(array $config = [])
     {
@@ -38,6 +36,7 @@ class Client
      * https://stats.truckersmp.com/api#players_lookup
      *
      * @param int $id
+     *
      * @return \TruckersMP\Requests\PlayerRequest
      */
     public function player(int $id): PlayerRequest

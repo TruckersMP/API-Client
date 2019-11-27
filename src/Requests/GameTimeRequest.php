@@ -6,7 +6,6 @@ use TruckersMP\Models\GameTime;
 
 class GameTimeRequest extends Request
 {
-
     /**
      * Get the endpoint of the request.
      *
@@ -21,6 +20,7 @@ class GameTimeRequest extends Request
      * Get the data for the request.
      *
      * @return GameTime
+     *
      * @throws \Http\Client\Exception
      * @throws \TruckersMP\Exceptions\PageNotFoundException
      * @throws \TruckersMP\Exceptions\RequestException

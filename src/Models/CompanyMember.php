@@ -58,7 +58,7 @@ class CompanyMember
     /**
      * Create a new CompanyMember instance.
      *
-     * @param  array  $member
+     * @param array $member
      */
     public function __construct(array $member)
     {

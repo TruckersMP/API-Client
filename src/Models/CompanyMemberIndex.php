@@ -23,7 +23,7 @@ class CompanyMemberIndex
     /**
      * Create a new CompanyMemberIndex instance.
      *
-     * @param  array  $response
+     * @param array $response
      */
     public function __construct(array $response)
     {
