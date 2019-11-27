@@ -51,7 +51,7 @@ class CompanyRole
     /**
      * Create a new CompanyRole instance.
      *
-     * @param  array  $role
+     * @param array $role
      *
      * @throws \Exception
      */

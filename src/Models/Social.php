@@ -32,7 +32,7 @@ class Social
     /**
      * Create a new Social instance.
      *
-     * @param  array  $social
+     * @param array $social
      */
     public function __construct(array $social)
     {

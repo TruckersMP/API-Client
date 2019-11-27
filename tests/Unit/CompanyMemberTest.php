@@ -4,7 +4,6 @@ namespace Tests\Unit;
 
 use Carbon\Carbon;
 use Tests\TestCase;
-use TruckersMP\Collections\CompanyCollection;
 use TruckersMP\Collections\MemberCollection;
 use TruckersMP\Models\CompanyMember;
 use TruckersMP\Models\CompanyMemberIndex;

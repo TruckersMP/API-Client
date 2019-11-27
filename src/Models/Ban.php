@@ -51,7 +51,7 @@ class Ban
     /**
      * Create a new Ban instance.
      *
-     * @param  array  $ban
+     * @param array $ban
      *
      * @throws \Exception
      */
@@ -69,8 +69,8 @@ class Ban
 
         // Active
         $this->active = boolval($ban['active']);
-        if (! is_null($this->expiration) && $this->active) {
-            if (! $this->expiration->greaterThan(Carbon::now('UTC'))) {
+        if (!is_null($this->expiration) && $this->active) {
+            if (!$this->expiration->greaterThan(Carbon::now('UTC'))) {
                 $this->active = false;
             }
         }

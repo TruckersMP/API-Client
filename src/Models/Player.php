@@ -28,7 +28,7 @@ class Player
     protected $avatar;
 
     /**
-     * URL to the small avatar on the website;
+     * URL to the small avatar on the website;.
      *
      * @var string
      */
@@ -93,7 +93,7 @@ class Player
     /**
      * Create a new Player instance.
      *
-     * @param  array  $player
+     * @param array $player
      *
      * @throws \Exception
      */

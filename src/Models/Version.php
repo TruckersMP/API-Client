@@ -65,7 +65,7 @@ class Version
     /**
      * Create a new Version instance.
      *
-     * @param  array  $version
+     * @param array $version
      *
      * @throws \Exception
      */

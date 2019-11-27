@@ -21,7 +21,7 @@ class Checksum
     /**
      * Create a new Checksum instance.
      *
-     * @param  array  $checksum
+     * @param array $checksum
      */
     public function __construct(array $checksum)
     {

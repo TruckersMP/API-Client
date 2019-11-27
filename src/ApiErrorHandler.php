@@ -13,9 +13,10 @@ class ApiErrorHandler
      * Check if the API returned an error.
      *
      * @param \Psr\Http\Message\StreamInterface $body
-     * @param int $statusCode
+     * @param int                               $statusCode
      *
      * @return \Exception
+     *
      * @throws \TruckersMP\Exceptions\PageNotFoundException
      * @throws \TruckersMP\Exceptions\RequestException
      */
@@ -23,11 +24,11 @@ class ApiErrorHandler
     {
         $statusCodeType = (int) ($statusCode / 100);
 
-        if ($statusCodeType == 2) {
+        if ($statusCodeType === 2) {
             return null;
         }
 
-        $body = json_decode((string)$body, true, 512, JSON_BIGINT_AS_STRING);
+        $body = json_decode((string) $body, true, 512, JSON_BIGINT_AS_STRING);
 
         // If it's a page not found error, through a PageNotFoundException
         if (array_key_exists('descriptor', $body)) {

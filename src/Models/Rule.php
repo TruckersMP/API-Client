@@ -21,7 +21,7 @@ class Rule
     /**
      * Create a new Role instance.
      *
-     * @param  array  $rules
+     * @param array $rules
      */
     public function __construct(array $rules)
     {

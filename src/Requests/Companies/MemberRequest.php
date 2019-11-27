@@ -24,9 +24,9 @@ class MemberRequest extends Request
     /**
      * Create a new MemberRequest instance.
      *
-     * @param  array  $config
-     * @param  int  $companyId
-     * @param  int  $memberId
+     * @param array $config
+     * @param int   $companyId
+     * @param int   $memberId
      */
     public function __construct(array $config, int $companyId, int $memberId)
     {
@@ -50,6 +50,7 @@ class MemberRequest extends Request
      * Get the data for the request.
      *
      * @return mixed
+     *
      * @throws \Http\Client\Exception
      * @throws \TruckersMP\Exceptions\PageNotFoundException
      * @throws \TruckersMP\Exceptions\RequestException

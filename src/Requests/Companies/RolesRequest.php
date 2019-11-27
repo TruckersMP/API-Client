@@ -18,7 +18,7 @@ class RolesRequest extends Request
      * Create a new RolesRequest instance.
      *
      * @param array $config
-     * @param int $companyId
+     * @param int   $companyId
      */
     public function __construct(array $config, int $companyId)
     {
@@ -41,6 +41,7 @@ class RolesRequest extends Request
      * Get the data for the request.
      *
      * @return RoleCollection|\TruckersMP\Models\CompanyRole[]
+     *
      * @throws \Http\Client\Exception
      * @throws \TruckersMP\Exceptions\PageNotFoundException
      * @throws \TruckersMP\Exceptions\RequestException

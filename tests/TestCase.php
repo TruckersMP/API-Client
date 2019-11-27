@@ -19,7 +19,6 @@ use TruckersMP\Models\GameTime;
 use TruckersMP\Models\Player;
 use TruckersMP\Models\Rule;
 use TruckersMP\Models\Version;
-use TruckersMP\Requests\CompaniesRequest;
 
 class TestCase extends BaseTestCase
 {
@@ -67,6 +66,7 @@ class TestCase extends BaseTestCase
      * @param int $id
      *
      * @return \TruckersMP\Models\Player
+     *
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
      * @throws \TruckersMP\Exceptions\PageNotFoundException
@@ -76,7 +76,7 @@ class TestCase extends BaseTestCase
     {
         $cachedPlayer = $this->cache->getItem('player_' . $id);
 
-        if (! $cachedPlayer->isHit()) {
+        if (!$cachedPlayer->isHit()) {
             $cachedPlayer->set($this->client->player($id)->get())->expiresAfter(self::CACHE_SECONDS);
             $this->cache->save($cachedPlayer);
         }
@@ -90,6 +90,7 @@ class TestCase extends BaseTestCase
      * @param int $id
      *
      * @return \TruckersMP\Models\Ban[]
+     *
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
      * @throws \TruckersMP\Exceptions\PageNotFoundException
@@ -99,7 +100,7 @@ class TestCase extends BaseTestCase
     {
         $cachedBans = $this->cache->getItem('bans_' . $id);
 
-        if (! $cachedBans->isHit()) {
+        if (!$cachedBans->isHit()) {
             $cachedBans->set($this->client->bans($id)->get())->expiresAfter(self::CACHE_SECONDS);
             $this->cache->save($cachedBans);
         }
@@ -111,6 +112,7 @@ class TestCase extends BaseTestCase
      * Get or cache the server request.
      *
      * @return \TruckersMP\Collections\ServerCollection|\TruckersMP\Models\Server[]
+     *
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
      * @throws \TruckersMP\Exceptions\PageNotFoundException
@@ -120,7 +122,7 @@ class TestCase extends BaseTestCase
     {
         $cachedServers = $this->cache->getItem('servers');
 
-        if (! $cachedServers->isHit()) {
+        if (!$cachedServers->isHit()) {
             $cachedServers->set($this->client->servers()->get())->expiresAfter(self::CACHE_SECONDS);
             $this->cache->save($cachedServers);
         }
@@ -132,6 +134,7 @@ class TestCase extends BaseTestCase
      * Get or cache the game time.
      *
      * @return \TruckersMP\Models\GameTime
+     *
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
      * @throws \TruckersMP\Exceptions\PageNotFoundException
@@ -141,7 +144,7 @@ class TestCase extends BaseTestCase
     {
         $cachedGameTime = $this->cache->getItem('game_time');
 
-        if (! $cachedGameTime->isHit()) {
+        if (!$cachedGameTime->isHit()) {
             $cachedGameTime->set($this->client->gameTime()->get())->expiresAfter(self::CACHE_SECONDS);
             $this->cache->save($cachedGameTime);
         }
@@ -153,6 +156,7 @@ class TestCase extends BaseTestCase
      * Get or cache the recent companies.
      *
      * @return \TruckersMP\Models\CompanyIndex
+     *
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
      * @throws \TruckersMP\Exceptions\PageNotFoundException
@@ -162,7 +166,7 @@ class TestCase extends BaseTestCase
     {
         $cachedCompanies = $this->cache->getItem('recent_companies');
 
-        if (! $cachedCompanies->isHit()) {
+        if (!$cachedCompanies->isHit()) {
             $cachedCompanies->set($this->client->companies()->get());
             $this->cache->save($cachedCompanies);
         }
@@ -176,6 +180,7 @@ class TestCase extends BaseTestCase
      * @param int $id
      *
      * @return \TruckersMP\Models\Company
+     *
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
      * @throws \TruckersMP\Exceptions\PageNotFoundException
@@ -185,7 +190,7 @@ class TestCase extends BaseTestCase
     {
         $cachedCompany = $this->cache->getItem('company_' . $id);
 
-        if (! $cachedCompany->isHit()) {
+        if (!$cachedCompany->isHit()) {
             $cachedCompany->set($this->client->company($id)->get())->expiresAfter(self::CACHE_SECONDS);
             $this->cache->save($cachedCompany);
         }
@@ -199,6 +204,7 @@ class TestCase extends BaseTestCase
      * @param int $id
      *
      * @return PostsCollection|\TruckersMP\Models\CompanyPost[]
+     *
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
      * @throws \TruckersMP\Exceptions\PageNotFoundException
@@ -208,7 +214,7 @@ class TestCase extends BaseTestCase
     {
         $cachedNews = $this->cache->getItem('company_posts_' . $id);
 
-        if (! $cachedNews->isHit()) {
+        if (!$cachedNews->isHit()) {
             $cachedNews->set($this->client->company($id)->posts()->get())->expiresAfter(self::CACHE_SECONDS);
             $this->cache->save($cachedNews);
         }
@@ -223,6 +229,7 @@ class TestCase extends BaseTestCase
      * @param int $postId
      *
      * @return CompanyPost
+     *
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
      * @throws \TruckersMP\Exceptions\PageNotFoundException
@@ -232,7 +239,7 @@ class TestCase extends BaseTestCase
     {
         $cachedPost = $this->cache->getItem('company_' . $companyId . '_post_' . $postId);
 
-        if (! $cachedPost->isHit()) {
+        if (!$cachedPost->isHit()) {
             $cachedPost->set(
                 $this->client->company($companyId)->post($postId)->get()
             )->expiresAfter(self::CACHE_SECONDS);
@@ -249,6 +256,7 @@ class TestCase extends BaseTestCase
      * @param int $companyId
      *
      * @return \TruckersMP\Collections\RoleCollection|\TruckersMP\Models\CompanyRole[]
+     *
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
      * @throws \TruckersMP\Exceptions\PageNotFoundException
@@ -258,7 +266,7 @@ class TestCase extends BaseTestCase
     {
         $cachedRoles = $this->cache->getItem('company_roles_' . $companyId);
 
-        if (! $cachedRoles->isHit()) {
+        if (!$cachedRoles->isHit()) {
             $cachedRoles->set($this->client->company($companyId)->roles()->get())->expiresAfter(self::CACHE_SECONDS);
             $this->cache->save($cachedRoles);
         }
@@ -273,6 +281,7 @@ class TestCase extends BaseTestCase
      * @param int $roleId
      *
      * @return \TruckersMP\Models\CompanyRole
+     *
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
      * @throws \TruckersMP\Exceptions\PageNotFoundException
@@ -282,7 +291,7 @@ class TestCase extends BaseTestCase
     {
         $cachedRole = $this->cache->getItem('company_' . $companyId . '_roles_' . $roleId);
 
-        if (! $cachedRole->isHit()) {
+        if (!$cachedRole->isHit()) {
             $cachedRole->set(
                 $this->client->company($companyId)->role($roleId)->get()
             )->expiresAfter(self::CACHE_SECONDS);
@@ -296,9 +305,10 @@ class TestCase extends BaseTestCase
     /**
      * Get or cache the company members.
      *
-     * @param  int  $companyId
+     * @param int $companyId
      *
      * @return mixed
+     *
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
      * @throws \TruckersMP\Exceptions\PageNotFoundException
@@ -308,7 +318,7 @@ class TestCase extends BaseTestCase
     {
         $cachedMembers = $this->cache->getItem('company_members_' . $companyId);
 
-        if (! $cachedMembers->isHit()) {
+        if (!$cachedMembers->isHit()) {
             $cachedMembers->set(
                 $this->client->company($companyId)->members()->get()
             );
@@ -322,10 +332,11 @@ class TestCase extends BaseTestCase
     /**
      * Get or cache the company member.
      *
-     * @param  int  $companyId
-     * @param  int  $memberId
+     * @param int $companyId
+     * @param int $memberId
      *
      * @return \TruckersMP\Models\CompanyMember
+     *
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
      * @throws \TruckersMP\Exceptions\PageNotFoundException
@@ -335,7 +346,7 @@ class TestCase extends BaseTestCase
     {
         $cachedMember = $this->cache->getItem('company_member_' . $memberId);
 
-        if (! $cachedMember->isHit()) {
+        if (!$cachedMember->isHit()) {
             $cachedMember->set(
                 $this->client->company($companyId)->member($memberId)->get()
             )->expiresAfter(self::CACHE_SECONDS);
@@ -350,6 +361,7 @@ class TestCase extends BaseTestCase
      * Get or cache the TruckersMP version.
      *
      * @return \TruckersMP\Models\Version
+     *
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
      * @throws \TruckersMP\Exceptions\PageNotFoundException
@@ -359,7 +371,7 @@ class TestCase extends BaseTestCase
     {
         $cachedVersion = $this->cache->getItem('version');
 
-        if (! $cachedVersion->isHit()) {
+        if (!$cachedVersion->isHit()) {
             $cachedVersion->set($this->client->version()->get())->expiresAfter(self::CACHE_SECONDS);
             $this->cache->save($cachedVersion);
         }
@@ -371,6 +383,7 @@ class TestCase extends BaseTestCase
      * Get or cache the rules.
      *
      * @return \TruckersMP\Models\Rule
+     *
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
      * @throws \TruckersMP\Exceptions\PageNotFoundException
@@ -380,7 +393,7 @@ class TestCase extends BaseTestCase
     {
         $cachedRules = $this->cache->getItem('rules');
 
-        if (! $cachedRules->isHit()) {
+        if (!$cachedRules->isHit()) {
             $cachedRules->set($this->client->rules()->get())->expiresAfter(self::CACHE_SECONDS);
             $this->cache->save($cachedRules);
         }

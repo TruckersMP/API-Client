@@ -18,7 +18,7 @@ class NewsRequest extends Request
      * Create a new NewsRequest instance.
      *
      * @param array $config
-     * @param int $companyId
+     * @param int   $companyId
      */
     public function __construct(array $config, int $companyId)
     {
@@ -41,6 +41,7 @@ class NewsRequest extends Request
      * Get the data for the request.
      *
      * @return PostsCollection|\TruckersMP\Models\CompanyPost[]
+     *
      * @throws \Http\Client\Exception
      * @throws \TruckersMP\Exceptions\PageNotFoundException
      * @throws \TruckersMP\Exceptions\RequestException

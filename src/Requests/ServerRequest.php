@@ -4,7 +4,6 @@ namespace TruckersMP\Requests;
 
 use TruckersMP\Collections\ServerCollection;
 use TruckersMP\Models\Server;
-use function GuzzleHttp\Promise\all;
 
 class ServerRequest extends Request
 {
@@ -22,6 +21,7 @@ class ServerRequest extends Request
      * Get the data for the request.
      *
      * @return \TruckersMP\Collections\ServerCollection|Server[]
+     *
      * @throws \Http\Client\Exception
      * @throws \TruckersMP\Exceptions\PageNotFoundException
      * @throws \TruckersMP\Exceptions\RequestException

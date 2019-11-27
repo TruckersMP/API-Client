@@ -38,7 +38,7 @@ abstract class Request
     /**
      * Create a new Request instance.
      *
-     * @param  array  $config
+     * @param array $config
      */
     public function __construct(array $config)
     {
@@ -67,7 +67,8 @@ abstract class Request
     /**
      * Send the request to the API endpoint and get the result.
      *
-     * @return  array
+     * @return array
+     *
      * @throws \Http\Client\Exception
      * @throws \TruckersMP\Exceptions\PageNotFoundException
      * @throws \TruckersMP\Exceptions\RequestException
@@ -83,6 +84,6 @@ abstract class Request
             ApiErrorHandler::check($exception->getResponse()->getBody(), $exception->getCode());
         }
 
-        return json_decode((string)$result->getBody(), true, 512, JSON_BIGINT_AS_STRING);
+        return json_decode((string) $result->getBody(), true, 512, JSON_BIGINT_AS_STRING);
     }
 }

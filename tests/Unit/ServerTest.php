@@ -113,7 +113,7 @@ class ServerTest extends TestCase
     {
         $server = $this->servers()[0];
 
-        if ($server->getIdPrefix() != null) {
+        if ($server->getIdPrefix() !== null) {
             $this->assertIsString($server->getIdPrefix());
         } else {
             $this->assertNull($server->getIdPrefix());

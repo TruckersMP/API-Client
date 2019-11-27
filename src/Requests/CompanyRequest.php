@@ -30,7 +30,7 @@ class CompanyRequest extends Request
      * Create a new CompanyRequest instance.
      *
      * @param array $config
-     * @param int $id
+     * @param int   $id
      */
     public function __construct(array $config, int $id)
     {
@@ -53,6 +53,7 @@ class CompanyRequest extends Request
      * Get the data for the request.
      *
      * @return Company
+     *
      * @throws \Http\Client\Exception
      * @throws \TruckersMP\Exceptions\PageNotFoundException
      * @throws \TruckersMP\Exceptions\RequestException
@@ -138,7 +139,7 @@ class CompanyRequest extends Request
     /**
      * Get the requested company member.
      *
-     * @param  int  $id
+     * @param int $id
      *
      * @return \TruckersMP\Requests\Companies\MemberRequest
      */
