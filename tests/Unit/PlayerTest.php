@@ -240,7 +240,7 @@ class PlayerTest extends TestCase
      * @throws \TruckersMP\Exceptions\PageNotFoundException
      * @throws \TruckersMP\Exceptions\RequestException
      */
-    public function testWeCanGeThePlayersBans()
+    public function testWeCanGetThePlayersBans()
     {
         $bans = $this->playerBans(self::TEST_ACCOUNT);
 
@@ -249,5 +249,24 @@ class PlayerTest extends TestCase
         $player = $this->player(self::TEST_ACCOUNT);
 
         $this->assertInstanceOf(BanCollection::class, $player->getBans());
+    }
+
+    /**
+     * @throws \Http\Client\Exception
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     * @throws \TruckersMP\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\Exceptions\RequestException
+     */
+    public function testWeCanGetThePlayersCompany()
+    {
+        $player = $this->player(self::TEST_ACCOUNT);
+
+        $company =  $player->getCompany();
+
+        if ($player->isInCompany()) {
+            $this->assertInstanceOf(Company::class, $company);
+        } else {
+            $this->assertNull($company);
+        }
     }
 }
