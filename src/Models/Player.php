@@ -138,27 +138,6 @@ class Player
     protected $bans;
 
     /**
-     * The players company.
-     *
-     * @var \TruckersMP\Models\Company|null
-     */
-    protected $company;
-
-    /**
-     * The player a company member.
-     *
-     * @var \TruckersMP\Models\CompanyMember|null
-     */
-    protected $companyMember;
-
-    /**
-     * The players company role.
-     *
-     * @var \TruckersMP\Models\CompanyRole|null
-     */
-    protected $companyRole;
-
-    /**
      * Create a new Player instance.
      *
      * @param array $player
@@ -188,21 +167,6 @@ class Player
 
         // Get the player bans
         $this->bans = (new BanRequest($this->id))->get();
-
-        // Get the players company
-        if ($this->isInCompany) {
-            $this->company = (new CompanyRequest($this->companyId))->get();
-        }
-
-        // Get the players company member
-        if ($this->isInCompany) {
-            $this->companyMember = (new MemberRequest($this->companyId, $this->companyMemberId))->get();
-        }
-
-        // Get the players company role
-        if ($this->isInCompany) {
-            $this->companyRole =  (new RoleRequest($this->companyId, $this->companyMember->getRoleId()))->get();
-        }
     }
 
     /**
@@ -351,25 +315,52 @@ class Player
 
     /**
      * @return \TruckersMP\Models\Company|null
+     * @throws \Http\Client\Exception
+     * @throws \TruckersMP\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\Exceptions\RequestException
      */
     public function getCompany(): ?Company
     {
-        return $this->company;
+        $company = null;
+
+        if ($this->isInCompany) {
+            $company = (new CompanyRequest($this->companyId))->get();
+        }
+
+        return $company;
     }
 
     /**
      * @return \TruckersMP\Models\CompanyMember|null
+     * @throws \Http\Client\Exception
+     * @throws \TruckersMP\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\Exceptions\RequestException
      */
     public function getCompanyMember(): ?CompanyMember
     {
-        return $this->companyMember;
+        $member = null;
+
+        if ($this->isInCompany) {
+            $member = (new MemberRequest($this->companyId, $this->companyMemberId))->get();
+        }
+
+        return $member;
     }
 
     /**
      * @return \TruckersMP\Models\CompanyRole|null
+     * @throws \Http\Client\Exception
+     * @throws \TruckersMP\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\Exceptions\RequestException
      */
     public function getCompanyRole(): ?CompanyRole
     {
-        return $this->companyRole;
+        $role = null;
+
+        if ($this->isInCompany) {
+            $role =  (new RoleRequest($this->companyId, $this->getCompanyMember()->getRoleId()))->get();
+        }
+
+        return $role;
     }
 }
