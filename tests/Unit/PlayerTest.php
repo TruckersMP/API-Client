@@ -7,6 +7,7 @@ use Tests\TestCase;
 use TruckersMP\Collections\BanCollection;
 use TruckersMP\Models\Company;
 use TruckersMP\Models\CompanyMember;
+use TruckersMP\Models\CompanyRole;
 use TruckersMP\Models\Player;
 
 class PlayerTest extends TestCase
@@ -287,6 +288,25 @@ class PlayerTest extends TestCase
             $this->assertInstanceOf(CompanyMember::class, $member);
         } else {
             $this->assertNull($member);
+        }
+    }
+
+    /**
+     * @throws \Http\Client\Exception
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     * @throws \TruckersMP\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\Exceptions\RequestException
+     */
+    public function testWeCanGetThePlayersCompanyRole()
+    {
+        $player = $this->player(self::TEST_ACCOUNT);
+
+        $role = $player->getCompanyRole();
+
+        if ($player->isInCompany()) {
+            $this->assertInstanceOf(CompanyRole::class, $role);
+        } else {
+            $this->assertNull($role);
         }
     }
 }

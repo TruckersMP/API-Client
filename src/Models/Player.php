@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use TruckersMP\Collections\BanCollection;
 use TruckersMP\Requests\BanRequest;
 use TruckersMP\Requests\Companies\MemberRequest;
+use TruckersMP\Requests\Companies\RoleRequest;
 use TruckersMP\Requests\CompanyRequest;
 
 class Player
@@ -151,6 +152,13 @@ class Player
     protected $companyMember;
 
     /**
+     * The players company role.
+     *
+     * @var \TruckersMP\Models\CompanyRole|null
+     */
+    protected $companyRole;
+
+    /**
      * Create a new Player instance.
      *
      * @param array $player
@@ -189,6 +197,11 @@ class Player
         // Get the players company member
         if ($this->isInCompany) {
             $this->companyMember = (new MemberRequest($this->companyId, $this->companyMemberId))->get();
+        }
+
+        // Get the players company role
+        if ($this->isInCompany) {
+            $this->companyRole =  (new RoleRequest($this->companyId, $this->companyMember->getRoleId()))->get();
         }
     }
 
@@ -350,5 +363,13 @@ class Player
     public function getCompanyMember(): ?CompanyMember
     {
         return $this->companyMember;
+    }
+
+    /**
+     * @return \TruckersMP\Models\CompanyRole|null
+     */
+    public function getCompanyRole(): ?CompanyRole
+    {
+        return $this->companyRole;
     }
 }
