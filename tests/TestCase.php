@@ -91,6 +91,7 @@ class TestCase extends BaseTestCase
      * @param int $id
      *
      * @return \TruckersMP\Collections\BanCollection
+     *
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
      * @throws \TruckersMP\Exceptions\PageNotFoundException

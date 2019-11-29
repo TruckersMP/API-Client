@@ -315,6 +315,7 @@ class Player
 
     /**
      * @return \TruckersMP\Models\Company|null
+     *
      * @throws \Http\Client\Exception
      * @throws \TruckersMP\Exceptions\PageNotFoundException
      * @throws \TruckersMP\Exceptions\RequestException
@@ -332,6 +333,7 @@ class Player
 
     /**
      * @return \TruckersMP\Models\CompanyMember|null
+     *
      * @throws \Http\Client\Exception
      * @throws \TruckersMP\Exceptions\PageNotFoundException
      * @throws \TruckersMP\Exceptions\RequestException
@@ -349,6 +351,7 @@ class Player
 
     /**
      * @return \TruckersMP\Models\CompanyRole|null
+     *
      * @throws \Http\Client\Exception
      * @throws \TruckersMP\Exceptions\PageNotFoundException
      * @throws \TruckersMP\Exceptions\RequestException
@@ -358,7 +361,7 @@ class Player
         $role = null;
 
         if ($this->isInCompany) {
-            $role =  (new RoleRequest($this->companyId, $this->getCompanyMember()->getRoleId()))->get();
+            $role = (new RoleRequest($this->companyId, $this->getCompanyMember()->getRoleId()))->get();
         }
 
         return $role;

@@ -263,7 +263,7 @@ class PlayerTest extends TestCase
     {
         $player = $this->player(self::TEST_ACCOUNT);
 
-        $company =  $player->getCompany();
+        $company = $player->getCompany();
 
         if ($player->isInCompany()) {
             $this->assertInstanceOf(Company::class, $company);
