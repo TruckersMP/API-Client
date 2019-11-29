@@ -4,7 +4,6 @@ namespace Tests\Unit;
 
 use Carbon\Carbon;
 use Tests\TestCase;
-use TruckersMP\Models\Company;
 use TruckersMP\Models\Player;
 
 class PlayerTest extends TestCase

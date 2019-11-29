@@ -9,9 +9,10 @@ class BanCollection extends Collection
     /**
      * Create a new BanCollection instance.
      *
-     * @param  array  $bans
+     * @param array $bans
      *
      * @return void
+     *
      * @throws \Exception
      */
     public function __construct(array $bans)

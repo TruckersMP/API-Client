@@ -3,7 +3,6 @@
 namespace TruckersMP\Requests;
 
 use TruckersMP\Collections\BanCollection;
-use TruckersMP\Models\Ban;
 
 class BanRequest extends Request
 {
@@ -17,7 +16,7 @@ class BanRequest extends Request
     /**
      * Create a new BanRequest instance.
      *
-     * @param  int  $id
+     * @param int $id
      */
     public function __construct(int $id)
     {
