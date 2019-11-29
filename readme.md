@@ -5,6 +5,7 @@
 <a href="https://github.styleci.io/repos/57324164"><img src="https://github.styleci.io/repos/57324164/shield?branch=master" alt="StyleCI Status"></a>
 <a href="https://packagist.org/packages/truckersmp/api-client"><img src="https://poser.pugx.org/truckersmp/api-client/downloads" alt="Total Downloads"></a>
 <a href="https://packagist.org/packages/truckersmp/api-client"><img src="https://poser.pugx.org/truckersmp/api-client/v/stable" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/truckersmp/api-client"><img src="https://poser.pugx.org/truckersmp/api-client/v/unstable" alt="Latest Unstable Version"></a>
 <a href="https://packagist.org/packages/truckersmp/api-client"><img src="https://poser.pugx.org/truckersmp/api-client/license" alt="License"></a>
 </p>
 
@@ -14,6 +15,24 @@ The TruckersMP PHP library provides convenient access to the TruckersMP API for 
 language. It includes a pre-defined set of classes for API each endpoint to get the data as a collection or model.
 
 If you want to use the API without the library, check out the [API Documentation](https://stats.truckersmp.com/api).
+
+## Requirements
+
+PHP 7.2 or later
+
+## Composer
+
+You can install the package via [Composer](https://getcomposer.org). Run the following command:
+
+```bash
+composer require truckersmp/api-client
+```
+
+To use the package, use Composer's [autoload](https://getcomposer.org/doc/01-basic-usage.md#autoloading):
+
+```php
+require_once('vendor/autoload.php');
+```
 
 ## Official Documentation
 
