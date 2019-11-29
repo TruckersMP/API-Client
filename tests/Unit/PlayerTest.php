@@ -4,6 +4,7 @@ namespace Tests\Unit;
 
 use Carbon\Carbon;
 use Tests\TestCase;
+use TruckersMP\Models\Company;
 use TruckersMP\Models\Player;
 
 class PlayerTest extends TestCase
@@ -11,7 +12,7 @@ class PlayerTest extends TestCase
     /**
      * The ID of the player to use in the tests.
      */
-    private const TEST_ACCOUNT = 28159;
+    private const TEST_ACCOUNT = 6818;
 
     /**
      * @throws \Http\Client\Exception
@@ -173,6 +174,12 @@ class PlayerTest extends TestCase
         $this->assertIsBool($player->isAdmin());
     }
 
+    /**
+     * @throws \Http\Client\Exception
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     * @throws \TruckersMP\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\Exceptions\RequestException
+     */
     public function testItHasACompanyId()
     {
         $player = $this->player(self::TEST_ACCOUNT);
@@ -180,6 +187,12 @@ class PlayerTest extends TestCase
         $this->assertIsInt($player->getCompanyId());
     }
 
+    /**
+     * @throws \Http\Client\Exception
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     * @throws \TruckersMP\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\Exceptions\RequestException
+     */
     public function testItHasACompanyName()
     {
         $player = $this->player(self::TEST_ACCOUNT);
@@ -187,6 +200,12 @@ class PlayerTest extends TestCase
         $this->assertIsString($player->getCompanyName());
     }
 
+    /**
+     * @throws \Http\Client\Exception
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     * @throws \TruckersMP\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\Exceptions\RequestException
+     */
     public function testItHasACompanyTag()
     {
         $player = $this->player(self::TEST_ACCOUNT);
@@ -201,6 +220,12 @@ class PlayerTest extends TestCase
         $this->assertIsBool($player->isInCompany());
     }
 
+    /**
+     * @throws \Http\Client\Exception
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     * @throws \TruckersMP\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\Exceptions\RequestException
+     */
     public function testItHasAMemberId()
     {
         $player = $this->player(self::TEST_ACCOUNT);
