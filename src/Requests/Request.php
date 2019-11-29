@@ -7,6 +7,7 @@ use Http\Adapter\Guzzle6\Client as GuzzleAdapter;
 use Http\Client\Exception\HttpException;
 use Http\Message\MessageFactory\GuzzleMessageFactory;
 use TruckersMP\ApiErrorHandler;
+use TruckersMP\Client;
 
 abstract class Request
 {
@@ -37,14 +38,12 @@ abstract class Request
 
     /**
      * Create a new Request instance.
-     *
-     * @param array $config
      */
-    public function __construct(array $config)
+    public function __construct()
     {
         $this->message = new GuzzleMessageFactory();
         $this->adapter = new GuzzleAdapter(
-            new GuzzleClient($config)
+            new GuzzleClient(Client::config())
         );
 
         $this->url = 'https://' . self::API_ENDPOINT . '/' . self::API_VERSION . '/';

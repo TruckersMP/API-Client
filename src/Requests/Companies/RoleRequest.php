@@ -24,12 +24,12 @@ class RoleRequest extends Request
     /**
      * Create a new RolesRequest instance.
      *
-     * @param array $config
-     * @param int   $companyId
+     * @param  int  $companyId
+     * @param  int  $roleId
      */
-    public function __construct(array $config, int $companyId, int $roleId)
+    public function __construct(int $companyId, int $roleId)
     {
-        parent::__construct($config);
+        parent::__construct();
 
         $this->companyId = $companyId;
         $this->roleId = $roleId;

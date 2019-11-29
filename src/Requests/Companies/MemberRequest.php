@@ -24,13 +24,12 @@ class MemberRequest extends Request
     /**
      * Create a new MemberRequest instance.
      *
-     * @param array $config
-     * @param int   $companyId
-     * @param int   $memberId
+     * @param  int  $companyId
+     * @param  int  $memberId
      */
-    public function __construct(array $config, int $companyId, int $memberId)
+    public function __construct(int $companyId, int $memberId)
     {
-        parent::__construct($config);
+        parent::__construct();
 
         $this->companyId = $companyId;
         $this->memberId = $memberId;

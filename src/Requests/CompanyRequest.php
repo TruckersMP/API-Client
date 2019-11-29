@@ -29,12 +29,11 @@ class CompanyRequest extends Request
     /**
      * Create a new CompanyRequest instance.
      *
-     * @param array $config
-     * @param int   $id
+     * @param  int  $id
      */
-    public function __construct(array $config, int $id)
+    public function __construct(int $id)
     {
-        parent::__construct($config);
+        parent::__construct();
 
         $this->id = $id;
     }
@@ -73,7 +72,6 @@ class CompanyRequest extends Request
     public function posts(): NewsRequest
     {
         return new NewsRequest(
-            $this->config,
             $this->id
         );
     }
@@ -88,7 +86,6 @@ class CompanyRequest extends Request
     public function post(int $id): PostRequest
     {
         return new PostRequest(
-            $this->config,
             $this->id,
             $id
         );
@@ -102,7 +99,6 @@ class CompanyRequest extends Request
     public function roles(): RolesRequest
     {
         return new RolesRequest(
-            $this->config,
             $this->id
         );
     }
@@ -117,7 +113,6 @@ class CompanyRequest extends Request
     public function role(int $id): RoleRequest
     {
         return new RoleRequest(
-            $this->config,
             $this->id,
             $id
         );
@@ -131,7 +126,6 @@ class CompanyRequest extends Request
     public function members(): MembersRequest
     {
         return new MembersRequest(
-            $this->config,
             $this->id
         );
     }
@@ -146,7 +140,6 @@ class CompanyRequest extends Request
     public function member(int $id): MemberRequest
     {
         return new MemberRequest(
-            $this->config,
             $this->id,
             $id
         );

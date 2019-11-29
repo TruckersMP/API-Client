@@ -17,12 +17,11 @@ class NewsRequest extends Request
     /**
      * Create a new NewsRequest instance.
      *
-     * @param array $config
-     * @param int   $companyId
+     * @param  int  $companyId
      */
-    public function __construct(array $config, int $companyId)
+    public function __construct(int $companyId)
     {
-        parent::__construct($config);
+        parent::__construct();
 
         $this->companyId = $companyId;
     }

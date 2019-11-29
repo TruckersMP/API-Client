@@ -18,7 +18,7 @@ class Client
      *
      * @var array
      */
-    protected $config = [];
+    protected static $config = [];
 
     /**
      * Create a new Client instance.
@@ -27,7 +27,7 @@ class Client
      */
     public function __construct(array $config = [])
     {
-        $this->config = $config;
+        self::$config = $config;
     }
 
     /**
@@ -41,7 +41,7 @@ class Client
      */
     public function player(int $id): PlayerRequest
     {
-        return new PlayerRequest($this->config, $id);
+        return new PlayerRequest($id);
     }
 
     /**
@@ -55,7 +55,7 @@ class Client
      */
     public function bans(int $id): BanRequest
     {
-        return new BanRequest($this->config, $id);
+        return new BanRequest($id);
     }
 
     /**
@@ -67,7 +67,7 @@ class Client
      */
     public function servers(): ServerRequest
     {
-        return new ServerRequest($this->config);
+        return new ServerRequest();
     }
 
     /**
@@ -79,7 +79,7 @@ class Client
      */
     public function gameTime(): GameTimeRequest
     {
-        return new GameTimeRequest($this->config);
+        return new GameTimeRequest();
     }
 
     /**
@@ -91,7 +91,7 @@ class Client
      */
     public function companies(): CompaniesRequest
     {
-        return new CompaniesRequest($this->config);
+        return new CompaniesRequest();
     }
 
     /**
@@ -105,7 +105,7 @@ class Client
      */
     public function company(int $id): CompanyRequest
     {
-        return new CompanyRequest($this->config, $id);
+        return new CompanyRequest($id);
     }
 
     /**
@@ -117,7 +117,7 @@ class Client
      */
     public function version(): VersionRequest
     {
-        return new VersionRequest($this->config);
+        return new VersionRequest();
     }
 
     /**
@@ -129,6 +129,16 @@ class Client
      */
     public function rules(): RuleRequest
     {
-        return new RuleRequest($this->config);
+        return new RuleRequest();
+    }
+
+    /**
+     * Get the configuration to use for Guzzle.
+     *
+     * @return array
+     */
+    public static function config()
+    {
+        return self::$config;
     }
 }

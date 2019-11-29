@@ -24,13 +24,12 @@ class PostRequest extends Request
     /**
      * Create a new PostRequest instance.
      *
-     * @param array $config
-     * @param int   $companyId
+     * @param  int  $companyId
      * @param $postId
      */
-    public function __construct(array $config, int $companyId, $postId)
+    public function __construct(int $companyId, $postId)
     {
-        parent::__construct($config);
+        parent::__construct();
 
         $this->companyId = $companyId;
         $this->postId = $postId;

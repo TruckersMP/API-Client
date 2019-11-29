@@ -17,12 +17,11 @@ class MembersRequest extends Request
     /**
      * Create a new MembersRequest instance.
      *
-     * @param array $config
-     * @param int   $id
+     * @param  int  $id
      */
-    public function __construct(array $config, int $id)
+    public function __construct(int $id)
     {
-        parent::__construct($config);
+        parent::__construct();
 
         $this->companyId = $id;
     }
