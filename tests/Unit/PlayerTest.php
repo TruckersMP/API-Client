@@ -4,6 +4,7 @@ namespace Tests\Unit;
 
 use Carbon\Carbon;
 use Tests\TestCase;
+use TruckersMP\Collections\BanCollection;
 use TruckersMP\Models\Company;
 use TruckersMP\Models\Player;
 
@@ -12,7 +13,7 @@ class PlayerTest extends TestCase
     /**
      * The ID of the player to use in the tests.
      */
-    private const TEST_ACCOUNT = 6818;
+    private const TEST_ACCOUNT = 28159;
 
     /**
      * @throws \Http\Client\Exception
@@ -231,5 +232,22 @@ class PlayerTest extends TestCase
         $player = $this->player(self::TEST_ACCOUNT);
 
         $this->assertIsInt($player->getCompanyMemberId());
+    }
+
+    /**
+     * @throws \Http\Client\Exception
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     * @throws \TruckersMP\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\Exceptions\RequestException
+     */
+    public function testWeCanGeThePlayersBans()
+    {
+        $bans = $this->playerBans(self::TEST_ACCOUNT);
+
+        $this->assertInstanceOf(BanCollection::class, $bans);
+
+        $player = $this->player(self::TEST_ACCOUNT);
+
+        $this->assertInstanceOf(BanCollection::class, $player->getBans());
     }
 }

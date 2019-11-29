@@ -3,6 +3,8 @@
 namespace TruckersMP\Models;
 
 use Carbon\Carbon;
+use TruckersMP\Collections\BanCollection;
+use TruckersMP\Requests\BanRequest;
 
 class Player
 {
@@ -126,11 +128,19 @@ class Player
     protected $companyMemberId;
 
     /**
+     * The players bans.
+     *
+     * @var \TruckersMP\Collections\BanCollection
+     */
+    protected $bans;
+
+    /**
      * Create a new Player instance.
      *
      * @param array $player
      *
      * @throws \Exception
+     * @throws \Http\Client\Exception
      */
     public function __construct(array $player)
     {
@@ -151,6 +161,9 @@ class Player
         $this->companyTag = $player['vtc']['tag'];
         $this->isInCompany = $player['vtc']['inVTC'];
         $this->companyMemberId = $player['vtc']['memberID'];
+
+        // Get the player bans
+        $this->bans = (new BanRequest($this->id))->get();
     }
 
     /**
@@ -287,5 +300,13 @@ class Player
     public function getCompanyMemberId(): int
     {
         return $this->companyMemberId;
+    }
+
+    /**
+     * @return \TruckersMP\Collections\BanCollection
+     */
+    public function getBans(): ?BanCollection
+    {
+        return $this->bans;
     }
 }

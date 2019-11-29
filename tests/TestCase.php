@@ -86,6 +86,29 @@ class TestCase extends BaseTestCase
     }
 
     /**
+     * Get or cache the players bans.
+     *
+     * @param int $id
+     *
+     * @return \TruckersMP\Collections\BanCollection
+     * @throws \Http\Client\Exception
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     * @throws \TruckersMP\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\Exceptions\RequestException
+     */
+    public function playerBans(int $id): BanCollection
+    {
+        $cachedBans = $this->cache->getItem('player_bans_' . $id);
+
+        if (!$cachedBans->isHit()) {
+            $cachedBans->set($this->client->player($id)->bans()->get())->expiresAfter(self::CACHE_SECONDS);
+            $this->cache->save($cachedBans);
+        }
+
+        return $cachedBans->get();
+    }
+
+    /**
      * Get or cache the bans for the player.
      *
      * @param int $id

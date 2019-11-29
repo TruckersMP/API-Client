@@ -50,4 +50,16 @@ class PlayerRequest extends Request
             $this->send()['response']
         );
     }
+
+    /**
+     * Get the players bans.
+     *
+     * @return \TruckersMP\Requests\BanRequest
+     */
+    public function bans(): BanRequest
+    {
+        return new BanRequest(
+            $this->id
+        );
+    }
 }
