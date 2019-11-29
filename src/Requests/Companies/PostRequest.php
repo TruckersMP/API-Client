@@ -24,7 +24,7 @@ class PostRequest extends Request
     /**
      * Create a new PostRequest instance.
      *
-     * @param  int  $companyId
+     * @param int $companyId
      * @param $postId
      */
     public function __construct(int $companyId, $postId)

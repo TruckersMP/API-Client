@@ -17,7 +17,7 @@ class NewsRequest extends Request
     /**
      * Create a new NewsRequest instance.
      *
-     * @param  int  $companyId
+     * @param int $companyId
      */
     public function __construct(int $companyId)
     {

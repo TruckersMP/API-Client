@@ -17,7 +17,7 @@ class RolesRequest extends Request
     /**
      * Create a new RolesRequest instance.
      *
-     * @param  int  $companyId
+     * @param int $companyId
      */
     public function __construct(int $companyId)
     {
