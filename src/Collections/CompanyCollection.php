@@ -9,7 +9,9 @@ class CompanyCollection extends Collection
     /**
      * Create a new Collection instance.
      *
-     * @param array $companies
+     * @param  array  $companies
+     *
+     * @throws \Exception
      */
     public function __construct(array $companies)
     {

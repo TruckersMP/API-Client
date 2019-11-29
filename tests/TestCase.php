@@ -6,6 +6,7 @@ use Phpfastcache\CacheManager;
 use Phpfastcache\Config\ConfigurationOption;
 use PHPUnit\Framework\TestCase as BaseTestCase;
 use TruckersMP\Client;
+use TruckersMP\Collections\BanCollection;
 use TruckersMP\Collections\PostsCollection;
 use TruckersMP\Collections\RoleCollection;
 use TruckersMP\Collections\ServerCollection;
@@ -96,7 +97,7 @@ class TestCase extends BaseTestCase
      * @throws \TruckersMP\Exceptions\PageNotFoundException
      * @throws \TruckersMP\Exceptions\RequestException
      */
-    public function bans(int $id): array
+    public function bans(int $id): BanCollection
     {
         $cachedBans = $this->cache->getItem('bans_' . $id);
 

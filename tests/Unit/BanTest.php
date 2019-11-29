@@ -4,6 +4,7 @@ namespace Tests\Unit;
 
 use Carbon\Carbon;
 use Tests\TestCase;
+use TruckersMP\Collections\BanCollection;
 use TruckersMP\Models\Ban;
 
 class BanTest extends TestCase
@@ -23,7 +24,7 @@ class BanTest extends TestCase
     {
         $bans = $this->bans(self::TEST_ACCOUNT);
 
-        $this->assertIsArray($bans);
+        $this->assertInstanceOf(BanCollection::class, $bans);
 
         if (count($bans) > 0) {
             $this->assertInstanceOf(Ban::class, $bans[0]);

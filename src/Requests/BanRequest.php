@@ -2,6 +2,7 @@
 
 namespace TruckersMP\Requests;
 
+use TruckersMP\Collections\BanCollection;
 use TruckersMP\Models\Ban;
 
 class BanRequest extends Request
@@ -39,23 +40,17 @@ class BanRequest extends Request
     /**
      * Get the data for the request.
      *
-     * @return \TruckersMP\Models\Ban[]
+     * @return \TruckersMP\Collections\BanCollection
      *
      * @throws \Http\Client\Exception
      * @throws \TruckersMP\Exceptions\PageNotFoundException
      * @throws \TruckersMP\Exceptions\RequestException
+     * @throws \Exception
      */
-    public function get(): array
+    public function get(): BanCollection
     {
-        $bans = [];
-        $results = $this->send();
-
-        // TODO: handle any errors / exceptions
-
-        foreach ($results['response'] as $key => $ban) {
-            $bans[$key] = new Ban($ban);
-        }
-
-        return $bans;
+        return new BanCollection(
+            $this->send()['response']
+        );
     }
 }
