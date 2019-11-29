@@ -91,6 +91,41 @@ class Player
     protected $inGameAdmin;
 
     /**
+     * The players company ID.
+     *
+     * @var int
+     */
+    protected $companyId;
+
+    /**
+     * The players company name.
+     *
+     * @var string
+     */
+    protected $companyName;
+
+    /**
+     * The players company tag.
+     *
+     * @var string
+     */
+    protected $companyTag;
+
+    /**
+     * If the player is in a company.
+     *
+     * @var bool
+     */
+    protected $isInCompany;
+
+    /**
+     * The players company member id.
+     *
+     * @var int
+     */
+    protected $companyMemberId;
+
+    /**
      * Create a new Player instance.
      *
      * @param array $player
@@ -111,6 +146,11 @@ class Player
         $this->bannedUntil = new Carbon($player['bannedUntil'], 'UTC');
         $this->displayBans = $player['displayBans'];
         $this->inGameAdmin = $player['permissions']['isGameAdmin'];
+        $this->companyId = $player['vtc']['id'];
+        $this->companyName = $player['vtc']['name'];
+        $this->companyTag = $player['vtc']['tag'];
+        $this->isInCompany = $player['vtc']['inVTC'];
+        $this->companyMemberId = $player['vtc']['memberID'];
     }
 
     /**
@@ -207,5 +247,45 @@ class Player
     public function isAdmin(): bool
     {
         return $this->inGameAdmin;
+    }
+
+    /**
+     * @return int
+     */
+    public function getCompanyId(): int
+    {
+        return $this->companyId;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCompanyName(): string
+    {
+        return $this->companyName;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCompanyTag(): string
+    {
+        return $this->companyTag;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isInCompany(): bool
+    {
+        return $this->isInCompany;
+    }
+
+    /**
+     * @return int
+     */
+    public function getCompanyMemberId(): int
+    {
+        return $this->companyMemberId;
     }
 }

@@ -172,4 +172,39 @@ class PlayerTest extends TestCase
 
         $this->assertIsBool($player->isAdmin());
     }
+
+    public function testItHasACompanyId()
+    {
+        $player = $this->player(self::TEST_ACCOUNT);
+
+        $this->assertIsInt($player->getCompanyId());
+    }
+
+    public function testItHasACompanyName()
+    {
+        $player = $this->player(self::TEST_ACCOUNT);
+
+        $this->assertIsString($player->getCompanyName());
+    }
+
+    public function testItHasACompanyTag()
+    {
+        $player = $this->player(self::TEST_ACCOUNT);
+
+        $this->assertIsString($player->getCompanyTag());
+    }
+
+    public function testIfInACompany()
+    {
+        $player = $this->player(self::TEST_ACCOUNT);
+
+        $this->assertIsBool($player->isInCompany());
+    }
+
+    public function testItHasAMemberId()
+    {
+        $player = $this->player(self::TEST_ACCOUNT);
+
+        $this->assertIsInt($player->getCompanyMemberId());
+    }
 }
