@@ -5,6 +5,7 @@ namespace TruckersMP\Models;
 use Carbon\Carbon;
 use TruckersMP\Collections\BanCollection;
 use TruckersMP\Requests\BanRequest;
+use TruckersMP\Requests\Companies\MemberRequest;
 use TruckersMP\Requests\CompanyRequest;
 
 class Player
@@ -143,6 +144,13 @@ class Player
     protected $company;
 
     /**
+     * The player a company member.
+     *
+     * @var \TruckersMP\Models\CompanyMember|null
+     */
+    protected $companyMember;
+
+    /**
      * Create a new Player instance.
      *
      * @param array $player
@@ -176,6 +184,11 @@ class Player
         // Get the players company
         if ($this->isInCompany) {
             $this->company = (new CompanyRequest($this->companyId))->get();
+        }
+
+        // Get the players company member
+        if ($this->isInCompany) {
+            $this->companyMember = (new MemberRequest($this->companyId, $this->companyMemberId))->get();
         }
     }
 
@@ -329,5 +342,13 @@ class Player
     public function getCompany(): ?Company
     {
         return $this->company;
+    }
+
+    /**
+     * @return \TruckersMP\Models\CompanyMember|null
+     */
+    public function getCompanyMember(): ?CompanyMember
+    {
+        return $this->companyMember;
     }
 }

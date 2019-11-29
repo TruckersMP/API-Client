@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use Tests\TestCase;
 use TruckersMP\Collections\BanCollection;
 use TruckersMP\Models\Company;
+use TruckersMP\Models\CompanyMember;
 use TruckersMP\Models\Player;
 
 class PlayerTest extends TestCase
@@ -267,6 +268,25 @@ class PlayerTest extends TestCase
             $this->assertInstanceOf(Company::class, $company);
         } else {
             $this->assertNull($company);
+        }
+    }
+
+    /**
+     * @throws \Http\Client\Exception
+     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
+     * @throws \TruckersMP\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\Exceptions\RequestException
+     */
+    public function testWeCanGetThePlayersCompanyMember()
+    {
+        $player = $this->player(self::TEST_ACCOUNT);
+
+        $member = $player->getCompanyMember();
+
+        if ($player->isInCompany()) {
+            $this->assertInstanceOf(CompanyMember::class, $member);
+        } else {
+            $this->assertNull($member);
         }
     }
 }
