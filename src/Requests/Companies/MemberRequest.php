@@ -24,8 +24,8 @@ class MemberRequest extends Request
     /**
      * Create a new MemberRequest instance.
      *
-     * @param  int  $companyId
-     * @param  int  $memberId
+     * @param int $companyId
+     * @param int $memberId
      */
     public function __construct(int $companyId, int $memberId)
     {
