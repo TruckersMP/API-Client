@@ -7,7 +7,7 @@ use TruckersMP\Models\CompanyPost;
 class PostsCollection extends Collection
 {
     /**
-     * Create a new Collection instance.
+     * Create a new PostsCollection instance.
      *
      * @param array $response
      */

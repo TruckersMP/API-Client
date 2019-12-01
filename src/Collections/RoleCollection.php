@@ -7,9 +7,11 @@ use TruckersMP\Models\CompanyRole;
 class RoleCollection extends Collection
 {
     /**
-     * Create a new Collection instance.
+     * Create a new RoleCollection instance.
      *
      * @param array $response
+     *
+     * @throws \Exception
      */
     public function __construct(array $response)
     {
