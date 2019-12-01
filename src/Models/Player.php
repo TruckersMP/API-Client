@@ -324,7 +324,7 @@ class Player
     {
         $company = null;
 
-        if ($this->isInCompany) {
+        if ($this->isInCompany()) {
             $company = (new CompanyRequest($this->companyId))->get();
         }
 
@@ -342,7 +342,7 @@ class Player
     {
         $member = null;
 
-        if ($this->isInCompany) {
+        if ($this->isInCompany()) {
             $member = (new MemberRequest($this->companyId, $this->companyMemberId))->get();
         }
 
@@ -360,7 +360,7 @@ class Player
     {
         $role = null;
 
-        if ($this->isInCompany) {
+        if ($this->isInCompany()) {
             $role = (new RoleRequest($this->companyId, $this->getCompanyMember()->getRoleId()))->get();
         }
 
