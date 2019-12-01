@@ -131,19 +131,11 @@ class Player
     protected $companyMemberId;
 
     /**
-     * The players bans.
-     *
-     * @var \TruckersMP\Collections\BanCollection
-     */
-    protected $bans;
-
-    /**
      * Create a new Player instance.
      *
      * @param array $player
      *
      * @throws \Exception
-     * @throws \Http\Client\Exception
      */
     public function __construct(array $player)
     {
@@ -164,9 +156,6 @@ class Player
         $this->companyTag = $player['vtc']['tag'];
         $this->isInCompany = $player['vtc']['inVTC'];
         $this->companyMemberId = $player['vtc']['memberID'];
-
-        // Get the player bans
-        $this->bans = (new BanRequest($this->id))->get();
     }
 
     /**
@@ -307,10 +296,13 @@ class Player
 
     /**
      * @return \TruckersMP\Collections\BanCollection
+     * @throws \Http\Client\Exception
+     * @throws \TruckersMP\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\Exceptions\RequestException
      */
     public function getBans(): BanCollection
     {
-        return $this->bans;
+        return (new BanRequest($this->id))->get();
     }
 
     /**
