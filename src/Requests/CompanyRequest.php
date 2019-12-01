@@ -18,7 +18,7 @@ class CompanyRequest extends Request
      * @var int
      */
     protected $id;
-    
+
     /**
      * Create a new CompanyRequest instance.
      *

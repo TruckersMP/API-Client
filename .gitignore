@@ -7,5 +7,7 @@ composer.phar
 
 # Unit Tests
 /tests/cache/
+.phpunit.result.cache
 
-
+# Mac OS
+.DS_Store
