@@ -15,7 +15,7 @@ class MemberRequest extends Request
     protected $companyId;
 
     /**
-     * The DID of the requested member.
+     * The ID of the requested member.
      *
      * @var int
      */
