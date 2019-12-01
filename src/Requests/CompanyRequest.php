@@ -18,14 +18,7 @@ class CompanyRequest extends Request
      * @var int
      */
     protected $id;
-
-    /**
-     * The configuration to use for Guzzle.
-     *
-     * @var array
-     */
-    protected $config = [];
-
+    
     /**
      * Create a new CompanyRequest instance.
      *
@@ -56,6 +49,7 @@ class CompanyRequest extends Request
      * @throws \Http\Client\Exception
      * @throws \TruckersMP\Exceptions\PageNotFoundException
      * @throws \TruckersMP\Exceptions\RequestException
+     * @throws \Exception
      */
     public function get(): Company
     {
