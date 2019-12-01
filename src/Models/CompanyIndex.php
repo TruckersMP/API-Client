@@ -28,9 +28,11 @@ class CompanyIndex
     protected $featuredCovered;
 
     /**
-     * Create a new Companies instance.
+     * Create a new CompanyIndex instance.
      *
      * @param array $response
+     *
+     * @throws \Exception
      */
     public function __construct(array $response)
     {
