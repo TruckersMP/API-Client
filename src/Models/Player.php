@@ -296,6 +296,7 @@ class Player
 
     /**
      * @return \TruckersMP\Collections\BanCollection
+     *
      * @throws \Http\Client\Exception
      * @throws \TruckersMP\Exceptions\PageNotFoundException
      * @throws \TruckersMP\Exceptions\RequestException
