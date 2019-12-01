@@ -15,7 +15,7 @@ class PostRequest extends Request
     protected $companyId;
 
     /**
-     * The DID of the requested post.
+     * The ID of the requested post.
      *
      * @var int
      */
