@@ -28,7 +28,7 @@ class CompanyRole
     protected $order;
 
     /**
-     * The owner of the role.
+     * The owner of the company.
      *
      * @var bool
      */
