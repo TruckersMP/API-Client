@@ -270,6 +270,13 @@ class CompanyTest extends TestCase
             $this->assertNull($company->getSocial()->getFacebook());
         }
 
+        // Twitch
+        if ($company->getSocial()->getTwitch() !== null) {
+            $this->assertIsString($company->getSocial()->getTwitch());
+        } else {
+            $this->assertNull($company->getSocial()->getTwitch());
+        }
+
         // PlaysTV
         if ($company->getSocial()->getPlays() !== null) {
             $this->assertIsString($company->getSocial()->getPlays());

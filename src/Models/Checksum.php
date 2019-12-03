@@ -21,12 +21,13 @@ class Checksum
     /**
      * Create a new Checksum instance.
      *
-     * @param array $checksum
+     * @param string $dll
+     * @param string $adb
      */
-    public function __construct(array $checksum)
+    public function __construct(string $dll, string $adb)
     {
-        $this->dll = $checksum['dll'];
-        $this->adb = $checksum['adb'];
+        $this->dll = $dll;
+        $this->adb = $adb;
     }
 
     /**

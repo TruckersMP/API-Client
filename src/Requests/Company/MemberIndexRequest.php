@@ -1,11 +1,11 @@
 <?php
 
-namespace TruckersMP\Requests\Companies;
+namespace TruckersMP\Requests\Company;
 
-use TruckersMP\Collections\RoleCollection;
+use TruckersMP\Models\CompanyMemberIndex;
 use TruckersMP\Requests\Request;
 
-class RolesRequest extends Request
+class MemberIndexRequest extends Request
 {
     /**
      * The ID of the requested company.
@@ -15,15 +15,15 @@ class RolesRequest extends Request
     protected $companyId;
 
     /**
-     * Create a new RolesRequest instance.
+     * Create a new MembersRequest instance.
      *
-     * @param int $companyId
+     * @param int $id
      */
-    public function __construct(int $companyId)
+    public function __construct(int $id)
     {
         parent::__construct();
 
-        $this->companyId = $companyId;
+        $this->companyId = $id;
     }
 
     /**
@@ -33,21 +33,21 @@ class RolesRequest extends Request
      */
     public function getEndpoint(): string
     {
-        return 'vtc/' . $this->companyId . '/roles';
+        return 'vtc/' . $this->companyId . '/members';
     }
 
     /**
      * Get the data for the request.
      *
-     * @return RoleCollection|\TruckersMP\Models\CompanyRole[]
+     * @return CompanyMemberIndex
      *
      * @throws \Http\Client\Exception
      * @throws \TruckersMP\Exceptions\PageNotFoundException
      * @throws \TruckersMP\Exceptions\RequestException
      */
-    public function get(): RoleCollection
+    public function get(): CompanyMemberIndex
     {
-        return new RoleCollection(
+        return new CompanyMemberIndex(
             $this->send()['response']
         );
     }

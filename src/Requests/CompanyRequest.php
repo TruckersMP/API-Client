@@ -3,12 +3,12 @@
 namespace TruckersMP\Requests;
 
 use TruckersMP\Models\Company;
-use TruckersMP\Requests\Companies\MemberRequest;
-use TruckersMP\Requests\Companies\MembersRequest;
-use TruckersMP\Requests\Companies\PostRequest;
-use TruckersMP\Requests\Companies\PostsRequest;
-use TruckersMP\Requests\Companies\RoleRequest;
-use TruckersMP\Requests\Companies\RolesRequest;
+use TruckersMP\Requests\Company\MemberRequest;
+use TruckersMP\Requests\Company\MemberIndexRequest;
+use TruckersMP\Requests\Company\PostRequest;
+use TruckersMP\Requests\Company\PostIndexRequest;
+use TruckersMP\Requests\Company\RoleRequest;
+use TruckersMP\Requests\Company\RoleIndexRequest;
 
 class CompanyRequest extends Request
 {
@@ -61,11 +61,11 @@ class CompanyRequest extends Request
     /**
      * Get the news posts for the company.
      *
-     * @return \TruckersMP\Requests\Companies\PostsRequest
+     * @return \TruckersMP\Requests\Company\PostIndexRequest
      */
-    public function posts(): PostsRequest
+    public function posts(): PostIndexRequest
     {
-        return new PostsRequest(
+        return new PostIndexRequest(
             $this->id
         );
     }
@@ -75,7 +75,7 @@ class CompanyRequest extends Request
      *
      * @param int $id
      *
-     * @return \TruckersMP\Requests\Companies\PostRequest
+     * @return \TruckersMP\Requests\Company\PostRequest
      */
     public function post(int $id): PostRequest
     {
@@ -88,11 +88,11 @@ class CompanyRequest extends Request
     /**
      * Get the roles for the company.
      *
-     * @return \TruckersMP\Requests\Companies\RolesRequest
+     * @return \TruckersMP\Requests\Company\RoleIndexRequest
      */
-    public function roles(): RolesRequest
+    public function roles(): RoleIndexRequest
     {
-        return new RolesRequest(
+        return new RoleIndexRequest(
             $this->id
         );
     }
@@ -102,7 +102,7 @@ class CompanyRequest extends Request
      *
      * @param int $id
      *
-     * @return \TruckersMP\Requests\Companies\RoleRequest
+     * @return \TruckersMP\Requests\Company\RoleRequest
      */
     public function role(int $id): RoleRequest
     {
@@ -115,11 +115,11 @@ class CompanyRequest extends Request
     /**
      * Get the members for the company.
      *
-     * @return \TruckersMP\Requests\Companies\MembersRequest
+     * @return \TruckersMP\Requests\Company\MemberIndexRequest
      */
-    public function members(): MembersRequest
+    public function members(): MemberIndexRequest
     {
-        return new MembersRequest(
+        return new MemberIndexRequest(
             $this->id
         );
     }
@@ -129,7 +129,7 @@ class CompanyRequest extends Request
      *
      * @param int $id
      *
-     * @return \TruckersMP\Requests\Companies\MemberRequest
+     * @return \TruckersMP\Requests\Company\MemberRequest
      */
     public function member(int $id): MemberRequest
     {

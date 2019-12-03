@@ -4,7 +4,7 @@ namespace TruckersMP\Requests;
 
 use TruckersMP\Models\CompanyIndex;
 
-class CompaniesRequest extends Request
+class CompanyIndexRequest extends Request
 {
     /**
      * Get the endpoint of the request.

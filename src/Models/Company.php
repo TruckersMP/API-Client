@@ -178,7 +178,12 @@ class Company
         $this->website = $company['website'];
 
         $this->social = new Social(
-            $company['socials']
+            $company['socials']['twitter'],
+            $company['socials']['facebook'],
+            $company['socials']['twitch'],
+            $company['socials']['playstv'],
+            $company['socials']['discord'],
+            $company['socials']['youtube']
         );
 
         $this->games = new Game(

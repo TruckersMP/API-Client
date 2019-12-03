@@ -1,11 +1,11 @@
 <?php
 
-namespace TruckersMP\Requests\Companies;
+namespace TruckersMP\Requests\Company;
 
-use TruckersMP\Models\CompanyPost;
+use TruckersMP\Models\CompanyRole;
 use TruckersMP\Requests\Request;
 
-class PostRequest extends Request
+class RoleRequest extends Request
 {
     /**
      * The ID of the requested company.
@@ -15,24 +15,24 @@ class PostRequest extends Request
     protected $companyId;
 
     /**
-     * The ID of the requested post.
+     * The ID of the requested role.
      *
      * @var int
      */
-    protected $postId;
+    protected $roleId;
 
     /**
-     * Create a new PostRequest instance.
+     * Create a new RolesRequest instance.
      *
      * @param int $companyId
-     * @param $postId
+     * @param int $roleId
      */
-    public function __construct(int $companyId, int $postId)
+    public function __construct(int $companyId, int $roleId)
     {
         parent::__construct();
 
         $this->companyId = $companyId;
-        $this->postId = $postId;
+        $this->roleId = $roleId;
     }
 
     /**
@@ -42,21 +42,21 @@ class PostRequest extends Request
      */
     public function getEndpoint(): string
     {
-        return 'vtc/' . $this->companyId . '/news/' . $this->postId;
+        return 'vtc/' . $this->companyId . '/role/' . $this->roleId;
     }
 
     /**
      * Get the data for the request.
      *
-     * @return CompanyPost
+     * @return CompanyRole
      *
      * @throws \Http\Client\Exception
      * @throws \TruckersMP\Exceptions\PageNotFoundException
      * @throws \TruckersMP\Exceptions\RequestException
      */
-    public function get(): CompanyPost
+    public function get(): CompanyRole
     {
-        return new CompanyPost(
+        return new CompanyRole(
             $this->send()['response']
         );
     }

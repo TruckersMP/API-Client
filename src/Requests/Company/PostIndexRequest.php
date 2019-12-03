@@ -1,11 +1,11 @@
 <?php
 
-namespace TruckersMP\Requests\Companies;
+namespace TruckersMP\Requests\Company;
 
 use TruckersMP\Collections\PostsCollection;
 use TruckersMP\Requests\Request;
 
-class PostsRequest extends Request
+class PostIndexRequest extends Request
 {
     /**
      * The ID of the requested company.

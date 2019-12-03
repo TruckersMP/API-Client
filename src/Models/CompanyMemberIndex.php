@@ -14,7 +14,7 @@ class CompanyMemberIndex
     protected $members;
 
     /**
-     * The number of memebers in the company.
+     * The number of members in the company.
      *
      * @var int
      */

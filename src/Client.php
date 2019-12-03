@@ -3,7 +3,7 @@
 namespace TruckersMP;
 
 use TruckersMP\Requests\BanRequest;
-use TruckersMP\Requests\CompaniesRequest;
+use TruckersMP\Requests\CompanyIndexRequest;
 use TruckersMP\Requests\CompanyRequest;
 use TruckersMP\Requests\GameTimeRequest;
 use TruckersMP\Requests\PlayerRequest;
@@ -87,11 +87,11 @@ class Client
      *
      * https://stats.truckersmp.com/api#vtc_index
      *
-     * @return \TruckersMP\Requests\CompaniesRequest
+     * @return \TruckersMP\Requests\CompanyIndexRequest
      */
-    public function companies(): CompaniesRequest
+    public function companies(): CompanyIndexRequest
     {
-        return new CompaniesRequest();
+        return new CompanyIndexRequest();
     }
 
     /**

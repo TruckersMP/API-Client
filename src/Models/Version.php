@@ -76,11 +76,13 @@ class Version
         $this->stage = $version['stage'];
 
         $this->ets2mpChecksum = new Checksum(
-            $version['ets2mp_checksum']
+            $version['ets2mp_checksum']['dll'],
+            $version['ets2mp_checksum']['adb']
         );
 
         $this->atsmpChecksum = new Checksum(
-            $version['atsmp_checksum']
+            $version['atsmp_checksum']['dll'],
+            $version['atsmp_checksum']['adb']
         );
 
         $this->time = new Carbon($version['time'], 'UTC');

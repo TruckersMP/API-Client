@@ -1,11 +1,11 @@
 <?php
 
-namespace TruckersMP\Requests\Companies;
+namespace TruckersMP\Requests\Company;
 
-use TruckersMP\Models\CompanyMemberIndex;
+use TruckersMP\Models\CompanyMember;
 use TruckersMP\Requests\Request;
 
-class MembersRequest extends Request
+class MemberRequest extends Request
 {
     /**
      * The ID of the requested company.
@@ -15,15 +15,24 @@ class MembersRequest extends Request
     protected $companyId;
 
     /**
-     * Create a new MembersRequest instance.
+     * The ID of the requested member.
      *
-     * @param int $id
+     * @var int
      */
-    public function __construct(int $id)
+    protected $memberId;
+
+    /**
+     * Create a new MemberRequest instance.
+     *
+     * @param int $companyId
+     * @param int $memberId
+     */
+    public function __construct(int $companyId, int $memberId)
     {
         parent::__construct();
 
-        $this->companyId = $id;
+        $this->companyId = $companyId;
+        $this->memberId = $memberId;
     }
 
     /**
@@ -33,21 +42,21 @@ class MembersRequest extends Request
      */
     public function getEndpoint(): string
     {
-        return 'vtc/' . $this->companyId . '/members';
+        return 'vtc/' . $this->companyId . '/member/' . $this->memberId;
     }
 
     /**
      * Get the data for the request.
      *
-     * @return CompanyMemberIndex
+     * @return mixed
      *
      * @throws \Http\Client\Exception
      * @throws \TruckersMP\Exceptions\PageNotFoundException
      * @throws \TruckersMP\Exceptions\RequestException
      */
-    public function get(): CompanyMemberIndex
+    public function get(): CompanyMember
     {
-        return new CompanyMemberIndex(
+        return new CompanyMember(
             $this->send()['response']
         );
     }

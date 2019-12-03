@@ -5,8 +5,8 @@ namespace TruckersMP\Models;
 use Carbon\Carbon;
 use TruckersMP\Collections\BanCollection;
 use TruckersMP\Requests\BanRequest;
-use TruckersMP\Requests\Companies\MemberRequest;
-use TruckersMP\Requests\Companies\RoleRequest;
+use TruckersMP\Requests\Company\MemberRequest;
+use TruckersMP\Requests\Company\RoleRequest;
 use TruckersMP\Requests\CompanyRequest;
 
 class Player
