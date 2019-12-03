@@ -15,7 +15,7 @@ class PostIndexRequest extends Request
     protected $companyId;
 
     /**
-     * Create a new NewsRequest instance.
+     * Create a new PostIndexRequest instance.
      *
      * @param int $companyId
      */
