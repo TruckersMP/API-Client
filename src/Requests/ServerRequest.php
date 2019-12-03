@@ -3,7 +3,6 @@
 namespace TruckersMP\APIClient\Requests;
 
 use TruckersMP\APIClient\Collections\ServerCollection;
-use TruckersMP\APIClient\Models\Server;
 
 class ServerRequest extends Request
 {

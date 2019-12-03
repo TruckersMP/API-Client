@@ -9,7 +9,6 @@ use TruckersMP\APIClient\Client;
 use TruckersMP\APIClient\Collections\BanCollection;
 use TruckersMP\APIClient\Collections\Company\PostCollection;
 use TruckersMP\APIClient\Collections\Company\RoleCollection;
-use TruckersMP\APIClient\Collections\PostsCollection;
 use TruckersMP\APIClient\Collections\ServerCollection;
 use TruckersMP\APIClient\Models\Company;
 use TruckersMP\APIClient\Models\CompanyIndex;

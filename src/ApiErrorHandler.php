@@ -13,7 +13,7 @@ class ApiErrorHandler
      * Check if the API returned an error.
      *
      * @param \Psr\Http\Message\StreamInterface $body
-     * @param int $statusCode
+     * @param int                               $statusCode
      *
      * @return \Exception
      *
