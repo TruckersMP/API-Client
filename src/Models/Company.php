@@ -7,6 +7,16 @@ use Carbon\Carbon;
 class Company
 {
     /**
+     * The value used if recruitment is closed.
+     */
+    public const RECRUITMENT_CLOSED = 'Close';
+
+    /**
+     * The value used if recruitment is open.
+     */
+    public const RECRUITMENT_OPEN = 'Open';
+
+    /**
      * The ID of the company requested.
      *
      * @var int
@@ -348,5 +358,21 @@ class Company
     public function getCreatedDate(): Carbon
     {
         return $this->createdAt;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isRecruitmentClosed(): bool
+    {
+        return $this->recruitment === self::RECRUITMENT_CLOSED;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isRecruitmentOpen(): bool
+    {
+        return $this->recruitment === self::RECRUITMENT_OPEN;
     }
 }

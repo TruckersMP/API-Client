@@ -329,6 +329,9 @@ class CompanyTest extends TestCase
         $company = $this->company(self::TEST_COMPANY);
 
         $this->assertIsString($company->getRecruitment());
+
+        $this->assertIsBool($company->isRecruitmentClosed());
+        $this->assertIsBool($company->isRecruitmentOpen());
     }
 
     /**
