@@ -22,7 +22,7 @@ class RoleRequest extends Request
     protected $roleId;
 
     /**
-     * Create a new RolesRequest instance.
+     * Create a new RoleRequest instance.
      *
      * @param int $companyId
      * @param int $roleId

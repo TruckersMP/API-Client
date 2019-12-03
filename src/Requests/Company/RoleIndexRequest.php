@@ -15,7 +15,7 @@ class RoleIndexRequest extends Request
     protected $companyId;
 
     /**
-     * Create a new RolesRequest instance.
+     * Create a new RoleIndexRequest instance.
      *
      * @param int $companyId
      */
