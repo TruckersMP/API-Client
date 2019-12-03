@@ -1,8 +1,8 @@
 <?php
 
-namespace TruckersMP\Collections;
+namespace TruckersMP\APIClient\Collections;
 
-use TruckersMP\Models\Ban;
+use TruckersMP\APIClient\Models\Ban;
 
 class BanCollection extends Collection
 {

@@ -4,9 +4,9 @@ namespace Tests\Unit;
 
 use Carbon\Carbon;
 use Tests\TestCase;
-use TruckersMP\Collections\MemberCollection;
-use TruckersMP\Models\CompanyMember;
-use TruckersMP\Models\CompanyMemberIndex;
+use TruckersMP\APIClient\Collections\Company\MemberCollection;
+use TruckersMP\APIClient\Models\CompanyMember;
+use TruckersMP\APIClient\Models\CompanyMemberIndex;
 
 class CompanyMemberTest extends TestCase
 {
@@ -23,8 +23,8 @@ class CompanyMemberTest extends TestCase
     /**
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\Exceptions\RequestException
+     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\APIClient\Exceptions\RequestException
      */
     public function testWeCanAllTheMembers()
     {
@@ -39,8 +39,8 @@ class CompanyMemberTest extends TestCase
     /**
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\Exceptions\RequestException
+     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\APIClient\Exceptions\RequestException
      */
     public function testWeCanGetAMember()
     {
@@ -52,8 +52,8 @@ class CompanyMemberTest extends TestCase
     /**
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\Exceptions\RequestException
+     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\APIClient\Exceptions\RequestException
      */
     public function testTheMemberHasAnId()
     {
@@ -66,8 +66,8 @@ class CompanyMemberTest extends TestCase
     /**
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\Exceptions\RequestException
+     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\APIClient\Exceptions\RequestException
      */
     public function testTheMemberHasAUserId()
     {
@@ -80,8 +80,8 @@ class CompanyMemberTest extends TestCase
     /**
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\Exceptions\RequestException
+     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\APIClient\Exceptions\RequestException
      */
     public function testTheMemberHasAUsername()
     {
@@ -94,8 +94,8 @@ class CompanyMemberTest extends TestCase
     /**
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\Exceptions\RequestException
+     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\APIClient\Exceptions\RequestException
      */
     public function testTheMemberHasASteamId()
     {
@@ -108,8 +108,8 @@ class CompanyMemberTest extends TestCase
     /**
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\Exceptions\RequestException
+     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\APIClient\Exceptions\RequestException
      */
     public function testTheMemberHasARoleId()
     {
@@ -122,8 +122,8 @@ class CompanyMemberTest extends TestCase
     /**
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\Exceptions\RequestException
+     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\APIClient\Exceptions\RequestException
      */
     public function testTheMemberHasARole()
     {
@@ -136,8 +136,8 @@ class CompanyMemberTest extends TestCase
     /**
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\Exceptions\RequestException
+     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\APIClient\Exceptions\RequestException
      */
     public function testTheMemberHasAJoinDate()
     {

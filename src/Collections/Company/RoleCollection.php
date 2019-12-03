@@ -1,8 +1,9 @@
 <?php
 
-namespace TruckersMP\Collections;
+namespace TruckersMP\APIClient\Collections\Company;
 
-use TruckersMP\Models\CompanyRole;
+use TruckersMP\APIClient\Collections\Collection;
+use TruckersMP\APIClient\Models\CompanyRole;
 
 class RoleCollection extends Collection
 {

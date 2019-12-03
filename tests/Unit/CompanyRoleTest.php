@@ -4,8 +4,8 @@ namespace Tests\Unit;
 
 use Carbon\Carbon;
 use Tests\TestCase;
-use TruckersMP\Collections\RoleCollection;
-use TruckersMP\Models\CompanyRole;
+use TruckersMP\APIClient\Collections\Company\RoleCollection;
+use TruckersMP\APIClient\Models\CompanyRole;
 
 class CompanyRoleTest extends TestCase
 {
@@ -22,8 +22,8 @@ class CompanyRoleTest extends TestCase
     /**
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\Exceptions\RequestException
+     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\APIClient\Exceptions\RequestException
      */
     public function testWeCanGetAllTheRoles()
     {
@@ -41,8 +41,8 @@ class CompanyRoleTest extends TestCase
     /**
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\Exceptions\RequestException
+     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\APIClient\Exceptions\RequestException
      */
     public function testWeCanGetARole()
     {
@@ -54,8 +54,8 @@ class CompanyRoleTest extends TestCase
     /**
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\Exceptions\RequestException
+     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\APIClient\Exceptions\RequestException
      */
     public function testItHasAnId()
     {
@@ -67,8 +67,8 @@ class CompanyRoleTest extends TestCase
     /**
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\Exceptions\RequestException
+     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\APIClient\Exceptions\RequestException
      */
     public function testItHasAName()
     {
@@ -80,8 +80,8 @@ class CompanyRoleTest extends TestCase
     /**
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\Exceptions\RequestException
+     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\APIClient\Exceptions\RequestException
      */
     public function testItHasAnOrder()
     {
@@ -93,8 +93,8 @@ class CompanyRoleTest extends TestCase
     /**
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\Exceptions\RequestException
+     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\APIClient\Exceptions\RequestException
      */
     public function testIfItIsAnOwner()
     {
@@ -106,8 +106,8 @@ class CompanyRoleTest extends TestCase
     /**
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\Exceptions\RequestException
+     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\APIClient\Exceptions\RequestException
      */
     public function testItHasACreatedAtDate()
     {
@@ -119,8 +119,8 @@ class CompanyRoleTest extends TestCase
     /**
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\Exceptions\RequestException
+     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\APIClient\Exceptions\RequestException
      */
     public function testItHasAnUpdatedAtDate()
     {

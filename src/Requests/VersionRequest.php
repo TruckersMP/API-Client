@@ -1,8 +1,8 @@
 <?php
 
-namespace TruckersMP\Requests;
+namespace TruckersMP\APIClient\Requests;
 
-use TruckersMP\Models\Version;
+use TruckersMP\APIClient\Models\Version;
 
 class VersionRequest extends Request
 {
@@ -22,8 +22,8 @@ class VersionRequest extends Request
      * @return Version
      *
      * @throws \Http\Client\Exception
-     * @throws \TruckersMP\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\Exceptions\RequestException
+     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\APIClient\Exceptions\RequestException
      * @throws \Exception
      */
     public function get(): Version

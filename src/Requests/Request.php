@@ -1,13 +1,13 @@
 <?php
 
-namespace TruckersMP\Requests;
+namespace TruckersMP\APIClient\Requests;
 
 use GuzzleHttp\Client as GuzzleClient;
 use Http\Adapter\Guzzle6\Client as GuzzleAdapter;
 use Http\Client\Exception\HttpException;
 use Http\Message\MessageFactory\GuzzleMessageFactory;
-use TruckersMP\ApiErrorHandler;
-use TruckersMP\Client;
+use TruckersMP\APIClient\ApiErrorHandler;
+use TruckersMP\APIClient\Client;
 
 abstract class Request
 {
@@ -69,8 +69,8 @@ abstract class Request
      * @return array
      *
      * @throws \Http\Client\Exception
-     * @throws \TruckersMP\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\Exceptions\RequestException
+     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\APIClient\Exceptions\RequestException
      */
     public function send(): array
     {

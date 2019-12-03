@@ -1,8 +1,8 @@
 <?php
 
-namespace TruckersMP\Collections;
+namespace TruckersMP\APIClient\Collections;
 
-use TruckersMP\Models\Server;
+use TruckersMP\APIClient\Models\Server;
 
 class ServerCollection extends Collection
 {

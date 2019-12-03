@@ -4,11 +4,11 @@ namespace Tests\Unit;
 
 use Carbon\Carbon;
 use Tests\TestCase;
-use TruckersMP\Collections\CompanyCollection;
-use TruckersMP\Models\Company;
-use TruckersMP\Models\CompanyIndex;
-use TruckersMP\Models\Game;
-use TruckersMP\Models\Social;
+use TruckersMP\APIClient\Collections\CompanyCollection;
+use TruckersMP\APIClient\Models\Company;
+use TruckersMP\APIClient\Models\CompanyIndex;
+use TruckersMP\APIClient\Models\Game;
+use TruckersMP\APIClient\Models\Social;
 
 class CompanyTest extends TestCase
 {
@@ -20,8 +20,8 @@ class CompanyTest extends TestCase
     /**
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\Exceptions\RequestException
+     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\APIClient\Exceptions\RequestException
      */
     public function testWeCanGetTheCompanies()
     {
@@ -33,8 +33,8 @@ class CompanyTest extends TestCase
     /**
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\Exceptions\RequestException
+     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\APIClient\Exceptions\RequestException
      */
     public function testWeCanGetTheRecentCompanies()
     {
@@ -48,8 +48,8 @@ class CompanyTest extends TestCase
     /**
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\Exceptions\RequestException
+     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\APIClient\Exceptions\RequestException
      */
     public function testWeCanGetTheFeaturedCompanies()
     {
@@ -63,8 +63,8 @@ class CompanyTest extends TestCase
     /**
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\Exceptions\RequestException
+     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\APIClient\Exceptions\RequestException
      */
     public function testWeCanGetTheFeaturedCoverCompanies()
     {
@@ -78,8 +78,8 @@ class CompanyTest extends TestCase
     /**
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\Exceptions\RequestException
+     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\APIClient\Exceptions\RequestException
      */
     public function testWeCanGetACompany()
     {
@@ -91,8 +91,8 @@ class CompanyTest extends TestCase
     /**
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\Exceptions\RequestException
+     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\APIClient\Exceptions\RequestException
      */
     public function testItHasAnId()
     {
@@ -104,8 +104,8 @@ class CompanyTest extends TestCase
     /**
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\Exceptions\RequestException
+     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\APIClient\Exceptions\RequestException
      */
     public function testItHasAName()
     {
@@ -117,8 +117,8 @@ class CompanyTest extends TestCase
     /**
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\Exceptions\RequestException
+     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\APIClient\Exceptions\RequestException
      */
     public function testItHasAnOwnerId()
     {
@@ -130,8 +130,8 @@ class CompanyTest extends TestCase
     /**
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\Exceptions\RequestException
+     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\APIClient\Exceptions\RequestException
      */
     public function testItHasAnOwnerName()
     {
@@ -143,8 +143,8 @@ class CompanyTest extends TestCase
     /**
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\Exceptions\RequestException
+     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\APIClient\Exceptions\RequestException
      */
     public function testItHasASlogan()
     {
@@ -156,8 +156,8 @@ class CompanyTest extends TestCase
     /**
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\Exceptions\RequestException
+     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\APIClient\Exceptions\RequestException
      */
     public function testItHasATag()
     {
@@ -169,8 +169,8 @@ class CompanyTest extends TestCase
     /**
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\Exceptions\RequestException
+     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\APIClient\Exceptions\RequestException
      */
     public function testItHasALogo()
     {
@@ -182,8 +182,8 @@ class CompanyTest extends TestCase
     /**
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\Exceptions\RequestException
+     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\APIClient\Exceptions\RequestException
      */
     public function testItHasACover()
     {
@@ -195,8 +195,8 @@ class CompanyTest extends TestCase
     /**
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\Exceptions\RequestException
+     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\APIClient\Exceptions\RequestException
      */
     public function testItHasInformation()
     {
@@ -208,8 +208,8 @@ class CompanyTest extends TestCase
     /**
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\Exceptions\RequestException
+     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\APIClient\Exceptions\RequestException
      */
     public function testItHasRules()
     {
@@ -221,8 +221,8 @@ class CompanyTest extends TestCase
     /**
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\Exceptions\RequestException
+     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\APIClient\Exceptions\RequestException
      */
     public function testItHasRequirements()
     {
@@ -234,8 +234,8 @@ class CompanyTest extends TestCase
     /**
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\Exceptions\RequestException
+     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\APIClient\Exceptions\RequestException
      */
     public function testItHasAWebsite()
     {
@@ -247,8 +247,8 @@ class CompanyTest extends TestCase
     /**
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\Exceptions\RequestException
+     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\APIClient\Exceptions\RequestException
      */
     public function testItHasSocialInformation()
     {
@@ -290,8 +290,8 @@ class CompanyTest extends TestCase
     /**
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\Exceptions\RequestException
+     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\APIClient\Exceptions\RequestException
      */
     public function testItHasSupportedGames()
     {
@@ -306,8 +306,8 @@ class CompanyTest extends TestCase
     /**
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\Exceptions\RequestException
+     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\APIClient\Exceptions\RequestException
      */
     public function testItHasMemberCount()
     {
@@ -319,8 +319,8 @@ class CompanyTest extends TestCase
     /**
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\Exceptions\RequestException
+     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\APIClient\Exceptions\RequestException
      */
     public function testItHasARecruitmentState()
     {
@@ -335,8 +335,8 @@ class CompanyTest extends TestCase
     /**
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\Exceptions\RequestException
+     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\APIClient\Exceptions\RequestException
      */
     public function testItHasALanguage()
     {
@@ -348,8 +348,8 @@ class CompanyTest extends TestCase
     /**
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\Exceptions\RequestException
+     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\APIClient\Exceptions\RequestException
      */
     public function testIfItsVerified()
     {
@@ -361,8 +361,8 @@ class CompanyTest extends TestCase
     /**
      * @throws \Http\Client\Exception
      * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\Exceptions\RequestException
+     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\APIClient\Exceptions\RequestException
      */
     public function testItHasACreatedDate()
     {

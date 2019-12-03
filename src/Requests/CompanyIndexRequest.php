@@ -1,8 +1,8 @@
 <?php
 
-namespace TruckersMP\Requests;
+namespace TruckersMP\APIClient\Requests;
 
-use TruckersMP\Models\CompanyIndex;
+use TruckersMP\APIClient\Models\CompanyIndex;
 
 class CompanyIndexRequest extends Request
 {
@@ -22,8 +22,8 @@ class CompanyIndexRequest extends Request
      * @return mixed
      *
      * @throws \Http\Client\Exception
-     * @throws \TruckersMP\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\Exceptions\RequestException
+     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\APIClient\Exceptions\RequestException
      */
     public function get(): CompanyIndex
     {

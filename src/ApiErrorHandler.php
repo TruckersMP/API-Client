@@ -1,11 +1,11 @@
 <?php
 
-namespace TruckersMP;
+namespace TruckersMP\APIClient;
 
 use Exception;
 use Psr\Http\Message\StreamInterface;
-use TruckersMP\Exceptions\PageNotFoundException;
-use TruckersMP\Exceptions\RequestException;
+use TruckersMP\APIClient\Exceptions\PageNotFoundException;
+use TruckersMP\APIClient\Exceptions\RequestException;
 
 class ApiErrorHandler
 {
@@ -13,12 +13,12 @@ class ApiErrorHandler
      * Check if the API returned an error.
      *
      * @param \Psr\Http\Message\StreamInterface $body
-     * @param int                               $statusCode
+     * @param int $statusCode
      *
      * @return \Exception
      *
-     * @throws \TruckersMP\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\Exceptions\RequestException
+     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\APIClient\Exceptions\RequestException
      */
     public static function check(StreamInterface $body, int $statusCode): ?Exception
     {

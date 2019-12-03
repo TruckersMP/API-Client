@@ -1,14 +1,14 @@
 <?php
 
-namespace TruckersMP\Requests;
+namespace TruckersMP\APIClient\Requests;
 
-use TruckersMP\Models\Company;
-use TruckersMP\Requests\Company\MemberIndexRequest;
-use TruckersMP\Requests\Company\MemberRequest;
-use TruckersMP\Requests\Company\PostIndexRequest;
-use TruckersMP\Requests\Company\PostRequest;
-use TruckersMP\Requests\Company\RoleIndexRequest;
-use TruckersMP\Requests\Company\RoleRequest;
+use TruckersMP\APIClient\Models\Company;
+use TruckersMP\APIClient\Requests\Company\MemberIndexRequest;
+use TruckersMP\APIClient\Requests\Company\MemberRequest;
+use TruckersMP\APIClient\Requests\Company\PostIndexRequest;
+use TruckersMP\APIClient\Requests\Company\PostRequest;
+use TruckersMP\APIClient\Requests\Company\RoleIndexRequest;
+use TruckersMP\APIClient\Requests\Company\RoleRequest;
 
 class CompanyRequest extends Request
 {
@@ -47,8 +47,8 @@ class CompanyRequest extends Request
      * @return Company
      *
      * @throws \Http\Client\Exception
-     * @throws \TruckersMP\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\Exceptions\RequestException
+     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\APIClient\Exceptions\RequestException
      * @throws \Exception
      */
     public function get(): Company
@@ -61,7 +61,7 @@ class CompanyRequest extends Request
     /**
      * Get the news posts for the company.
      *
-     * @return \TruckersMP\Requests\Company\PostIndexRequest
+     * @return \TruckersMP\APIClient\Requests\Company\PostIndexRequest
      */
     public function posts(): PostIndexRequest
     {
@@ -75,7 +75,7 @@ class CompanyRequest extends Request
      *
      * @param int $id
      *
-     * @return \TruckersMP\Requests\Company\PostRequest
+     * @return \TruckersMP\APIClient\Requests\Company\PostRequest
      */
     public function post(int $id): PostRequest
     {
@@ -88,7 +88,7 @@ class CompanyRequest extends Request
     /**
      * Get the roles for the company.
      *
-     * @return \TruckersMP\Requests\Company\RoleIndexRequest
+     * @return \TruckersMP\APIClient\Requests\Company\RoleIndexRequest
      */
     public function roles(): RoleIndexRequest
     {
@@ -102,7 +102,7 @@ class CompanyRequest extends Request
      *
      * @param int $id
      *
-     * @return \TruckersMP\Requests\Company\RoleRequest
+     * @return \TruckersMP\APIClient\Requests\Company\RoleRequest
      */
     public function role(int $id): RoleRequest
     {
@@ -115,7 +115,7 @@ class CompanyRequest extends Request
     /**
      * Get the members for the company.
      *
-     * @return \TruckersMP\Requests\Company\MemberIndexRequest
+     * @return \TruckersMP\APIClient\Requests\Company\MemberIndexRequest
      */
     public function members(): MemberIndexRequest
     {
@@ -129,7 +129,7 @@ class CompanyRequest extends Request
      *
      * @param int $id
      *
-     * @return \TruckersMP\Requests\Company\MemberRequest
+     * @return \TruckersMP\APIClient\Requests\Company\MemberRequest
      */
     public function member(int $id): MemberRequest
     {

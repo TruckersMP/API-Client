@@ -1,9 +1,9 @@
 <?php
 
-namespace TruckersMP\Requests\Company;
+namespace TruckersMP\APIClient\Requests\Company;
 
-use TruckersMP\Models\CompanyRole;
-use TruckersMP\Requests\Request;
+use TruckersMP\APIClient\Models\CompanyRole;
+use TruckersMP\APIClient\Requests\Request;
 
 class RoleRequest extends Request
 {
@@ -51,8 +51,8 @@ class RoleRequest extends Request
      * @return CompanyRole
      *
      * @throws \Http\Client\Exception
-     * @throws \TruckersMP\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\Exceptions\RequestException
+     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\APIClient\Exceptions\RequestException
      */
     public function get(): CompanyRole
     {

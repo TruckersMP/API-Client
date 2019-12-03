@@ -1,8 +1,8 @@
 <?php
 
-namespace TruckersMP\Models;
+namespace TruckersMP\APIClient\Models;
 
-use TruckersMP\Collections\CompanyCollection;
+use TruckersMP\APIClient\Collections\CompanyCollection;
 
 class CompanyIndex
 {

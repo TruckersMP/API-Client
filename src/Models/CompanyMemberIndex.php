@@ -1,15 +1,15 @@
 <?php
 
-namespace TruckersMP\Models;
+namespace TruckersMP\APIClient\Models;
 
-use TruckersMP\Collections\MemberCollection;
+use TruckersMP\APIClient\Collections\Company\MemberCollection;
 
 class CompanyMemberIndex
 {
     /**
      * The company members.
      *
-     * @var \TruckersMP\Collections\MemberCollection
+     * @var \TruckersMP\APIClient\Collections\MemberCollection
      */
     protected $members;
 
@@ -33,7 +33,7 @@ class CompanyMemberIndex
     }
 
     /**
-     * @return \TruckersMP\Collections\MemberCollection
+     * @return \TruckersMP\APIClient\Collections\MemberCollection
      */
     public function getMembers(): MemberCollection
     {

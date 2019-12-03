@@ -1,13 +1,13 @@
 <?php
 
-namespace TruckersMP\Models;
+namespace TruckersMP\APIClient\Models;
 
 use Carbon\Carbon;
-use TruckersMP\Collections\BanCollection;
-use TruckersMP\Requests\BanRequest;
-use TruckersMP\Requests\Company\MemberRequest;
-use TruckersMP\Requests\Company\RoleRequest;
-use TruckersMP\Requests\CompanyRequest;
+use TruckersMP\APIClient\Collections\BanCollection;
+use TruckersMP\APIClient\Requests\BanRequest;
+use TruckersMP\APIClient\Requests\Company\MemberRequest;
+use TruckersMP\APIClient\Requests\Company\RoleRequest;
+use TruckersMP\APIClient\Requests\CompanyRequest;
 
 class Player
 {

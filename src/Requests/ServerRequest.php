@@ -1,9 +1,9 @@
 <?php
 
-namespace TruckersMP\Requests;
+namespace TruckersMP\APIClient\Requests;
 
-use TruckersMP\Collections\ServerCollection;
-use TruckersMP\Models\Server;
+use TruckersMP\APIClient\Collections\ServerCollection;
+use TruckersMP\APIClient\Models\Server;
 
 class ServerRequest extends Request
 {
@@ -20,11 +20,11 @@ class ServerRequest extends Request
     /**
      * Get the data for the request.
      *
-     * @return \TruckersMP\Collections\ServerCollection|Server[]
+     * @return \TruckersMP\APIClient\Collections\ServerCollection
      *
      * @throws \Http\Client\Exception
-     * @throws \TruckersMP\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\Exceptions\RequestException
+     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\APIClient\Exceptions\RequestException
      */
     public function get(): ServerCollection
     {

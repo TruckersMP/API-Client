@@ -1,8 +1,9 @@
 <?php
 
-namespace TruckersMP\Collections;
+namespace TruckersMP\APIClient\Collections\Company;
 
-use TruckersMP\Models\CompanyMember;
+use TruckersMP\APIClient\Collections\Collection;
+use TruckersMP\APIClient\Models\CompanyMember;
 
 class MemberCollection extends Collection
 {

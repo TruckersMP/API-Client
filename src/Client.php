@@ -1,15 +1,15 @@
 <?php
 
-namespace TruckersMP;
+namespace TruckersMP\APIClient;
 
-use TruckersMP\Requests\BanRequest;
-use TruckersMP\Requests\CompanyIndexRequest;
-use TruckersMP\Requests\CompanyRequest;
-use TruckersMP\Requests\GameTimeRequest;
-use TruckersMP\Requests\PlayerRequest;
-use TruckersMP\Requests\RuleRequest;
-use TruckersMP\Requests\ServerRequest;
-use TruckersMP\Requests\VersionRequest;
+use TruckersMP\APIClient\Requests\BanRequest;
+use TruckersMP\APIClient\Requests\CompanyIndexRequest;
+use TruckersMP\APIClient\Requests\CompanyRequest;
+use TruckersMP\APIClient\Requests\GameTimeRequest;
+use TruckersMP\APIClient\Requests\PlayerRequest;
+use TruckersMP\APIClient\Requests\RuleRequest;
+use TruckersMP\APIClient\Requests\ServerRequest;
+use TruckersMP\APIClient\Requests\VersionRequest;
 
 class Client
 {
@@ -37,7 +37,7 @@ class Client
      *
      * @param int $id
      *
-     * @return \TruckersMP\Requests\PlayerRequest
+     * @return \TruckersMP\APIClient\Requests\PlayerRequest
      */
     public function player(int $id): PlayerRequest
     {
@@ -51,7 +51,7 @@ class Client
      *
      * @param int $id
      *
-     * @return \TruckersMP\Requests\BanRequest
+     * @return \TruckersMP\APIClient\Requests\BanRequest
      */
     public function bans(int $id): BanRequest
     {
@@ -63,7 +63,7 @@ class Client
      *
      * https://stats.truckersmp.com/api#servers_list
      *
-     * @return \TruckersMP\Requests\ServerRequest
+     * @return \TruckersMP\APIClient\Requests\ServerRequest
      */
     public function servers(): ServerRequest
     {
@@ -75,7 +75,7 @@ class Client
      *
      * https://stats.truckersmp.com/api#game_time
      *
-     * @return \TruckersMP\Requests\GameTimeRequest
+     * @return \TruckersMP\APIClient\Requests\GameTimeRequest
      */
     public function gameTime(): GameTimeRequest
     {
@@ -87,7 +87,7 @@ class Client
      *
      * https://stats.truckersmp.com/api#vtc_index
      *
-     * @return \TruckersMP\Requests\CompanyIndexRequest
+     * @return \TruckersMP\APIClient\Requests\CompanyIndexRequest
      */
     public function companies(): CompanyIndexRequest
     {
@@ -101,7 +101,7 @@ class Client
      *
      * @param int $id
      *
-     * @return \TruckersMP\Requests\CompanyRequest
+     * @return \TruckersMP\APIClient\Requests\CompanyRequest
      */
     public function company(int $id): CompanyRequest
     {
@@ -113,7 +113,7 @@ class Client
      *
      * https://stats.truckersmp.com/api#truckersmp_version
      *
-     * @return \TruckersMP\Requests\VersionRequest
+     * @return \TruckersMP\APIClient\Requests\VersionRequest
      */
     public function version(): VersionRequest
     {
@@ -125,7 +125,7 @@ class Client
      *
      * https://stats.truckersmp.com/api#truckersmp_rules
      *
-     * @return \TruckersMP\Requests\RuleRequest
+     * @return \TruckersMP\APIClient\Requests\RuleRequest
      */
     public function rules(): RuleRequest
     {

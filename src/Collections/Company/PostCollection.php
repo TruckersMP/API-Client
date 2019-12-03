@@ -1,10 +1,11 @@
 <?php
 
-namespace TruckersMP\Collections;
+namespace TruckersMP\APIClient\Collections\Company;
 
-use TruckersMP\Models\CompanyPost;
+use TruckersMP\APIClient\Collections\Collection;
+use TruckersMP\APIClient\Models\CompanyPost;
 
-class PostsCollection extends Collection
+class PostCollection extends Collection
 {
     /**
      * Create a new PostsCollection instance.

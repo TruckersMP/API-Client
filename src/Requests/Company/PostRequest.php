@@ -1,9 +1,9 @@
 <?php
 
-namespace TruckersMP\Requests\Company;
+namespace TruckersMP\APIClient\Requests\Company;
 
-use TruckersMP\Models\CompanyPost;
-use TruckersMP\Requests\Request;
+use TruckersMP\APIClient\Models\CompanyPost;
+use TruckersMP\APIClient\Requests\Request;
 
 class PostRequest extends Request
 {
@@ -51,8 +51,8 @@ class PostRequest extends Request
      * @return CompanyPost
      *
      * @throws \Http\Client\Exception
-     * @throws \TruckersMP\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\Exceptions\RequestException
+     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\APIClient\Exceptions\RequestException
      */
     public function get(): CompanyPost
     {

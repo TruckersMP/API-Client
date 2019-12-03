@@ -1,8 +1,8 @@
 <?php
 
-namespace TruckersMP\Requests;
+namespace TruckersMP\APIClient\Requests;
 
-use TruckersMP\Models\Player;
+use TruckersMP\APIClient\Models\Player;
 
 class PlayerRequest extends Request
 {
@@ -41,8 +41,8 @@ class PlayerRequest extends Request
      * @return Player
      *
      * @throws \Http\Client\Exception
-     * @throws \TruckersMP\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\Exceptions\RequestException
+     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\APIClient\Exceptions\RequestException
      */
     public function get(): Player
     {
@@ -54,7 +54,7 @@ class PlayerRequest extends Request
     /**
      * Get the players bans.
      *
-     * @return \TruckersMP\Requests\BanRequest
+     * @return \TruckersMP\APIClient\Requests\BanRequest
      */
     public function bans(): BanRequest
     {

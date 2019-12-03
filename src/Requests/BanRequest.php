@@ -1,8 +1,8 @@
 <?php
 
-namespace TruckersMP\Requests;
+namespace TruckersMP\APIClient\Requests;
 
-use TruckersMP\Collections\BanCollection;
+use TruckersMP\APIClient\Collections\BanCollection;
 
 class BanRequest extends Request
 {
@@ -38,11 +38,11 @@ class BanRequest extends Request
     /**
      * Get the data for the request.
      *
-     * @return \TruckersMP\Collections\BanCollection
+     * @return \TruckersMP\APIClient\Collections\BanCollection
      *
      * @throws \Http\Client\Exception
-     * @throws \TruckersMP\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\Exceptions\RequestException
+     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\APIClient\Exceptions\RequestException
      * @throws \Exception
      */
     public function get(): BanCollection

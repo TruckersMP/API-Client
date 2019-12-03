@@ -1,8 +1,8 @@
 <?php
 
-namespace TruckersMP\Requests;
+namespace TruckersMP\APIClient\Requests;
 
-use TruckersMP\Models\GameTime;
+use TruckersMP\APIClient\Models\GameTime;
 
 class GameTimeRequest extends Request
 {
@@ -22,8 +22,8 @@ class GameTimeRequest extends Request
      * @return GameTime
      *
      * @throws \Http\Client\Exception
-     * @throws \TruckersMP\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\Exceptions\RequestException
+     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\APIClient\Exceptions\RequestException
      */
     public function get(): GameTime
     {

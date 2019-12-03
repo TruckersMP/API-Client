@@ -1,6 +1,6 @@
 <?php
 
-namespace TruckersMP\Collections;
+namespace TruckersMP\APIClient\Collections;
 
 use ArrayAccess;
 use Countable;

@@ -1,6 +1,6 @@
 <?php
 
-namespace TruckersMP\Models;
+namespace TruckersMP\APIClient\Models;
 
 class Server
 {

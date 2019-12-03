@@ -1,9 +1,9 @@
 <?php
 
-namespace TruckersMP\Requests\Company;
+namespace TruckersMP\APIClient\Requests\Company;
 
-use TruckersMP\Collections\PostsCollection;
-use TruckersMP\Requests\Request;
+use TruckersMP\APIClient\Collections\Company\PostCollection;
+use TruckersMP\APIClient\Requests\Request;
 
 class PostIndexRequest extends Request
 {
@@ -39,15 +39,15 @@ class PostIndexRequest extends Request
     /**
      * Get the data for the request.
      *
-     * @return PostsCollection|\TruckersMP\Models\CompanyPost[]
+     * @return PostCollection|\TruckersMP\APIClient\Models\CompanyPost[]
      *
      * @throws \Http\Client\Exception
-     * @throws \TruckersMP\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\Exceptions\RequestException
+     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\APIClient\Exceptions\RequestException
      */
-    public function get(): PostsCollection
+    public function get(): PostCollection
     {
-        return new PostsCollection(
+        return new PostCollection(
             $this->send()['response']
         );
     }

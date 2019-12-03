@@ -1,9 +1,9 @@
 <?php
 
-namespace TruckersMP\Requests\Company;
+namespace TruckersMP\APIClient\Requests\Company;
 
-use TruckersMP\Models\CompanyMemberIndex;
-use TruckersMP\Requests\Request;
+use TruckersMP\APIClient\Models\CompanyMemberIndex;
+use TruckersMP\APIClient\Requests\Request;
 
 class MemberIndexRequest extends Request
 {
@@ -42,8 +42,8 @@ class MemberIndexRequest extends Request
      * @return CompanyMemberIndex
      *
      * @throws \Http\Client\Exception
-     * @throws \TruckersMP\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\Exceptions\RequestException
+     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\APIClient\Exceptions\RequestException
      */
     public function get(): CompanyMemberIndex
     {

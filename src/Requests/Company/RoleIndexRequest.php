@@ -1,9 +1,9 @@
 <?php
 
-namespace TruckersMP\Requests\Company;
+namespace TruckersMP\APIClient\Requests\Company;
 
-use TruckersMP\Collections\RoleCollection;
-use TruckersMP\Requests\Request;
+use TruckersMP\APIClient\Collections\Company\RoleCollection;
+use TruckersMP\APIClient\Requests\Request;
 
 class RoleIndexRequest extends Request
 {
@@ -39,11 +39,12 @@ class RoleIndexRequest extends Request
     /**
      * Get the data for the request.
      *
-     * @return RoleCollection|\TruckersMP\Models\CompanyRole[]
+     * @return \TruckersMP\APIClient\Collections\Company\RoleCollection
      *
      * @throws \Http\Client\Exception
-     * @throws \TruckersMP\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\Exceptions\RequestException
+     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
+     * @throws \TruckersMP\APIClient\Exceptions\RequestException
+     * @throws \Exception
      */
     public function get(): RoleCollection
     {

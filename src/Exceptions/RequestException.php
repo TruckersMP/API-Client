@@ -1,6 +1,6 @@
 <?php
 
-namespace TruckersMP\Exceptions;
+namespace TruckersMP\APIClient\Exceptions;
 
 use Exception;
 
