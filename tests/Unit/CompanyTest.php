@@ -259,44 +259,34 @@ class CompanyTest extends TestCase
         // Twitter
         if ($company->getSocial()->getTwitter() !== null) {
             $this->assertIsString($company->getSocial()->getTwitter());
-        } else {
-            $this->assertNull($company->getSocial()->getTwitter());
         }
 
         // Facebook
         if ($company->getSocial()->getFacebook() !== null) {
             $this->assertIsString($company->getSocial()->getFacebook());
-        } else {
-            $this->assertNull($company->getSocial()->getFacebook());
         }
 
         // Twitch
         if ($company->getSocial()->getTwitch() !== null) {
             $this->assertIsString($company->getSocial()->getTwitch());
-        } else {
-            $this->assertNull($company->getSocial()->getTwitch());
         }
 
         // PlaysTV
         if ($company->getSocial()->getPlays() !== null) {
             $this->assertIsString($company->getSocial()->getPlays());
-        } else {
-            $this->assertNull($company->getSocial()->getPlays());
         }
 
         // Discord
         if ($company->getSocial()->getDiscord() !== null) {
             $this->assertIsString($company->getSocial()->getDiscord());
-        } else {
-            $this->assertNull($company->getSocial()->getDiscord());
         }
 
         // YouTube
         if ($company->getSocial()->getYouTube() !== null) {
             $this->assertIsString($company->getSocial()->getYouTube());
-        } else {
-            $this->assertNull($company->getSocial()->getYouTube());
         }
+
+        $this->assertInstanceOf(Social::class, $company->getSocial());
     }
 
     /**
