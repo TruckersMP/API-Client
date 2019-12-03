@@ -3,12 +3,12 @@
 namespace TruckersMP\Requests;
 
 use TruckersMP\Models\Company;
-use TruckersMP\Requests\Company\MemberRequest;
 use TruckersMP\Requests\Company\MemberIndexRequest;
-use TruckersMP\Requests\Company\PostRequest;
+use TruckersMP\Requests\Company\MemberRequest;
 use TruckersMP\Requests\Company\PostIndexRequest;
-use TruckersMP\Requests\Company\RoleRequest;
+use TruckersMP\Requests\Company\PostRequest;
 use TruckersMP\Requests\Company\RoleIndexRequest;
+use TruckersMP\Requests\Company\RoleRequest;
 
 class CompanyRequest extends Request
 {

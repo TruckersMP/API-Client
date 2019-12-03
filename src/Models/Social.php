@@ -45,12 +45,12 @@ class Social
      * @param string|null $youtube
      */
     public function __construct(
-        string $twitter = null,
-        string $facebook = null,
-        string $twitch = null,
-        string $plays = null,
-        string $discord = null,
-        string $youtube = null
+        ?string $twitter = null,
+        ?string $facebook = null,
+        ?string $twitch = null,
+        ?string $plays = null,
+        ?string $discord = null,
+        ?string $youtube = null
     ) {
 
         $this->twitter = $twitter;
