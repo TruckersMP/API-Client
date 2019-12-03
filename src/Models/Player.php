@@ -33,7 +33,7 @@ class Player
     protected $avatar;
 
     /**
-     * URL to the small avatar on the website;.
+     * URL to the small avatar on the website.
      *
      * @var string
      */
@@ -77,7 +77,7 @@ class Player
     /**
      * The date and time the ban will expire (UTC) or null if not banned or ban is permanent.
      *
-     * @var \Carbon\Carbon
+     * @var \Carbon\Carbon|null
      */
     protected $bannedUntil;
 

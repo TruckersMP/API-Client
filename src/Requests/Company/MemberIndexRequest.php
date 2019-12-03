@@ -15,7 +15,7 @@ class MemberIndexRequest extends Request
     protected $companyId;
 
     /**
-     * Create a new MembersRequest instance.
+     * Create a new MemberIndexRequest instance.
      *
      * @param int $id
      */
