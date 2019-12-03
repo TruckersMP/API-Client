@@ -5,7 +5,7 @@ namespace TruckersMP\Requests\Companies;
 use TruckersMP\Collections\PostsCollection;
 use TruckersMP\Requests\Request;
 
-class NewsRequest extends Request
+class PostsRequest extends Request
 {
     /**
      * The ID of the requested company.

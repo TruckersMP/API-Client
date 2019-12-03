@@ -27,7 +27,7 @@ class PostRequest extends Request
      * @param int $companyId
      * @param $postId
      */
-    public function __construct(int $companyId, $postId)
+    public function __construct(int $companyId, int $postId)
     {
         parent::__construct();
 

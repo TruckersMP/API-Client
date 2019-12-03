@@ -5,7 +5,7 @@ namespace TruckersMP\Requests;
 use TruckersMP\Models\Company;
 use TruckersMP\Requests\Companies\MemberRequest;
 use TruckersMP\Requests\Companies\MembersRequest;
-use TruckersMP\Requests\Companies\NewsRequest;
+use TruckersMP\Requests\Companies\PostsRequest;
 use TruckersMP\Requests\Companies\PostRequest;
 use TruckersMP\Requests\Companies\RoleRequest;
 use TruckersMP\Requests\Companies\RolesRequest;
@@ -61,11 +61,11 @@ class CompanyRequest extends Request
     /**
      * Get the news posts for the company.
      *
-     * @return \TruckersMP\Requests\Companies\NewsRequest
+     * @return \TruckersMP\Requests\Companies\PostsRequest
      */
-    public function posts(): NewsRequest
+    public function posts(): PostsRequest
     {
-        return new NewsRequest(
+        return new PostsRequest(
             $this->id
         );
     }
