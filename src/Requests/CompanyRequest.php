@@ -5,8 +5,8 @@ namespace TruckersMP\Requests;
 use TruckersMP\Models\Company;
 use TruckersMP\Requests\Companies\MemberRequest;
 use TruckersMP\Requests\Companies\MembersRequest;
-use TruckersMP\Requests\Companies\PostsRequest;
 use TruckersMP\Requests\Companies\PostRequest;
+use TruckersMP\Requests\Companies\PostsRequest;
 use TruckersMP\Requests\Companies\RoleRequest;
 use TruckersMP\Requests\Companies\RolesRequest;
 
