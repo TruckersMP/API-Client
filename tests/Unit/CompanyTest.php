@@ -285,8 +285,6 @@ class CompanyTest extends TestCase
         if ($company->getSocial()->getYouTube() !== null) {
             $this->assertIsString($company->getSocial()->getYouTube());
         }
-
-        $this->assertInstanceOf(Social::class, $company->getSocial());
     }
 
     /**
