@@ -9,12 +9,7 @@ class Company
     /**
      * The value used if recruitment is closed.
      */
-    public const RECRUITMENT_CLOSED = 'Close';
-
-    /**
-     * The value used if recruitment is open.
-     */
-    public const RECRUITMENT_OPEN = 'Open';
+    protected const RECRUITMENT_CLOSED = 'Close';
 
     /**
      * The ID of the company requested.
@@ -373,6 +368,6 @@ class Company
      */
     public function isRecruitmentOpen(): bool
     {
-        return $this->recruitment === self::RECRUITMENT_OPEN;
+        return !$this->isRecruitmentClosed();
     }
 }
