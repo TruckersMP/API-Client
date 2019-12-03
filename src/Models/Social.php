@@ -52,7 +52,6 @@ class Social
         ?string $discord = null,
         ?string $youtube = null
     ) {
-
         $this->twitter = $twitter;
         $this->facebook = $facebook;
         $this->twitch = $twitch;
