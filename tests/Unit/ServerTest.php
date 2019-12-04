@@ -299,6 +299,6 @@ class ServerTest extends TestCase
     {
         $server = $this->servers()[0];
 
-        $this->assertIsBool($server->hasSyncDelay());
+        $this->assertIsInt($server->getSyncDelay());
     }
 }

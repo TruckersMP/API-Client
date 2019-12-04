@@ -147,7 +147,7 @@ class Server
     /**
      * The server tick rate.
      *
-     * @var bool
+     * @var int
      */
     protected $syncDelay;
 
@@ -342,9 +342,9 @@ class Server
     }
 
     /**
-     * @return bool
+     * @return int
      */
-    public function hasSyncDelay(): bool
+    public function getSyncDelay(): int
     {
         return $this->syncDelay;
     }
