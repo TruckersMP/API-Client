@@ -110,7 +110,7 @@ class VersionTest extends TestCase
     {
         $version = $this->version();
 
-        $this->assertIsString($version->getSupportedGameVersion());
+        $this->assertIsString($version->getSupportedETS2GameVersion());
     }
 
     /**

@@ -53,7 +53,7 @@ class Version
      *
      * @var string
      */
-    protected $supportedGameVersion;
+    protected $supportedETS2GameVersion;
 
     /**
      * The ATS version that is supported.
@@ -86,7 +86,7 @@ class Version
         );
 
         $this->time = new Carbon($version['time'], 'UTC');
-        $this->supportedGameVersion = $version['supported_game_version'];
+        $this->supportedETS2GameVersion = $version['supported_game_version'];
         $this->supportedATSGameVersion = $version['supported_ats_game_version'];
     }
 
@@ -141,7 +141,7 @@ class Version
     /**
      * @return string
      */
-    public function getSupportedGameVersion(): string
+    public function getSupportedETS2GameVersion(): string
     {
         return $this->supportedGameVersion;
     }
