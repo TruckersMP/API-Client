@@ -143,7 +143,7 @@ class Version
      */
     public function getSupportedETS2GameVersion(): string
     {
-        return $this->supportedGameVersion;
+        return $this->supportedETS2GameVersion;
     }
 
     /**
