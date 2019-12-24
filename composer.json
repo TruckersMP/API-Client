@@ -8,31 +8,37 @@
             "name": "HumaneWolf",
             "email": "humanewolf@truckersmp.com",
             "homepage": "https://humanewolf.com/",
-            "role": "CM/Dev"
+            "role": "Developer"
         },
         {
             "name": "Thor Erik (Tuxy Fluffyclaws) Lie",
             "email": "tuxy@truckersmp.com",
             "homepage": "https://truckersmp.com/",
-            "role": "Dev"
+            "role": "Developer"
         },
         {
             "name": "CJMAXiK",
             "email": "me@cjmaxik.ru",
             "homepage": "https://cjmaxik.ru",
-            "role": "IGA/Dev"
+            "role": "Developer"
         },
         {
             "name": "Alex Blackham (B3none)",
             "email": "ablackham2000@gmail.com",
             "homepage": "https://github.com/b3none",
-            "role": "Dev"
+            "role": "Contributor"
         },
         {
             "name": "Ben Sherred (Ratcho)",
             "email": "me@ratcho.dev",
             "homepage": "https://github.com/bensherred",
             "role": "Contributor"
+        },
+        {
+            "name": "ShawnCZek",
+            "email": "shawnczek@truckersmp.com",
+            "homepage": "https://truckersmp.com/",
+            "role": "Maintainer"
         }
     ],
     "require": {
