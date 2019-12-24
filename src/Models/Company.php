@@ -98,14 +98,14 @@ class Company
     /**
      * Get the companies social information.
      *
-     * @var \TruckersMP\Models\Social
+     * @var \TruckersMP\APIClient\Models\Social
      */
     protected $social;
 
     /**
      * Get the games the company supports.
      *
-     * @var \TruckersMP\Models\Game
+     * @var \TruckersMP\APIClient\Models\Game
      */
     protected $games;
 
@@ -186,7 +186,6 @@ class Company
             $company['socials']['twitter'],
             $company['socials']['facebook'],
             $company['socials']['twitch'],
-            $company['socials']['playstv'],
             $company['socials']['discord'],
             $company['socials']['youtube']
         );
@@ -300,7 +299,7 @@ class Company
     }
 
     /**
-     * @return \TruckersMP\Models\Social
+     * @return \TruckersMP\APIClient\Models\Social
      */
     public function getSocial(): Social
     {
@@ -308,7 +307,7 @@ class Company
     }
 
     /**
-     * @return \TruckersMP\Models\Game
+     * @return \TruckersMP\APIClient\Models\Game
      */
     public function getGames(): Game
     {
