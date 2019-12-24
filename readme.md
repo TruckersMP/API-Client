@@ -1,90 +1,48 @@
-# TruckersMP REST API Library
+<p align="center"><img src="https://truckersmp.com/assets/img/truckersmp-logo-sm.png"></p>
 
-[![Build Status](https://travis-ci.org/TruckersMP/API-Client.svg?branch=master)](https://travis-ci.org/TruckersMP/API-Client)
-[![StyleCI Status](https://github.styleci.io/repos/57324164/shield?branch=master)](https://github.styleci.io/repos/57324164)
-[![Latest Stable Version](https://poser.pugx.org/truckersmp/api-client/v/stable)](https://packagist.org/packages/truckersmp/api-client)
-[![Latest Unstable Version](https://poser.pugx.org/truckersmp/api-client/v/unstable)](https://packagist.org/packages/truckersmp/api-client)
-[![License](https://poser.pugx.org/truckersmp/api-client/license)](https://packagist.org/packages/truckersmp/api-client)
-[![Monthly Downloads](https://poser.pugx.org/truckersmp/api-client/d/monthly)](https://packagist.org/packages/truckersmp/api-client)
-[![Total Downloads](https://poser.pugx.org/truckersmp/api-client/downloads)](https://packagist.org/packages/truckersmp/api-client)
+<p align="center">
+<a href="https://travis-ci.org/TruckersMP/API-Client"><img src="https://travis-ci.org/TruckersMP/API-Client.svg?branch=master" alt="Build Status"></a>
+<a href="https://github.styleci.io/repos/57324164"><img src="https://github.styleci.io/repos/57324164/shield?branch=master" alt="StyleCI Status"></a>
+<a href="https://packagist.org/packages/truckersmp/api-client"><img src="https://poser.pugx.org/truckersmp/api-client/downloads" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/truckersmp/api-client"><img src="https://poser.pugx.org/truckersmp/api-client/v/stable" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/truckersmp/api-client"><img src="https://poser.pugx.org/truckersmp/api-client/v/unstable" alt="Latest Unstable Version"></a>
+<a href="https://packagist.org/packages/truckersmp/api-client"><img src="https://poser.pugx.org/truckersmp/api-client/license" alt="License"></a>
+</p>
 
+## Introduction
 
-This is a PHP library created to simplify development using the [TruckersMP](http://truckersmp.com/) API. This client library provides functions to connect and gather data from each API endpoint, and returns the data as an object.
+The TruckersMP PHP library provides convenient access to the TruckersMP API for applications written in the PHP
+language. It includes a pre-defined set of classes for API each endpoint to get the data as a collection or model.
 
-> If you want to use API without library (or if you have advanced knowledge of PHP), check out [API documentation](https://stats.truckersmp.com/api).
+If you want to use the API without the library, check out the [API Documentation](https://stats.truckersmp.com/api).
 
-## Warning!
+## Requirements
 
-Please use our service responsibly. API Consumers who require high rates of requests against our APIs should contact TruckersMP Staff with a rationale and contact email for high-rate usage.
-
-
-## Requirements  
-
-- PHP 7.1.0 or newer
+- PHP 7.2 or later
 - Composer
 
-## Installation
+## Composer
 
-This library can be installed using [Composer](http://getcomposer.org/).
+You can install the package via [Composer](https://getcomposer.org). Run the following command:
 
-Two ways:
-1. Execute command `composer require truckersmp/api-client`
-2. Add `truckersmp/api-client` manually to the composer requirements list.
-
-After doing either of the above, execute the command `composer install`.
-
-## Usage
-
-> **Please note: this examples doesn't use caching. You should cache your requests in order to use API responsibly. Some examples can be found in `examples\cache` folder.**  
-
-```php
-<?php
-
-use TruckersMP/API/APIClient;
-
-$client = new APIClient();
-
-// Get player data for player id 50
-$player = $client->player(50);
-
-// Get player data for player with SteamID 76561197965863564
-$player = $client->player(76561197965863564);
-
-// output the user's name
-echo $player->name;
-
-// output the user's group
-echo $player->groupName;
-
+```bash
+composer require truckersmp/api-client
 ```
 
-## Methods
-
-`player()` - find player by TruckersMP ID or Steam ID
-
-`bans()` - view bans by TruckersMP ID
-
-`servers()` - servers list
-
-`gameTime()` - gameserver time (uses [Carbon](http://carbon.nesbot.com/docs/))
-
-`version()`- TruckersMP version info
-
-## Configuration
-
-We use [Guzzle](https://github.com/guzzle/guzzle) for gathering data from API endpoint. If you want to change Guzzle [configuration](http://guzzlephp.org/), you can pass config array on Client initialization.
+To use the package, use Composer's [autoload](https://getcomposer.org/doc/01-basic-usage.md#autoloading):
 
 ```php
-<?php 
-
-$client = new APIClient([
-    // Guzzle config
-]);
+require_once('vendor/autoload.php');
 ```
 
-All other settings you can find in `APIClient.php` constructor.
+## Official Documentation
 
+Documentation for API client can be found on the [Wiki](https://github.com/TruckersMP/API-Client/wiki).
 
-## Need Help?
+## Support
 
-If you have any questions about library usage, you can create new issue or make a topic on [our forum](https://forum.truckersmp.com/index.php?/forum/198-developer-portal/).
+If you have any questions about the library, you can create a topic on our [forum](https://forum.truckersmp.com/index.php?/forum/198-developer-portal/).
+
+## License
+
+This package is open-source and is licensed under the [MIT license](LICENSE).
