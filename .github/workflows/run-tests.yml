@@ -18,3 +18,8 @@ jobs:
 
       - name: Run test suite
         run: vendor/bin/phpunit
+
+      - name: Run PHPCS tests
+        run: |
+          ./vendor/bin/phpcs src --standard=PSR2
+          ./vendor/bin/phpcs tests/Unit --standard=PSR2
