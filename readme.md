@@ -1,7 +1,7 @@
 <p align="center"><img src="https://truckersmp.com/assets/img/truckersmp-logo-sm.png"></p>
 
 <p align="center">
-<a href="https://travis-ci.org/TruckersMP/API-Client"><img src="https://travis-ci.org/TruckersMP/API-Client.svg?branch=master" alt="Build Status"></a>
+<a href="https://github.com/truckersmp/api-client/workflows/Run%20Tests/badge.svg"><img src="https://github.com/truckersmp/api-client/workflows/Run%20Tests/badge.svg" alt="Build Status"></a>
 <a href="https://github.styleci.io/repos/57324164"><img src="https://github.styleci.io/repos/57324164/shield?branch=master" alt="StyleCI Status"></a>
 <a href="https://packagist.org/packages/truckersmp/api-client"><img src="https://poser.pugx.org/truckersmp/api-client/downloads" alt="Total Downloads"></a>
 <a href="https://packagist.org/packages/truckersmp/api-client"><img src="https://poser.pugx.org/truckersmp/api-client/v/stable" alt="Latest Stable Version"></a>
