@@ -10,7 +10,8 @@ class PostCollection extends Collection
     /**
      * Create a new PostsCollection instance.
      *
-     * @param array $response
+     * @param  array  $response
+     * @return void
      */
     public function __construct(array $response)
     {

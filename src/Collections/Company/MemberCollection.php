@@ -7,10 +7,11 @@ use TruckersMP\APIClient\Models\CompanyMember;
 
 class MemberCollection extends Collection
 {
-    /*
+    /**
      * Create a new MemberCollection instance.
      *
-     * @return void
+     * @param  array  $response
+     * @retrun void
      */
     public function __construct(array $response)
     {
