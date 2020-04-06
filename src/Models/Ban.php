@@ -3,20 +3,21 @@
 namespace TruckersMP\APIClient\Models;
 
 use Carbon\Carbon;
+use Exception;
 
 class Ban
 {
     /**
      * The time the ban will expire.
      *
-     * @var \Carbon\Carbon
+     * @var Carbon
      */
     protected $expiration;
 
     /**
      * The time the ban was issued.
      *
-     * @var \Carbon\Carbon
+     * @var Carbon
      */
     protected $timeAdded;
 
@@ -51,9 +52,10 @@ class Ban
     /**
      * Create a new Ban instance.
      *
-     * @param array $ban
+     * @param  array  $ban
+     * @return void
      *
-     * @throws \Exception
+     * @throws Exception
      */
     public function __construct(array $ban)
     {
@@ -81,7 +83,9 @@ class Ban
     }
 
     /**
-     * @return \Carbon\Carbon|null
+     * Get the expiration date of the ban.
+     *
+     * @return Carbon|null
      */
     public function getExpirationDate(): ?Carbon
     {
@@ -89,7 +93,9 @@ class Ban
     }
 
     /**
-     * @return \Carbon\Carbon
+     * Get the date which the ban was issued.
+     *
+     * @return Carbon
      */
     public function getCreatedAt(): Carbon
     {
@@ -97,6 +103,8 @@ class Ban
     }
 
     /**
+     * Determine if the ban is active or not.
+     *
      * @return bool
      */
     public function isActive(): bool
@@ -105,6 +113,8 @@ class Ban
     }
 
     /**
+     * Get the reason why the player was banned.
+     *
      * @return string
      */
     public function getReason(): string
@@ -113,6 +123,8 @@ class Ban
     }
 
     /**
+     * Get the name of the admin who banned the player.
+     *
      * @return string
      */
     public function getAdminName(): string
@@ -121,6 +133,8 @@ class Ban
     }
 
     /**
+     * Get the TMP ID of the admin who banned the player.
+     *
      * @return int
      */
     public function getAdminId(): int

@@ -3,7 +3,11 @@
 namespace TruckersMP\APIClient\Models;
 
 use Carbon\Carbon;
+use Exception;
+use Http\Client\Exception as HttpException;
 use TruckersMP\APIClient\Collections\BanCollection;
+use TruckersMP\APIClient\Exceptions\PageNotFoundException;
+use TruckersMP\APIClient\Exceptions\RequestException;
 use TruckersMP\APIClient\Requests\BanRequest;
 use TruckersMP\APIClient\Requests\Company\MemberRequest;
 use TruckersMP\APIClient\Requests\Company\RoleRequest;
@@ -77,7 +81,7 @@ class Player
     /**
      * The date and time the ban will expire (UTC) or null if not banned or ban is permanent.
      *
-     * @var \Carbon\Carbon|null
+     * @var Carbon|null
      */
     protected $bannedUntil;
 
@@ -133,9 +137,10 @@ class Player
     /**
      * Create a new Player instance.
      *
-     * @param array $player
+     * @param  array  $player
+     * @return void
      *
-     * @throws \Exception
+     * @throws Exception
      */
     public function __construct(array $player)
     {
@@ -159,6 +164,8 @@ class Player
     }
 
     /**
+     * Get the players ID.
+     *
      * @return int
      */
     public function getId(): int
@@ -167,6 +174,8 @@ class Player
     }
 
     /**
+     * Get the name of the player.
+     *
      * @return string
      */
     public function getName(): string
@@ -175,6 +184,8 @@ class Player
     }
 
     /**
+     * Get the URL of the players avatar.
+     *
      * @return string
      */
     public function getAvatar(): string
@@ -183,6 +194,8 @@ class Player
     }
 
     /**
+     * Get the URL of the players small avatar.
+     *
      * @return string
      */
     public function getSmallAvatar(): string
@@ -191,6 +204,8 @@ class Player
     }
 
     /**
+     * Get the date which the player joined.
+     *
      * @return Carbon
      */
     public function getJoinDate(): Carbon
@@ -199,6 +214,8 @@ class Player
     }
 
     /**
+     * Get the players Steam ID.
+     *
      * @return string
      */
     public function getSteamID64(): string
@@ -207,6 +224,8 @@ class Player
     }
 
     /**
+     * Get the players group ID.
+     *
      * @return int
      */
     public function getGroupId(): int
@@ -215,6 +234,8 @@ class Player
     }
 
     /**
+     * Get the name of the players group.
+     *
      * @return string
      */
     public function getGroupName(): string
@@ -223,6 +244,8 @@ class Player
     }
 
     /**
+     * Check if the player is banned.
+     *
      * @return bool
      */
     public function isBanned(): bool
@@ -231,7 +254,9 @@ class Player
     }
 
     /**
-     * @return \Carbon\Carbon|null
+     * If the player is banned, get the date they are banned until.
+     *
+     * @return Carbon|null
      */
     public function getBannedUntilDate(): ?Carbon
     {
@@ -239,6 +264,8 @@ class Player
     }
 
     /**
+     * Check if the player has their bans hidden.
+     *
      * @return bool
      */
     public function hasBansHidden(): bool
@@ -247,6 +274,8 @@ class Player
     }
 
     /**
+     * Check if the player is an in-game admin.
+     *
      * @return bool
      */
     public function isAdmin(): bool
@@ -255,6 +284,8 @@ class Player
     }
 
     /**
+     * Get the players company ID.
+     *
      * @return int
      */
     public function getCompanyId(): int
@@ -263,6 +294,8 @@ class Player
     }
 
     /**
+     * Get the name of the players company.
+     *
      * @return string
      */
     public function getCompanyName(): string
@@ -271,6 +304,8 @@ class Player
     }
 
     /**
+     * Get the tag of the players company.
+     *
      * @return string
      */
     public function getCompanyTag(): string
@@ -279,6 +314,8 @@ class Player
     }
 
     /**
+     * Check if the player is in a company.
+     *
      * @return bool
      */
     public function isInCompany(): bool
@@ -287,6 +324,8 @@ class Player
     }
 
     /**
+     * Get the players company member ID.
+     *
      * @return int
      */
     public function getCompanyMemberId(): int
@@ -295,11 +334,13 @@ class Player
     }
 
     /**
-     * @return \TruckersMP\Collections\BanCollection
+     * Get the players bans.
      *
-     * @throws \Http\Client\Exception
-     * @throws \TruckersMP\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\Exceptions\RequestException
+     * @return BanCollection
+     *
+     * @throws HttpException
+     * @throws PageNotFoundException
+     * @throws RequestException
      */
     public function getBans(): BanCollection
     {
@@ -307,11 +348,13 @@ class Player
     }
 
     /**
-     * @return \TruckersMP\Models\Company|null
+     * Get the players company.
      *
-     * @throws \Http\Client\Exception
-     * @throws \TruckersMP\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\Exceptions\RequestException
+     * @return Company|null
+     *
+     * @throws HttpException
+     * @throws PageNotFoundException
+     * @throws RequestException
      */
     public function getCompany(): ?Company
     {
@@ -325,11 +368,13 @@ class Player
     }
 
     /**
-     * @return \TruckersMP\Models\CompanyMember|null
+     * Get the CompanyMember instance for the player.
      *
-     * @throws \Http\Client\Exception
-     * @throws \TruckersMP\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\Exceptions\RequestException
+     * @return CompanyMember|null
+     *
+     * @throws HttpException
+     * @throws PageNotFoundException
+     * @throws RequestException
      */
     public function getCompanyMember(): ?CompanyMember
     {
@@ -343,11 +388,13 @@ class Player
     }
 
     /**
-     * @return \TruckersMP\Models\CompanyRole|null
+     * Get the CompanyRole instance for the players company role.
      *
-     * @throws \Http\Client\Exception
-     * @throws \TruckersMP\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\Exceptions\RequestException
+     * @return CompanyRole|null
+     *
+     * @throws HttpException
+     * @throws PageNotFoundException
+     * @throws RequestException
      */
     public function getCompanyRole(): ?CompanyRole
     {

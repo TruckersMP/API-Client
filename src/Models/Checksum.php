@@ -21,8 +21,9 @@ class Checksum
     /**
      * Create a new Checksum instance.
      *
-     * @param string $dll
-     * @param string $adb
+     * @param  string  $dll
+     * @param  string  $adb
+     * @return void
      */
     public function __construct(string $dll, string $adb)
     {
@@ -31,6 +32,8 @@ class Checksum
     }
 
     /**
+     * Get the DLL value.
+     *
      * @return string
      */
     public function getDLL(): string
@@ -39,6 +42,8 @@ class Checksum
     }
 
     /**
+     * Get the ADB value.
+     *
      * @return string
      */
     public function getADB(): string

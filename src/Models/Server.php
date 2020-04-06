@@ -154,7 +154,8 @@ class Server
     /**
      * Create a new Server instance.
      *
-     * @param array $server
+     * @param  array  $server
+     * @return void
      */
     public function __construct(array $server)
     {
@@ -182,14 +183,18 @@ class Server
     }
 
     /**
+     * Get the ID of the server.
+     *
      * @return int
      */
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
     }
 
     /**
+     * Get the game which the server is for.
+     *
      * @return string
      */
     public function getGame(): string
@@ -198,6 +203,8 @@ class Server
     }
 
     /**
+     * Get the server IP address.
+     *
      * @return string
      */
     public function getIp(): string
@@ -206,6 +213,8 @@ class Server
     }
 
     /**
+     * Get the port which the server is running on.
+     *
      * @return int
      */
     public function getPort(): int
@@ -214,6 +223,8 @@ class Server
     }
 
     /**
+     * Get the name of the server.
+     *
      * @return string
      */
     public function getName(): string
@@ -222,6 +233,8 @@ class Server
     }
 
     /**
+     * Get the short name of the server.
+     *
      * @return string
      */
     public function getShortName(): string
@@ -230,6 +243,8 @@ class Server
     }
 
     /**
+     * Get the server prefix.
+     *
      * @return string|null
      */
     public function getIdPrefix(): ?string
@@ -238,6 +253,8 @@ class Server
     }
 
     /**
+     * Check if the server is online.
+     *
      * @return bool
      */
     public function isOnline(): bool
@@ -246,6 +263,8 @@ class Server
     }
 
     /**
+     * Get the number of players connected to the server.
+     *
      * @return int
      */
     public function getPlayers(): int
@@ -254,6 +273,8 @@ class Server
     }
 
     /**
+     * Get the number of players in the server queue.
+     *
      * @return int
      */
     public function getQueue(): int
@@ -262,6 +283,8 @@ class Server
     }
 
     /**
+     * Get the maximum players allowed on the server.
+     *
      * @return int
      */
     public function getMaxPlayers(): int
@@ -270,6 +293,9 @@ class Server
     }
 
     /**
+     * Get the order ID of the server. This determines which order to display the servers in.
+     * The lowest number will show first.
+     *
      * @return int
      */
     public function getDisplayOrder(): int
@@ -278,6 +304,8 @@ class Server
     }
 
     /**
+     * Check if the server has a speed limit.
+     *
      * @return bool
      */
     public function hasSpeedLimit(): bool
@@ -286,6 +314,8 @@ class Server
     }
 
     /**
+     * Check if the server has collisions enabled.
+     *
      * @return bool
      */
     public function hasCollisions(): bool
@@ -294,6 +324,8 @@ class Server
     }
 
     /**
+     * Check if the player can driver cars.
+     *
      * @return bool
      */
     public function canPlayersHaveCars(): bool
@@ -302,6 +334,8 @@ class Server
     }
 
     /**
+     * Check if the player can driver police cars.
+     *
      * @return bool
      */
     public function canPlayersHavePoliceCars(): bool
@@ -310,6 +344,8 @@ class Server
     }
 
     /**
+     * Check if AFK kick is enabled on the server.
+     *
      * @return bool
      */
     public function isAfkEnabled(): bool
@@ -318,6 +354,8 @@ class Server
     }
 
     /**
+     * Check if the server is an event server.
+     *
      * @return bool
      */
     public function isEvent(): bool
@@ -326,6 +364,8 @@ class Server
     }
 
     /**
+     * Check if the server is a special event server.
+     *
      * @return bool
      */
     public function isSpecialEvent(): bool
@@ -334,6 +374,8 @@ class Server
     }
 
     /**
+     * Check if the server has promods enabled.
+     *
      * @return bool
      */
     public function hasPromods(): bool
@@ -342,6 +384,8 @@ class Server
     }
 
     /**
+     * Get the sync delay/tick rate.
+     *
      * @return int
      */
     public function getSyncDelay(): int

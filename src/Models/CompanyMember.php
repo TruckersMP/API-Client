@@ -3,6 +3,7 @@
 namespace TruckersMP\APIClient\Models;
 
 use Carbon\Carbon;
+use Exception;
 
 class CompanyMember
 {
@@ -51,14 +52,17 @@ class CompanyMember
     /**
      * The date the player joined the company.
      *
-     * @var \Carbon\Carbon
+     * @var Carbon
      */
     protected $joinDate;
 
     /**
      * Create a new CompanyMember instance.
      *
-     * @param array $member
+     * @param  array  $member
+     * @return void
+     *
+     * @throws Exception
      */
     public function __construct(array $member)
     {
@@ -72,6 +76,8 @@ class CompanyMember
     }
 
     /**
+     * Get the company member ID.
+     *
      * @return int
      */
     public function getId(): int
@@ -80,6 +86,8 @@ class CompanyMember
     }
 
     /**
+     * Get the TMP player ID of the member.
+     *
      * @return int
      */
     public function getUserId(): int
@@ -88,6 +96,8 @@ class CompanyMember
     }
 
     /**
+     * Get the name of the member.
+     *
      * @return string
      */
     public function getUsername(): string
@@ -96,6 +106,8 @@ class CompanyMember
     }
 
     /**
+     * Get the Steam ID of the member.
+     *
      * @return string
      */
     public function getSteamId(): string
@@ -104,6 +116,8 @@ class CompanyMember
     }
 
     /**
+     * Get the Role ID of the member.
+     *
      * @return int
      */
     public function getRoleId(): int
@@ -112,6 +126,8 @@ class CompanyMember
     }
 
     /**
+     * Get the name of members role.
+     *
      * @return string
      */
     public function getRole(): string
@@ -120,7 +136,9 @@ class CompanyMember
     }
 
     /**
-     * @return \Carbon\Carbon
+     * Get the date that the member joined the company.
+     *
+     * @return Carbon
      */
     public function getJoinDate(): Carbon
     {

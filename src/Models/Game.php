@@ -5,11 +5,15 @@ namespace TruckersMP\APIClient\Models;
 class Game
 {
     /**
+     * Whether the entity has/supports American Truck Simulator.
+     *
      * @var bool
      */
     protected $ats;
 
     /**
+     * Whether the entity has/supports Euro Truck Simulator 2.
+     *
      * @var bool
      */
     protected $ets;
@@ -17,8 +21,9 @@ class Game
     /**
      * Create a new Game instance.
      *
-     * @param bool $ats
-     * @param bool $ets
+     * @param  bool  $ats
+     * @param  bool  $ets
+     * @return void
      */
     public function __construct(bool $ats, bool $ets)
     {
@@ -27,6 +32,8 @@ class Game
     }
 
     /**
+     * Determines if the entity has/supports American Truck Simulator.
+     *
      * @return bool
      */
     public function isAts(): bool
@@ -35,6 +42,8 @@ class Game
     }
 
     /**
+     * Determines if the entity has/supports Euro Truck Simulator 2.
+     *
      * @return bool
      */
     public function isEts(): bool

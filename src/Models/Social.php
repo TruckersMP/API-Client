@@ -32,11 +32,12 @@ class Social
     /**
      * Create a new Social instance.
      *
-     * @param string|null $twitter
-     * @param string|null $facebook
-     * @param string|null $twitch
-     * @param string|null $discord
-     * @param string|null $youtube
+     * @param  string|null  $twitter
+     * @param  string|null  $facebook
+     * @param  string|null  $twitch
+     * @param  string|null  $discord
+     * @param  string|null  $youtube
+     * @return void
      */
     public function __construct(
         ?string $twitter = null,
@@ -53,6 +54,8 @@ class Social
     }
 
     /**
+     * Get the Twitter URL.
+     *
      * @return string|null
      */
     public function getTwitter(): ?string
@@ -61,6 +64,8 @@ class Social
     }
 
     /**
+     * Get the Facebook URL.
+     *
      * @return string|null
      */
     public function getFacebook(): ?string
@@ -69,6 +74,8 @@ class Social
     }
 
     /**
+     * Get the Twitch URL.
+     *
      * @return string|null
      */
     public function getTwitch(): ?string
@@ -77,6 +84,8 @@ class Social
     }
 
     /**
+     * Get the Discord URL.
+     *
      * @return string|null
      */
     public function getDiscord(): ?string
@@ -85,6 +94,8 @@ class Social
     }
 
     /**
+     * Get the YouTube URL.
+     *
      * @return string|null
      */
     public function getYouTube(): ?string

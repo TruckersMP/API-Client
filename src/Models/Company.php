@@ -3,6 +3,7 @@
 namespace TruckersMP\APIClient\Models;
 
 use Carbon\Carbon;
+use Exception;
 
 class Company
 {
@@ -98,14 +99,14 @@ class Company
     /**
      * Get the companies social information.
      *
-     * @var \TruckersMP\APIClient\Models\Social
+     * @var Social
      */
     protected $social;
 
     /**
      * Get the games the company supports.
      *
-     * @var \TruckersMP\APIClient\Models\Game
+     * @var Game
      */
     protected $games;
 
@@ -140,16 +141,17 @@ class Company
     /**
      * The date and time the company was created.
      *
-     * @var \Carbon\Carbon
+     * @var Carbon
      */
     protected $createdAt;
 
     /**
      * Create a new Company instance.
      *
-     * @param array $company
+     * @param  array  $company
+     * @return void
      *
-     * @throws \Exception
+     * @throws Exception
      */
     public function __construct(array $company)
     {
@@ -203,14 +205,18 @@ class Company
     }
 
     /**
+     * Get the ID of the company.
+     *
      * @return int
      */
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
     }
 
     /**
+     * Get the name of the company.
+     *
      * @return string
      */
     public function getName(): string
@@ -219,6 +225,8 @@ class Company
     }
 
     /**
+     * Get the ID of the player who owns the company.
+     *
      * @return int
      */
     public function getOwnerId(): int
@@ -227,6 +235,8 @@ class Company
     }
 
     /**
+     * Get the name of the player who owns the company.
+     *
      * @return string
      */
     public function getOwnerName(): string
@@ -235,6 +245,8 @@ class Company
     }
 
     /**
+     * Get the company slogan.
+     *
      * @return string
      */
     public function getSlogan(): string
@@ -243,6 +255,8 @@ class Company
     }
 
     /**
+     * Get the company tag.
+     *
      * @return string
      */
     public function getTag(): string
@@ -251,6 +265,8 @@ class Company
     }
 
     /**
+     * Get the URL to the companies logo.
+     *
      * @return string
      */
     public function getLogo(): string
@@ -259,6 +275,8 @@ class Company
     }
 
     /**
+     * Get the URL to the companies cover image.
+     *
      * @return string
      */
     public function getCover(): string
@@ -267,6 +285,8 @@ class Company
     }
 
     /**
+     * Get the information about the company.
+     *
      * @return string
      */
     public function getInformation(): string
@@ -275,6 +295,8 @@ class Company
     }
 
     /**
+     * Get the companies rules.
+     *
      * @return string
      */
     public function getRules(): string
@@ -283,6 +305,8 @@ class Company
     }
 
     /**
+     * Get the companies requirements.
+     *
      * @return string
      */
     public function getRequirements(): string
@@ -291,6 +315,8 @@ class Company
     }
 
     /**
+     * Get the companies website URL.
+     *
      * @return string
      */
     public function getWebsite(): string
@@ -299,7 +325,9 @@ class Company
     }
 
     /**
-     * @return \TruckersMP\APIClient\Models\Social
+     * Get the companies social information.
+     *
+     * @return Social
      */
     public function getSocial(): Social
     {
@@ -307,7 +335,9 @@ class Company
     }
 
     /**
-     * @return \TruckersMP\APIClient\Models\Game
+     * Get the games which the company supports.
+     *
+     * @return Game
      */
     public function getGames(): Game
     {
@@ -315,6 +345,8 @@ class Company
     }
 
     /**
+     * Get the number of members that are part of the company.
+     *
      * @return int
      */
     public function getMembersCount(): int
@@ -323,6 +355,8 @@ class Company
     }
 
     /**
+     * Get the companies recruitment status i.e. Open or Closed.
+     *
      * @return string
      */
     public function getRecruitment(): string
@@ -331,6 +365,8 @@ class Company
     }
 
     /**
+     * Get the companies primary language.
+     *
      * @return string
      */
     public function getLanguage(): string
@@ -339,6 +375,8 @@ class Company
     }
 
     /**
+     * Check if the company is verified or not.
+     *
      * @return bool
      */
     public function isVerified(): bool
@@ -347,7 +385,9 @@ class Company
     }
 
     /**
-     * @return \Carbon\Carbon
+     * Get the date which the company was created.
+     *
+     * @return Carbon
      */
     public function getCreatedDate(): Carbon
     {
@@ -355,6 +395,8 @@ class Company
     }
 
     /**
+     * Determine if recruitment is closed for the company.
+     *
      * @return bool
      */
     public function isRecruitmentClosed(): bool
@@ -363,6 +405,8 @@ class Company
     }
 
     /**
+     * Determine if recruitment is open for the company.
+     *
      * @return bool
      */
     public function isRecruitmentOpen(): bool
