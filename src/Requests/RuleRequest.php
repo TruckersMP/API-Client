@@ -2,6 +2,9 @@
 
 namespace TruckersMP\APIClient\Requests;
 
+use Psr\Http\Client\ClientExceptionInterface;
+use TruckersMP\APIClient\Exceptions\PageNotFoundException;
+use TruckersMP\APIClient\Exceptions\RequestException;
 use TruckersMP\APIClient\Models\Rule;
 
 class RuleRequest extends Request
@@ -21,9 +24,9 @@ class RuleRequest extends Request
      *
      * @return Rule
      *
-     * @throws \Http\Client\Exception
-     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\APIClient\Exceptions\RequestException
+     * @throws PageNotFoundException
+     * @throws RequestException
+     * @throws ClientExceptionInterface
      */
     public function get(): Rule
     {

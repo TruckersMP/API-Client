@@ -23,7 +23,8 @@ class Client
     /**
      * Create a new Client instance.
      *
-     * @param array $config
+     * @param  array  $config
+     * @return void
      */
     public function __construct(array $config = [])
     {
@@ -35,9 +36,9 @@ class Client
      *
      * https://stats.truckersmp.com/api#players_lookup
      *
-     * @param int $id
+     * @param  int  $id
      *
-     * @return \TruckersMP\APIClient\Requests\PlayerRequest
+     * @return PlayerRequest
      */
     public function player(int $id): PlayerRequest
     {
@@ -49,9 +50,9 @@ class Client
      *
      * https://stats.truckersmp.com/api#ban_lookup
      *
-     * @param int $id
+     * @param  int  $id
      *
-     * @return \TruckersMP\APIClient\Requests\BanRequest
+     * @return BanRequest
      */
     public function bans(int $id): BanRequest
     {
@@ -63,7 +64,7 @@ class Client
      *
      * https://stats.truckersmp.com/api#servers_list
      *
-     * @return \TruckersMP\APIClient\Requests\ServerRequest
+     * @return ServerRequest
      */
     public function servers(): ServerRequest
     {
@@ -75,7 +76,7 @@ class Client
      *
      * https://stats.truckersmp.com/api#game_time
      *
-     * @return \TruckersMP\APIClient\Requests\GameTimeRequest
+     * @return GameTimeRequest
      */
     public function gameTime(): GameTimeRequest
     {
@@ -87,7 +88,7 @@ class Client
      *
      * https://stats.truckersmp.com/api#vtc_index
      *
-     * @return \TruckersMP\APIClient\Requests\CompanyIndexRequest
+     * @return CompanyIndexRequest
      */
     public function companies(): CompanyIndexRequest
     {
@@ -99,9 +100,9 @@ class Client
      *
      * https://stats.truckersmp.com/api#vtc_info
      *
-     * @param int $id
+     * @param  int  $id
      *
-     * @return \TruckersMP\APIClient\Requests\CompanyRequest
+     * @return CompanyRequest
      */
     public function company(int $id): CompanyRequest
     {
@@ -113,7 +114,7 @@ class Client
      *
      * https://stats.truckersmp.com/api#truckersmp_version
      *
-     * @return \TruckersMP\APIClient\Requests\VersionRequest
+     * @return VersionRequest
      */
     public function version(): VersionRequest
     {
@@ -125,7 +126,7 @@ class Client
      *
      * https://stats.truckersmp.com/api#truckersmp_rules
      *
-     * @return \TruckersMP\APIClient\Requests\RuleRequest
+     * @return RuleRequest
      */
     public function rules(): RuleRequest
     {
@@ -137,7 +138,7 @@ class Client
      *
      * @return array
      */
-    public static function config()
+    public static function config(): array
     {
         return self::$config;
     }

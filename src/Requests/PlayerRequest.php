@@ -2,6 +2,10 @@
 
 namespace TruckersMP\APIClient\Requests;
 
+use Exception;
+use Psr\Http\Client\ClientExceptionInterface;
+use TruckersMP\APIClient\Exceptions\PageNotFoundException;
+use TruckersMP\APIClient\Exceptions\RequestException;
 use TruckersMP\APIClient\Models\Player;
 
 class PlayerRequest extends Request
@@ -16,7 +20,8 @@ class PlayerRequest extends Request
     /**
      * Create a new PlayerRequest instance.
      *
-     * @param int $id
+     * @param  int  $id
+     * @return void
      */
     public function __construct(int $id)
     {
@@ -40,9 +45,10 @@ class PlayerRequest extends Request
      *
      * @return Player
      *
-     * @throws \Http\Client\Exception
-     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\APIClient\Exceptions\RequestException
+     * @throws PageNotFoundException
+     * @throws RequestException
+     * @throws Exception
+     * @throws ClientExceptionInterface
      */
     public function get(): Player
     {
@@ -54,7 +60,7 @@ class PlayerRequest extends Request
     /**
      * Get the players bans.
      *
-     * @return \TruckersMP\APIClient\Requests\BanRequest
+     * @return BanRequest
      */
     public function bans(): BanRequest
     {

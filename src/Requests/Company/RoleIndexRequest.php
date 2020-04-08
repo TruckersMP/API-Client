@@ -2,7 +2,11 @@
 
 namespace TruckersMP\APIClient\Requests\Company;
 
+use Exception;
+use Psr\Http\Client\ClientExceptionInterface;
 use TruckersMP\APIClient\Collections\Company\RoleCollection;
+use TruckersMP\APIClient\Exceptions\PageNotFoundException;
+use TruckersMP\APIClient\Exceptions\RequestException;
 use TruckersMP\APIClient\Requests\Request;
 
 class RoleIndexRequest extends Request
@@ -17,7 +21,8 @@ class RoleIndexRequest extends Request
     /**
      * Create a new RoleIndexRequest instance.
      *
-     * @param int $companyId
+     * @param  int  $companyId
+     * @return void
      */
     public function __construct(int $companyId)
     {
@@ -39,12 +44,12 @@ class RoleIndexRequest extends Request
     /**
      * Get the data for the request.
      *
-     * @return \TruckersMP\APIClient\Collections\Company\RoleCollection
+     * @return RoleCollection
      *
-     * @throws \Http\Client\Exception
-     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\APIClient\Exceptions\RequestException
-     * @throws \Exception
+     * @throws PageNotFoundException
+     * @throws RequestException
+     * @throws Exception
+     * @throws ClientExceptionInterface
      */
     public function get(): RoleCollection
     {

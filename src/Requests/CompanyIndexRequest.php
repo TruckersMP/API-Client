@@ -2,6 +2,10 @@
 
 namespace TruckersMP\APIClient\Requests;
 
+use Exception;
+use Psr\Http\Client\ClientExceptionInterface;
+use TruckersMP\APIClient\Exceptions\PageNotFoundException;
+use TruckersMP\APIClient\Exceptions\RequestException;
 use TruckersMP\APIClient\Models\CompanyIndex;
 
 class CompanyIndexRequest extends Request
@@ -21,9 +25,10 @@ class CompanyIndexRequest extends Request
      *
      * @return mixed
      *
-     * @throws \Http\Client\Exception
-     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\APIClient\Exceptions\RequestException
+     * @throws PageNotFoundException
+     * @throws RequestException
+     * @throws Exception
+     * @throws ClientExceptionInterface
      */
     public function get(): CompanyIndex
     {
