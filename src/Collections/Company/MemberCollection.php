@@ -2,6 +2,7 @@
 
 namespace TruckersMP\APIClient\Collections\Company;
 
+use Exception;
 use TruckersMP\APIClient\Collections\Collection;
 use TruckersMP\APIClient\Models\CompanyMember;
 
@@ -12,6 +13,8 @@ class MemberCollection extends Collection
      *
      * @param  array  $response
      * @retrun void
+     *
+     * @throws Exception
      */
     public function __construct(array $response)
     {

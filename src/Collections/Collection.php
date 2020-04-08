@@ -57,9 +57,8 @@ class Collection implements ArrayAccess, Iterator, Countable
     /**
      * Set the item at a given offset.
      *
-     * @param mixed $key
-     * @param mixed $value
-     *
+     * @param  mixed  $key
+     * @param  mixed  $value
      * @return void
      */
     public function offsetSet($key, $value): void

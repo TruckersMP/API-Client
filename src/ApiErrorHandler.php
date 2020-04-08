@@ -14,7 +14,6 @@ class ApiErrorHandler
      *
      * @param  StreamInterface  $body
      * @param  int  $statusCode
-     *
      * @return Exception
      *
      * @throws PageNotFoundException

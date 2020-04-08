@@ -73,6 +73,7 @@ class CompanyRoleTest extends TestCase
      * @throws PageNotFoundException
      * @throws RequestException
      * @throws ClientExceptionInterface
+     */
     public function testItHasAName()
     {
         $role = $this->companyRole(self::TEST_COMPANY, self::TEST_ROLE);

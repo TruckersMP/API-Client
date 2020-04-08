@@ -37,7 +37,6 @@ class Client
      * https://stats.truckersmp.com/api#players_lookup
      *
      * @param  int  $id
-     *
      * @return PlayerRequest
      */
     public function player(int $id): PlayerRequest
@@ -51,7 +50,6 @@ class Client
      * https://stats.truckersmp.com/api#ban_lookup
      *
      * @param  int  $id
-     *
      * @return BanRequest
      */
     public function bans(int $id): BanRequest
@@ -101,7 +99,6 @@ class Client
      * https://stats.truckersmp.com/api#vtc_info
      *
      * @param  int  $id
-     *
      * @return CompanyRequest
      */
     public function company(int $id): CompanyRequest

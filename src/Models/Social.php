@@ -5,26 +5,36 @@ namespace TruckersMP\APIClient\Models;
 class Social
 {
     /**
+     * The Twitter URL.
+     *
      * @var string|null
      */
     protected $twitter;
 
     /**
+     * The Facebook URL.
+     *
      * @var string|null
      */
     protected $facebook;
 
     /**
+     * The Twitch URL.
+     *
      * @var string|null
      */
     protected $twitch;
 
     /**
+     * The Discord invite URL.
+     *
      * @var string|null
      */
     protected $discord;
 
     /**
+     * The YouTube URL.
+     *
      * @var string|null
      */
     protected $youtube;
