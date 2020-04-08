@@ -14,7 +14,6 @@ enabled:
   - nullable_type_declarations
   - phpdoc_add_missing_param_annotation
   - phpdoc_link_to_see
-  - phpdoc_align
   - short_list_syntax
   - simple_to_complex_string_variable
   - strict_comparison
