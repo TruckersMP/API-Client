@@ -358,6 +358,19 @@ class CompanyTest extends TestCase
     }
 
     /**
+     * @throws ClientExceptionInterface
+     * @throws PageNotFoundException
+     * @throws PhpfastcacheInvalidArgumentException
+     * @throws RequestException
+     */
+    public function testIfItsValidated()
+    {
+        $company = $this->company(self::TEST_COMPANY);
+
+        $this->assertIsBool($company->isValidated());
+    }
+
+    /**
      * @throws PhpfastcacheInvalidArgumentException
      * @throws PageNotFoundException
      * @throws RequestException

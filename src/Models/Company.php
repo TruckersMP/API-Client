@@ -139,6 +139,13 @@ class Company
     protected $verified;
 
     /**
+     * If the company is validated.
+     *
+     * @var bool
+     */
+    protected $validated;
+
+    /**
      * The date and time the company was created.
      *
      * @var Carbon
@@ -201,6 +208,7 @@ class Company
         $this->recruitment = $company['recruitment'];
         $this->language = $company['language'];
         $this->verified = boolval($company['verified']);
+        $this->validated = boolval($company['validated']);
         $this->createdAt = new Carbon($company['created'], 'UTC');
     }
 
@@ -382,6 +390,16 @@ class Company
     public function isVerified(): bool
     {
         return $this->verified;
+    }
+
+    /**
+     * Check if the company is validated or not.
+     *
+     * @return bool
+     */
+    public function isValidated(): bool
+    {
+        return $this->validated;
     }
 
     /**
