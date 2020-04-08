@@ -2,15 +2,19 @@
 
 namespace Tests\Unit;
 
+use Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException;
+use Psr\Http\Client\ClientExceptionInterface;
 use Tests\TestCase;
+use TruckersMP\APIClient\Exceptions\PageNotFoundException;
+use TruckersMP\APIClient\Exceptions\RequestException;
 
 class ChecksumTest extends TestCase
 {
     /**
-     * @throws \Http\Client\Exception
-     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\APIClient\Exceptions\RequestException
+     * @throws PhpfastcacheInvalidArgumentException
+     * @throws PageNotFoundException
+     * @throws RequestException
+     * @throws ClientExceptionInterface
      */
     public function testItHasADLL()
     {
@@ -20,10 +24,10 @@ class ChecksumTest extends TestCase
     }
 
     /**
-     * @throws \Http\Client\Exception
-     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\APIClient\Exceptions\RequestException
+     * @throws PhpfastcacheInvalidArgumentException
+     * @throws PageNotFoundException
+     * @throws RequestException
+     * @throws ClientExceptionInterface
      */
     public function testItHasAnADB()
     {
