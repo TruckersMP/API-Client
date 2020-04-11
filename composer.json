@@ -47,12 +47,12 @@
         "ext-json": "*",
         "phpfastcache/phpfastcache": "^7.1",
         "php-http/message": "^1.8",
-        "guzzlehttp/psr7": "^1.6"
+        "guzzlehttp/psr7": "^1.6",
+        "php-http/guzzle6-adapter": "^1.0 || ^2.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^8.0 || ^9.0",
-        "squizlabs/php_codesniffer": "^3.0",
-        "php-http/guzzle6-adapter": "^1.0 || ^2.0"
+        "squizlabs/php_codesniffer": "^3.0"
     },
     "autoload": {
         "psr-4": {
