@@ -45,4 +45,4 @@ If you have any questions about the library, you can create a topic on our [foru
 
 ## License
 
-This package is open-source and is licensed under the [MIT license](LICENSE).
+This package is open-source and is licensed under the [MIT license](LICENSE.md).
