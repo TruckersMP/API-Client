@@ -2,17 +2,21 @@
 
 namespace Tests\Unit;
 
+use Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException;
+use Psr\Http\Client\ClientExceptionInterface;
 use Tests\TestCase;
 use TruckersMP\APIClient\Collections\ServerCollection;
+use TruckersMP\APIClient\Exceptions\PageNotFoundException;
+use TruckersMP\APIClient\Exceptions\RequestException;
 use TruckersMP\APIClient\Models\Server;
 
 class ServerTest extends TestCase
 {
     /**
-     * @throws \Http\Client\Exception
-     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\APIClient\Exceptions\RequestException
+     * @throws PhpfastcacheInvalidArgumentException
+     * @throws PageNotFoundException
+     * @throws RequestException
+     * @throws ClientExceptionInterface
      */
     public function testWeCanGetAllTheServers()
     {
@@ -26,10 +30,10 @@ class ServerTest extends TestCase
     }
 
     /**
-     * @throws \Http\Client\Exception
-     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\APIClient\Exceptions\RequestException
+     * @throws PhpfastcacheInvalidArgumentException
+     * @throws PageNotFoundException
+     * @throws RequestException
+     * @throws ClientExceptionInterface
      */
     public function testItHasAnId()
     {
@@ -39,10 +43,10 @@ class ServerTest extends TestCase
     }
 
     /**
-     * @throws \Http\Client\Exception
-     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\APIClient\Exceptions\RequestException
+     * @throws PhpfastcacheInvalidArgumentException
+     * @throws PageNotFoundException
+     * @throws RequestException
+     * @throws ClientExceptionInterface
      */
     public function testItHasAGame()
     {
@@ -52,10 +56,10 @@ class ServerTest extends TestCase
     }
 
     /**
-     * @throws \Http\Client\Exception
-     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\APIClient\Exceptions\RequestException
+     * @throws PhpfastcacheInvalidArgumentException
+     * @throws PageNotFoundException
+     * @throws RequestException
+     * @throws ClientExceptionInterface
      */
     public function testItHasAnIp()
     {
@@ -65,10 +69,10 @@ class ServerTest extends TestCase
     }
 
     /**
-     * @throws \Http\Client\Exception
-     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\APIClient\Exceptions\RequestException
+     * @throws PhpfastcacheInvalidArgumentException
+     * @throws PageNotFoundException
+     * @throws RequestException
+     * @throws ClientExceptionInterface
      */
     public function testItHasAPort()
     {
@@ -78,10 +82,10 @@ class ServerTest extends TestCase
     }
 
     /**
-     * @throws \Http\Client\Exception
-     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\APIClient\Exceptions\RequestException
+     * @throws PhpfastcacheInvalidArgumentException
+     * @throws PageNotFoundException
+     * @throws RequestException
+     * @throws ClientExceptionInterface
      */
     public function testItHasAName()
     {
@@ -91,10 +95,10 @@ class ServerTest extends TestCase
     }
 
     /**
-     * @throws \Http\Client\Exception
-     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\APIClient\Exceptions\RequestException
+     * @throws PhpfastcacheInvalidArgumentException
+     * @throws PageNotFoundException
+     * @throws RequestException
+     * @throws ClientExceptionInterface
      */
     public function testItHasAShortName()
     {
@@ -104,10 +108,10 @@ class ServerTest extends TestCase
     }
 
     /**
-     * @throws \Http\Client\Exception
-     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\APIClient\Exceptions\RequestException
+     * @throws PhpfastcacheInvalidArgumentException
+     * @throws PageNotFoundException
+     * @throws RequestException
+     * @throws ClientExceptionInterface
      */
     public function testItHasAnIdPrefix()
     {
@@ -121,10 +125,10 @@ class ServerTest extends TestCase
     }
 
     /**
-     * @throws \Http\Client\Exception
-     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\APIClient\Exceptions\RequestException
+     * @throws PhpfastcacheInvalidArgumentException
+     * @throws PageNotFoundException
+     * @throws RequestException
+     * @throws ClientExceptionInterface
      */
     public function testItHasAnOnlineState()
     {
@@ -134,10 +138,10 @@ class ServerTest extends TestCase
     }
 
     /**
-     * @throws \Http\Client\Exception
-     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\APIClient\Exceptions\RequestException
+     * @throws PhpfastcacheInvalidArgumentException
+     * @throws PageNotFoundException
+     * @throws RequestException
+     * @throws ClientExceptionInterface
      */
     public function testItHasPlayers()
     {
@@ -147,10 +151,10 @@ class ServerTest extends TestCase
     }
 
     /**
-     * @throws \Http\Client\Exception
-     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\APIClient\Exceptions\RequestException
+     * @throws PhpfastcacheInvalidArgumentException
+     * @throws PageNotFoundException
+     * @throws RequestException
+     * @throws ClientExceptionInterface
      */
     public function testItHasAQueue()
     {
@@ -160,10 +164,10 @@ class ServerTest extends TestCase
     }
 
     /**
-     * @throws \Http\Client\Exception
-     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\APIClient\Exceptions\RequestException
+     * @throws PhpfastcacheInvalidArgumentException
+     * @throws PageNotFoundException
+     * @throws RequestException
+     * @throws ClientExceptionInterface
      */
     public function testItHasMaxPlayers()
     {
@@ -173,10 +177,10 @@ class ServerTest extends TestCase
     }
 
     /**
-     * @throws \Http\Client\Exception
-     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\APIClient\Exceptions\RequestException
+     * @throws PhpfastcacheInvalidArgumentException
+     * @throws PageNotFoundException
+     * @throws RequestException
+     * @throws ClientExceptionInterface
      */
     public function testItHasADisplayOrder()
     {
@@ -186,10 +190,10 @@ class ServerTest extends TestCase
     }
 
     /**
-     * @throws \Http\Client\Exception
-     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\APIClient\Exceptions\RequestException
+     * @throws PhpfastcacheInvalidArgumentException
+     * @throws PageNotFoundException
+     * @throws RequestException
+     * @throws ClientExceptionInterface
      */
     public function testItHasASpeedLimit()
     {
@@ -199,10 +203,10 @@ class ServerTest extends TestCase
     }
 
     /**
-     * @throws \Http\Client\Exception
-     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\APIClient\Exceptions\RequestException
+     * @throws PhpfastcacheInvalidArgumentException
+     * @throws PageNotFoundException
+     * @throws RequestException
+     * @throws ClientExceptionInterface
      */
     public function testItHasCollisions()
     {
@@ -212,10 +216,10 @@ class ServerTest extends TestCase
     }
 
     /**
-     * @throws \Http\Client\Exception
-     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\APIClient\Exceptions\RequestException
+     * @throws PhpfastcacheInvalidArgumentException
+     * @throws PageNotFoundException
+     * @throws RequestException
+     * @throws ClientExceptionInterface
      */
     public function testItHasCarsForPlayers()
     {
@@ -225,10 +229,10 @@ class ServerTest extends TestCase
     }
 
     /**
-     * @throws \Http\Client\Exception
-     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\APIClient\Exceptions\RequestException
+     * @throws PhpfastcacheInvalidArgumentException
+     * @throws PageNotFoundException
+     * @throws RequestException
+     * @throws ClientExceptionInterface
      */
     public function testItHasPoliceCarsForPlayers()
     {
@@ -238,10 +242,10 @@ class ServerTest extends TestCase
     }
 
     /**
-     * @throws \Http\Client\Exception
-     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\APIClient\Exceptions\RequestException
+     * @throws PhpfastcacheInvalidArgumentException
+     * @throws PageNotFoundException
+     * @throws RequestException
+     * @throws ClientExceptionInterface
      */
     public function testItHasAfkEnable()
     {
@@ -251,10 +255,10 @@ class ServerTest extends TestCase
     }
 
     /**
-     * @throws \Http\Client\Exception
-     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\APIClient\Exceptions\RequestException
+     * @throws PhpfastcacheInvalidArgumentException
+     * @throws PageNotFoundException
+     * @throws RequestException
+     * @throws ClientExceptionInterface
      */
     public function testItHasAnEvent()
     {
@@ -264,10 +268,10 @@ class ServerTest extends TestCase
     }
 
     /**
-     * @throws \Http\Client\Exception
-     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\APIClient\Exceptions\RequestException
+     * @throws PhpfastcacheInvalidArgumentException
+     * @throws PageNotFoundException
+     * @throws RequestException
+     * @throws ClientExceptionInterface
      */
     public function testItHasASpecialEvent()
     {
@@ -277,10 +281,10 @@ class ServerTest extends TestCase
     }
 
     /**
-     * @throws \Http\Client\Exception
-     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\APIClient\Exceptions\RequestException
+     * @throws PhpfastcacheInvalidArgumentException
+     * @throws PageNotFoundException
+     * @throws RequestException
+     * @throws ClientExceptionInterface
      */
     public function testItHasPromods()
     {
@@ -290,10 +294,10 @@ class ServerTest extends TestCase
     }
 
     /**
-     * @throws \Http\Client\Exception
-     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\APIClient\Exceptions\RequestException
+     * @throws PhpfastcacheInvalidArgumentException
+     * @throws PageNotFoundException
+     * @throws RequestException
+     * @throws ClientExceptionInterface
      */
     public function testItHasSyncDelay()
     {

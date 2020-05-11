@@ -56,7 +56,8 @@ class CompanyPost
     /**
      * Create a new Post instance.
      *
-     * @param array $post
+     * @param  array  $post
+     * @return void
      */
     public function __construct(array $post)
     {
@@ -74,6 +75,8 @@ class CompanyPost
     }
 
     /**
+     * Get the ID of the post.
+     *
      * @return int
      */
     public function getId(): int
@@ -82,6 +85,8 @@ class CompanyPost
     }
 
     /**
+     * Get the title of the post.
+     *
      * @return string
      */
     public function getTitle(): string
@@ -90,6 +95,8 @@ class CompanyPost
     }
 
     /**
+     * Get the post summary.
+     *
      * @return string
      */
     public function getSummary(): string
@@ -98,6 +105,8 @@ class CompanyPost
     }
 
     /**
+     * Get the post content.
+     *
      * @return string
      */
     public function getContent(): string
@@ -106,6 +115,8 @@ class CompanyPost
     }
 
     /**
+     * Get the TMP ID of the author who made the post.
+     *
      * @return int
      */
     public function getAuthorId(): int
@@ -114,6 +125,8 @@ class CompanyPost
     }
 
     /**
+     * Get the name of the author who made the post.
+     *
      * @return string
      */
     public function getAuthor(): string
@@ -122,6 +135,8 @@ class CompanyPost
     }
 
     /**
+     * Check if the post is pinned on the companies page.
+     *
      * @return bool
      */
     public function isPinned(): bool

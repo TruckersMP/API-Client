@@ -4,12 +4,23 @@ namespace Tests;
 
 use Phpfastcache\CacheManager;
 use Phpfastcache\Config\ConfigurationOption;
+use Phpfastcache\Core\Pool\ExtendedCacheItemPoolInterface;
+use Phpfastcache\Exceptions\PhpfastcacheDriverCheckException;
+use Phpfastcache\Exceptions\PhpfastcacheDriverException;
+use Phpfastcache\Exceptions\PhpfastcacheDriverNotFoundException;
+use Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException;
+use Phpfastcache\Exceptions\PhpfastcacheInvalidConfigurationException;
 use PHPUnit\Framework\TestCase as BaseTestCase;
+use Psr\Http\Client\ClientExceptionInterface;
+use ReflectionException;
 use TruckersMP\APIClient\Client;
 use TruckersMP\APIClient\Collections\BanCollection;
 use TruckersMP\APIClient\Collections\Company\PostCollection;
 use TruckersMP\APIClient\Collections\Company\RoleCollection;
 use TruckersMP\APIClient\Collections\ServerCollection;
+use TruckersMP\APIClient\Exceptions\PageNotFoundException;
+use TruckersMP\APIClient\Exceptions\RequestException;
+use TruckersMP\APIClient\Models\Ban;
 use TruckersMP\APIClient\Models\Company;
 use TruckersMP\APIClient\Models\CompanyIndex;
 use TruckersMP\APIClient\Models\CompanyMember;
@@ -19,6 +30,7 @@ use TruckersMP\APIClient\Models\CompanyRole;
 use TruckersMP\APIClient\Models\GameTime;
 use TruckersMP\APIClient\Models\Player;
 use TruckersMP\APIClient\Models\Rule;
+use TruckersMP\APIClient\Models\Server;
 use TruckersMP\APIClient\Models\Version;
 
 class TestCase extends BaseTestCase
@@ -29,24 +41,30 @@ class TestCase extends BaseTestCase
     private const CACHE_SECONDS = 600;
 
     /**
-     * @var \TruckersMP\APIClient\Client
+     * The current instance of the Client.
+     *
+     * @var Client
      */
     protected $client;
 
     /**
-     * @var \Phpfastcache\Core\Pool\ExtendedCacheItemPoolInterface
+     * The current cache instance.
+     *
+     * @var ExtendedCacheItemPoolInterface
      */
     protected $cache;
 
     /**
      * Create a new TestCase instance.
      *
-     * @throws \Phpfastcache\Exceptions\PhpfastcacheDriverCheckException
-     * @throws \Phpfastcache\Exceptions\PhpfastcacheDriverException
-     * @throws \Phpfastcache\Exceptions\PhpfastcacheDriverNotFoundException
-     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidConfigurationException
-     * @throws \ReflectionException
+     * @return void
+     *
+     * @throws PhpfastcacheDriverCheckException
+     * @throws PhpfastcacheDriverException
+     * @throws PhpfastcacheDriverNotFoundException
+     * @throws PhpfastcacheInvalidArgumentException
+     * @throws PhpfastcacheInvalidConfigurationException
+     * @throws ReflectionException
      */
     public function __construct()
     {
@@ -64,14 +82,14 @@ class TestCase extends BaseTestCase
     /**
      * Get or cache the given player.
      *
-     * @param int $id
+     * @param  int  $id
      *
-     * @return \TruckersMP\APIClient\Models\Player
+     * @return Player
      *
-     * @throws \Http\Client\Exception
-     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\APIClient\Exceptions\RequestException
+     * @throws PhpfastcacheInvalidArgumentException
+     * @throws PageNotFoundException
+     * @throws RequestException
+     * @throws ClientExceptionInterface
      */
     public function player(int $id): Player
     {
@@ -88,14 +106,14 @@ class TestCase extends BaseTestCase
     /**
      * Get or cache the players bans.
      *
-     * @param int $id
+     * @param  int  $id
      *
-     * @return \TruckersMP\APIClient\Collections\BanCollection|\TruckersMP\APIClient\Models\Ban[]
+     * @return BanCollection|Ban[]
      *
-     * @throws \Http\Client\Exception
-     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\APIClient\Exceptions\RequestException
+     * @throws PhpfastcacheInvalidArgumentException
+     * @throws PageNotFoundException
+     * @throws RequestException
+     * @throws ClientExceptionInterface
      */
     public function playerBans(int $id): BanCollection
     {
@@ -112,14 +130,14 @@ class TestCase extends BaseTestCase
     /**
      * Get or cache the bans for the player.
      *
-     * @param int $id
+     * @param  int  $id
      *
-     * @return \TruckersMP\APIClient\Collections\BanCollection
+     * @return BanCollection
      *
-     * @throws \Http\Client\Exception
-     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\APIClient\Exceptions\RequestException
+     * @throws PhpfastcacheInvalidArgumentException
+     * @throws PageNotFoundException
+     * @throws RequestException
+     * @throws ClientExceptionInterface
      */
     public function bans(int $id): BanCollection
     {
@@ -136,12 +154,12 @@ class TestCase extends BaseTestCase
     /**
      * Get or cache the server request.
      *
-     * @return \TruckersMP\APIClient\Collections\ServerCollection|\TruckersMP\APIClient\Models\Server[]
+     * @return ServerCollection|Server[]
      *
-     * @throws \Http\Client\Exception
-     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\APIClient\Exceptions\RequestException
+     * @throws PhpfastcacheInvalidArgumentException
+     * @throws PageNotFoundException
+     * @throws RequestException
+     * @throws ClientExceptionInterface
      */
     public function servers(): ServerCollection
     {
@@ -158,12 +176,12 @@ class TestCase extends BaseTestCase
     /**
      * Get or cache the game time.
      *
-     * @return \TruckersMP\APIClient\Models\GameTime
+     * @return GameTime
      *
-     * @throws \Http\Client\Exception
-     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\APIClient\Exceptions\RequestException
+     * @throws PhpfastcacheInvalidArgumentException
+     * @throws PageNotFoundException
+     * @throws RequestException
+     * @throws ClientExceptionInterface
      */
     public function gameTime(): GameTime
     {
@@ -180,12 +198,12 @@ class TestCase extends BaseTestCase
     /**
      * Get or cache the recent companies.
      *
-     * @return \TruckersMP\APIClient\Models\CompanyIndex
+     * @return CompanyIndex
      *
-     * @throws \Http\Client\Exception
-     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\APIClient\Exceptions\RequestException
+     * @throws PhpfastcacheInvalidArgumentException
+     * @throws PageNotFoundException
+     * @throws RequestException
+     * @throws ClientExceptionInterface
      */
     public function companies(): CompanyIndex
     {
@@ -202,14 +220,14 @@ class TestCase extends BaseTestCase
     /**
      * Get or cache the company with the specified id.
      *
-     * @param int $id
+     * @param  int  $id
      *
-     * @return \TruckersMP\APIClient\Models\Company
+     * @return Company
      *
-     * @throws \Http\Client\Exception
-     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\APIClient\Exceptions\RequestException
+     * @throws PhpfastcacheInvalidArgumentException
+     * @throws PageNotFoundException
+     * @throws RequestException
+     * @throws ClientExceptionInterface
      */
     public function company(int $id): Company
     {
@@ -226,14 +244,14 @@ class TestCase extends BaseTestCase
     /**
      * Get the news posts for the specified company.
      *
-     * @param int $id
+     * @param  int  $id
      *
-     * @return PostCollection|\TruckersMP\APIClient\Models\CompanyPost[]
+     * @return PostCollection|CompanyPost[]
      *
-     * @throws \Http\Client\Exception
-     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\APIClient\Exceptions\RequestException
+     * @throws PhpfastcacheInvalidArgumentException
+     * @throws PageNotFoundException
+     * @throws RequestException
+     * @throws ClientExceptionInterface
      */
     public function companyPosts(int $id): PostCollection
     {
@@ -250,15 +268,15 @@ class TestCase extends BaseTestCase
     /**
      * Get or Cache the specified company post.
      *
-     * @param int $companyId
-     * @param int $postId
+     * @param  int  $companyId
+     * @param  int  $postId
      *
      * @return CompanyPost
      *
-     * @throws \Http\Client\Exception
-     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\APIClient\Exceptions\RequestException
+     * @throws PhpfastcacheInvalidArgumentException
+     * @throws PageNotFoundException
+     * @throws RequestException
+     * @throws ClientExceptionInterface
      */
     public function companyPost(int $companyId, int $postId): CompanyPost
     {
@@ -278,14 +296,14 @@ class TestCase extends BaseTestCase
     /**
      * Get or cache the company roles.
      *
-     * @param int $companyId
+     * @param  int  $companyId
      *
-     * @return \TruckersMP\APIClient\Collections\Company\RoleCollection|CompanyRole[]
+     * @return RoleCollection|CompanyRole[]
      *
-     * @throws \Http\Client\Exception
-     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\APIClient\Exceptions\RequestException
+     * @throws PhpfastcacheInvalidArgumentException
+     * @throws PageNotFoundException
+     * @throws RequestException
+     * @throws ClientExceptionInterface
      */
     public function companyRoles(int $companyId): RoleCollection
     {
@@ -302,15 +320,15 @@ class TestCase extends BaseTestCase
     /**
      * Get or cache the company role.
      *
-     * @param int $companyId
-     * @param int $roleId
+     * @param  int  $companyId
+     * @param  int  $roleId
      *
-     * @return \TruckersMP\APIClient\Models\CompanyRole
+     * @return CompanyRole
      *
-     * @throws \Http\Client\Exception
-     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\APIClient\Exceptions\RequestException
+     * @throws PhpfastcacheInvalidArgumentException
+     * @throws PageNotFoundException
+     * @throws RequestException
+     * @throws ClientExceptionInterface
      */
     public function companyRole(int $companyId, int $roleId): CompanyRole
     {
@@ -330,14 +348,14 @@ class TestCase extends BaseTestCase
     /**
      * Get or cache the company members.
      *
-     * @param int $companyId
+     * @param  int  $companyId
      *
      * @return mixed
      *
-     * @throws \Http\Client\Exception
-     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\APIClient\Exceptions\RequestException
+     * @throws PhpfastcacheInvalidArgumentException
+     * @throws PageNotFoundException
+     * @throws RequestException
+     * @throws ClientExceptionInterface
      */
     public function companyMembers(int $companyId): CompanyMemberIndex
     {
@@ -357,15 +375,15 @@ class TestCase extends BaseTestCase
     /**
      * Get or cache the company member.
      *
-     * @param int $companyId
-     * @param int $memberId
+     * @param  int  $companyId
+     * @param  int  $memberId
      *
-     * @return \TruckersMP\APIClient\Models\CompanyMember
+     * @return CompanyMember
      *
-     * @throws \Http\Client\Exception
-     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\APIClient\Exceptions\RequestException
+     * @throws PhpfastcacheInvalidArgumentException
+     * @throws PageNotFoundException
+     * @throws RequestException
+     * @throws ClientExceptionInterface
      */
     public function companyMember(int $companyId, int $memberId): CompanyMember
     {
@@ -385,12 +403,12 @@ class TestCase extends BaseTestCase
     /**
      * Get or cache the TruckersMP version.
      *
-     * @return \TruckersMP\APIClient\Models\Version
+     * @return Version
      *
-     * @throws \Http\Client\Exception
-     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\APIClient\Exceptions\RequestException
+     * @throws PhpfastcacheInvalidArgumentException
+     * @throws PageNotFoundException
+     * @throws RequestException
+     * @throws ClientExceptionInterface
      */
     public function version(): Version
     {
@@ -407,12 +425,12 @@ class TestCase extends BaseTestCase
     /**
      * Get or cache the rules.
      *
-     * @return \TruckersMP\APIClient\Models\Rule
+     * @return Rule
      *
-     * @throws \Http\Client\Exception
-     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\APIClient\Exceptions\RequestException
+     * @throws PhpfastcacheInvalidArgumentException
+     * @throws PageNotFoundException
+     * @throws RequestException
+     * @throws ClientExceptionInterface
      */
     public function rules(): Rule
     {

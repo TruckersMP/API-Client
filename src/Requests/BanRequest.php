@@ -2,7 +2,11 @@
 
 namespace TruckersMP\APIClient\Requests;
 
+use Exception;
+use Psr\Http\Client\ClientExceptionInterface;
 use TruckersMP\APIClient\Collections\BanCollection;
+use TruckersMP\APIClient\Exceptions\PageNotFoundException;
+use TruckersMP\APIClient\Exceptions\RequestException;
 
 class BanRequest extends Request
 {
@@ -16,7 +20,8 @@ class BanRequest extends Request
     /**
      * Create a new BanRequest instance.
      *
-     * @param int $id
+     * @param  int  $id
+     * @return void
      */
     public function __construct(int $id)
     {
@@ -38,12 +43,12 @@ class BanRequest extends Request
     /**
      * Get the data for the request.
      *
-     * @return \TruckersMP\APIClient\Collections\BanCollection
+     * @return BanCollection
      *
-     * @throws \Http\Client\Exception
-     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\APIClient\Exceptions\RequestException
-     * @throws \Exception
+     * @throws PageNotFoundException
+     * @throws RequestException
+     * @throws Exception
+     * @throws ClientExceptionInterface
      */
     public function get(): BanCollection
     {

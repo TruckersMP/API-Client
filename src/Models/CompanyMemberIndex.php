@@ -2,6 +2,7 @@
 
 namespace TruckersMP\APIClient\Models;
 
+use Exception;
 use TruckersMP\APIClient\Collections\Company\MemberCollection;
 
 class CompanyMemberIndex
@@ -9,7 +10,7 @@ class CompanyMemberIndex
     /**
      * The company members.
      *
-     * @var \TruckersMP\APIClient\Collections\MemberCollection
+     * @var MemberCollection
      */
     protected $members;
 
@@ -23,7 +24,10 @@ class CompanyMemberIndex
     /**
      * Create a new CompanyMemberIndex instance.
      *
-     * @param array $response
+     * @param  array  $response
+     * @return void
+     *
+     * @throws Exception
      */
     public function __construct(array $response)
     {
@@ -33,7 +37,9 @@ class CompanyMemberIndex
     }
 
     /**
-     * @return \TruckersMP\APIClient\Collections\MemberCollection
+     * Get the collection of company members.
+     *
+     * @return MemberCollection
      */
     public function getMembers(): MemberCollection
     {
@@ -41,6 +47,8 @@ class CompanyMemberIndex
     }
 
     /**
+     * Get the member count for the company.
+     *
      * @return int
      */
     public function getCount(): int

@@ -2,7 +2,10 @@
 
 namespace TruckersMP\APIClient\Requests;
 
+use Psr\Http\Client\ClientExceptionInterface;
 use TruckersMP\APIClient\Collections\ServerCollection;
+use TruckersMP\APIClient\Exceptions\PageNotFoundException;
+use TruckersMP\APIClient\Exceptions\RequestException;
 
 class ServerRequest extends Request
 {
@@ -19,11 +22,11 @@ class ServerRequest extends Request
     /**
      * Get the data for the request.
      *
-     * @return \TruckersMP\APIClient\Collections\ServerCollection
+     * @return ServerCollection
      *
-     * @throws \Http\Client\Exception
-     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\APIClient\Exceptions\RequestException
+     * @throws PageNotFoundException
+     * @throws RequestException
+     * @throws ClientExceptionInterface
      */
     public function get(): ServerCollection
     {

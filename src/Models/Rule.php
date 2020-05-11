@@ -21,7 +21,8 @@ class Rule
     /**
      * Create a new Role instance.
      *
-     * @param array $rules
+     * @param  array  $rules
+     * @return void
      */
     public function __construct(array $rules)
     {
@@ -30,6 +31,8 @@ class Rule
     }
 
     /**
+     * Get the current rules.
+     *
      * @return string
      */
     public function getRules(): string
@@ -38,6 +41,8 @@ class Rule
     }
 
     /**
+     * Get the current revision number of the rules.
+     *
      * @return int
      */
     public function getRevision(): int

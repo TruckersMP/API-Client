@@ -2,6 +2,9 @@
 
 namespace TruckersMP\APIClient\Requests\Company;
 
+use Psr\Http\Client\ClientExceptionInterface;
+use TruckersMP\APIClient\Exceptions\PageNotFoundException;
+use TruckersMP\APIClient\Exceptions\RequestException;
 use TruckersMP\APIClient\Models\CompanyPost;
 use TruckersMP\APIClient\Requests\Request;
 
@@ -24,8 +27,9 @@ class PostRequest extends Request
     /**
      * Create a new PostRequest instance.
      *
-     * @param int $companyId
-     * @param int $postId
+     * @param  int  $companyId
+     * @param  int  $postId
+     * @return void
      */
     public function __construct(int $companyId, int $postId)
     {
@@ -50,9 +54,9 @@ class PostRequest extends Request
      *
      * @return CompanyPost
      *
-     * @throws \Http\Client\Exception
-     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\APIClient\Exceptions\RequestException
+     * @throws PageNotFoundException
+     * @throws RequestException
+     * @throws ClientExceptionInterface
      */
     public function get(): CompanyPost
     {

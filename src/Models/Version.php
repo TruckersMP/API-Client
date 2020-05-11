@@ -3,6 +3,7 @@
 namespace TruckersMP\APIClient\Models;
 
 use Carbon\Carbon;
+use Exception;
 
 class Version
 {
@@ -30,21 +31,21 @@ class Version
     /**
      * The ETS2MP checksum.
      *
-     * @var \TruckersMP\Models\Checksum
+     * @var Checksum
      */
     protected $ets2mpChecksum;
 
     /**
      * The ATSMP checksum.
      *
-     * @var \TruckersMP\Models\Checksum
+     * @var Checksum
      */
     protected $atsmpChecksum;
 
     /**
      * The time that the version was released.
      *
-     * @var \Carbon\Carbon
+     * @var Carbon
      */
     protected $time;
 
@@ -65,9 +66,10 @@ class Version
     /**
      * Create a new Version instance.
      *
-     * @param array $version
+     * @param  array  $version
+     * @return void
      *
-     * @throws \Exception
+     * @throws Exception
      */
     public function __construct(array $version)
     {
@@ -91,6 +93,8 @@ class Version
     }
 
     /**
+     * Get the version name.
+     *
      * @return string
      */
     public function getName(): string
@@ -99,6 +103,8 @@ class Version
     }
 
     /**
+     * Get the numeric name of the version.
+     *
      * @return string
      */
     public function getNumeric(): string
@@ -107,6 +113,8 @@ class Version
     }
 
     /**
+     * Get the stage of which the version is at within the development lifecycle.
+     *
      * @return string
      */
     public function getStage(): string
@@ -115,23 +123,30 @@ class Version
     }
 
     /**
-     * @return \TruckersMP\Models\Checksum
+     * Get the ETS2MP checksum for the current version.
+     *
+     * @return Checksum
      */
-    public function getETS2MPChecksum()
+    public function getETS2MPChecksum(): Checksum
     {
         return $this->ets2mpChecksum;
     }
 
     /**
-     * @return \TruckersMP\Models\Checksum
+     * Get the ATSMP checksum for the current version.
+     *
+     *
+     * @return Checksum
      */
-    public function getATSMPChecksum()
+    public function getATSMPChecksum(): Checksum
     {
         return $this->atsmpChecksum;
     }
 
     /**
-     * @return \Carbon\Carbon
+     * Get the date which the version was released.
+     *
+     * @return Carbon
      */
     public function getTime(): Carbon
     {
@@ -139,6 +154,8 @@ class Version
     }
 
     /**
+     * Get the supported Euro Truck Simulator 2 version.
+     *
      * @return string
      */
     public function getSupportedETS2GameVersion(): string
@@ -147,6 +164,8 @@ class Version
     }
 
     /**
+     * Get the supported American Truck Simulator version.
+     *
      * @return string
      */
     public function getSupportedATSGameVersion(): string

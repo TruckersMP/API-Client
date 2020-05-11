@@ -12,13 +12,12 @@ class ApiErrorHandler
     /**
      * Check if the API returned an error.
      *
-     * @param \Psr\Http\Message\StreamInterface $body
-     * @param int                               $statusCode
+     * @param  StreamInterface  $body
+     * @param  int  $statusCode
+     * @return Exception
      *
-     * @return \Exception
-     *
-     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\APIClient\Exceptions\RequestException
+     * @throws PageNotFoundException
+     * @throws RequestException
      */
     public static function check(StreamInterface $body, int $statusCode): ?Exception
     {

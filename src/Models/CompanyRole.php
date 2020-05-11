@@ -3,6 +3,7 @@
 namespace TruckersMP\APIClient\Models;
 
 use Carbon\Carbon;
+use Exception;
 
 class CompanyRole
 {
@@ -37,23 +38,24 @@ class CompanyRole
     /**
      * The date at which the role was created.
      *
-     * @var \Carbon\Carbon
+     * @var Carbon
      */
     protected $createdAt;
 
     /**
      * The date at which the role was last updated.
      *
-     * @var \Carbon\Carbon
+     * @var Carbon
      */
     protected $updatedAt;
 
     /**
      * Create a new CompanyRole instance.
      *
-     * @param array $role
+     * @param  array  $role
+     * @return void
      *
-     * @throws \Exception
+     * @throws Exception
      */
     public function __construct(array $role)
     {
@@ -66,6 +68,8 @@ class CompanyRole
     }
 
     /**
+     * Get the ID of the role.
+     *
      * @return int
      */
     public function getId(): int
@@ -74,6 +78,8 @@ class CompanyRole
     }
 
     /**
+     * Get the name of the role.
+     *
      * @return string
      */
     public function getName(): string
@@ -82,6 +88,8 @@ class CompanyRole
     }
 
     /**
+     * Get the order ID for the role. The lower the order ID, the higher it shows in the list.
+     *
      * @return int
      */
     public function getOrder(): int
@@ -90,6 +98,8 @@ class CompanyRole
     }
 
     /**
+     * Check if the role is the role of the company owner.
+     *
      * @return bool
      */
     public function isOwner(): bool
@@ -98,7 +108,9 @@ class CompanyRole
     }
 
     /**
-     * @return \Carbon\Carbon
+     * Get the date which the role was created.
+     *
+     * @return Carbon
      */
     public function getCreatedAt(): Carbon
     {
@@ -106,7 +118,9 @@ class CompanyRole
     }
 
     /**
-     * @return \Carbon\Carbon
+     * Get the date which the role was last updated.
+     *
+     * @return Carbon
      */
     public function getUpdatedAt(): Carbon
     {

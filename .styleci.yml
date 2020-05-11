@@ -1,7 +1,6 @@
-preset: recommended
+preset: psr12
 
 enabled:
-  - concat_with_spaces
   - const_separation
   - const_visibility_required
   - linebreak_after_opening_tag
@@ -17,15 +16,6 @@ enabled:
   - short_list_syntax
   - simple_to_complex_string_variable
   - strict_comparison
-
-disabled:
-  - concat_without_spaces
-  - no_unneeded_control_parentheses
-  # PHP documentation should not be that strict
-  - phpdoc_no_access
-  - phpdoc_no_package
-  - phpdoc_no_useless_inheritdoc
-  - phpdoc_order
 
 finder:
   exclude:

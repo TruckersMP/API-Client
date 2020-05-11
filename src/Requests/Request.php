@@ -6,8 +6,11 @@ use GuzzleHttp\Client as GuzzleClient;
 use Http\Adapter\Guzzle6\Client as GuzzleAdapter;
 use Http\Client\Exception\HttpException;
 use Http\Message\MessageFactory\GuzzleMessageFactory;
+use Psr\Http\Client\ClientExceptionInterface;
 use TruckersMP\APIClient\ApiErrorHandler;
 use TruckersMP\APIClient\Client;
+use TruckersMP\APIClient\Exceptions\PageNotFoundException;
+use TruckersMP\APIClient\Exceptions\RequestException;
 
 abstract class Request
 {
@@ -22,22 +25,30 @@ abstract class Request
     private const API_VERSION = 'v2';
 
     /**
-     * @var \Http\Message\MessageFactory\GuzzleMessageFactory
+     * The current instance of the Guzzle message.
+     *
+     * @var GuzzleMessageFactory
      */
     protected $message;
 
     /**
+     * The API URL to call.
+     *
      * @var string
      */
     protected $url;
 
     /**
-     * @var \Http\Adapter\Guzzle6\Client
+     * The current instance of the Guzzle client.
+     *
+     * @var GuzzleAdapter
      */
     protected $adapter;
 
     /**
      * Create a new Request instance.
+     *
+     * @return void
      */
     public function __construct()
     {
@@ -68,9 +79,9 @@ abstract class Request
      *
      * @return array
      *
-     * @throws \Http\Client\Exception
-     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\APIClient\Exceptions\RequestException
+     * @throws PageNotFoundException
+     * @throws RequestException
+     * @throws ClientExceptionInterface
      */
     public function send(): array
     {

@@ -3,8 +3,12 @@
 namespace Tests\Unit;
 
 use Carbon\Carbon;
+use Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException;
+use Psr\Http\Client\ClientExceptionInterface;
 use Tests\TestCase;
 use TruckersMP\APIClient\Collections\Company\RoleCollection;
+use TruckersMP\APIClient\Exceptions\PageNotFoundException;
+use TruckersMP\APIClient\Exceptions\RequestException;
 use TruckersMP\APIClient\Models\CompanyRole;
 
 class CompanyRoleTest extends TestCase
@@ -20,10 +24,10 @@ class CompanyRoleTest extends TestCase
     private const TEST_ROLE = 1;
 
     /**
-     * @throws \Http\Client\Exception
-     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\APIClient\Exceptions\RequestException
+     * @throws PhpfastcacheInvalidArgumentException
+     * @throws PageNotFoundException
+     * @throws RequestException
+     * @throws ClientExceptionInterface
      */
     public function testWeCanGetAllTheRoles()
     {
@@ -39,10 +43,10 @@ class CompanyRoleTest extends TestCase
     }
 
     /**
-     * @throws \Http\Client\Exception
-     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\APIClient\Exceptions\RequestException
+     * @throws PhpfastcacheInvalidArgumentException
+     * @throws PageNotFoundException
+     * @throws RequestException
+     * @throws ClientExceptionInterface
      */
     public function testWeCanGetARole()
     {
@@ -52,10 +56,10 @@ class CompanyRoleTest extends TestCase
     }
 
     /**
-     * @throws \Http\Client\Exception
-     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\APIClient\Exceptions\RequestException
+     * @throws PhpfastcacheInvalidArgumentException
+     * @throws PageNotFoundException
+     * @throws RequestException
+     * @throws ClientExceptionInterface
      */
     public function testItHasAnId()
     {
@@ -65,10 +69,10 @@ class CompanyRoleTest extends TestCase
     }
 
     /**
-     * @throws \Http\Client\Exception
-     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\APIClient\Exceptions\RequestException
+     * @throws PhpfastcacheInvalidArgumentException
+     * @throws PageNotFoundException
+     * @throws RequestException
+     * @throws ClientExceptionInterface
      */
     public function testItHasAName()
     {
@@ -78,10 +82,10 @@ class CompanyRoleTest extends TestCase
     }
 
     /**
-     * @throws \Http\Client\Exception
-     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\APIClient\Exceptions\RequestException
+     * @throws PhpfastcacheInvalidArgumentException
+     * @throws PageNotFoundException
+     * @throws RequestException
+     * @throws ClientExceptionInterface
      */
     public function testItHasAnOrder()
     {
@@ -91,10 +95,10 @@ class CompanyRoleTest extends TestCase
     }
 
     /**
-     * @throws \Http\Client\Exception
-     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\APIClient\Exceptions\RequestException
+     * @throws PhpfastcacheInvalidArgumentException
+     * @throws PageNotFoundException
+     * @throws RequestException
+     * @throws ClientExceptionInterface
      */
     public function testIfItIsAnOwner()
     {
@@ -104,10 +108,10 @@ class CompanyRoleTest extends TestCase
     }
 
     /**
-     * @throws \Http\Client\Exception
-     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\APIClient\Exceptions\RequestException
+     * @throws PhpfastcacheInvalidArgumentException
+     * @throws PageNotFoundException
+     * @throws RequestException
+     * @throws ClientExceptionInterface
      */
     public function testItHasACreatedAtDate()
     {
@@ -117,10 +121,10 @@ class CompanyRoleTest extends TestCase
     }
 
     /**
-     * @throws \Http\Client\Exception
-     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\APIClient\Exceptions\RequestException
+     * @throws PhpfastcacheInvalidArgumentException
+     * @throws PageNotFoundException
+     * @throws RequestException
+     * @throws ClientExceptionInterface
      */
     public function testItHasAnUpdatedAtDate()
     {

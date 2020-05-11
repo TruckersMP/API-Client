@@ -21,5 +21,4 @@ jobs:
 
       - name: Run PHPCS tests
         run: |
-          vendor/bin/phpcs src --standard=PSR2
-          vendor/bin/phpcs tests/Unit --standard=PSR2
+          vendor/bin/phpcs src --standard=PSR12

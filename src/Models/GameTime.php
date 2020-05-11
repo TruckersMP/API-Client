@@ -9,14 +9,15 @@ class GameTime
     /**
      * The game time.
      *
-     * @var \Carbon\Carbon
+     * @var Carbon
      */
     protected $time;
 
     /**
      * Create a new GameTime instance.
      *
-     * @param array $gameTime
+     * @param  array  $gameTime
+     * @return void
      */
     public function __construct(array $gameTime)
     {
@@ -44,7 +45,9 @@ class GameTime
     }
 
     /**
-     * @return \Carbon\Carbon
+     * Get the game time as a Carbon instance.
+     *
+     * @return Carbon
      */
     public function getTime(): Carbon
     {

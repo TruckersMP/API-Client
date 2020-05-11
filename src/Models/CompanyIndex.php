@@ -2,6 +2,7 @@
 
 namespace TruckersMP\APIClient\Models;
 
+use Exception;
 use TruckersMP\APIClient\Collections\CompanyCollection;
 
 class CompanyIndex
@@ -9,14 +10,14 @@ class CompanyIndex
     /**
      * The recently created companies.
      *
-     * @var \TruckersMP\Collections\CompanyCollection
+     * @var CompanyCollection
      */
     protected $recent;
 
     /**
      * The featured companies.
      *
-     * @var \TruckersMP\Collections\CompanyCollection
+     * @var CompanyCollection
      */
     protected $featured;
 
@@ -30,9 +31,10 @@ class CompanyIndex
     /**
      * Create a new CompanyIndex instance.
      *
-     * @param array $response
+     * @param  array  $response
+     * @return void
      *
-     * @throws \Exception
+     * @throws Exception
      */
     public function __construct(array $response)
     {
@@ -44,7 +46,9 @@ class CompanyIndex
     }
 
     /**
-     * @return \TruckersMP\Collections\CompanyCollection
+     * Get the last 4 companies created.
+     *
+     * @return CompanyCollection
      */
     public function getRecent(): CompanyCollection
     {
@@ -52,7 +56,9 @@ class CompanyIndex
     }
 
     /**
-     * @return \TruckersMP\Collections\CompanyCollection
+     * Get the featured companies on the VTC page.
+     *
+     * @return CompanyCollection
      */
     public function getFeatured(): CompanyCollection
     {
@@ -60,7 +66,9 @@ class CompanyIndex
     }
 
     /**
-     * @return \TruckersMP\Collections\CompanyCollection
+     * Get the companies with featured cover images on the VTC page.
+     *
+     * @return CompanyCollection
      */
     public function getFeaturedCovered(): CompanyCollection
     {

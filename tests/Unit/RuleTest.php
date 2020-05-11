@@ -2,16 +2,20 @@
 
 namespace Tests\Unit;
 
+use Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException;
+use Psr\Http\Client\ClientExceptionInterface;
 use Tests\TestCase;
+use TruckersMP\APIClient\Exceptions\PageNotFoundException;
+use TruckersMP\APIClient\Exceptions\RequestException;
 use TruckersMP\APIClient\Models\Rule;
 
 class RuleTest extends TestCase
 {
     /**
-     * @throws \Http\Client\Exception
-     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\APIClient\Exceptions\RequestException
+     * @throws PhpfastcacheInvalidArgumentException
+     * @throws PageNotFoundException
+     * @throws RequestException
+     * @throws ClientExceptionInterface
      */
     public function testWeCanGetTheRules()
     {
@@ -21,10 +25,10 @@ class RuleTest extends TestCase
     }
 
     /**
-     * @throws \Http\Client\Exception
-     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\APIClient\Exceptions\RequestException
+     * @throws PhpfastcacheInvalidArgumentException
+     * @throws PageNotFoundException
+     * @throws RequestException
+     * @throws ClientExceptionInterface
      */
     public function testItHasTheRules()
     {
@@ -34,10 +38,10 @@ class RuleTest extends TestCase
     }
 
     /**
-     * @throws \Http\Client\Exception
-     * @throws \Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException
-     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\APIClient\Exceptions\RequestException
+     * @throws PhpfastcacheInvalidArgumentException
+     * @throws PageNotFoundException
+     * @throws RequestException
+     * @throws ClientExceptionInterface
      */
     public function testItHasTheRevision()
     {

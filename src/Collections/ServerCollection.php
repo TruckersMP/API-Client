@@ -9,7 +9,8 @@ class ServerCollection extends Collection
     /**
      * Create a new ServerCollection instance.
      *
-     * @param array $response
+     * @param  array  $response
+     * @return void
      */
     public function __construct(array $response)
     {

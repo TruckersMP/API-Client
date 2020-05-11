@@ -2,7 +2,11 @@
 
 namespace TruckersMP\APIClient\Requests\Company;
 
+use Psr\Http\Client\ClientExceptionInterface;
 use TruckersMP\APIClient\Collections\Company\PostCollection;
+use TruckersMP\APIClient\Exceptions\PageNotFoundException;
+use TruckersMP\APIClient\Exceptions\RequestException;
+use TruckersMP\APIClient\Models\CompanyPost;
 use TruckersMP\APIClient\Requests\Request;
 
 class PostIndexRequest extends Request
@@ -17,7 +21,8 @@ class PostIndexRequest extends Request
     /**
      * Create a new PostIndexRequest instance.
      *
-     * @param int $companyId
+     * @param  int  $companyId
+     * @return void
      */
     public function __construct(int $companyId)
     {
@@ -39,11 +44,11 @@ class PostIndexRequest extends Request
     /**
      * Get the data for the request.
      *
-     * @return PostCollection|\TruckersMP\APIClient\Models\CompanyPost[]
+     * @return PostCollection|CompanyPost[]
      *
-     * @throws \Http\Client\Exception
-     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\APIClient\Exceptions\RequestException
+     * @throws PageNotFoundException
+     * @throws RequestException
+     * @throws ClientExceptionInterface
      */
     public function get(): PostCollection
     {

@@ -2,6 +2,10 @@
 
 namespace TruckersMP\APIClient\Requests\Company;
 
+use Exception;
+use Psr\Http\Client\ClientExceptionInterface;
+use TruckersMP\APIClient\Exceptions\PageNotFoundException;
+use TruckersMP\APIClient\Exceptions\RequestException;
 use TruckersMP\APIClient\Models\CompanyRole;
 use TruckersMP\APIClient\Requests\Request;
 
@@ -24,8 +28,9 @@ class RoleRequest extends Request
     /**
      * Create a new RoleRequest instance.
      *
-     * @param int $companyId
-     * @param int $roleId
+     * @param  int  $companyId
+     * @param  int  $roleId
+     * @return void
      */
     public function __construct(int $companyId, int $roleId)
     {
@@ -50,9 +55,10 @@ class RoleRequest extends Request
      *
      * @return CompanyRole
      *
-     * @throws \Http\Client\Exception
-     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\APIClient\Exceptions\RequestException
+     * @throws PageNotFoundException
+     * @throws RequestException
+     * @throws Exception
+     * @throws ClientExceptionInterface
      */
     public function get(): CompanyRole
     {

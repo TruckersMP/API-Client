@@ -2,6 +2,10 @@
 
 namespace TruckersMP\APIClient\Requests\Company;
 
+use Exception;
+use Psr\Http\Client\ClientExceptionInterface;
+use TruckersMP\APIClient\Exceptions\PageNotFoundException;
+use TruckersMP\APIClient\Exceptions\RequestException;
 use TruckersMP\APIClient\Models\CompanyMemberIndex;
 use TruckersMP\APIClient\Requests\Request;
 
@@ -17,7 +21,8 @@ class MemberIndexRequest extends Request
     /**
      * Create a new MemberIndexRequest instance.
      *
-     * @param int $id
+     * @param  int  $id
+     * @return void
      */
     public function __construct(int $id)
     {
@@ -41,9 +46,10 @@ class MemberIndexRequest extends Request
      *
      * @return CompanyMemberIndex
      *
-     * @throws \Http\Client\Exception
-     * @throws \TruckersMP\APIClient\Exceptions\PageNotFoundException
-     * @throws \TruckersMP\APIClient\Exceptions\RequestException
+     * @throws PageNotFoundException
+     * @throws RequestException
+     * @throws ClientExceptionInterface
+     * @throws Exception
      */
     public function get(): CompanyMemberIndex
     {
