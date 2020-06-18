@@ -269,7 +269,7 @@ class PlayerTest extends TestCase
     {
         $player = $this->player(self::TEST_ACCOUNT);
 
-        if ($player->getDiscordSnowflake() == null) {
+        if ($player->getDiscordSnowflake() === null) {
             $this->assertNull($player->getDiscordSnowflake());
         } else {
             $this->assertIsString($player->getDiscordSnowflake());
