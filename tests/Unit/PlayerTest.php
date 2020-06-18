@@ -247,6 +247,23 @@ class PlayerTest extends TestCase
     }
 
     /**
+     * @throws ClientExceptionInterface
+     * @throws PageNotFoundException
+     * @throws PhpfastcacheInvalidArgumentException
+     * @throws RequestException
+     */
+    public function testItHasADiscordSnowflake()
+    {
+        $player = $this->player(self::TEST_ACCOUNT);
+
+        if ($player->getDiscordSnowflake() == null) {
+            $this->assertNull($player->getDiscordSnowflake());
+        } else {
+            $this->assertIsString($player->getDiscordSnowflake());
+        }
+    }
+
+    /**
      * @throws PhpfastcacheInvalidArgumentException
      * @throws PageNotFoundException
      * @throws RequestException

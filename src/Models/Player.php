@@ -135,6 +135,13 @@ class Player
     protected $companyMemberId;
 
     /**
+     * The players discord snowflake.
+     *
+     * @var string|null
+     */
+    protected $discordSnowflake;
+
+    /**
      * Create a new Player instance.
      *
      * @param  array  $player
@@ -161,6 +168,7 @@ class Player
         $this->companyTag = $player['vtc']['tag'];
         $this->isInCompany = $player['vtc']['inVTC'];
         $this->companyMemberId = $player['vtc']['memberID'];
+        $this->discordSnowflake = $player['discordSnowflake'];
     }
 
     /**
@@ -331,6 +339,16 @@ class Player
     public function getCompanyMemberId(): int
     {
         return $this->companyMemberId;
+    }
+
+    /**
+     * Get ther players discord snowflake.
+     *
+     * @return string|null
+     */
+    public function getDiscordSnowflake(): ?string
+    {
+        return $this->discordSnowflake;
     }
 
     /**
