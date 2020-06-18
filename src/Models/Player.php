@@ -72,6 +72,13 @@ class Player
     protected $groupName;
 
     /**
+     * The hex color of the players groups.
+     *
+     * @var string
+     */
+    protected $groupColor;
+
+    /**
      * If the user is currently banned.
      *
      * @var bool
@@ -159,6 +166,7 @@ class Player
         $this->steamID64 = $player['steamID64'];
         $this->groupId = $player['groupID'];
         $this->groupName = $player['groupName'];
+        $this->groupColor = $player['groupColor'];
         $this->isBanned = $player['banned'];
         $this->bannedUntil = new Carbon($player['bannedUntil'], 'UTC');
         $this->displayBans = $player['displayBans'];
@@ -249,6 +257,16 @@ class Player
     public function getGroupName(): string
     {
         return $this->groupName;
+    }
+
+    /**
+     * Get the players group color.
+     *
+     * @return string
+     */
+    public function getGroupColor(): string
+    {
+        return $this->groupColor;
     }
 
     /**

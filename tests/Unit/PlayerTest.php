@@ -130,6 +130,19 @@ class PlayerTest extends TestCase
     }
 
     /**
+     * @throws ClientExceptionInterface
+     * @throws PageNotFoundException
+     * @throws PhpfastcacheInvalidArgumentException
+     * @throws RequestException
+     */
+    public function testItHasAGroupColor()
+    {
+        $player = $this->player(self::TEST_ACCOUNT);
+
+        $this->assertIsString($player->getGroupColor());
+    }
+
+    /**
      * @throws PhpfastcacheInvalidArgumentException
      * @throws PageNotFoundException
      * @throws RequestException
