@@ -360,7 +360,7 @@ class Player
     }
 
     /**
-     * Get ther players Discord Snowflake.
+     * Get the players Discord Snowflake.
      *
      * @return string|null
      */
