@@ -130,6 +130,19 @@ class PlayerTest extends TestCase
     }
 
     /**
+     * @throws ClientExceptionInterface
+     * @throws PageNotFoundException
+     * @throws PhpfastcacheInvalidArgumentException
+     * @throws RequestException
+     */
+    public function testItHasAGroupColor()
+    {
+        $player = $this->player(self::TEST_ACCOUNT);
+
+        $this->assertIsString($player->getGroupColor());
+    }
+
+    /**
      * @throws PhpfastcacheInvalidArgumentException
      * @throws PageNotFoundException
      * @throws RequestException
@@ -244,6 +257,26 @@ class PlayerTest extends TestCase
         $player = $this->player(self::TEST_ACCOUNT);
 
         $this->assertIsInt($player->getCompanyMemberId());
+    }
+
+    /**
+     * @throws ClientExceptionInterface
+     * @throws PageNotFoundException
+     * @throws PhpfastcacheInvalidArgumentException
+     * @throws RequestException
+     */
+    public function testItHasADiscordSnowflake()
+    {
+        $player = $this->player(self::TEST_ACCOUNT);
+
+        // We have to check if the Discord Snowflake is null first and then
+        // run a test to assert the value is null. Otherwise the test would
+        // fail because no tests would have run.
+        if ($player->getDiscordSnowflake() === null) {
+            $this->assertNull($player->getDiscordSnowflake());
+        } else {
+            $this->assertIsString($player->getDiscordSnowflake());
+        }
     }
 
     /**

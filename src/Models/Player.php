@@ -72,6 +72,13 @@ class Player
     protected $groupName;
 
     /**
+     * The hex color of the players groups.
+     *
+     * @var string
+     */
+    protected $groupColor;
+
+    /**
      * If the user is currently banned.
      *
      * @var bool
@@ -135,6 +142,13 @@ class Player
     protected $companyMemberId;
 
     /**
+     * The players Discord Snowflake.
+     *
+     * @var string|null
+     */
+    protected $discordSnowflake;
+
+    /**
      * Create a new Player instance.
      *
      * @param  array  $player
@@ -152,6 +166,7 @@ class Player
         $this->steamID64 = $player['steamID64'];
         $this->groupId = $player['groupID'];
         $this->groupName = $player['groupName'];
+        $this->groupColor = $player['groupColor'];
         $this->isBanned = $player['banned'];
         $this->bannedUntil = new Carbon($player['bannedUntil'], 'UTC');
         $this->displayBans = $player['displayBans'];
@@ -161,6 +176,7 @@ class Player
         $this->companyTag = $player['vtc']['tag'];
         $this->isInCompany = $player['vtc']['inVTC'];
         $this->companyMemberId = $player['vtc']['memberID'];
+        $this->discordSnowflake = $player['discordSnowflake'];
     }
 
     /**
@@ -241,6 +257,16 @@ class Player
     public function getGroupName(): string
     {
         return $this->groupName;
+    }
+
+    /**
+     * Get the players group color.
+     *
+     * @return string
+     */
+    public function getGroupColor(): string
+    {
+        return $this->groupColor;
     }
 
     /**
@@ -331,6 +357,16 @@ class Player
     public function getCompanyMemberId(): int
     {
         return $this->companyMemberId;
+    }
+
+    /**
+     * Get the players Discord Snowflake.
+     *
+     * @return string|null
+     */
+    public function getDiscordSnowflake(): ?string
+    {
+        return $this->discordSnowflake;
     }
 
     /**
