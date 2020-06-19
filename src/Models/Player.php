@@ -142,7 +142,7 @@ class Player
     protected $companyMemberId;
 
     /**
-     * The players discord snowflake.
+     * The players Discord Snowflake.
      *
      * @var string|null
      */
@@ -360,7 +360,7 @@ class Player
     }
 
     /**
-     * Get ther players discord snowflake.
+     * Get ther players Discord Snowflake.
      *
      * @return string|null
      */
