@@ -2,12 +2,8 @@
 
 namespace Tests\Unit;
 
-use Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException;
-use Psr\Http\Client\ClientExceptionInterface;
 use Tests\TestCase;
 use TruckersMP\APIClient\Collections\Company\PostCollection;
-use TruckersMP\APIClient\Exceptions\PageNotFoundException;
-use TruckersMP\APIClient\Exceptions\RequestException;
 use TruckersMP\APIClient\Models\CompanyPost;
 
 class CompanyPostTest extends TestCase
@@ -22,13 +18,8 @@ class CompanyPostTest extends TestCase
      */
     private const TEST_POST = 121;
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testWeCanGetAllTheNewsPosts()
+    /** @test */
+    public function it_can_get_all_the_news_posts()
     {
         $posts = $this->companyPosts(self::TEST_COMPANY);
 
@@ -41,104 +32,64 @@ class CompanyPostTest extends TestCase
         }
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testWeCanGetAPost()
+    /** @test */
+    public function it_can_get_a_specific_news_post()
     {
         $post = $this->companyPost(self::TEST_COMPANY, self::TEST_POST);
 
         $this->assertInstanceOf(CompanyPost::class, $post);
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testItHasAnId()
+    /** @test */
+    public function it_has_an_id()
     {
         $post = $this->companyPost(self::TEST_COMPANY, self::TEST_POST);
 
         $this->assertIsInt($post->getId());
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testItHasATitle()
+    /** @test */
+    public function it_has_a_title()
     {
         $post = $this->companyPost(self::TEST_COMPANY, self::TEST_POST);
 
         $this->assertIsString($post->getTitle());
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testItHasASummary()
+    /** @test */
+    public function it_has_a_summary()
     {
         $post = $this->companyPost(self::TEST_COMPANY, self::TEST_POST);
 
         $this->assertIsString($post->getSummary());
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testItHasContent()
+    /** @test */
+    public function it_has_a_content()
     {
         $post = $this->companyPost(self::TEST_COMPANY, self::TEST_POST);
 
         $this->assertIsString($post->getContent());
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testItHasAnAuthorId()
+    /** @test */
+    public function it_has_an_author_id()
     {
         $post = $this->companyPost(self::TEST_COMPANY, self::TEST_POST);
 
         $this->assertIsInt($post->getAuthorId());
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testItHasAnAuthor()
+    /** @test */
+    public function it_has_an_author()
     {
         $post = $this->companyPost(self::TEST_COMPANY, self::TEST_POST);
 
         $this->assertIsString($post->getAuthor());
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testIfThePostIsPinned()
+    /** @test */
+    public function it_is_pinned()
     {
         $post = $this->companyPost(self::TEST_COMPANY, self::TEST_POST);
 

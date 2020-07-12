@@ -3,12 +3,8 @@
 namespace Tests\Unit;
 
 use Carbon\Carbon;
-use Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException;
-use Psr\Http\Client\ClientExceptionInterface;
 use Tests\TestCase;
 use TruckersMP\APIClient\Collections\Company\MemberCollection;
-use TruckersMP\APIClient\Exceptions\PageNotFoundException;
-use TruckersMP\APIClient\Exceptions\RequestException;
 use TruckersMP\APIClient\Models\CompanyMember;
 use TruckersMP\APIClient\Models\CompanyMemberIndex;
 
@@ -24,13 +20,8 @@ class CompanyMemberTest extends TestCase
      */
     private const TEST_MEMBER = 1579;
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testWeCanAllTheMembers()
+    /** @test */
+    public function it_can_get_all_the_members()
     {
         $members = $this->companyMembers(self::TEST_COMPANY);
 
@@ -40,26 +31,16 @@ class CompanyMemberTest extends TestCase
         $this->assertIsInt($members->getCount());
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testWeCanGetAMember()
+    /** @test */
+    public function it_can_get_a_member()
     {
         $member = $this->companyMember(self::TEST_COMPANY, self::TEST_MEMBER);
 
         $this->assertInstanceOf(CompanyMember::class, $member);
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testTheMemberHasAnId()
+    /** @test */
+    public function it_has_an_id()
     {
         $member = $this->companyMember(self::TEST_COMPANY, self::TEST_MEMBER);
 
@@ -67,13 +48,8 @@ class CompanyMemberTest extends TestCase
         $this->assertIsInt($member->getId());
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testTheMemberHasAUserId()
+    /** @test */
+    public function it_has_a_user_id()
     {
         $member = $this->companyMember(self::TEST_COMPANY, self::TEST_MEMBER);
 
@@ -81,13 +57,8 @@ class CompanyMemberTest extends TestCase
         $this->assertIsInt($member->getUserId());
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testTheMemberHasAUsername()
+    /** @test */
+    public function it_has_a_username()
     {
         $member = $this->companyMember(self::TEST_COMPANY, self::TEST_MEMBER);
 
@@ -95,13 +66,8 @@ class CompanyMemberTest extends TestCase
         $this->assertIsString($member->getUsername());
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testTheMemberHasASteamId()
+    /** @test */
+    public function it_has_a_steam_id()
     {
         $member = $this->companyMember(self::TEST_COMPANY, self::TEST_MEMBER);
 
@@ -109,13 +75,8 @@ class CompanyMemberTest extends TestCase
         $this->assertIsString($member->getSteamId());
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testTheMemberHasARoleId()
+    /** @test */
+    public function it_has_a_role_id()
     {
         $member = $this->companyMember(self::TEST_COMPANY, self::TEST_MEMBER);
 
@@ -123,13 +84,8 @@ class CompanyMemberTest extends TestCase
         $this->assertIsInt($member->getRoleId());
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testTheMemberHasARole()
+    /** @test */
+    public function it_has_a_role()
     {
         $member = $this->companyMember(self::TEST_COMPANY, self::TEST_MEMBER);
 
@@ -137,13 +93,8 @@ class CompanyMemberTest extends TestCase
         $this->assertIsString($member->getRole());
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testTheMemberHasAJoinDate()
+    /** @test */
+    public function it_has_a_join_date()
     {
         $member = $this->companyMember(self::TEST_COMPANY, self::TEST_MEMBER);
 

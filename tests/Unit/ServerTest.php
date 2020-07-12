@@ -2,23 +2,14 @@
 
 namespace Tests\Unit;
 
-use Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException;
-use Psr\Http\Client\ClientExceptionInterface;
 use Tests\TestCase;
 use TruckersMP\APIClient\Collections\ServerCollection;
-use TruckersMP\APIClient\Exceptions\PageNotFoundException;
-use TruckersMP\APIClient\Exceptions\RequestException;
 use TruckersMP\APIClient\Models\Server;
 
 class ServerTest extends TestCase
 {
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testWeCanGetAllTheServers()
+    /** @test */
+    public function it_can_get_all_the_servers()
     {
         $servers = $this->servers();
 
@@ -29,91 +20,56 @@ class ServerTest extends TestCase
         }
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testItHasAnId()
+    /** @test */
+    public function it_has_an_id()
     {
         $server = $this->servers()[0];
 
         $this->assertIsInt($server->getId());
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testItHasAGame()
+    /** @test */
+    public function it_has_a_game()
     {
         $server = $this->servers()[0];
 
         $this->assertIsString($server->getGame());
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testItHasAnIp()
+    /** @test */
+    public function it_has_an_ip()
     {
         $server = $this->servers()[0];
 
         $this->assertIsString($server->getIp());
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testItHasAPort()
+    /** @test */
+    public function it_has_a_port()
     {
         $server = $this->servers()[0];
 
         $this->assertIsInt($server->getPort());
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testItHasAName()
+    /** @test */
+    public function it_has_a_name()
     {
         $server = $this->servers()[0];
 
         $this->assertIsString($server->getName());
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testItHasAShortName()
+    /** @test */
+    public function it_has_a_short_name()
     {
         $server = $this->servers()[0];
 
         $this->assertIsString($server->getShortName());
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testItHasAnIdPrefix()
+    /** @test */
+    public function it_has_an_id_prefix()
     {
         $server = $this->servers()[0];
 
@@ -124,182 +80,112 @@ class ServerTest extends TestCase
         }
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testItHasAnOnlineState()
+    /** @test */
+    public function it_has_an_online_state()
     {
         $server = $this->servers()[0];
 
         $this->assertIsBool($server->isOnline());
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testItHasPlayers()
+    /** @test */
+    public function it_has_players()
     {
         $server = $this->servers()[0];
 
         $this->assertIsInt($server->getPlayers());
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testItHasAQueue()
+    /** @test */
+    public function it_has_a_queue()
     {
         $server = $this->servers()[0];
 
         $this->assertIsInt($server->getQueue());
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testItHasMaxPlayers()
+    /** @test */
+    public function it_has_max_players()
     {
         $server = $this->servers()[0];
 
         $this->assertIsInt($server->getMaxPlayers());
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testItHasADisplayOrder()
+    /** @test */
+    public function it_has_a_display_order()
     {
         $server = $this->servers()[0];
 
         $this->assertIsInt($server->getDisplayOrder());
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testItHasASpeedLimit()
+    /** @test */
+    public function if_it_has_a_speed_limit()
     {
         $server = $this->servers()[0];
 
         $this->assertIsBool($server->hasSpeedLimit());
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testItHasCollisions()
+    /** @test */
+    public function if_it_has_collisions()
     {
         $server = $this->servers()[0];
 
         $this->assertIsBool($server->hasCollisions());
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testItHasCarsForPlayers()
+    /** @test */
+    public function if_players_can_have_cars()
     {
         $server = $this->servers()[0];
 
         $this->assertIsBool($server->canPlayersHaveCars());
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testItHasPoliceCarsForPlayers()
+    /** @test */
+    public function if_players_can_have_police_cars()
     {
         $server = $this->servers()[0];
 
         $this->assertIsBool($server->canPlayersHavePoliceCars());
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testItHasAfkEnable()
+    /** @test */
+    public function if_it_has_afk_kick_enabled()
     {
         $server = $this->servers()[0];
 
         $this->assertIsBool($server->isAfkEnabled());
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testItHasAnEvent()
+    /** @test */
+    public function if_it_has_an_event_server()
     {
         $server = $this->servers()[0];
 
         $this->assertIsBool($server->isEvent());
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testItHasASpecialEvent()
+    /** @test */
+    public function if_it_is_a_special_event_server()
     {
         $server = $this->servers()[0];
 
         $this->assertIsBool($server->isSpecialEvent());
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testItHasPromods()
+    /** @test */
+    public function it_has_promods()
     {
         $server = $this->servers()[0];
 
         $this->assertIsBool($server->hasPromods());
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testItHasSyncDelay()
+    /** @test */
+    public function it_has_sync_delay()
     {
         $server = $this->servers()[0];
 

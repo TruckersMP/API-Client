@@ -3,127 +3,78 @@
 namespace Tests\Unit;
 
 use Carbon\Carbon;
-use Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException;
-use Psr\Http\Client\ClientExceptionInterface;
 use Tests\TestCase;
-use TruckersMP\APIClient\Exceptions\PageNotFoundException;
-use TruckersMP\APIClient\Exceptions\RequestException;
 use TruckersMP\APIClient\Models\Checksum;
 use TruckersMP\APIClient\Models\Version;
 
 class VersionTest extends TestCase
 {
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testWeCanGetTheVersion()
+    /** @test */
+    public function it_can_get_the_version()
     {
         $version = $this->version();
 
         $this->assertInstanceOf(Version::class, $version);
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testItHasAName()
+    /** @test */
+    public function it_has_a_name()
     {
         $version = $this->version();
 
         $this->assertIsString($version->getName());
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testItHasANumeric()
+    /** @test */
+    public function it_has_a_numeric()
     {
         $version = $this->version();
 
         $this->assertIsString($version->getNumeric());
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testItHasAStage()
+    /** @test */
+    public function it_has_a_stage()
     {
         $version = $this->version();
 
         $this->assertIsString($version->getStage());
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testItHasAnETS2MPChecksum()
+    /** @test */
+    public function it_has_an_ets2mp_checksum()
     {
         $version = $this->version();
 
         $this->assertInstanceOf(Checksum::class, $version->getETS2MPChecksum());
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testItHasAnATSMPChecksum()
+    /** @test */
+    public function it_has_an_atsmp_checksum()
     {
         $version = $this->version();
 
         $this->assertInstanceOf(Checksum::class, $version->getATSMPChecksum());
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testItHasATime()
+    /** @test */
+    public function it_has_a_time()
     {
         $version = $this->version();
 
         $this->assertInstanceOf(Carbon::class, $version->getTime());
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testItHasASupportedGameVersion()
+    /** @test */
+    public function it_has_a_supported_ets2_game_version()
     {
         $version = $this->version();
 
         $this->assertIsString($version->getSupportedETS2GameVersion());
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testItHasASupportedATSGameVersion()
+    /** @test */
+    public function it_has_a_supported_ats_game_version()
     {
         $version = $this->version();
 
