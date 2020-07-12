@@ -118,6 +118,22 @@ class PlayerTest extends TestCase
     }
 
     /** @test */
+    public function if_it_is_a_staff_member()
+    {
+        $player = $this->player(self::TEST_ACCOUNT);
+
+        $this->assertIsBool($player->isStaff());
+    }
+
+    /** @test */
+    public function if_it_is_an_upper_staff_member()
+    {
+        $player = $this->player(self::TEST_ACCOUNT);
+
+        $this->assertIsBool($player->isUpperStaff());
+    }
+
+    /** @test */
     public function if_it_is_an_admin()
     {
         $player = $this->player(self::TEST_ACCOUNT);

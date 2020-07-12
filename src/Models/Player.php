@@ -100,6 +100,20 @@ class Player
     protected $displayBans;
 
     /**
+     * If the user is a staff member.
+     *
+     * @var bool
+     */
+    protected $isStaff;
+
+    /**
+     * If the user is an upper staff member.
+     *
+     * @var bool
+     */
+    protected $isUpperStaff;
+
+    /**
      * If user is an in-game admin.
      *
      * @var bool
@@ -170,6 +184,8 @@ class Player
         $this->isBanned = $player['banned'];
         $this->bannedUntil = new Carbon($player['bannedUntil'], 'UTC');
         $this->displayBans = $player['displayBans'];
+        $this->isStaff = $player['permissions']['isStaff'];
+        $this->isUpperStaff = $player['permissions']['isUpperStaff'];
         $this->inGameAdmin = $player['permissions']['isGameAdmin'];
         $this->companyId = $player['vtc']['id'];
         $this->companyName = $player['vtc']['name'];
@@ -297,6 +313,26 @@ class Player
     public function hasBansHidden(): bool
     {
         return !$this->displayBans;
+    }
+
+    /**
+     * Check if the player is a staff member.
+     *
+     * @return bool
+     */
+    public function isStaff(): bool
+    {
+        return $this->isStaff;
+    }
+
+    /**
+     * Check if the player is an upper staff member.
+     *
+     * @return bool
+     */
+    public function isUpperStaff(): bool
+    {
+        return $this->isUpperStaff;
     }
 
     /**
