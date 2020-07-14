@@ -100,6 +100,13 @@ class Player
     protected $displayBans;
 
     /**
+     * Get the players patreon information.
+     *
+     * @var Patreon
+     */
+    protected $patreon;
+
+    /**
      * If the user is a staff member.
      *
      * @var bool
@@ -184,6 +191,18 @@ class Player
         $this->isBanned = $player['banned'];
         $this->bannedUntil = new Carbon($player['bannedUntil'], 'UTC');
         $this->displayBans = $player['displayBans'];
+
+        $this->patreon = new Patreon(
+            $player['patreon']['isPatron'],
+            $player['patreon']['active'],
+            $player['patreon']['color'],
+            $player['patreon']['tierId'],
+            $player['patreon']['currentPledge'],
+            $player['patreon']['lifetimePledge'],
+            $player['patreon']['nextPledge'],
+            $player['patreon']['hidden']
+        );
+
         $this->isStaff = $player['permissions']['isStaff'];
         $this->isUpperStaff = $player['permissions']['isUpperStaff'];
         $this->inGameAdmin = $player['permissions']['isGameAdmin'];
@@ -313,6 +332,16 @@ class Player
     public function hasBansHidden(): bool
     {
         return !$this->displayBans;
+    }
+
+    /**
+     * Get the players patreon information.
+     *
+     * @return Patreon
+     */
+    public function patreon(): Patreon
+    {
+        return $this->patreon;
     }
 
     /**

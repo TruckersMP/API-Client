@@ -8,6 +8,7 @@ use TruckersMP\APIClient\Collections\BanCollection;
 use TruckersMP\APIClient\Models\Company;
 use TruckersMP\APIClient\Models\CompanyMember;
 use TruckersMP\APIClient\Models\CompanyRole;
+use TruckersMP\APIClient\Models\Patreon;
 use TruckersMP\APIClient\Models\Player;
 
 class PlayerTest extends TestCase
@@ -115,6 +116,14 @@ class PlayerTest extends TestCase
         $player = $this->player(self::TEST_ACCOUNT);
 
         $this->assertIsBool($player->hasBansHidden());
+    }
+
+    /** @test */
+    public function it_has_patreon_information()
+    {
+        $player = $this->player(self::TEST_ACCOUNT);
+
+        $this->assertInstanceOf(Patreon::class, $player->patreon());
     }
 
     /** @test */
