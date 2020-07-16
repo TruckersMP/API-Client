@@ -11,41 +11,20 @@ class PlayerPatreonTest extends TestCase
      */
     private const TEST_ACCOUNT = 28159;
 
-    /**
-     * The ID of the patron to use in the tests.
-     */
-    private const PATRON_TEST_ACCOUNT = 1111;
-
     /** @test */
     public function it_is_a_patron()
     {
-        // Test non patron player
         $player = $this->player(self::TEST_ACCOUNT);
 
         $this->assertIsBool($player->patreon()->isPatron());
-        $this->assertFalse($player->patreon()->isPatron());
-
-        // Test patron player
-        $patronPlayer = $this->player(self::PATRON_TEST_ACCOUNT);
-
-        $this->assertIsBool($patronPlayer->patreon()->isPatron());
-        $this->assertTrue($patronPlayer->patreon()->isPatron());
     }
 
     /** @test */
     public function it_is_active()
     {
-        // Test non patron player
         $player = $this->player(self::TEST_ACCOUNT);
 
         $this->assertIsBool($player->patreon()->isActive());
-        $this->assertFalse($player->patreon()->isActive());
-
-        // Test patron player
-        $patronPlayer = $this->player(self::PATRON_TEST_ACCOUNT);
-
-        $this->assertIsBool($patronPlayer->patreon()->isActive());
-        $this->assertTrue($patronPlayer->patreon()->isActive());
     }
 
     /** @test */
@@ -54,12 +33,11 @@ class PlayerPatreonTest extends TestCase
         // Test non patron player
         $player = $this->player(self::TEST_ACCOUNT);
 
-        $this->assertNull($player->patreon()->getColor());
-
-        // Test patron player
-        $patronPlayer = $this->player(self::PATRON_TEST_ACCOUNT);
-
-        $this->assertIsString($patronPlayer->patreon()->getColor());
+        if ($player->patreon()->isPatron()) {
+            $this->assertIsString($player->patreon()->getColor());
+        } else {
+            $this->assertNull($player->patreon()->getColor());
+        }
     }
 
     /** @test */
@@ -68,12 +46,11 @@ class PlayerPatreonTest extends TestCase
         // Test non patron player
         $player = $this->player(self::TEST_ACCOUNT);
 
-        $this->assertNull($player->patreon()->getTierId());
-
-        // Test patron player
-        $patronPlayer = $this->player(self::PATRON_TEST_ACCOUNT);
-
-        $this->assertIsInt($patronPlayer->patreon()->getTierId());
+        if ($player->patreon()->isHidden() === false) {
+            $this->assertIsInt($player->patreon()->getTierId());
+        } else {
+            $this->assertNull($player->patreon()->getTierId());
+        }
     }
 
     /** @test */
@@ -82,12 +59,11 @@ class PlayerPatreonTest extends TestCase
         // Test non patron player
         $player = $this->player(self::TEST_ACCOUNT);
 
-        $this->assertNull($player->patreon()->getCurrentPledge());
-
-        // Test patron player
-        $patronPlayer = $this->player(self::PATRON_TEST_ACCOUNT);
-
-        $this->assertIsInt($patronPlayer->patreon()->getCurrentPledge());
+        if ($player->patreon()->isHidden() === false) {
+            $this->assertIsInt($player->patreon()->getCurrentPledge());
+        } else {
+            $this->assertNull($player->patreon()->getCurrentPledge());
+        }
     }
 
     /** @test */
@@ -96,12 +72,11 @@ class PlayerPatreonTest extends TestCase
         // Test non patron player
         $player = $this->player(self::TEST_ACCOUNT);
 
-        $this->assertNull($player->patreon()->getLifetimePledge());
-
-        // Test patron player
-        $patronPlayer = $this->player(self::PATRON_TEST_ACCOUNT);
-
-        $this->assertIsInt($patronPlayer->patreon()->getLifetimePledge());
+        if ($player->patreon()->isHidden() === false) {
+            $this->assertIsInt($player->patreon()->getLifetimePledge());
+        } else {
+            $this->assertNull($player->patreon()->getLifetimePledge());
+        }
     }
 
     /** @test */
@@ -110,12 +85,11 @@ class PlayerPatreonTest extends TestCase
         // Test non patron player
         $player = $this->player(self::TEST_ACCOUNT);
 
-        $this->assertNull($player->patreon()->getNextPledge());
-
-        // Test patron player
-        $patronPlayer = $this->player(self::PATRON_TEST_ACCOUNT);
-
-        $this->assertIsInt($patronPlayer->patreon()->getNextPledge());
+        if ($player->patreon()->isHidden() === false) {
+            $this->assertIsInt($player->patreon()->getNextPledge());
+        } else {
+            $this->assertNull($player->patreon()->getNextPledge());
+        }
     }
 
     /** @test */
@@ -124,11 +98,10 @@ class PlayerPatreonTest extends TestCase
         // Test non patron player
         $player = $this->player(self::TEST_ACCOUNT);
 
-        $this->assertNull($player->patreon()->isHidden());
-
-        // Test patron player
-        $patronPlayer = $this->player(self::PATRON_TEST_ACCOUNT);
-
-        $this->assertFalse($patronPlayer->patreon()->isHidden());
+        if ($player->patreon()->isPatron()) {
+            $this->assertIsBool($player->patreon()->isHidden());
+        } else {
+            $this->assertNull($player->patreon()->isHidden());
+        }
     }
 }
