@@ -3,15 +3,12 @@
 namespace Tests\Unit;
 
 use Carbon\Carbon;
-use Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException;
-use Psr\Http\Client\ClientExceptionInterface;
 use Tests\TestCase;
 use TruckersMP\APIClient\Collections\BanCollection;
-use TruckersMP\APIClient\Exceptions\PageNotFoundException;
-use TruckersMP\APIClient\Exceptions\RequestException;
 use TruckersMP\APIClient\Models\Company;
 use TruckersMP\APIClient\Models\CompanyMember;
 use TruckersMP\APIClient\Models\CompanyRole;
+use TruckersMP\APIClient\Models\Patreon;
 use TruckersMP\APIClient\Models\Player;
 
 class PlayerTest extends TestCase
@@ -21,52 +18,32 @@ class PlayerTest extends TestCase
      */
     private const TEST_ACCOUNT = 28159;
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testWeCanGetThePlayer()
+    /** @test */
+    public function it_can_get_a_specific_player()
     {
         $player = $this->player(self::TEST_ACCOUNT);
 
         $this->assertInstanceOf(Player::class, $player);
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testItHasAnId()
+    /** @test */
+    public function it_has_an_id()
     {
         $player = $this->player(self::TEST_ACCOUNT);
 
         $this->assertIsInt($player->getId());
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testItHasAName()
+    /** @test */
+    public function it_has_a_name()
     {
         $player = $this->player(self::TEST_ACCOUNT);
 
         $this->assertIsString($player->getName());
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testItHasAnAvatar()
+    /** @test */
+    public function it_has_an_avatar()
     {
         $player = $this->player(self::TEST_ACCOUNT);
 
@@ -77,195 +54,144 @@ class PlayerTest extends TestCase
         }
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testItHasAJoinDate()
+    /** @test */
+    public function it_has_a_join_date()
     {
         $player = $this->player(self::TEST_ACCOUNT);
 
         $this->assertInstanceOf(Carbon::class, $player->getJoinDate());
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testItHasASteamId()
+    /** @test */
+    public function it_has_a_steam_id()
     {
         $player = $this->player(self::TEST_ACCOUNT);
 
         $this->assertIsString($player->getSteamID64());
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testItHasAGroupName()
+    /** @test */
+    public function it_has_a_group_name()
     {
         $player = $this->player(self::TEST_ACCOUNT);
 
         $this->assertIsString($player->getGroupName());
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testItHasAGroupId()
+    /** @test */
+    public function it_has_a_group_id()
     {
         $player = $this->player(self::TEST_ACCOUNT);
 
         $this->assertIsInt($player->getGroupId());
     }
 
-    /**
-     * @throws ClientExceptionInterface
-     * @throws PageNotFoundException
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws RequestException
-     */
-    public function testItHasAGroupColor()
+    /** @test */
+    public function it_has_a_group_color()
     {
         $player = $this->player(self::TEST_ACCOUNT);
 
         $this->assertIsString($player->getGroupColor());
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testIfItIsBanned()
+    /** @test */
+    public function if_it_is_banned()
     {
         $player = $this->player(self::TEST_ACCOUNT);
 
         $this->assertIsBool($player->isBanned());
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testItHasABannedUntilDate()
+    /** @test */
+    public function it_has_a_banned_until_date()
     {
         $player = $this->player(self::TEST_ACCOUNT);
 
         $this->assertInstanceOf(Carbon::class, $player->getBannedUntilDate());
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testIfBansAreHidden()
+    /** @test */
+    public function if_it_has_bans_hidden()
     {
         $player = $this->player(self::TEST_ACCOUNT);
 
         $this->assertIsBool($player->hasBansHidden());
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testItHasIfAdmin()
+    /** @test */
+    public function it_has_patreon_information()
+    {
+        $player = $this->player(self::TEST_ACCOUNT);
+
+        $this->assertInstanceOf(Patreon::class, $player->patreon());
+    }
+
+    /** @test */
+    public function if_it_is_a_staff_member()
+    {
+        $player = $this->player(self::TEST_ACCOUNT);
+
+        $this->assertIsBool($player->isStaff());
+    }
+
+    /** @test */
+    public function if_it_is_an_upper_staff_member()
+    {
+        $player = $this->player(self::TEST_ACCOUNT);
+
+        $this->assertIsBool($player->isUpperStaff());
+    }
+
+    /** @test */
+    public function if_it_is_an_admin()
     {
         $player = $this->player(self::TEST_ACCOUNT);
 
         $this->assertIsBool($player->isAdmin());
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testItHasACompanyId()
+    /** @test */
+    public function it_has_a_company_id()
     {
         $player = $this->player(self::TEST_ACCOUNT);
 
         $this->assertIsInt($player->getCompanyId());
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testItHasACompanyName()
+    /** @test */
+    public function it_has_a_company_name()
     {
         $player = $this->player(self::TEST_ACCOUNT);
 
         $this->assertIsString($player->getCompanyName());
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testItHasACompanyTag()
+    /** @test */
+    public function it_has_a_company_tag()
     {
         $player = $this->player(self::TEST_ACCOUNT);
 
         $this->assertIsString($player->getCompanyTag());
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testIfInACompany()
+    /** @test */
+    public function if_it_is_in_a_company()
     {
         $player = $this->player(self::TEST_ACCOUNT);
 
         $this->assertIsBool($player->isInCompany());
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testItHasAMemberId()
+    /** @test */
+    public function it_has_a_member_id()
     {
         $player = $this->player(self::TEST_ACCOUNT);
 
         $this->assertIsInt($player->getCompanyMemberId());
     }
 
-    /**
-     * @throws ClientExceptionInterface
-     * @throws PageNotFoundException
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws RequestException
-     */
-    public function testItHasADiscordSnowflake()
+    /** @test */
+    public function it_has_a_discord_snowflake()
     {
         $player = $this->player(self::TEST_ACCOUNT);
 
@@ -279,13 +205,8 @@ class PlayerTest extends TestCase
         }
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testWeCanGetThePlayersBans()
+    /** @test */
+    public function it_can_get_the_players_bans()
     {
         $bans = $this->playerBans(self::TEST_ACCOUNT);
 
@@ -296,13 +217,8 @@ class PlayerTest extends TestCase
         $this->assertInstanceOf(BanCollection::class, $player->getBans());
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testWeCanGetThePlayersCompany()
+    /** @test */
+    public function it_can_get_the_players_company()
     {
         $player = $this->player(self::TEST_ACCOUNT);
 
@@ -315,13 +231,8 @@ class PlayerTest extends TestCase
         }
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testWeCanGetThePlayersCompanyMember()
+    /** @test */
+    public function it_can_get_the_players_company_member()
     {
         $player = $this->player(self::TEST_ACCOUNT);
 
@@ -334,13 +245,8 @@ class PlayerTest extends TestCase
         }
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testWeCanGetThePlayersCompanyRole()
+    /** @test */
+    public function it_can_get_the_players_company_role()
     {
         $player = $this->player(self::TEST_ACCOUNT);
 

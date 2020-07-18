@@ -2,34 +2,20 @@
 
 namespace Tests\Unit;
 
-use Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException;
-use Psr\Http\Client\ClientExceptionInterface;
 use Tests\TestCase;
-use TruckersMP\APIClient\Exceptions\PageNotFoundException;
-use TruckersMP\APIClient\Exceptions\RequestException;
 
 class ChecksumTest extends TestCase
 {
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testItHasADLL()
+    /** @test */
+    public function it_has_a_dll()
     {
         $version = $this->version();
 
         $this->assertIsString($version->getATSMPChecksum()->getDLL());
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testItHasAnADB()
+    /** @test */
+    public function it_has_an_adb()
     {
         $version = $this->version();
 

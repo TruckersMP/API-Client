@@ -3,12 +3,8 @@
 namespace Tests\Unit;
 
 use Carbon\Carbon;
-use Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException;
-use Psr\Http\Client\ClientExceptionInterface;
 use Tests\TestCase;
 use TruckersMP\APIClient\Collections\BanCollection;
-use TruckersMP\APIClient\Exceptions\PageNotFoundException;
-use TruckersMP\APIClient\Exceptions\RequestException;
 use TruckersMP\APIClient\Models\Ban;
 
 class BanTest extends TestCase
@@ -18,13 +14,8 @@ class BanTest extends TestCase
      */
     private const TEST_ACCOUNT = 28159;
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testWeCanGetAllBans()
+    /** @test */
+    public function it_can_get_all_bans()
     {
         $bans = $this->bans(self::TEST_ACCOUNT);
 
@@ -35,13 +26,8 @@ class BanTest extends TestCase
         }
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testItHasAnExpiryDate()
+    /** @test */
+    public function it_has_an_expiry_date()
     {
         $bans = $this->bans(self::TEST_ACCOUNT);
 
@@ -58,13 +44,8 @@ class BanTest extends TestCase
         }
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testItHasACreatedDate()
+    /** @test */
+    public function it_has_created_at_date()
     {
         $bans = $this->bans(self::TEST_ACCOUNT);
 
@@ -77,13 +58,8 @@ class BanTest extends TestCase
         }
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testItHasAnActiveState()
+    /** @test */
+    public function it_has_active_state()
     {
         $bans = $this->bans(self::TEST_ACCOUNT);
 
@@ -96,13 +72,8 @@ class BanTest extends TestCase
         }
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testItHasAReason()
+    /** @test */
+    public function it_has_a_reason()
     {
         $bans = $this->bans(self::TEST_ACCOUNT);
 
@@ -115,13 +86,8 @@ class BanTest extends TestCase
         }
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testItHasTheNameOfTheAdmin()
+    /** @test */
+    public function it_has_the_name_of_the_admin()
     {
         $bans = $this->bans(self::TEST_ACCOUNT);
 
@@ -134,13 +100,8 @@ class BanTest extends TestCase
         }
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testItHasTheIdOfTheAdmin()
+    /** @test */
+    public function it_has_the_id_of_the_admin()
     {
         $bans = $this->bans(self::TEST_ACCOUNT);
 

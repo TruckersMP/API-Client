@@ -3,12 +3,8 @@
 namespace Tests\Unit;
 
 use Carbon\Carbon;
-use Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException;
-use Psr\Http\Client\ClientExceptionInterface;
 use Tests\TestCase;
 use TruckersMP\APIClient\Collections\Company\RoleCollection;
-use TruckersMP\APIClient\Exceptions\PageNotFoundException;
-use TruckersMP\APIClient\Exceptions\RequestException;
 use TruckersMP\APIClient\Models\CompanyRole;
 
 class CompanyRoleTest extends TestCase
@@ -23,13 +19,8 @@ class CompanyRoleTest extends TestCase
      */
     private const TEST_ROLE = 1;
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testWeCanGetAllTheRoles()
+    /** @test */
+    public function it_can_get_all_the_roles()
     {
         $roles = $this->companyRoles(self::TEST_COMPANY);
 
@@ -42,91 +33,56 @@ class CompanyRoleTest extends TestCase
         }
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testWeCanGetARole()
+    /** @test */
+    public function it_can_get_a_specific_role()
     {
         $role = $this->companyRole(self::TEST_COMPANY, self::TEST_ROLE);
 
         $this->assertInstanceOf(CompanyRole::class, $role);
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testItHasAnId()
+    /** @test */
+    public function it_has_an_id()
     {
         $role = $this->companyRole(self::TEST_COMPANY, self::TEST_ROLE);
 
         $this->assertIsInt($role->getId());
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testItHasAName()
+    /** @test */
+    public function it_has_a_name()
     {
         $role = $this->companyRole(self::TEST_COMPANY, self::TEST_ROLE);
 
         $this->assertIsString($role->getName());
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testItHasAnOrder()
+    /** @test */
+    public function it_has_an_order()
     {
         $role = $this->companyRole(self::TEST_COMPANY, self::TEST_ROLE);
 
         $this->assertIsInt($role->getOrder());
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testIfItIsAnOwner()
+    /** @test */
+    public function if_it_is_an_owner()
     {
         $role = $this->companyRole(self::TEST_COMPANY, self::TEST_ROLE);
 
         $this->assertIsBool($role->isOwner());
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testItHasACreatedAtDate()
+    /** @test */
+    public function it_has_a_created_at_date()
     {
         $role = $this->companyRole(self::TEST_COMPANY, self::TEST_ROLE);
 
         $this->assertInstanceOf(Carbon::class, $role->getCreatedAt());
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testItHasAnUpdatedAtDate()
+    /** @test */
+    public function it_has_an_updated_at_date()
     {
         $role = $this->companyRole(self::TEST_COMPANY, self::TEST_ROLE);
 

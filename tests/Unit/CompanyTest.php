@@ -3,12 +3,8 @@
 namespace Tests\Unit;
 
 use Carbon\Carbon;
-use Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException;
-use Psr\Http\Client\ClientExceptionInterface;
 use Tests\TestCase;
 use TruckersMP\APIClient\Collections\CompanyCollection;
-use TruckersMP\APIClient\Exceptions\PageNotFoundException;
-use TruckersMP\APIClient\Exceptions\RequestException;
 use TruckersMP\APIClient\Models\Company;
 use TruckersMP\APIClient\Models\CompanyIndex;
 use TruckersMP\APIClient\Models\Game;
@@ -21,26 +17,16 @@ class CompanyTest extends TestCase
      */
     private const TEST_COMPANY = 1;
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testWeCanGetTheCompanies()
+    /** @test */
+    public function it_can_get_all_the_companies()
     {
         $companies = $this->companies();
 
         $this->assertInstanceOf(CompanyIndex::class, $companies);
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testWeCanGetTheRecentCompanies()
+    /** @test */
+    public function it_can_get_the_recent_companies()
     {
         $companies = $this->companies()->getRecent();
 
@@ -49,13 +35,8 @@ class CompanyTest extends TestCase
         $this->assertInstanceOf(CompanyCollection::class, $companies);
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testWeCanGetTheFeaturedCompanies()
+    /** @test */
+    public function it_can_get_the_fetured_companies()
     {
         $companies = $this->companies()->getFeatured();
 
@@ -64,13 +45,8 @@ class CompanyTest extends TestCase
         $this->assertInstanceOf(CompanyCollection::class, $companies);
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testWeCanGetTheFeaturedCoverCompanies()
+    /** @test */
+    public function it_can_get_the_featured_cover_companies()
     {
         $companies = $this->companies()->getFeaturedCovered();
 
@@ -79,182 +55,112 @@ class CompanyTest extends TestCase
         $this->assertInstanceOf(CompanyCollection::class, $companies);
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testWeCanGetACompany()
+    /** @test */
+    public function it_can_get_a_specific_company()
     {
         $company = $this->company(self::TEST_COMPANY);
 
         $this->assertInstanceOf(Company::class, $company);
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testItHasAnId()
+    /** @test */
+    public function it_has_an_id()
     {
         $company = $this->company(self::TEST_COMPANY);
 
         $this->assertIsInt($company->getId());
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testItHasAName()
+    /** @test */
+    public function it_has_a_name()
     {
         $company = $this->company(self::TEST_COMPANY);
 
         $this->assertIsString($company->getName());
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testItHasAnOwnerId()
+    /** @test */
+    public function it_has_an_owner_id()
     {
         $company = $this->company(self::TEST_COMPANY);
 
         $this->assertIsInt($company->getOwnerId());
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testItHasAnOwnerName()
+    /** @test */
+    public function it_has_an_owner_name()
     {
         $company = $this->company(self::TEST_COMPANY);
 
         $this->assertIsString($company->getOwnerName());
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testItHasASlogan()
+    /** @test */
+    public function it_has_a_slogan()
     {
         $company = $this->company(self::TEST_COMPANY);
 
         $this->assertIsString($company->getSlogan());
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testItHasATag()
+    /** @test */
+    public function it_has_a_tag()
     {
         $company = $this->company(self::TEST_COMPANY);
 
         $this->assertIsString($company->getTag());
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testItHasALogo()
-    {
-        $company = $this->company(self::TEST_COMPANY);
-
-        $this->assertIsString($company->getLogo());
-    }
-
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testItHasACover()
+    /** @test */
+    public function it_has_a_cover()
     {
         $company = $this->company(self::TEST_COMPANY);
 
         $this->assertIsString($company->getCover());
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testItHasInformation()
+    /** @test */
+    public function it_has_a_logo()
+    {
+        $company = $this->company(self::TEST_COMPANY);
+
+        $this->assertIsString($company->getLogo());
+    }
+
+    /** @test */
+    public function it_has_information()
     {
         $company = $this->company(self::TEST_COMPANY);
 
         $this->assertIsString($company->getInformation());
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testItHasRules()
+    /** @test */
+    public function it_has_rules()
     {
         $company = $this->company(self::TEST_COMPANY);
 
         $this->assertIsString($company->getRules());
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testItHasRequirements()
+    /** @test */
+    public function it_has_requirements()
     {
         $company = $this->company(self::TEST_COMPANY);
 
         $this->assertIsString($company->getRequirements());
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testItHasAWebsite()
+    /** @test */
+    public function it_has_a_website()
     {
         $company = $this->company(self::TEST_COMPANY);
 
         $this->assertIsString($company->getWebsite());
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testItHasSocialInformation()
+    /** @test */
+    public function it_has_social_media_information()
     {
         $company = $this->company(self::TEST_COMPANY);
 
@@ -286,13 +192,8 @@ class CompanyTest extends TestCase
         }
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testItHasSupportedGames()
+    /** @test */
+    public function it_has_supported_games()
     {
         $company = $this->company(self::TEST_COMPANY);
 
@@ -302,26 +203,16 @@ class CompanyTest extends TestCase
         $this->assertIsBool($company->getGames()->isEts());
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testItHasMemberCount()
+    /** @test */
+    public function it_has_a_member_count()
     {
         $company = $this->company(self::TEST_COMPANY);
 
         $this->assertIsInt($company->getMembersCount());
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testItHasARecruitmentState()
+    /** @test */
+    public function it_has_a_recruitment_state()
     {
         $company = $this->company(self::TEST_COMPANY);
 
@@ -331,52 +222,32 @@ class CompanyTest extends TestCase
         $this->assertIsBool($company->isRecruitmentOpen());
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testItHasALanguage()
+    /** @test */
+    public function it_has_a_language()
     {
         $company = $this->company(self::TEST_COMPANY);
 
         $this->assertIsString($company->getLanguage());
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testIfItsVerified()
+    /** @test */
+    public function if_it_is_verified()
     {
         $company = $this->company(self::TEST_COMPANY);
 
         $this->assertIsBool($company->isVerified());
     }
 
-    /**
-     * @throws ClientExceptionInterface
-     * @throws PageNotFoundException
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws RequestException
-     */
-    public function testIfItsValidated()
+    /** @test */
+    public function if_it_is_validate()
     {
         $company = $this->company(self::TEST_COMPANY);
 
         $this->assertIsBool($company->isValidated());
     }
 
-    /**
-     * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws ClientExceptionInterface
-     */
-    public function testItHasACreatedDate()
+    /** @test */
+    public function it_has_a_created_at_test()
     {
         $company = $this->company(self::TEST_COMPANY);
 
