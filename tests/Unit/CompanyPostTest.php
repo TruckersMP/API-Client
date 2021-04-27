@@ -11,12 +11,12 @@ class CompanyPostTest extends TestCase
     /**
      * The ID of the company to use in the tests.
      */
-    private const TEST_COMPANY = 17;
+    private const TEST_COMPANY = 2;
 
     /**
      * The ID of the post to use in the tests.
      */
-    private const TEST_POST = 121;
+    private const TEST_POST = 13254;
 
     /** @test */
     public function it_can_get_all_the_news_posts()
