@@ -2,7 +2,6 @@ preset: psr12
 
 enabled:
   - const_separation
-  - const_visibility_required
   - linebreak_after_opening_tag
   - logical_operators
   - multiline_comment_opening_closing
