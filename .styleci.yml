@@ -3,19 +3,12 @@ preset: psr12
 enabled:
   - const_separation
   - linebreak_after_opening_tag
-  - logical_operators
   - multiline_comment_opening_closing
   - no_blank_lines_after_return
   - no_extra_block_blank_lines
   - no_useless_else
-  - non_printable_character
   - nullable_type_declarations
   - phpdoc_add_missing_param_annotation
   - phpdoc_link_to_see
   - short_list_syntax
   - simple_to_complex_string_variable
-  - strict_comparison
-
-finder:
-  exclude:
-    - examples
