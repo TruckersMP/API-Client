@@ -7,3 +7,4 @@
 .gitignore export-ignore
 .styleci.yml export-ignore
 phpunit.xml export-ignore
+/examples  export-ignore
