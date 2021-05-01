@@ -3,8 +3,7 @@
 namespace TruckersMP\APIClient\Requests\Company;
 
 use Psr\Http\Client\ClientExceptionInterface;
-use TruckersMP\APIClient\Exceptions\PageNotFoundException;
-use TruckersMP\APIClient\Exceptions\RequestException;
+use TruckersMP\APIClient\Exceptions\ApiErrorException;
 use TruckersMP\APIClient\Models\CompanyPost;
 use TruckersMP\APIClient\Requests\Request;
 
@@ -54,8 +53,7 @@ class PostRequest extends Request
      *
      * @return CompanyPost
      *
-     * @throws PageNotFoundException
-     * @throws RequestException
+     * @throws ApiErrorException
      * @throws ClientExceptionInterface
      */
     public function get(): CompanyPost

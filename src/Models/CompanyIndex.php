@@ -2,7 +2,6 @@
 
 namespace TruckersMP\APIClient\Models;
 
-use Exception;
 use TruckersMP\APIClient\Collections\CompanyCollection;
 
 class CompanyIndex
@@ -33,8 +32,6 @@ class CompanyIndex
      *
      * @param  array  $response
      * @return void
-     *
-     * @throws Exception
      */
     public function __construct(array $response)
     {

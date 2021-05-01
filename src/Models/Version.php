@@ -3,7 +3,6 @@
 namespace TruckersMP\APIClient\Models;
 
 use Carbon\Carbon;
-use Exception;
 
 class Version
 {
@@ -68,8 +67,6 @@ class Version
      *
      * @param  array  $version
      * @return void
-     *
-     * @throws Exception
      */
     public function __construct(array $version)
     {

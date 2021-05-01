@@ -18,8 +18,7 @@ use TruckersMP\APIClient\Collections\BanCollection;
 use TruckersMP\APIClient\Collections\Company\PostCollection;
 use TruckersMP\APIClient\Collections\Company\RoleCollection;
 use TruckersMP\APIClient\Collections\ServerCollection;
-use TruckersMP\APIClient\Exceptions\PageNotFoundException;
-use TruckersMP\APIClient\Exceptions\RequestException;
+use TruckersMP\APIClient\Exceptions\ApiErrorException;
 use TruckersMP\APIClient\Models\Ban;
 use TruckersMP\APIClient\Models\Company;
 use TruckersMP\APIClient\Models\CompanyIndex;
@@ -87,8 +86,7 @@ class TestCase extends BaseTestCase
      * @return Player
      *
      * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
+     * @throws ApiErrorException
      * @throws ClientExceptionInterface
      */
     public function player(int $id): Player
@@ -111,8 +109,7 @@ class TestCase extends BaseTestCase
      * @return BanCollection|Ban[]
      *
      * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
+     * @throws ApiErrorException
      * @throws ClientExceptionInterface
      */
     public function playerBans(int $id): BanCollection
@@ -135,8 +132,7 @@ class TestCase extends BaseTestCase
      * @return BanCollection
      *
      * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
+     * @throws ApiErrorException
      * @throws ClientExceptionInterface
      */
     public function bans(int $id): BanCollection
@@ -157,8 +153,7 @@ class TestCase extends BaseTestCase
      * @return ServerCollection|Server[]
      *
      * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
+     * @throws ApiErrorException
      * @throws ClientExceptionInterface
      */
     public function servers(): ServerCollection
@@ -179,8 +174,7 @@ class TestCase extends BaseTestCase
      * @return GameTime
      *
      * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
+     * @throws ApiErrorException
      * @throws ClientExceptionInterface
      */
     public function gameTime(): GameTime
@@ -201,8 +195,7 @@ class TestCase extends BaseTestCase
      * @return CompanyIndex
      *
      * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
+     * @throws ApiErrorException
      * @throws ClientExceptionInterface
      */
     public function companies(): CompanyIndex
@@ -225,8 +218,7 @@ class TestCase extends BaseTestCase
      * @return Company
      *
      * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
+     * @throws ApiErrorException
      * @throws ClientExceptionInterface
      */
     public function company(int $id): Company
@@ -249,8 +241,7 @@ class TestCase extends BaseTestCase
      * @return PostCollection|CompanyPost[]
      *
      * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
+     * @throws ApiErrorException
      * @throws ClientExceptionInterface
      */
     public function companyPosts(int $id): PostCollection
@@ -274,8 +265,7 @@ class TestCase extends BaseTestCase
      * @return CompanyPost
      *
      * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
+     * @throws ApiErrorException
      * @throws ClientExceptionInterface
      */
     public function companyPost(int $companyId, int $postId): CompanyPost
@@ -301,8 +291,7 @@ class TestCase extends BaseTestCase
      * @return RoleCollection|CompanyRole[]
      *
      * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
+     * @throws ApiErrorException
      * @throws ClientExceptionInterface
      */
     public function companyRoles(int $companyId): RoleCollection
@@ -326,8 +315,7 @@ class TestCase extends BaseTestCase
      * @return CompanyRole
      *
      * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
+     * @throws ApiErrorException
      * @throws ClientExceptionInterface
      */
     public function companyRole(int $companyId, int $roleId): CompanyRole
@@ -353,8 +341,7 @@ class TestCase extends BaseTestCase
      * @return mixed
      *
      * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
+     * @throws ApiErrorException
      * @throws ClientExceptionInterface
      */
     public function companyMembers(int $companyId): CompanyMemberIndex
@@ -381,8 +368,7 @@ class TestCase extends BaseTestCase
      * @return CompanyMember
      *
      * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
+     * @throws ApiErrorException
      * @throws ClientExceptionInterface
      */
     public function companyMember(int $companyId, int $memberId): CompanyMember
@@ -406,8 +392,7 @@ class TestCase extends BaseTestCase
      * @return Version
      *
      * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
+     * @throws ApiErrorException
      * @throws ClientExceptionInterface
      */
     public function version(): Version
@@ -428,8 +413,7 @@ class TestCase extends BaseTestCase
      * @return Rule
      *
      * @throws PhpfastcacheInvalidArgumentException
-     * @throws PageNotFoundException
-     * @throws RequestException
+     * @throws ApiErrorException
      * @throws ClientExceptionInterface
      */
     public function rules(): Rule

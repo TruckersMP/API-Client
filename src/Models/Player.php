@@ -3,11 +3,9 @@
 namespace TruckersMP\APIClient\Models;
 
 use Carbon\Carbon;
-use Exception;
 use Psr\Http\Client\ClientExceptionInterface;
 use TruckersMP\APIClient\Collections\BanCollection;
-use TruckersMP\APIClient\Exceptions\PageNotFoundException;
-use TruckersMP\APIClient\Exceptions\RequestException;
+use TruckersMP\APIClient\Exceptions\ApiErrorException;
 use TruckersMP\APIClient\Requests\BanRequest;
 use TruckersMP\APIClient\Requests\Company\MemberRequest;
 use TruckersMP\APIClient\Requests\Company\RoleRequest;
@@ -174,8 +172,6 @@ class Player
      *
      * @param  array  $player
      * @return void
-     *
-     * @throws Exception
      */
     public function __construct(array $player)
     {
@@ -439,8 +435,7 @@ class Player
      *
      * @return BanCollection
      *
-     * @throws PageNotFoundException
-     * @throws RequestException
+     * @throws ApiErrorException
      * @throws ClientExceptionInterface
      */
     public function getBans(): BanCollection
@@ -453,8 +448,7 @@ class Player
      *
      * @return Company|null
      *
-     * @throws PageNotFoundException
-     * @throws RequestException
+     * @throws ApiErrorException
      * @throws ClientExceptionInterface
      */
     public function getCompany(): ?Company
@@ -473,8 +467,7 @@ class Player
      *
      * @return CompanyMember|null
      *
-     * @throws PageNotFoundException
-     * @throws RequestException
+     * @throws ApiErrorException
      * @throws ClientExceptionInterface
      */
     public function getCompanyMember(): ?CompanyMember
@@ -493,8 +486,7 @@ class Player
      *
      * @return CompanyRole|null
      *
-     * @throws PageNotFoundException
-     * @throws RequestException
+     * @throws ApiErrorException
      * @throws ClientExceptionInterface
      */
     public function getCompanyRole(): ?CompanyRole

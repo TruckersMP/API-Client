@@ -3,7 +3,6 @@
 namespace TruckersMP\APIClient\Models;
 
 use Carbon\Carbon;
-use Exception;
 
 class Ban
 {
@@ -54,8 +53,6 @@ class Ban
      *
      * @param  array  $ban
      * @return void
-     *
-     * @throws Exception
      */
     public function __construct(array $ban)
     {

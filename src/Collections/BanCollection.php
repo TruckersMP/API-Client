@@ -2,7 +2,6 @@
 
 namespace TruckersMP\APIClient\Collections;
 
-use Exception;
 use TruckersMP\APIClient\Models\Ban;
 
 class BanCollection extends Collection
@@ -12,8 +11,6 @@ class BanCollection extends Collection
      *
      * @param  array  $bans
      * @return void
-     *
-     * @throws Exception
      */
     public function __construct(array $bans)
     {

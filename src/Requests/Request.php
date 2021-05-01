@@ -3,14 +3,10 @@
 namespace TruckersMP\APIClient\Requests;
 
 use GuzzleHttp\Client as GuzzleClient;
-use Http\Adapter\Guzzle6\Client as GuzzleAdapter;
-use Http\Client\Exception\HttpException;
-use Http\Message\MessageFactory\GuzzleMessageFactory;
+use GuzzleHttp\Psr7\Request as GuzzleRequest;
 use Psr\Http\Client\ClientExceptionInterface;
-use TruckersMP\APIClient\ApiErrorHandler;
 use TruckersMP\APIClient\Client;
-use TruckersMP\APIClient\Exceptions\PageNotFoundException;
-use TruckersMP\APIClient\Exceptions\RequestException;
+use TruckersMP\APIClient\Exceptions\ApiErrorException;
 
 abstract class Request
 {
@@ -25,25 +21,11 @@ abstract class Request
     private const API_VERSION = 'v2';
 
     /**
-     * The current instance of the Guzzle message.
+     * The instance of the guzzle client.
      *
-     * @var GuzzleMessageFactory
+     * @var GuzzleClient
      */
-    protected $message;
-
-    /**
-     * The API URL to call.
-     *
-     * @var string
-     */
-    protected $url;
-
-    /**
-     * The current instance of the Guzzle client.
-     *
-     * @var GuzzleAdapter
-     */
-    protected $adapter;
+    protected $client;
 
     /**
      * Create a new Request instance.
@@ -52,12 +34,10 @@ abstract class Request
      */
     public function __construct()
     {
-        $this->message = new GuzzleMessageFactory();
-        $this->adapter = new GuzzleAdapter(
-            new GuzzleClient(Client::config())
-        );
+        $config = Client::config();
+        $config['base_uri'] = 'https://' . self::API_ENDPOINT . '/' . self::API_VERSION . '/';
 
-        $this->url = 'https://' . self::API_ENDPOINT . '/' . self::API_VERSION . '/';
+        $this->client = new GuzzleClient($config);
     }
 
     /**
@@ -79,21 +59,41 @@ abstract class Request
      *
      * @return array
      *
-     * @throws PageNotFoundException
-     * @throws RequestException
      * @throws ClientExceptionInterface
+     * @throws ApiErrorException
      */
     public function send(): array
     {
-        $request = $this->message->createRequest('GET', $this->url . $this->getEndpoint());
-        $result = null;
+        $request = new GuzzleRequest('GET', $this->getEndpoint());
+        $requestResponse = $this->client->sendRequest($request);
 
-        try {
-            $result = $this->adapter->sendRequest($request);
-        } catch (HttpException $exception) {
-            ApiErrorHandler::check($exception->getResponse()->getBody(), $exception->getCode());
+        $response = json_decode($requestResponse->getBody(), true, 512, JSON_BIGINT_AS_STRING);
+
+        if ($this->hasError($response)) {
+            $message = $response['descriptor'] ?? $response['response'];
+
+            throw new ApiErrorException($message, $requestResponse->getStatusCode());
         }
 
-        return json_decode((string) $result->getBody(), true, 512, JSON_BIGINT_AS_STRING);
+        return $response;
+    }
+
+    /**
+     * Check if the response contains an error.
+     *
+     * @param $response
+     * @return bool
+     */
+    protected function hasError($response): bool
+    {
+        if (! isset($response['error'])) {
+            return false;
+        }
+
+        if (is_string($response['error'])) {
+            return $response['error'] === 'true';
+        }
+
+        return $response['error'];
     }
 }
