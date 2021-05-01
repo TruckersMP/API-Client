@@ -42,7 +42,7 @@
         }
     ],
     "require": {
-        "php": "^7.2",
+        "php": "^7.3",
         "nesbot/carbon": "^2.16",
         "ext-json": "*",
         "php-http/message": "^1.8",
