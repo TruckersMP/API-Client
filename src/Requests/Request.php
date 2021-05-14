@@ -86,7 +86,7 @@ abstract class Request
      */
     protected function hasError($response): bool
     {
-        if (! isset($response['error'])) {
+        if (!isset($response['error'])) {
             return false;
         }
 
