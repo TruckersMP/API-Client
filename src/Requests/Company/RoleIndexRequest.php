@@ -5,8 +5,7 @@ namespace TruckersMP\APIClient\Requests\Company;
 use Exception;
 use Psr\Http\Client\ClientExceptionInterface;
 use TruckersMP\APIClient\Collections\Company\RoleCollection;
-use TruckersMP\APIClient\Exceptions\PageNotFoundException;
-use TruckersMP\APIClient\Exceptions\RequestException;
+use TruckersMP\APIClient\Exceptions\ApiErrorException;
 use TruckersMP\APIClient\Requests\Request;
 
 class RoleIndexRequest extends Request
@@ -46,9 +45,8 @@ class RoleIndexRequest extends Request
      *
      * @return RoleCollection
      *
-     * @throws PageNotFoundException
-     * @throws RequestException
      * @throws Exception
+     * @throws ApiErrorException
      * @throws ClientExceptionInterface
      */
     public function get(): RoleCollection

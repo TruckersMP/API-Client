@@ -3,7 +3,6 @@
 namespace TruckersMP\APIClient\Models;
 
 use Carbon\Carbon;
-use Exception;
 
 class CompanyMember
 {
@@ -61,8 +60,6 @@ class CompanyMember
      *
      * @param  array  $member
      * @return void
-     *
-     * @throws Exception
      */
     public function __construct(array $member)
     {

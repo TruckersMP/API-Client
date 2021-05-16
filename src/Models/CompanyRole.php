@@ -3,7 +3,6 @@
 namespace TruckersMP\APIClient\Models;
 
 use Carbon\Carbon;
-use Exception;
 
 class CompanyRole
 {
@@ -54,8 +53,6 @@ class CompanyRole
      *
      * @param  array  $role
      * @return void
-     *
-     * @throws Exception
      */
     public function __construct(array $role)
     {

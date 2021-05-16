@@ -3,8 +3,7 @@
 namespace TruckersMP\APIClient\Requests;
 
 use Psr\Http\Client\ClientExceptionInterface;
-use TruckersMP\APIClient\Exceptions\PageNotFoundException;
-use TruckersMP\APIClient\Exceptions\RequestException;
+use TruckersMP\APIClient\Exceptions\ApiErrorException;
 use TruckersMP\APIClient\Models\GameTime;
 
 class GameTimeRequest extends Request
@@ -24,8 +23,7 @@ class GameTimeRequest extends Request
      *
      * @return GameTime
      *
-     * @throws PageNotFoundException
-     * @throws RequestException
+     * @throws ApiErrorException
      * @throws ClientExceptionInterface
      */
     public function get(): GameTime

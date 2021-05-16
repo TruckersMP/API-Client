@@ -2,10 +2,8 @@
 
 namespace TruckersMP\APIClient\Requests\Company;
 
-use Exception;
 use Psr\Http\Client\ClientExceptionInterface;
-use TruckersMP\APIClient\Exceptions\PageNotFoundException;
-use TruckersMP\APIClient\Exceptions\RequestException;
+use TruckersMP\APIClient\Exceptions\ApiErrorException;
 use TruckersMP\APIClient\Models\CompanyMemberIndex;
 use TruckersMP\APIClient\Requests\Request;
 
@@ -46,10 +44,8 @@ class MemberIndexRequest extends Request
      *
      * @return CompanyMemberIndex
      *
-     * @throws PageNotFoundException
-     * @throws RequestException
+     * @throws ApiErrorException
      * @throws ClientExceptionInterface
-     * @throws Exception
      */
     public function get(): CompanyMemberIndex
     {

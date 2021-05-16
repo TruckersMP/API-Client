@@ -2,7 +2,6 @@
 
 namespace TruckersMP\APIClient\Collections;
 
-use Exception;
 use TruckersMP\APIClient\Models\Company;
 
 class CompanyCollection extends Collection
@@ -12,8 +11,6 @@ class CompanyCollection extends Collection
      *
      * @param  array  $companies
      * @return void
-     *
-     * @throws Exception
      */
     public function __construct(array $companies)
     {

@@ -2,10 +2,8 @@
 
 namespace TruckersMP\APIClient\Requests;
 
-use Exception;
 use Psr\Http\Client\ClientExceptionInterface;
-use TruckersMP\APIClient\Exceptions\PageNotFoundException;
-use TruckersMP\APIClient\Exceptions\RequestException;
+use TruckersMP\APIClient\Exceptions\ApiErrorException;
 use TruckersMP\APIClient\Models\Version;
 
 class VersionRequest extends Request
@@ -25,9 +23,7 @@ class VersionRequest extends Request
      *
      * @return Version
      *
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws Exception
+     * @throws ApiErrorException
      * @throws ClientExceptionInterface
      */
     public function get(): Version

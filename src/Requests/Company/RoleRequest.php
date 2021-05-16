@@ -4,8 +4,7 @@ namespace TruckersMP\APIClient\Requests\Company;
 
 use Exception;
 use Psr\Http\Client\ClientExceptionInterface;
-use TruckersMP\APIClient\Exceptions\PageNotFoundException;
-use TruckersMP\APIClient\Exceptions\RequestException;
+use TruckersMP\APIClient\Exceptions\ApiErrorException;
 use TruckersMP\APIClient\Models\CompanyRole;
 use TruckersMP\APIClient\Requests\Request;
 
@@ -55,9 +54,7 @@ class RoleRequest extends Request
      *
      * @return CompanyRole
      *
-     * @throws PageNotFoundException
-     * @throws RequestException
-     * @throws Exception
+     * @throws ApiErrorException
      * @throws ClientExceptionInterface
      */
     public function get(): CompanyRole
