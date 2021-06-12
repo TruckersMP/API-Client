@@ -10,7 +10,9 @@ use Phpfastcache\Exceptions\PhpfastcacheDriverException;
 use Phpfastcache\Exceptions\PhpfastcacheDriverNotFoundException;
 use Phpfastcache\Exceptions\PhpfastcacheInvalidArgumentException;
 use Phpfastcache\Exceptions\PhpfastcacheInvalidConfigurationException;
+use Phpfastcache\Exceptions\PhpfastcacheLogicException;
 use PHPUnit\Framework\TestCase as BaseTestCase;
+use Psr\Cache\InvalidArgumentException;
 use Psr\Http\Client\ClientExceptionInterface;
 use ReflectionException;
 use TruckersMP\APIClient\Client;
@@ -51,13 +53,14 @@ class TestCase extends BaseTestCase
      *
      * @var ExtendedCacheItemPoolInterface
      */
-    protected $cache;
+    protected static $cache;
 
     /**
      * Create a new TestCase instance.
      *
      * @return void
      *
+     * @throws PhpfastcacheLogicException
      * @throws PhpfastcacheDriverCheckException
      * @throws PhpfastcacheDriverException
      * @throws PhpfastcacheDriverNotFoundException
@@ -75,7 +78,9 @@ class TestCase extends BaseTestCase
             'path' => __DIR__ . '/cache',
         ]));
 
-        $this->cache = CacheManager::getInstance();
+        if (!self::$cache) {
+            self::$cache = CacheManager::getInstance('Files');
+        }
     }
 
     /**
@@ -88,14 +93,15 @@ class TestCase extends BaseTestCase
      * @throws PhpfastcacheInvalidArgumentException
      * @throws ApiErrorException
      * @throws ClientExceptionInterface
+     * @throws InvalidArgumentException
      */
     public function player(int $id): Player
     {
-        $cachedPlayer = $this->cache->getItem('player_' . $id);
+        $cachedPlayer = self::$cache->getItem('player_' . $id);
 
         if (!$cachedPlayer->isHit()) {
             $cachedPlayer->set($this->client->player($id)->get())->expiresAfter(self::CACHE_SECONDS);
-            $this->cache->save($cachedPlayer);
+            self::$cache->save($cachedPlayer);
         }
 
         return $cachedPlayer->get();
@@ -111,14 +117,15 @@ class TestCase extends BaseTestCase
      * @throws PhpfastcacheInvalidArgumentException
      * @throws ApiErrorException
      * @throws ClientExceptionInterface
+     * @throws InvalidArgumentException
      */
     public function playerBans(int $id): BanCollection
     {
-        $cachedBans = $this->cache->getItem('player_bans_' . $id);
+        $cachedBans = self::$cache->getItem('player_bans_' . $id);
 
         if (!$cachedBans->isHit()) {
             $cachedBans->set($this->client->player($id)->bans()->get())->expiresAfter(self::CACHE_SECONDS);
-            $this->cache->save($cachedBans);
+            self::$cache->save($cachedBans);
         }
 
         return $cachedBans->get();
@@ -134,14 +141,15 @@ class TestCase extends BaseTestCase
      * @throws PhpfastcacheInvalidArgumentException
      * @throws ApiErrorException
      * @throws ClientExceptionInterface
+     * @throws InvalidArgumentException
      */
     public function bans(int $id): BanCollection
     {
-        $cachedBans = $this->cache->getItem('bans_' . $id);
+        $cachedBans = self::$cache->getItem('bans_' . $id);
 
         if (!$cachedBans->isHit()) {
             $cachedBans->set($this->client->bans($id)->get())->expiresAfter(self::CACHE_SECONDS);
-            $this->cache->save($cachedBans);
+            self::$cache->save($cachedBans);
         }
 
         return $cachedBans->get();
@@ -155,14 +163,15 @@ class TestCase extends BaseTestCase
      * @throws PhpfastcacheInvalidArgumentException
      * @throws ApiErrorException
      * @throws ClientExceptionInterface
+     * @throws InvalidArgumentException
      */
     public function servers(): ServerCollection
     {
-        $cachedServers = $this->cache->getItem('servers');
+        $cachedServers = self::$cache->getItem('servers');
 
         if (!$cachedServers->isHit()) {
             $cachedServers->set($this->client->servers()->get())->expiresAfter(self::CACHE_SECONDS);
-            $this->cache->save($cachedServers);
+            self::$cache->save($cachedServers);
         }
 
         return $cachedServers->get();
@@ -176,14 +185,15 @@ class TestCase extends BaseTestCase
      * @throws PhpfastcacheInvalidArgumentException
      * @throws ApiErrorException
      * @throws ClientExceptionInterface
+     * @throws InvalidArgumentException
      */
     public function gameTime(): GameTime
     {
-        $cachedGameTime = $this->cache->getItem('game_time');
+        $cachedGameTime = self::$cache->getItem('game_time');
 
         if (!$cachedGameTime->isHit()) {
             $cachedGameTime->set($this->client->gameTime()->get())->expiresAfter(self::CACHE_SECONDS);
-            $this->cache->save($cachedGameTime);
+            self::$cache->save($cachedGameTime);
         }
 
         return $cachedGameTime->get();
@@ -197,14 +207,15 @@ class TestCase extends BaseTestCase
      * @throws PhpfastcacheInvalidArgumentException
      * @throws ApiErrorException
      * @throws ClientExceptionInterface
+     * @throws InvalidArgumentException
      */
     public function companies(): CompanyIndex
     {
-        $cachedCompanies = $this->cache->getItem('recent_companies');
+        $cachedCompanies = self::$cache->getItem('recent_companies');
 
         if (!$cachedCompanies->isHit()) {
             $cachedCompanies->set($this->client->companies()->get());
-            $this->cache->save($cachedCompanies);
+            self::$cache->save($cachedCompanies);
         }
 
         return $cachedCompanies->get();
@@ -220,14 +231,15 @@ class TestCase extends BaseTestCase
      * @throws PhpfastcacheInvalidArgumentException
      * @throws ApiErrorException
      * @throws ClientExceptionInterface
+     * @throws InvalidArgumentException
      */
     public function company(int $id): Company
     {
-        $cachedCompany = $this->cache->getItem('company_' . $id);
+        $cachedCompany = self::$cache->getItem('company_' . $id);
 
         if (!$cachedCompany->isHit()) {
             $cachedCompany->set($this->client->company($id)->get())->expiresAfter(self::CACHE_SECONDS);
-            $this->cache->save($cachedCompany);
+            self::$cache->save($cachedCompany);
         }
 
         return $cachedCompany->get();
@@ -243,14 +255,15 @@ class TestCase extends BaseTestCase
      * @throws PhpfastcacheInvalidArgumentException
      * @throws ApiErrorException
      * @throws ClientExceptionInterface
+     * @throws InvalidArgumentException
      */
     public function companyPosts(int $id): PostCollection
     {
-        $cachedNews = $this->cache->getItem('company_posts_' . $id);
+        $cachedNews = self::$cache->getItem('company_posts_' . $id);
 
         if (!$cachedNews->isHit()) {
             $cachedNews->set($this->client->company($id)->posts()->get())->expiresAfter(self::CACHE_SECONDS);
-            $this->cache->save($cachedNews);
+            self::$cache->save($cachedNews);
         }
 
         return $cachedNews->get();
@@ -267,17 +280,18 @@ class TestCase extends BaseTestCase
      * @throws PhpfastcacheInvalidArgumentException
      * @throws ApiErrorException
      * @throws ClientExceptionInterface
+     * @throws InvalidArgumentException
      */
     public function companyPost(int $companyId, int $postId): CompanyPost
     {
-        $cachedPost = $this->cache->getItem('company_' . $companyId . '_post_' . $postId);
+        $cachedPost = self::$cache->getItem('company_' . $companyId . '_post_' . $postId);
 
         if (!$cachedPost->isHit()) {
             $cachedPost->set(
                 $this->client->company($companyId)->post($postId)->get()
             )->expiresAfter(self::CACHE_SECONDS);
 
-            $this->cache->save($cachedPost);
+            self::$cache->save($cachedPost);
         }
 
         return $cachedPost->get();
@@ -293,14 +307,15 @@ class TestCase extends BaseTestCase
      * @throws PhpfastcacheInvalidArgumentException
      * @throws ApiErrorException
      * @throws ClientExceptionInterface
+     * @throws InvalidArgumentException
      */
     public function companyRoles(int $companyId): RoleCollection
     {
-        $cachedRoles = $this->cache->getItem('company_roles_' . $companyId);
+        $cachedRoles = self::$cache->getItem('company_roles_' . $companyId);
 
         if (!$cachedRoles->isHit()) {
             $cachedRoles->set($this->client->company($companyId)->roles()->get())->expiresAfter(self::CACHE_SECONDS);
-            $this->cache->save($cachedRoles);
+            self::$cache->save($cachedRoles);
         }
 
         return $cachedRoles->get();
@@ -317,17 +332,18 @@ class TestCase extends BaseTestCase
      * @throws PhpfastcacheInvalidArgumentException
      * @throws ApiErrorException
      * @throws ClientExceptionInterface
+     * @throws InvalidArgumentException
      */
     public function companyRole(int $companyId, int $roleId): CompanyRole
     {
-        $cachedRole = $this->cache->getItem('company_' . $companyId . '_roles_' . $roleId);
+        $cachedRole = self::$cache->getItem('company_' . $companyId . '_roles_' . $roleId);
 
         if (!$cachedRole->isHit()) {
             $cachedRole->set(
                 $this->client->company($companyId)->role($roleId)->get()
             )->expiresAfter(self::CACHE_SECONDS);
 
-            $this->cache->save($cachedRole);
+            self::$cache->save($cachedRole);
         }
 
         return $cachedRole->get();
@@ -343,17 +359,18 @@ class TestCase extends BaseTestCase
      * @throws PhpfastcacheInvalidArgumentException
      * @throws ApiErrorException
      * @throws ClientExceptionInterface
+     * @throws InvalidArgumentException
      */
     public function companyMembers(int $companyId): CompanyMemberIndex
     {
-        $cachedMembers = $this->cache->getItem('company_members_' . $companyId);
+        $cachedMembers = self::$cache->getItem('company_members_' . $companyId);
 
         if (!$cachedMembers->isHit()) {
             $cachedMembers->set(
                 $this->client->company($companyId)->members()->get()
             );
 
-            $this->cache->save($cachedMembers);
+            self::$cache->save($cachedMembers);
         }
 
         return $cachedMembers->get();
@@ -370,17 +387,18 @@ class TestCase extends BaseTestCase
      * @throws PhpfastcacheInvalidArgumentException
      * @throws ApiErrorException
      * @throws ClientExceptionInterface
+     * @throws InvalidArgumentException
      */
     public function companyMember(int $companyId, int $memberId): CompanyMember
     {
-        $cachedMember = $this->cache->getItem('company_member_' . $memberId);
+        $cachedMember = self::$cache->getItem('company_member_' . $memberId);
 
         if (!$cachedMember->isHit()) {
             $cachedMember->set(
                 $this->client->company($companyId)->member($memberId)->get()
             )->expiresAfter(self::CACHE_SECONDS);
 
-            $this->cache->save($cachedMember);
+            self::$cache->save($cachedMember);
         }
 
         return $cachedMember->get();
@@ -394,14 +412,15 @@ class TestCase extends BaseTestCase
      * @throws PhpfastcacheInvalidArgumentException
      * @throws ApiErrorException
      * @throws ClientExceptionInterface
+     * @throws InvalidArgumentException
      */
     public function version(): Version
     {
-        $cachedVersion = $this->cache->getItem('version');
+        $cachedVersion = self::$cache->getItem('version');
 
         if (!$cachedVersion->isHit()) {
             $cachedVersion->set($this->client->version()->get())->expiresAfter(self::CACHE_SECONDS);
-            $this->cache->save($cachedVersion);
+            self::$cache->save($cachedVersion);
         }
 
         return $cachedVersion->get();
@@ -415,14 +434,15 @@ class TestCase extends BaseTestCase
      * @throws PhpfastcacheInvalidArgumentException
      * @throws ApiErrorException
      * @throws ClientExceptionInterface
+     * @throws InvalidArgumentException
      */
     public function rules(): Rule
     {
-        $cachedRules = $this->cache->getItem('rules');
+        $cachedRules = self::$cache->getItem('rules');
 
         if (!$cachedRules->isHit()) {
             $cachedRules->set($this->client->rules()->get())->expiresAfter(self::CACHE_SECONDS);
-            $this->cache->save($cachedRules);
+            self::$cache->save($cachedRules);
         }
 
         return $cachedRules->get();

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1b8e4016ff6979422d129caa143dadca",
+    "content-hash": "0ae9744925189485160a0ea83610132c",
     "packages": [
         {
             "name": "guzzlehttp/guzzle",
@@ -1340,28 +1340,31 @@
         },
         {
             "name": "phpfastcache/phpfastcache",
-            "version": "7.1.1",
+            "version": "8.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPSocialNetwork/phpfastcache.git",
-                "reference": "43586728fae8660d5ffc5b0d105502872ee8c17c"
+                "reference": "6d66cc0604bcbd7681ef1b3fdd1ba22901a16b1c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPSocialNetwork/phpfastcache/zipball/43586728fae8660d5ffc5b0d105502872ee8c17c",
-                "reference": "43586728fae8660d5ffc5b0d105502872ee8c17c",
+                "url": "https://api.github.com/repos/PHPSocialNetwork/phpfastcache/zipball/6d66cc0604bcbd7681ef1b3fdd1ba22901a16b1c",
+                "reference": "6d66cc0604bcbd7681ef1b3fdd1ba22901a16b1c",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
                 "ext-mbstring": "*",
-                "php": ">=7.0",
+                "php": ">=7.3",
                 "psr/cache": "~1.0.0",
                 "psr/simple-cache": "~1.0.0"
             },
             "conflict": {
                 "basho/riak": "*",
                 "doctrine/couchdb": "*"
+            },
+            "require-dev": {
+                "league/climate": "^3.5"
             },
             "suggest": {
                 "ext-apc": "*",
@@ -1438,7 +1441,7 @@
             ],
             "support": {
                 "issues": "https://github.com/PHPSocialNetwork/phpfastcache/issues",
-                "source": "https://github.com/PHPSocialNetwork/phpfastcache/tree/7.1.1"
+                "source": "https://github.com/PHPSocialNetwork/phpfastcache/tree/8.0.5"
             },
             "funding": [
                 {
@@ -1450,7 +1453,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2020-04-24T21:51:24+00:00"
+            "time": "2021-04-05T22:24:16+00:00"
         },
         {
             "name": "phpspec/prophecy",
