@@ -3,8 +3,8 @@
 namespace Tests\Unit;
 
 use Carbon\Carbon;
+use Illuminate\Support\Collection;
 use Tests\TestCase;
-use TruckersMP\APIClient\Collections\BanCollection;
 use TruckersMP\APIClient\Models\Ban;
 
 class BanTest extends TestCase
@@ -19,7 +19,7 @@ class BanTest extends TestCase
     {
         $bans = $this->bans(self::TEST_ACCOUNT);
 
-        $this->assertInstanceOf(BanCollection::class, $bans);
+        $this->assertInstanceOf(Collection::class, $bans);
 
         if (count($bans) > 0) {
             $this->assertInstanceOf(Ban::class, $bans[0]);

@@ -3,8 +3,8 @@
 namespace Tests\Unit;
 
 use Carbon\Carbon;
+use Illuminate\Support\Collection;
 use Tests\TestCase;
-use TruckersMP\APIClient\Collections\BanCollection;
 use TruckersMP\APIClient\Models\Company;
 use TruckersMP\APIClient\Models\CompanyMember;
 use TruckersMP\APIClient\Models\CompanyRole;
@@ -210,11 +210,11 @@ class PlayerTest extends TestCase
     {
         $bans = $this->playerBans(self::TEST_ACCOUNT);
 
-        $this->assertInstanceOf(BanCollection::class, $bans);
+        $this->assertInstanceOf(Collection::class, $bans);
 
         $player = $this->player(self::TEST_ACCOUNT);
 
-        $this->assertInstanceOf(BanCollection::class, $player->getBans());
+        $this->assertInstanceOf(Collection::class, $player->getBans());
     }
 
     /** @test */

@@ -2,8 +2,8 @@
 
 namespace TruckersMP\APIClient\Requests\Company;
 
+use Illuminate\Support\Collection;
 use Psr\Http\Client\ClientExceptionInterface;
-use TruckersMP\APIClient\Collections\Company\PostCollection;
 use TruckersMP\APIClient\Exceptions\ApiErrorException;
 use TruckersMP\APIClient\Models\CompanyPost;
 use TruckersMP\APIClient\Requests\Request;
@@ -43,15 +43,14 @@ class PostIndexRequest extends Request
     /**
      * Get the data for the request.
      *
-     * @return PostCollection|CompanyPost[]
+     * @return Collection|CompanyPost[]
      *
      * @throws ApiErrorException
      * @throws ClientExceptionInterface
      */
-    public function get(): PostCollection
+    public function get(): Collection
     {
-        return new PostCollection(
-            $this->send()['response']
-        );
+        return (new Collection($this->send()['response']['news']))
+            ->mapInto(CompanyPost::class);
     }
 }

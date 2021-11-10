@@ -2,8 +2,8 @@
 
 namespace Tests\Unit;
 
+use Illuminate\Support\Collection;
 use Tests\TestCase;
-use TruckersMP\APIClient\Collections\Company\PostCollection;
 use TruckersMP\APIClient\Models\CompanyPost;
 
 class CompanyPostTest extends TestCase
@@ -23,7 +23,7 @@ class CompanyPostTest extends TestCase
     {
         $posts = $this->companyPosts(self::TEST_COMPANY);
 
-        $this->assertInstanceOf(PostCollection::class, $posts);
+        $this->assertInstanceOf(Collection::class, $posts);
 
         if ($posts->count() > 0) {
             $post = $posts[0];

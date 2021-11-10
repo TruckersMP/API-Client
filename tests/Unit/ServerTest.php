@@ -2,8 +2,8 @@
 
 namespace Tests\Unit;
 
+use Illuminate\Support\Collection;
 use Tests\TestCase;
-use TruckersMP\APIClient\Collections\ServerCollection;
 use TruckersMP\APIClient\Models\Server;
 
 class ServerTest extends TestCase
@@ -13,7 +13,7 @@ class ServerTest extends TestCase
     {
         $servers = $this->servers();
 
-        $this->assertInstanceOf(ServerCollection::class, $servers);
+        $this->assertInstanceOf(Collection::class, $servers);
 
         if ($servers->count() > 0) {
             $this->assertInstanceOf(Server::class, $servers[0]);

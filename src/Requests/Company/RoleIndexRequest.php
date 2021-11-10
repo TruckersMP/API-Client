@@ -3,9 +3,10 @@
 namespace TruckersMP\APIClient\Requests\Company;
 
 use Exception;
+use Illuminate\Support\Collection;
 use Psr\Http\Client\ClientExceptionInterface;
-use TruckersMP\APIClient\Collections\Company\RoleCollection;
 use TruckersMP\APIClient\Exceptions\ApiErrorException;
+use TruckersMP\APIClient\Models\CompanyRole;
 use TruckersMP\APIClient\Requests\Request;
 
 class RoleIndexRequest extends Request
@@ -43,16 +44,15 @@ class RoleIndexRequest extends Request
     /**
      * Get the data for the request.
      *
-     * @return RoleCollection
+     * @return Collection
      *
      * @throws Exception
      * @throws ApiErrorException
      * @throws ClientExceptionInterface
      */
-    public function get(): RoleCollection
+    public function get(): Collection
     {
-        return new RoleCollection(
-            $this->send()['response']
-        );
+        return (new Collection($this->send()['response']['roles']))
+            ->mapInto(CompanyRole::class);
     }
 }
