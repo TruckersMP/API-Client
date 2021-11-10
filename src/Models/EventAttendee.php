@@ -21,12 +21,11 @@ class EventAttendee
     protected $username;
 
     /**
-     * If the attendee is being followed.
-     * TODO: Check what this field means/does.
+     * If the attendee is following the event.
      *
      * @var bool
      */
-    protected $following;
+    protected $isFollowing;
 
     /**
      * The event attendee created at date.
@@ -52,7 +51,7 @@ class EventAttendee
     {
         $this->id = $attendee['id'];
         $this->username = $attendee['username'];
-        $this->following = $attendee['following'];
+        $this->isFollowing = $attendee['following'];
         $this->createdAt = new Carbon($attendee['created_at'], 'UTC');
         $this->updatedAt = new Carbon($attendee['updated_at'], 'UTC');
     }
@@ -78,11 +77,11 @@ class EventAttendee
     }
 
     /**
-     * Get the following status of the attendee.
+     * Get the event following status of the attendee.
      *
      * @return bool
      */
-    public function getFollowing(): bool
+    public function getIsFollowing(): bool
     {
         return $this->following;
     }
