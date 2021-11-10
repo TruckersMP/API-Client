@@ -14,7 +14,7 @@ class EventLocation
     /**
      * The event city.
      *
-     * @var string
+     * @var string|null
      */
     protected $city;
 
@@ -22,12 +22,12 @@ class EventLocation
      * Create a new EventLocation instance.
      *
      * @param string $location
-     * @param string $city
+     * @param string|null $city
      * @return void
      */
     public function __construct(
         string $location,
-        string $city
+        ?string $city
     )
     {
         $this->location = $location;
@@ -47,9 +47,9 @@ class EventLocation
     /**
      * Get the city.
      *
-     * @return string
+     * @return string|null
      */
-    public function getCity(): string
+    public function getCity(): ?string
     {
         return $this->city;
     }

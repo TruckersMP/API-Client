@@ -79,14 +79,14 @@ class Event
     /**
      * The event banner.
      *
-     * @var string
+     * @var string|null
      */
     protected $banner;
 
     /**
      * The event map.
      *
-     * @var string
+     * @var string|null
      */
     protected $map;
 
@@ -100,35 +100,35 @@ class Event
     /**
      * The event rule.
      *
-     * @var string
+     * @var string|null
      */
     protected $rule;
 
     /**
      * The event voice link.
      *
-     * @var string
+     * @var string|null
      */
     protected $voice_link;
 
     /**
      * The event external link.
      *
-     * @var string
+     * @var string|null
      */
     protected $external_link;
 
     /**
      * If the event is featured
      *
-     * @var string
+     * @var string|null
      */
     protected $featured;
 
     /**
      * Get the event company.
      *
-     * @var EventCompany
+     * @var EventCompany|null
      */
     protected $company;
 
@@ -338,9 +338,9 @@ class Event
     /**
      * Get the banner of the event.
      *
-     * @return string
+     * @return string|null
      */
-    public function getBanner(): string
+    public function getBanner(): ?string
     {
         return $this->banner;
     }
@@ -348,9 +348,9 @@ class Event
     /**
      * Get the map of the event.
      *
-     * @return string
+     * @return string|null
      */
-    public function getMap(): string
+    public function getMap(): ?string
     {
         return $this->map;
     }
@@ -368,9 +368,9 @@ class Event
     /**
      * Get the rule of the event.
      *
-     * @return string
+     * @return string|null
      */
-    public function getRule(): string
+    public function getRule(): ?string
     {
         return $this->rule;
     }
@@ -378,9 +378,9 @@ class Event
     /**
      * Get the voice link of the event.
      *
-     * @return string
+     * @return string|null
      */
-    public function getVoiceLink(): string
+    public function getVoiceLink(): ?string
     {
         return $this->voice_link;
     }
@@ -388,9 +388,9 @@ class Event
     /**
      * Get the external link of the event.
      *
-     * @return string
+     * @return string|null
      */
-    public function getExternalLink(): string
+    public function getExternalLink(): ?string
     {
         return $this->external_link;
     }
@@ -398,9 +398,9 @@ class Event
     /**
      * Get the featured status of the event.
      *
-     * @return string
+     * @return string|null
      */
-    public function getFeatured(): string
+    public function getFeatured(): ?string
     {
         return $this->featured;
     }
@@ -408,9 +408,9 @@ class Event
     /**
      * Get the company of the event.
      *
-     * @return EventCompany
+     * @return EventCompany|null
      */
-    public function getCompany(): EventCompany
+    public function getCompany(): ?EventCompany
     {
         return $this->company;
     }
