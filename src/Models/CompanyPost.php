@@ -2,6 +2,8 @@
 
 namespace TruckersMP\APIClient\Models;
 
+use Carbon\Carbon;
+
 class CompanyPost
 {
     /**
@@ -54,6 +56,20 @@ class CompanyPost
     protected $pinned;
 
     /**
+     * The date at which the post was last updated at.
+     *
+     * @var Carbon
+     */
+    protected $updatedAt;
+
+    /**
+     * The date at which the post was published.
+     *
+     * @var Carbon
+     */
+    protected $publishedAt;
+
+    /**
      * Create a new Post instance.
      *
      * @param  array  $post
@@ -72,6 +88,8 @@ class CompanyPost
         $this->authorId = $post['author_id'];
         $this->author = $post['author'];
         $this->pinned = $post['pinned'];
+        $this->updatedAt = new Carbon($post['updated_at'], 'UTC');
+        $this->publishedAt = new Carbon($post['published_at'], 'UTC');
     }
 
     /**
@@ -142,5 +160,25 @@ class CompanyPost
     public function isPinned(): bool
     {
         return $this->pinned;
+    }
+
+    /**
+     * Get the date which the post was last updated at.
+     *
+     * @return Carbon
+     */
+    public function getUpdatedAt(): Carbon
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * Get the date which the post was published.
+     *
+     * @return Carbon
+     */
+    public function getPublishedAt(): Carbon
+    {
+        return $this->publishedAt;
     }
 }
