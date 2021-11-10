@@ -23,14 +23,14 @@ class EventAttendance
     /**
      * The confirmed users.
      *
-     * @var EventAttendeeCollection
+     * @var EventAttendeeCollection|null
      */
     protected $confirmed_users;
 
     /**
      * The unsure users.
      *
-     * @var EventAttendeeCollection
+     * @var EventAttendeeCollection|null
      */
     protected $unsure_users;
 
@@ -39,21 +39,25 @@ class EventAttendance
      *
      * @param int $confirmed
      * @param int $unsure
-     * @param array $confirmed_users
-     * @param array $unsure_users
+     * @param array|null $confirmed_users
+     * @param array|null $unsure_users
      * @return void
      */
     public function __construct(
         int $confirmed,
         int $unsure,
-        array $confirmed_users,
-        array $unsure_users
+        ?array $confirmed_users,
+        ?array $unsure_users
     )
     {
         $this->confirmed = $confirmed;
         $this->unsure = $unsure;
-        $this->confirmed_users = new EventAttendeeCollection($confirmed_users);
-        $this->unsure_users = new EventAttendeeCollection($unsure_users);
+        if (isset($confirmed_users)) {
+            $this->confirmed_users = new EventAttendeeCollection($confirmed_users);
+        }
+        if (isset($unsure_users)) {
+            $this->unsure_users = new EventAttendeeCollection($unsure_users);
+        }
     }
 
     /**
@@ -79,9 +83,9 @@ class EventAttendance
     /**
      * Get the confirmed attendees.
      *
-     * @return EventAttendeeCollection
+     * @return EventAttendeeCollection|null
      */
-    public function getConfirmedUsers(): EventAttendeeCollection
+    public function getConfirmedUsers(): ?EventAttendeeCollection
     {
         return $this->confirmed_users;
     }
@@ -89,9 +93,9 @@ class EventAttendance
     /**
      * Get the unsure attendees.
      *
-     * @return EventAttendeeCollection
+     * @return EventAttendeeCollection|null
      */
-    public function getUnsureUsers(): EventAttendeeCollection
+    public function getUnsureUsers(): ?EventAttendeeCollection
     {
         return $this->unsure_users;
     }

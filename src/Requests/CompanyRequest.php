@@ -5,6 +5,8 @@ namespace TruckersMP\APIClient\Requests;
 use Psr\Http\Client\ClientExceptionInterface;
 use TruckersMP\APIClient\Exceptions\ApiErrorException;
 use TruckersMP\APIClient\Models\Company;
+use TruckersMP\APIClient\Requests\Company\EventIndexRequest;
+use TruckersMP\APIClient\Requests\Company\EventRequest;
 use TruckersMP\APIClient\Requests\Company\MemberIndexRequest;
 use TruckersMP\APIClient\Requests\Company\MemberRequest;
 use TruckersMP\APIClient\Requests\Company\PostIndexRequest;
@@ -132,6 +134,32 @@ class CompanyRequest extends Request
     public function member(int $id): MemberRequest
     {
         return new MemberRequest(
+            $this->id,
+            $id
+        );
+    }
+
+    /**
+     * Get the events for the company.
+     *
+     * @return EventIndexRequest
+     */
+    public function events(): EventIndexRequest
+    {
+        return new EventIndexRequest(
+            $this->id
+        );
+    }
+
+    /**
+     * Get the event for the company with the specified ID.
+     *
+     * @param  int  $id
+     * @return EventRequest
+     */
+    public function event(int $id): EventRequest
+    {
+        return new EventRequest(
             $this->id,
             $id
         );
