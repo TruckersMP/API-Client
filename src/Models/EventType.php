@@ -28,8 +28,7 @@ class EventType
     public function __construct(
         string $key,
         string $name
-    )
-    {
+    ) {
         $this->key = $key;
         $this->name = $name;
     }

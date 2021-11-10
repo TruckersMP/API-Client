@@ -48,8 +48,7 @@ class EventAttendance
         int $unsure,
         ?array $confirmed_users,
         ?array $unsure_users
-    )
-    {
+    ) {
         $this->confirmed = $confirmed;
         $this->unsure = $unsure;
         if (isset($confirmed_users)) {

@@ -28,8 +28,7 @@ class EventLocation
     public function __construct(
         string $location,
         ?string $city
-    )
-    {
+    ) {
         $this->location = $location;
         $this->city = $city;
     }
