@@ -149,5 +149,4 @@ class CompanyRequest extends Request
             $this->id
         );
     }
-
 }
