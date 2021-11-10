@@ -16,8 +16,8 @@ class EventCollection extends Collection
     {
         parent::__construct();
 
-        foreach ($response as $key => $post) {
-            $this->items[$key] = new Event($post);
+        foreach ($response as $key => $event) {
+            $this->items[$key] = new Event($event);
         }
     }
 }
