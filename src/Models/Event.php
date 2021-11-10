@@ -3,6 +3,7 @@
 namespace TruckersMP\APIClient\Models;
 
 use Carbon\Carbon;
+use TruckersMP\APIClient\Collections\DlcCollection;
 
 class Event
 {
@@ -126,25 +127,32 @@ class Event
     protected $featured;
 
     /**
-     * Get the event company.
+     * The event company.
      *
      * @var EventCompany|null
      */
     protected $company;
 
     /**
-     * Get the event organizer.
+     * The event organizer.
      *
      * @var EventOrganizer
      */
     protected $organizer;
 
     /**
-     * Get the event attendance.
+     * The event attendance.
      *
      * @var EventAttendance
      */
     protected $attendance;
+
+    /**
+     * The required event DLCs.
+     *
+     * @var DlcCollection|null
+     */
+    protected $dlcs;
 
     /**
      * The event url.
@@ -232,6 +240,8 @@ class Event
             $event['attendances']['confirmed_users'] ?? null,
             $event['attendances']['unsure_users'] ?? null
         );
+
+        $this->dlcs = new DlcCollection($event['dlcs']);
 
         $this->created_at = new Carbon($event['created_at'], 'UTC');
         $this->updated_at = new Carbon($event['updated_at'], 'UTC');
@@ -435,6 +445,16 @@ class Event
     public function getAttendance(): EventAttendance
     {
         return $this->attendance;
+    }
+
+    /**
+     * Get the required DLCs of the event.
+     *
+     * @return DlcCollection|null
+     */
+    public function getDlcs(): ?DlcCollection
+    {
+        return $this->dlcs;
     }
 
     /**
