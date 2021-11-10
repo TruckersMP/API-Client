@@ -18,7 +18,7 @@ If you want to use the API without the library, check out the [API Documentation
 
 ## Requirements
 
-- PHP 7.3 or later
+- PHP 7.4 or later
 - Composer
 
 ## Composer
