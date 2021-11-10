@@ -7,42 +7,42 @@ use Carbon\Carbon;
 class CompanyMember
 {
     /**
-     * The players member id within the company.
+     * The player's member id within the company.
      *
      * @var int
      */
     protected $id;
 
     /**
-     * The players account id.
+     * The player's account id.
      *
      * @var int
      */
     protected $userId;
 
     /**
-     * The players username.
+     * The player's username.
      *
      * @var string
      */
     protected $username;
 
     /**
-     * The players steam id.
+     * The player's steam id.
      *
      * @var string
      */
     protected $steamId;
 
     /**
-     * The players role id within the company.
+     * The player's role id within the company.
      *
      * @var int
      */
     protected $roleId;
 
     /**
-     * The players role within the company.
+     * The player's role within the company.
      *
      * @var string
      */
@@ -123,7 +123,7 @@ class CompanyMember
     }
 
     /**
-     * Get the name of members role.
+     * Get the name of member's role.
      *
      * @return string
      */

@@ -70,7 +70,7 @@ class Player
     protected $groupName;
 
     /**
-     * The hex color of the players groups.
+     * The hex color of the player's groups.
      *
      * @var string
      */
@@ -98,7 +98,7 @@ class Player
     protected $displayBans;
 
     /**
-     * Get the players patreon information.
+     * Get the player's patreon information.
      *
      * @var Patreon
      */
@@ -126,21 +126,21 @@ class Player
     protected $inGameAdmin;
 
     /**
-     * The players company ID.
+     * The player's company ID.
      *
      * @var int
      */
     protected $companyId;
 
     /**
-     * The players company name.
+     * The player's company name.
      *
      * @var string
      */
     protected $companyName;
 
     /**
-     * The players company tag.
+     * The player's company tag.
      *
      * @var string
      */
@@ -154,14 +154,14 @@ class Player
     protected $isInCompany;
 
     /**
-     * The players company member id.
+     * The player's company member id.
      *
      * @var int
      */
     protected $companyMemberId;
 
     /**
-     * The players Discord Snowflake.
+     * The player's Discord Snowflake.
      *
      * @var string|null
      */
@@ -211,7 +211,7 @@ class Player
     }
 
     /**
-     * Get the players ID.
+     * Get the player's ID.
      *
      * @return int
      */
@@ -231,7 +231,7 @@ class Player
     }
 
     /**
-     * Get the URL of the players avatar.
+     * Get the URL of the player's avatar.
      *
      * @return string
      */
@@ -241,7 +241,7 @@ class Player
     }
 
     /**
-     * Get the URL of the players small avatar.
+     * Get the URL of the player's small avatar.
      *
      * @return string
      */
@@ -261,7 +261,7 @@ class Player
     }
 
     /**
-     * Get the players Steam ID.
+     * Get the player's Steam ID.
      *
      * @return string
      */
@@ -271,7 +271,7 @@ class Player
     }
 
     /**
-     * Get the players group ID.
+     * Get the player's group ID.
      *
      * @return int
      */
@@ -281,7 +281,7 @@ class Player
     }
 
     /**
-     * Get the name of the players group.
+     * Get the name of the player's group.
      *
      * @return string
      */
@@ -291,7 +291,7 @@ class Player
     }
 
     /**
-     * Get the players group color.
+     * Get the player's group color.
      *
      * @return string
      */
@@ -331,7 +331,7 @@ class Player
     }
 
     /**
-     * Get the players patreon information.
+     * Get the player's patreon information.
      *
      * @return Patreon
      */
@@ -371,7 +371,7 @@ class Player
     }
 
     /**
-     * Get the players company ID.
+     * Get the player's company ID.
      *
      * @return int
      */
@@ -381,7 +381,7 @@ class Player
     }
 
     /**
-     * Get the name of the players company.
+     * Get the name of the player's company.
      *
      * @return string
      */
@@ -391,7 +391,7 @@ class Player
     }
 
     /**
-     * Get the tag of the players company.
+     * Get the tag of the player's company.
      *
      * @return string
      */
@@ -411,7 +411,7 @@ class Player
     }
 
     /**
-     * Get the players company member ID.
+     * Get the player's company member ID.
      *
      * @return int
      */
@@ -421,7 +421,7 @@ class Player
     }
 
     /**
-     * Get the players Discord Snowflake.
+     * Get the player's Discord Snowflake.
      *
      * @return string|null
      */
@@ -431,7 +431,7 @@ class Player
     }
 
     /**
-     * Get the players bans.
+     * Get the player's bans.
      *
      * @return BanCollection
      *
@@ -444,7 +444,7 @@ class Player
     }
 
     /**
-     * Get the players company.
+     * Get the player's company.
      *
      * @return Company|null
      *
@@ -482,7 +482,7 @@ class Player
     }
 
     /**
-     * Get the CompanyRole instance for the players company role.
+     * Get the CompanyRole instance for the player's company role.
      *
      * @return CompanyRole|null
      *
