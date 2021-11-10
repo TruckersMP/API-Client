@@ -7,7 +7,7 @@ use Carbon\Carbon;
 class CompanyBan
 {
     /**
-     * The ID of the ban.
+     * The player's member ID within the company.
      *
      * @var int
      */
@@ -35,14 +35,14 @@ class CompanyBan
     protected $steamId;
 
     /**
-     * The role ID of the user.
+     * The player's role ID within the company.
      *
      * @var int
      */
     protected $roleId;
 
     /**
-     * The role name of the user.
+     * The player's role name within the company.
      *
      * @var string
      */
@@ -73,7 +73,7 @@ class CompanyBan
     }
 
     /**
-     * Get the ID of the ban.
+     * Get the player's member ID within the company.
      *
      * @return int
      */
@@ -113,7 +113,7 @@ class CompanyBan
     }
 
     /**
-     * Get the ID of the member's role.
+     * Get the ID of the member's role within the company.
      *
      * @return int
      */
@@ -123,7 +123,7 @@ class CompanyBan
     }
 
     /**
-     * Get the name of the member's role.
+     * Get the name of the member's role within the company.
      *
      * @return string
      */
