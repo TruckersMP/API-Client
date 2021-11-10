@@ -36,7 +36,7 @@ class CompanyTest extends TestCase
     }
 
     /** @test */
-    public function it_can_get_the_fetured_companies()
+    public function it_can_get_the_featured_companies()
     {
         $companies = $this->companies()->getFeatured();
 

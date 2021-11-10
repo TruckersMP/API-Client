@@ -19,7 +19,7 @@ class CompanyPost
     protected $title;
 
     /**
-     * A summery of the post content.
+     * A summary of the post content.
      *
      * @var string
      */
@@ -135,7 +135,7 @@ class CompanyPost
     }
 
     /**
-     * Check if the post is pinned on the companies page.
+     * Check if the post is pinned on the company's page.
      *
      * @return bool
      */

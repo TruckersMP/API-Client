@@ -196,7 +196,7 @@ class PlayerTest extends TestCase
         $player = $this->player(self::TEST_ACCOUNT);
 
         // We have to check if the Discord Snowflake is null first and then
-        // run a test to assert the value is null. Otherwise the test would
+        // run a test to assert the value is null. Otherwise, the test would
         // fail because no tests would have run.
         if ($player->getDiscordSnowflake() === null) {
             $this->assertNull($player->getDiscordSnowflake());
