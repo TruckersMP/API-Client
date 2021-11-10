@@ -69,9 +69,9 @@ class EventAttendance
     /**
      * Get the unsure attendee count.
      *
-     * @return string
+     * @return int
      */
-    public function getUnsure(): string
+    public function getUnsure(): int
     {
         return $this->unsure;
     }
