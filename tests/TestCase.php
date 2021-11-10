@@ -17,12 +17,14 @@ use Psr\Http\Client\ClientExceptionInterface;
 use ReflectionException;
 use TruckersMP\APIClient\Client;
 use TruckersMP\APIClient\Collections\BanCollection;
+use TruckersMP\APIClient\Collections\Company\BanCollection as CompanyBanCollection;
 use TruckersMP\APIClient\Collections\Company\PostCollection;
 use TruckersMP\APIClient\Collections\Company\RoleCollection;
 use TruckersMP\APIClient\Collections\ServerCollection;
 use TruckersMP\APIClient\Exceptions\ApiErrorException;
 use TruckersMP\APIClient\Models\Ban;
 use TruckersMP\APIClient\Models\Company;
+use TruckersMP\APIClient\Models\CompanyBan;
 use TruckersMP\APIClient\Models\CompanyIndex;
 use TruckersMP\APIClient\Models\CompanyMember;
 use TruckersMP\APIClient\Models\CompanyMemberIndex;
@@ -402,6 +404,30 @@ class TestCase extends BaseTestCase
         }
 
         return $cachedMember->get();
+    }
+
+    /**
+     * Get the banned members for the specified company.
+     *
+     * @param  int  $id
+     *
+     * @return CompanyBanCollection|CompanyBan[]
+     *
+     * @throws PhpfastcacheInvalidArgumentException
+     * @throws ApiErrorException
+     * @throws ClientExceptionInterface
+     * @throws InvalidArgumentException
+     */
+    public function companyBans(int $id): CompanyBanCollection
+    {
+        $cachedCompanyBans = self::$cache->getItem('company_bans_' . $id);
+
+        if (!$cachedCompanyBans->isHit()) {
+            $cachedCompanyBans->set($this->client->company($id)->bans()->get())->expiresAfter(self::CACHE_SECONDS);
+            self::$cache->save($cachedCompanyBans);
+        }
+
+        return $cachedCompanyBans->get();
     }
 
     /**

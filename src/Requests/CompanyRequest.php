@@ -5,6 +5,7 @@ namespace TruckersMP\APIClient\Requests;
 use Psr\Http\Client\ClientExceptionInterface;
 use TruckersMP\APIClient\Exceptions\ApiErrorException;
 use TruckersMP\APIClient\Models\Company;
+use TruckersMP\APIClient\Requests\Company\BanIndexRequest;
 use TruckersMP\APIClient\Requests\Company\MemberIndexRequest;
 use TruckersMP\APIClient\Requests\Company\MemberRequest;
 use TruckersMP\APIClient\Requests\Company\PostIndexRequest;
@@ -136,4 +137,17 @@ class CompanyRequest extends Request
             $id
         );
     }
+
+    /**
+     * Get the banned members in the company.
+     *
+     * @return BanIndexRequest
+     */
+    public function bans(): BanIndexRequest
+    {
+        return new BanIndexRequest(
+            $this->id
+        );
+    }
+
 }
