@@ -15,7 +15,7 @@ class Event
     protected $id;
 
     /**
-     * Get the event type.
+     * The event type.
      *
      * @var EventType
      */
@@ -43,7 +43,7 @@ class Event
     protected $game;
 
     /**
-     * Get the event server.
+     * The event server.
      *
      * @var EventServer
      */
@@ -57,14 +57,14 @@ class Event
     protected $language;
 
     /**
-     * Get the event departure location.
+     * The event departure location.
      *
      * @var EventLocation
      */
     protected $departure;
 
     /**
-     * Get the event arrival location.
+     * The event arrival location.
      *
      * @var EventLocation
      */
@@ -120,7 +120,7 @@ class Event
     protected $externalLink;
 
     /**
-     * If the event is featured
+     * The event featured status
      *
      * @var string|null
      */

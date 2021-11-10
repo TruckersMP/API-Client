@@ -24,7 +24,7 @@ class EventRequest extends Request
     protected $eventId;
 
     /**
-     * Create a new MemberRequest instance.
+     * Create a new EventRequest instance.
      *
      * @param int $companyId
      * @param int $eventId
