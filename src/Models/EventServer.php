@@ -21,8 +21,8 @@ class EventServer
     /**
      * Create a new EventServer instance.
      *
-     * @param int $id
-     * @param string $name
+     * @param  int  $id
+     * @param  string  $name
      * @return void
      */
     public function __construct(

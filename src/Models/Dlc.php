@@ -21,8 +21,8 @@ class Dlc
     /**
      * Create a new Dlc instance.
      *
-     * @param int $id
-     * @param string $name
+     * @param  int  $id
+     * @param  string  $name
      * @return void
      */
     public function __construct(

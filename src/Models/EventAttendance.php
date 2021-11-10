@@ -37,10 +37,10 @@ class EventAttendance
     /**
      * Create a new EventAttendance instance.
      *
-     * @param int $confirmed
-     * @param int $unsure
-     * @param array|null $confirmedUsers
-     * @param array|null $unsureUsers
+     * @param  int  $confirmed
+     * @param  int  $unsure
+     * @param  array|null  $confirmedUsers
+     * @param  array|null  $unsureUsers
      * @return void
      */
     public function __construct(

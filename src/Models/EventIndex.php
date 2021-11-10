@@ -30,7 +30,7 @@ class EventIndex
     /**
      * Create a new EventIndex instance.
      *
-     * @param array $response
+     * @param  array  $response
      * @return void
      */
     public function __construct(array $response)

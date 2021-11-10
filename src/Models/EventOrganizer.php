@@ -21,8 +21,8 @@ class EventOrganizer
     /**
      * Create a new EventOrganizer instance.
      *
-     * @param int $id
-     * @param string $username
+     * @param  int  $id
+     * @param  string  $username
      * @return void
      */
     public function __construct(

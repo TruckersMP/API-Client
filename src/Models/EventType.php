@@ -21,8 +21,8 @@ class EventType
     /**
      * Create a new EventType instance.
      *
-     * @param string $key
-     * @param string $name
+     * @param  string  $key
+     * @param  string  $name
      * @return void
      */
     public function __construct(

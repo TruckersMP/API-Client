@@ -21,8 +21,8 @@ class EventCompany
     /**
      * Create a new EventCompany instance.
      *
-     * @param int $id
-     * @param string $name
+     * @param  int  $id
+     * @param  string  $name
      * @return void
      */
     public function __construct(

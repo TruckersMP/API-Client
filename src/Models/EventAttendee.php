@@ -44,7 +44,7 @@ class EventAttendee
     /**
      * Create a new EventAttendee instance.
      *
-     * @param array $attendee
+     * @param  array  $attendee
      * @return void
      */
     public function __construct(array $attendee)

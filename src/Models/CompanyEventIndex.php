@@ -16,7 +16,7 @@ class CompanyEventIndex
     /**
      * Create a new CompanyEventIndex instance.
      *
-     * @param array $response
+     * @param  array  $response
      * @return void
      */
     public function __construct(array $response)

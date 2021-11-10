@@ -21,8 +21,8 @@ class EventLocation
     /**
      * Create a new EventLocation instance.
      *
-     * @param string $location
-     * @param string|null $city
+     * @param  string  $location
+     * @param  string|null  $city
      * @return void
      */
     public function __construct(
