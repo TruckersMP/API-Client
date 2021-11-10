@@ -17,17 +17,17 @@ class CompanyRequest extends Request
     /**
      * The ID of the requested company.
      *
-     * @var int
+     * @var string|int
      */
     protected $id;
 
     /**
      * Create a new CompanyRequest instance.
      *
-     * @param  int  $id
+     * @param  string|int  $id
      * @return void
      */
-    public function __construct(int $id)
+    public function __construct(string $id)
     {
         parent::__construct();
 

@@ -98,10 +98,10 @@ class Client
      *
      * https://stats.truckersmp.com/api#vtc_info
      *
-     * @param  int  $id
+     * @param  string|int  $id
      * @return CompanyRequest
      */
-    public function company(int $id): CompanyRequest
+    public function company(string $id): CompanyRequest
     {
         return new CompanyRequest($id);
     }

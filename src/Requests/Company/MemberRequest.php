@@ -12,7 +12,7 @@ class MemberRequest extends Request
     /**
      * The ID of the requested company.
      *
-     * @var int
+     * @var string|int
      */
     protected $companyId;
 
@@ -26,11 +26,11 @@ class MemberRequest extends Request
     /**
      * Create a new MemberRequest instance.
      *
-     * @param  int  $companyId
+     * @param  string|int  $companyId
      * @param  int  $memberId
      * @return void
      */
-    public function __construct(int $companyId, int $memberId)
+    public function __construct(string $companyId, int $memberId)
     {
         parent::__construct();
 

@@ -224,7 +224,7 @@ class TestCase extends BaseTestCase
     /**
      * Get or cache the company with the specified id.
      *
-     * @param  int  $id
+     * @param  string|int  $id
      *
      * @return Company
      *
@@ -233,7 +233,7 @@ class TestCase extends BaseTestCase
      * @throws ClientExceptionInterface
      * @throws InvalidArgumentException
      */
-    public function company(int $id): Company
+    public function company(string $id): Company
     {
         $cachedCompany = self::$cache->getItem('company_' . $id);
 

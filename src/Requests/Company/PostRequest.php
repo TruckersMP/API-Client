@@ -12,7 +12,7 @@ class PostRequest extends Request
     /**
      * The ID of the requested company.
      *
-     * @var int
+     * @var string|int
      */
     protected $companyId;
 
@@ -26,11 +26,11 @@ class PostRequest extends Request
     /**
      * Create a new PostRequest instance.
      *
-     * @param  int  $companyId
+     * @param  string|int  $companyId
      * @param  int  $postId
      * @return void
      */
-    public function __construct(int $companyId, int $postId)
+    public function __construct(string $companyId, int $postId)
     {
         parent::__construct();
 

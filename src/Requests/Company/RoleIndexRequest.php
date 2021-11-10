@@ -13,17 +13,17 @@ class RoleIndexRequest extends Request
     /**
      * The ID of the requested company.
      *
-     * @var int
+     * @var string|int
      */
     protected $companyId;
 
     /**
      * Create a new RoleIndexRequest instance.
      *
-     * @param  int  $companyId
+     * @param  string|int  $companyId
      * @return void
      */
-    public function __construct(int $companyId)
+    public function __construct(string $companyId)
     {
         parent::__construct();
 
