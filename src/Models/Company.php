@@ -91,7 +91,7 @@ class Company
     /**
      * Get the companies website.
      *
-     * @var string
+     * @var string|null
      */
     protected $website;
 
@@ -322,9 +322,9 @@ class Company
     /**
      * Get the companies website URL.
      *
-     * @return string
+     * @return string|null
      */
-    public function getWebsite(): string
+    public function getWebsite(): ?string
     {
         return $this->website;
     }
