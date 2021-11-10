@@ -228,7 +228,9 @@ class Event
 
         $this->attendance = new EventAttendance(
             $event['attendances']['confirmed'],
-            $event['attendances']['unsure']
+            $event['attendances']['unsure'],
+            $event['attendances']['confirmed_users'],
+            $event['attendances']['unsure_users']
         );
 
         $this->created_at = new Carbon($event['created_at'], 'UTC');
