@@ -25,37 +25,37 @@ class EventAttendance
      *
      * @var EventAttendeeCollection|null
      */
-    protected $confirmed_users;
+    protected $confirmedUsers;
 
     /**
      * The unsure users.
      *
      * @var EventAttendeeCollection|null
      */
-    protected $unsure_users;
+    protected $unsureUsers;
 
     /**
      * Create a new EventAttendance instance.
      *
      * @param int $confirmed
      * @param int $unsure
-     * @param array|null $confirmed_users
-     * @param array|null $unsure_users
+     * @param array|null $confirmedUsers
+     * @param array|null $unsureUsers
      * @return void
      */
     public function __construct(
         int $confirmed,
         int $unsure,
-        ?array $confirmed_users,
-        ?array $unsure_users
+        ?array $confirmedUsers,
+        ?array $unsureUsers
     ) {
         $this->confirmed = $confirmed;
         $this->unsure = $unsure;
-        if (isset($confirmed_users)) {
-            $this->confirmed_users = new EventAttendeeCollection($confirmed_users);
+        if (isset($confirmedUsers)) {
+            $this->confirmedUsers = new EventAttendeeCollection($confirmedUsers);
         }
-        if (isset($unsure_users)) {
-            $this->unsure_users = new EventAttendeeCollection($unsure_users);
+        if (isset($unsureUsers)) {
+            $this->unsureUsers = new EventAttendeeCollection($unsureUsers);
         }
     }
 
@@ -86,7 +86,7 @@ class EventAttendance
      */
     public function getConfirmedUsers(): ?EventAttendeeCollection
     {
-        return $this->confirmed_users;
+        return $this->confirmedUsers;
     }
 
     /**
@@ -96,6 +96,6 @@ class EventAttendance
      */
     public function getUnsureUsers(): ?EventAttendeeCollection
     {
-        return $this->unsure_users;
+        return $this->unsureUsers;
     }
 }

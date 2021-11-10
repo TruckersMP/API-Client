@@ -33,14 +33,14 @@ class EventAttendee
      *
      * @var Carbon
      */
-    protected $created_at;
+    protected $createdAt;
 
     /**
      * The event attendee updated at date.
      *
      * @var Carbon
      */
-    protected $updated_at;
+    protected $updatedAt;
 
     /**
      * Create a new EventAttendee instance.
@@ -53,8 +53,8 @@ class EventAttendee
         $this->id = $attendee['id'];
         $this->username = $attendee['username'];
         $this->following = $attendee['following'];
-        $this->created_at = new Carbon($attendee['created_at'], 'UTC');
-        $this->updated_at = new Carbon($attendee['updated_at'], 'UTC');
+        $this->createdAt = new Carbon($attendee['created_at'], 'UTC');
+        $this->updatedAt = new Carbon($attendee['updated_at'], 'UTC');
     }
 
     /**
@@ -94,7 +94,7 @@ class EventAttendee
      */
     public function getCreatedAt(): Carbon
     {
-        return $this->created_at;
+        return $this->createdAt;
     }
 
     /**
@@ -104,6 +104,6 @@ class EventAttendee
      */
     public function getUpdatedAt(): Carbon
     {
-        return $this->updated_at;
+        return $this->updatedAt;
     }
 }

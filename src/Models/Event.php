@@ -19,7 +19,7 @@ class Event
      *
      * @var EventType
      */
-    protected $event_type;
+    protected $eventType;
 
     /**
      * The event name.
@@ -75,7 +75,7 @@ class Event
      *
      * @var string
      */
-    protected $start_at;
+    protected $startAt;
 
     /**
      * The event banner.
@@ -110,14 +110,14 @@ class Event
      *
      * @var string|null
      */
-    protected $voice_link;
+    protected $voiceLink;
 
     /**
      * The event external link.
      *
      * @var string|null
      */
-    protected $external_link;
+    protected $externalLink;
 
     /**
      * If the event is featured
@@ -166,14 +166,14 @@ class Event
      *
      * @var Carbon
      */
-    protected $created_at;
+    protected $createdAt;
 
     /**
      * The event updated at date.
      *
      * @var Carbon
      */
-    protected $updated_at;
+    protected $updatedAt;
 
     /**
      * Create a new Event instance.
@@ -185,7 +185,7 @@ class Event
     {
         $this->id = $event['id'];
 
-        $this->event_type = new EventType(
+        $this->eventType = new EventType(
             $event['event_type']['key'],
             $event['event_type']['name']
         );
@@ -211,13 +211,13 @@ class Event
             $event['arrive']['city']
         );
 
-        $this->start_at = new Carbon($event['start_at'], 'UTC');
+        $this->startAt = new Carbon($event['start_at'], 'UTC');
         $this->banner = $event['banner'];
         $this->map = $event['map'];
         $this->description = $event['description'];
         $this->rule = $event['rule'];
-        $this->voice_link = $event['voice_link'];
-        $this->external_link = $event['external_link'];
+        $this->voiceLink = $event['voice_link'];
+        $this->externalLink = $event['external_link'];
         $this->featured = $event['featured'];
 
         if ($event['vtc']['id'] !== 0 && isset($event['vtc']['name'])) {
@@ -243,8 +243,8 @@ class Event
 
         $this->dlcs = new DlcCollection($event['dlcs']);
 
-        $this->created_at = new Carbon($event['created_at'], 'UTC');
-        $this->updated_at = new Carbon($event['updated_at'], 'UTC');
+        $this->createdAt = new Carbon($event['created_at'], 'UTC');
+        $this->updatedAt = new Carbon($event['updated_at'], 'UTC');
     }
 
     /**
@@ -264,7 +264,7 @@ class Event
      */
     public function getEventType(): EventType
     {
-        return $this->event_type;
+        return $this->eventType;
     }
 
     /**
@@ -344,7 +344,7 @@ class Event
      */
     public function getStartAt()
     {
-        return $this->start_at;
+        return $this->startAt;
     }
 
     /**
@@ -394,7 +394,7 @@ class Event
      */
     public function getVoiceLink(): ?string
     {
-        return $this->voice_link;
+        return $this->voiceLink;
     }
 
     /**
@@ -404,7 +404,7 @@ class Event
      */
     public function getExternalLink(): ?string
     {
-        return $this->external_link;
+        return $this->externalLink;
     }
 
     /**
@@ -474,7 +474,7 @@ class Event
      */
     public function getCreatedAt(): Carbon
     {
-        return $this->created_at;
+        return $this->createdAt;
     }
 
     /**
@@ -484,6 +484,6 @@ class Event
      */
     public function getUpdatedAt(): Carbon
     {
-        return $this->updated_at;
+        return $this->updatedAt;
     }
 }
