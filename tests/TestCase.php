@@ -23,6 +23,7 @@ use TruckersMP\APIClient\Collections\ServerCollection;
 use TruckersMP\APIClient\Exceptions\ApiErrorException;
 use TruckersMP\APIClient\Models\Ban;
 use TruckersMP\APIClient\Models\Company;
+use TruckersMP\APIClient\Models\CompanyEventIndex;
 use TruckersMP\APIClient\Models\CompanyIndex;
 use TruckersMP\APIClient\Models\CompanyMember;
 use TruckersMP\APIClient\Models\CompanyMemberIndex;
@@ -490,6 +491,61 @@ class TestCase extends BaseTestCase
 
         if (!$cachedEvent->isHit()) {
             $cachedEvent->set($this->client->event($id)->get())->expiresAfter(self::CACHE_SECONDS);
+            self::$cache->save($cachedEvent);
+        }
+
+        return $cachedEvent->get();
+    }
+
+    /**
+     * Get or cache the company events.
+     *
+     * @param  int  $companyId
+     *
+     * @return CompanyEventIndex
+     *
+     * @throws PhpfastcacheInvalidArgumentException
+     * @throws ApiErrorException
+     * @throws ClientExceptionInterface
+     * @throws InvalidArgumentException
+     */
+    public function companyEvents(int $companyId): CompanyEventIndex
+    {
+        $cachedEvents = self::$cache->getItem('company_events_' . $companyId);
+
+        if (!$cachedEvents->isHit()) {
+            $cachedEvents->set(
+                $this->client->company($companyId)->events()->get()
+            );
+
+            self::$cache->save($cachedEvents);
+        }
+
+        return $cachedEvents->get();
+    }
+
+    /**
+     * Get or cache the company event.
+     *
+     * @param  int  $companyId
+     * @param  int  $eventId
+     *
+     * @return Event
+     *
+     * @throws PhpfastcacheInvalidArgumentException
+     * @throws ApiErrorException
+     * @throws ClientExceptionInterface
+     * @throws InvalidArgumentException
+     */
+    public function companyEvent(int $companyId, int $eventId): Event
+    {
+        $cachedEvent = self::$cache->getItem('company_member_' . $eventId);
+
+        if (!$cachedEvent->isHit()) {
+            $cachedEvent->set(
+                $this->client->company($companyId)->event($eventId)->get()
+            )->expiresAfter(self::CACHE_SECONDS);
+
             self::$cache->save($cachedEvent);
         }
 
