@@ -25,7 +25,7 @@ class EventAttendee
      *
      * @var bool
      */
-    protected $isFollowing;
+    protected $following;
 
     /**
      * The event attendee created at date.
@@ -51,7 +51,7 @@ class EventAttendee
     {
         $this->id = $attendee['id'];
         $this->username = $attendee['username'];
-        $this->isFollowing = $attendee['following'];
+        $this->following = $attendee['following'];
         $this->createdAt = new Carbon($attendee['created_at'], 'UTC');
         $this->updatedAt = new Carbon($attendee['updated_at'], 'UTC');
     }
@@ -81,7 +81,7 @@ class EventAttendee
      *
      * @return bool
      */
-    public function getIsFollowing(): bool
+    public function following(): bool
     {
         return $this->following;
     }
