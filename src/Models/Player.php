@@ -91,6 +91,13 @@ class Player
     protected $bannedUntil;
 
     /**
+     * The number of active bans a user has or null if staff.
+     *
+     * @var int|null
+     */
+    protected $activeBanCount;
+
+    /**
      * If the user has their bans hidden.
      *
      * @var bool
@@ -186,6 +193,7 @@ class Player
         $this->groupColor = $player['groupColor'];
         $this->isBanned = $player['banned'];
         $this->bannedUntil = new Carbon($player['bannedUntil'], 'UTC');
+        $this->activeBanCount = $player['bansCount'];
         $this->displayBans = $player['displayBans'];
 
         $this->patreon = new Patreon(
@@ -318,6 +326,16 @@ class Player
     public function getBannedUntilDate(): ?Carbon
     {
         return $this->bannedUntil;
+    }
+
+    /**
+     * Get the player's number of active bans, or null if staff.
+     *
+     * @return int|null
+     */
+    public function getActiveBanCount(): ?int
+    {
+        return $this->activeBanCount;
     }
 
     /**
