@@ -111,6 +111,18 @@ class PlayerTest extends TestCase
     }
 
     /** @test */
+    public function it_has_an_active_ban_count()
+    {
+        $player = $this->player(self::TEST_ACCOUNT);
+
+        if ($player->isStaff()) {
+            $this->assertNull($player->getActiveBanCount());
+        } else {
+            $this->assertIsInt($player->getActiveBanCount());
+        }
+    }
+
+    /** @test */
     public function if_it_has_bans_hidden()
     {
         $player = $this->player(self::TEST_ACCOUNT);
