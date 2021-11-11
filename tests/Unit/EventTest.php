@@ -144,11 +144,7 @@ class EventTest extends TestCase
 
         $this->assertIsString($event->getDeparture()->getLocation());
 
-        if ($event->getDeparture()->getCity() !== null) {
-            $this->assertIsString($event->getDeparture()->getCity());
-        } else {
-            $this->assertNull($event->getDeparture()->getCity());
-        }
+        $this->assertIsString($event->getDeparture()->getCity());
     }
 
     /** @test */
@@ -160,11 +156,7 @@ class EventTest extends TestCase
 
         $this->assertIsString($event->getArrive()->getLocation());
 
-        if ($event->getArrive()->getCity() !== null) {
-            $this->assertIsString($event->getArrive()->getCity());
-        } else {
-            $this->assertNull($event->getArrive()->getCity());
-        }
+        $this->assertIsString($event->getArrive()->getCity());
     }
 
     /** @test */
