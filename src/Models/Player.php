@@ -91,7 +91,7 @@ class Player
     protected $bannedUntil;
 
     /**
-     * The number of active bans a user has or null if staff.
+     * The number of active bans a user has, or null if staff.
      *
      * @var int|null
      */
