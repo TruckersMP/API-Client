@@ -12,7 +12,7 @@
 ## Introduction
 
 The TruckersMP PHP library provides convenient access to the TruckersMP API for applications written in the PHP
-language. It includes a pre-defined set of classes for API each endpoint to get the data as a collection or model.
+language. It includes a pre-defined set of classes for each API endpoint to get the data as a collection or model.
 
 If you want to use the API without the library, check out the [API Documentation](https://stats.truckersmp.com/api).
 
