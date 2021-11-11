@@ -24,16 +24,16 @@ class GameTime
         $time['minutes'] = $gameTime['game_time'];
 
         $time['hours'] = $time['minutes'] / 60;
-        $time['minutes'] = $time['minutes'] % 60;
+        $time['minutes'] %= 60;
 
         $time['days'] = $time['hours'] / 24;
-        $time['hours'] = $time['hours'] % 24;
+        $time['hours'] %= 24;
 
         $time['months'] = $time['days'] / 30;
-        $time['days'] = $time['days'] % 30;
+        $time['days'] %= 30;
 
         $time['years'] = intval($time['months'] / 12);
-        $time['months'] = $time['months'] % 12;
+        $time['months'] %= 12;
 
         $this->time = Carbon::create(
             $time['years'],
