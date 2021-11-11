@@ -539,7 +539,7 @@ class TestCase extends BaseTestCase
      */
     public function companyEvent(int $companyId, int $eventId): Event
     {
-        $cachedEvent = self::$cache->getItem('company_member_' . $eventId);
+        $cachedEvent = self::$cache->getItem('company_event_' . $eventId);
 
         if (!$cachedEvent->isHit()) {
             $cachedEvent->set(
