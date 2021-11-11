@@ -21,7 +21,7 @@ class EventIndexRequest extends Request
     /**
      * Get the data for the request.
      *
-     * @return mixed
+     * @return EventIndex
      *
      * @throws ApiErrorException
      * @throws ClientExceptionInterface
