@@ -9,21 +9,21 @@ class EventIndex
     /**
      * The featured events.
      *
-     * @var EventCollection|null
+     * @var EventCollection
      */
     protected $featured;
 
     /**
      * Today's events.
      *
-     * @var EventCollection|null
+     * @var EventCollection
      */
     protected $today;
 
     /**
      * The upcoming events.
      *
-     * @var EventCollection|null
+     * @var EventCollection
      */
     protected $upcoming;
 
@@ -35,25 +35,19 @@ class EventIndex
      */
     public function __construct(array $response)
     {
-        if (array_key_exists('featured', $response)) {
-            $this->featured = new EventCollection($response['featured']);
-        }
+        $this->featured = new EventCollection($response['featured'] ?? []);
 
-        if (array_key_exists('today', $response)) {
-            $this->today = new EventCollection($response['today']);
-        }
+        $this->today = new EventCollection($response['today'] ?? []);
 
-        if (array_key_exists('upcoming', $response)) {
-            $this->upcoming = new EventCollection($response['upcoming']);
-        }
+        $this->upcoming = new EventCollection($response['upcoming'] ?? []);
     }
 
     /**
      * Get the featured events.
      *
-     * @return EventCollection|null
+     * @return EventCollection
      */
-    public function getFeatured(): ?EventCollection
+    public function getFeatured(): EventCollection
     {
         return $this->featured;
     }
@@ -61,9 +55,9 @@ class EventIndex
     /**
      * Get today's events.
      *
-     * @return EventCollection|null
+     * @return EventCollection
      */
-    public function getToday(): ?EventCollection
+    public function getToday(): EventCollection
     {
         return $this->today;
     }
@@ -71,9 +65,9 @@ class EventIndex
     /**
      * Get the upcoming events.
      *
-     * @return EventCollection|null
+     * @return EventCollection
      */
-    public function getUpcoming(): ?EventCollection
+    public function getUpcoming(): EventCollection
     {
         return $this->upcoming;
     }
