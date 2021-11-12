@@ -81,7 +81,7 @@ class EventAttendee
      *
      * @return bool
      */
-    public function following(): bool
+    public function isFollowing(): bool
     {
         return $this->following;
     }
