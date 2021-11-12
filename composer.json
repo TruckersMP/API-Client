@@ -39,6 +39,12 @@
             "email": "shawnczek@truckersmp.com",
             "homepage": "https://github.com/shawnczek",
             "role": "Maintainer"
+        },
+        {
+            "name": "Diego Relyveld",
+            "email": "me@diegor.nl",
+            "homepage": "https://github.com/iDiegoNL",
+            "role": "Contributor"
         }
     ],
     "require": {
