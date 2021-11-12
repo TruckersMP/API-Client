@@ -53,4 +53,16 @@ class MemberIndexRequest extends Request
             $this->send()['response']
         );
     }
+
+    /**
+     * Get the members within the company that are currently banned.
+     *
+     * @return BanIndexRequest
+     */
+    public function bans(): BanIndexRequest
+    {
+        return new BanIndexRequest(
+            $this->companyId
+        );
+    }
 }

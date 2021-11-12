@@ -407,7 +407,7 @@ class TestCase extends BaseTestCase
     }
 
     /**
-     * Get the banned members for the specified company.
+     * Get the members within the specified company that are currently banned.
      *
      * @param  int  $id
      *
@@ -423,7 +423,7 @@ class TestCase extends BaseTestCase
         $cachedCompanyBans = self::$cache->getItem('company_bans_' . $id);
 
         if (!$cachedCompanyBans->isHit()) {
-            $cachedCompanyBans->set($this->client->company($id)->bans()->get())->expiresAfter(self::CACHE_SECONDS);
+            $cachedCompanyBans->set($this->client->company($id)->members()->bans()->get())->expiresAfter(self::CACHE_SECONDS);
             self::$cache->save($cachedCompanyBans);
         }
 
