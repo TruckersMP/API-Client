@@ -19,14 +19,14 @@ class MemberIndexRequest extends Request
     /**
      * Create a new MemberIndexRequest instance.
      *
-     * @param  string|int  $id
+     * @param  string|int  $companyKey
      * @return void
      */
-    public function __construct(string $id)
+    public function __construct(string $companyKey)
     {
         parent::__construct();
 
-        $this->companyKey = $id;
+        $this->companyKey = $companyKey;
     }
 
     /**
