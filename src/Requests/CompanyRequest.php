@@ -15,23 +15,23 @@ use TruckersMP\APIClient\Requests\Company\RoleRequest;
 class CompanyRequest extends Request
 {
     /**
-     * The ID of the requested company.
+     * The ID or slug of the requested company.
      *
      * @var string|int
      */
-    protected $id;
+    protected $key;
 
     /**
      * Create a new CompanyRequest instance.
      *
-     * @param  string|int  $id
+     * @param  string|int  $key
      * @return void
      */
-    public function __construct(string $id)
+    public function __construct(string $key)
     {
         parent::__construct();
 
-        $this->id = $id;
+        $this->key = $key;
     }
 
     /**
@@ -41,7 +41,7 @@ class CompanyRequest extends Request
      */
     public function getEndpoint(): string
     {
-        return 'vtc/' . $this->id;
+        return 'vtc/' . $this->key;
     }
 
     /**
@@ -67,7 +67,7 @@ class CompanyRequest extends Request
     public function posts(): PostIndexRequest
     {
         return new PostIndexRequest(
-            $this->id
+            $this->key
         );
     }
 
@@ -80,7 +80,7 @@ class CompanyRequest extends Request
     public function post(int $id): PostRequest
     {
         return new PostRequest(
-            $this->id,
+            $this->key,
             $id
         );
     }
@@ -93,7 +93,7 @@ class CompanyRequest extends Request
     public function roles(): RoleIndexRequest
     {
         return new RoleIndexRequest(
-            $this->id
+            $this->key
         );
     }
 
@@ -106,7 +106,7 @@ class CompanyRequest extends Request
     public function role(int $id): RoleRequest
     {
         return new RoleRequest(
-            $this->id,
+            $this->key,
             $id
         );
     }
@@ -119,7 +119,7 @@ class CompanyRequest extends Request
     public function members(): MemberIndexRequest
     {
         return new MemberIndexRequest(
-            $this->id
+            $this->key
         );
     }
 
@@ -132,7 +132,7 @@ class CompanyRequest extends Request
     public function member(int $id): MemberRequest
     {
         return new MemberRequest(
-            $this->id,
+            $this->key,
             $id
         );
     }
