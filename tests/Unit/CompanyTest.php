@@ -17,6 +17,9 @@ class CompanyTest extends TestCase
      */
     private const TEST_COMPANY_ID = 1;
 
+    /**
+     * The slug of the validated/verified company to use in the tests.
+     */
     private const TEST_COMPANY_SLUG = 'phoenix';
 
     /** @test */

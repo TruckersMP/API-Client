@@ -147,7 +147,7 @@ class CompanyRequest extends Request
     public function events(): EventIndexRequest
     {
         return new EventIndexRequest(
-            $this->id
+            $this->key
         );
     }
 
@@ -160,7 +160,7 @@ class CompanyRequest extends Request
     public function event(int $id): EventRequest
     {
         return new EventRequest(
-            $this->id,
+            $this->key,
             $id
         );
     }
