@@ -66,7 +66,7 @@ enabled:
   - standardize_not_equals
   - switch_continue_to_break
   - trailing_comma_in_multiline_array
-  - trailing_comma_in_multiline_definition
+  # - trailing_comma_in_multiline_definition - available only for PHP 8.0 and newer
   - trim_array_spaces
   - unalign_equals
   - unary_operator_spaces
