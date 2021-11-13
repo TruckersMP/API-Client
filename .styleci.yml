@@ -1,4 +1,5 @@
 preset: psr12
+risky: true
 
 enabled:
   - align_phpdoc
