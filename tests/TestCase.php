@@ -225,9 +225,9 @@ class TestCase extends BaseTestCase
     }
 
     /**
-     * Get or cache the company with the specified id.
+     * Get or cache the company with the specified id or slug.
      *
-     * @param  int  $id
+     * @param  string|int  $key
      *
      * @return Company
      *
@@ -236,12 +236,12 @@ class TestCase extends BaseTestCase
      * @throws ClientExceptionInterface
      * @throws InvalidArgumentException
      */
-    public function company(int $id): Company
+    public function company(string $key): Company
     {
-        $cachedCompany = self::$cache->getItem('company_' . $id);
+        $cachedCompany = self::$cache->getItem('company_' . $key);
 
         if (!$cachedCompany->isHit()) {
-            $cachedCompany->set($this->client->company($id)->get())->expiresAfter(self::CACHE_SECONDS);
+            $cachedCompany->set($this->client->company($key)->get())->expiresAfter(self::CACHE_SECONDS);
             self::$cache->save($cachedCompany);
         }
 

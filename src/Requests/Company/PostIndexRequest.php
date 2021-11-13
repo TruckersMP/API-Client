@@ -11,23 +11,23 @@ use TruckersMP\APIClient\Requests\Request;
 class PostIndexRequest extends Request
 {
     /**
-     * The ID of the requested company.
+     * The ID or slug of the requested company.
      *
-     * @var int
+     * @var string|int
      */
-    protected $companyId;
+    protected $companyKey;
 
     /**
      * Create a new PostIndexRequest instance.
      *
-     * @param  int  $companyId
+     * @param  string|int  $companyKey
      * @return void
      */
-    public function __construct(int $companyId)
+    public function __construct(string $companyKey)
     {
         parent::__construct();
 
-        $this->companyId = $companyId;
+        $this->companyKey = $companyKey;
     }
 
     /**
@@ -37,7 +37,7 @@ class PostIndexRequest extends Request
      */
     public function getEndpoint(): string
     {
-        return 'vtc/' . $this->companyId . '/news';
+        return 'vtc/' . $this->companyKey . '/news';
     }
 
     /**

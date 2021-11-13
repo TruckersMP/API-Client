@@ -96,16 +96,16 @@ class Client
     }
 
     /**
-     * Get the information for the company with the specified ID.
+     * Get the information for the company with the specified ID or slug.
      *
      * https://stats.truckersmp.com/api#vtc_info
      *
-     * @param  int  $id
+     * @param  string|int  $key
      * @return CompanyRequest
      */
-    public function company(int $id): CompanyRequest
+    public function company(string $key): CompanyRequest
     {
-        return new CompanyRequest($id);
+        return new CompanyRequest($key);
     }
 
     /**
