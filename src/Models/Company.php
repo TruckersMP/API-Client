@@ -26,14 +26,14 @@ class Company
     protected $name;
 
     /**
-     * Get the owners ID.
+     * Get the owner's ID.
      *
      * @var int
      */
     protected $ownerId;
 
     /**
-     * Get the owners name.
+     * Get the owner's name.
      *
      * @var string
      */
@@ -54,14 +54,14 @@ class Company
     protected $tag;
 
     /**
-     * Get the companies logo image URL.
+     * Get the company's logo image URL.
      *
      * @var string
      */
     protected $logo;
 
     /**
-     * Get the companies cover image URL.
+     * Get the company's cover image URL.
      *
      * @var string
      */
@@ -89,14 +89,14 @@ class Company
     protected $requirements;
 
     /**
-     * Get the companies website.
+     * Get the company's website.
      *
      * @var string|null
      */
     protected $website;
 
     /**
-     * Get the companies social information.
+     * Get the company's social information.
      *
      * @var Social
      */
@@ -270,7 +270,7 @@ class Company
     }
 
     /**
-     * Get the URL to the companies logo.
+     * Get the URL to the company's logo.
      *
      * @return string
      */
@@ -280,7 +280,7 @@ class Company
     }
 
     /**
-     * Get the URL to the companies cover image.
+     * Get the URL to the company's cover image.
      *
      * @return string
      */
@@ -300,7 +300,7 @@ class Company
     }
 
     /**
-     * Get the companies rules.
+     * Get the company's rules.
      *
      * @return string
      */
@@ -310,7 +310,7 @@ class Company
     }
 
     /**
-     * Get the companies requirements.
+     * Get the company's requirements.
      *
      * @return string
      */
@@ -320,7 +320,7 @@ class Company
     }
 
     /**
-     * Get the companies website URL.
+     * Get the company's website URL.
      *
      * @return string|null
      */
@@ -330,7 +330,7 @@ class Company
     }
 
     /**
-     * Get the companies social information.
+     * Get the company's social information.
      *
      * @return Social
      */
@@ -360,7 +360,7 @@ class Company
     }
 
     /**
-     * Get the companies recruitment status i.e. Open or Closed.
+     * Get the company's recruitment status i.e. Open or Closed.
      *
      * @return string
      */
@@ -370,7 +370,7 @@ class Company
     }
 
     /**
-     * Get the companies primary language.
+     * Get the company's primary language.
      *
      * @return string
      */

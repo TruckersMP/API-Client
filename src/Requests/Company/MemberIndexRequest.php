@@ -10,23 +10,23 @@ use TruckersMP\APIClient\Requests\Request;
 class MemberIndexRequest extends Request
 {
     /**
-     * The ID of the requested company.
+     * The ID or slug of the requested company.
      *
-     * @var int
+     * @var string|int
      */
-    protected $companyId;
+    protected $companyKey;
 
     /**
      * Create a new MemberIndexRequest instance.
      *
-     * @param  int  $id
+     * @param  string|int  $companyKey
      * @return void
      */
-    public function __construct(int $id)
+    public function __construct(string $companyKey)
     {
         parent::__construct();
 
-        $this->companyId = $id;
+        $this->companyKey = $companyKey;
     }
 
     /**
@@ -36,7 +36,7 @@ class MemberIndexRequest extends Request
      */
     public function getEndpoint(): string
     {
-        return 'vtc/' . $this->companyId . '/members';
+        return 'vtc/' . $this->companyKey . '/members';
     }
 
     /**

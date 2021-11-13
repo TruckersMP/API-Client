@@ -15,7 +15,12 @@ class CompanyTest extends TestCase
     /**
      * The ID of the company to use in the tests.
      */
-    private const TEST_COMPANY = 1;
+    private const TEST_COMPANY_ID = 1;
+
+    /**
+     * The slug of the validated/verified company to use in the tests.
+     */
+    private const TEST_COMPANY_SLUG = 'phoenix';
 
     /** @test */
     public function it_can_get_all_the_companies()
@@ -36,7 +41,7 @@ class CompanyTest extends TestCase
     }
 
     /** @test */
-    public function it_can_get_the_fetured_companies()
+    public function it_can_get_the_featured_companies()
     {
         $companies = $this->companies()->getFeatured();
 
@@ -56,9 +61,17 @@ class CompanyTest extends TestCase
     }
 
     /** @test */
-    public function it_can_get_a_specific_company()
+    public function it_can_get_a_specific_company_with_id()
     {
-        $company = $this->company(self::TEST_COMPANY);
+        $company = $this->company(self::TEST_COMPANY_ID);
+
+        $this->assertInstanceOf(Company::class, $company);
+    }
+
+    /** @test */
+    public function it_can_get_a_specific_company_with_slug()
+    {
+        $company = $this->company(self::TEST_COMPANY_SLUG);
 
         $this->assertInstanceOf(Company::class, $company);
     }
@@ -66,7 +79,7 @@ class CompanyTest extends TestCase
     /** @test */
     public function it_has_an_id()
     {
-        $company = $this->company(self::TEST_COMPANY);
+        $company = $this->company(self::TEST_COMPANY_ID);
 
         $this->assertIsInt($company->getId());
     }
@@ -74,7 +87,7 @@ class CompanyTest extends TestCase
     /** @test */
     public function it_has_a_name()
     {
-        $company = $this->company(self::TEST_COMPANY);
+        $company = $this->company(self::TEST_COMPANY_ID);
 
         $this->assertIsString($company->getName());
     }
@@ -82,7 +95,7 @@ class CompanyTest extends TestCase
     /** @test */
     public function it_has_an_owner_id()
     {
-        $company = $this->company(self::TEST_COMPANY);
+        $company = $this->company(self::TEST_COMPANY_ID);
 
         $this->assertIsInt($company->getOwnerId());
     }
@@ -90,7 +103,7 @@ class CompanyTest extends TestCase
     /** @test */
     public function it_has_an_owner_name()
     {
-        $company = $this->company(self::TEST_COMPANY);
+        $company = $this->company(self::TEST_COMPANY_ID);
 
         $this->assertIsString($company->getOwnerName());
     }
@@ -98,7 +111,7 @@ class CompanyTest extends TestCase
     /** @test */
     public function it_has_a_slogan()
     {
-        $company = $this->company(self::TEST_COMPANY);
+        $company = $this->company(self::TEST_COMPANY_ID);
 
         $this->assertIsString($company->getSlogan());
     }
@@ -106,7 +119,7 @@ class CompanyTest extends TestCase
     /** @test */
     public function it_has_a_tag()
     {
-        $company = $this->company(self::TEST_COMPANY);
+        $company = $this->company(self::TEST_COMPANY_ID);
 
         $this->assertIsString($company->getTag());
     }
@@ -114,7 +127,7 @@ class CompanyTest extends TestCase
     /** @test */
     public function it_has_a_cover()
     {
-        $company = $this->company(self::TEST_COMPANY);
+        $company = $this->company(self::TEST_COMPANY_ID);
 
         $this->assertIsString($company->getCover());
     }
@@ -122,7 +135,7 @@ class CompanyTest extends TestCase
     /** @test */
     public function it_has_a_logo()
     {
-        $company = $this->company(self::TEST_COMPANY);
+        $company = $this->company(self::TEST_COMPANY_ID);
 
         $this->assertIsString($company->getLogo());
     }
@@ -130,7 +143,7 @@ class CompanyTest extends TestCase
     /** @test */
     public function it_has_information()
     {
-        $company = $this->company(self::TEST_COMPANY);
+        $company = $this->company(self::TEST_COMPANY_ID);
 
         $this->assertIsString($company->getInformation());
     }
@@ -138,7 +151,7 @@ class CompanyTest extends TestCase
     /** @test */
     public function it_has_rules()
     {
-        $company = $this->company(self::TEST_COMPANY);
+        $company = $this->company(self::TEST_COMPANY_ID);
 
         $this->assertIsString($company->getRules());
     }
@@ -146,7 +159,7 @@ class CompanyTest extends TestCase
     /** @test */
     public function it_has_requirements()
     {
-        $company = $this->company(self::TEST_COMPANY);
+        $company = $this->company(self::TEST_COMPANY_ID);
 
         $this->assertIsString($company->getRequirements());
     }
@@ -154,7 +167,7 @@ class CompanyTest extends TestCase
     /** @test */
     public function it_has_a_website()
     {
-        $company = $this->company(self::TEST_COMPANY);
+        $company = $this->company(self::TEST_COMPANY_ID);
 
         $this->assertIsString($company->getWebsite());
     }
@@ -162,7 +175,7 @@ class CompanyTest extends TestCase
     /** @test */
     public function it_has_social_media_information()
     {
-        $company = $this->company(self::TEST_COMPANY);
+        $company = $this->company(self::TEST_COMPANY_ID);
 
         $this->assertInstanceOf(Social::class, $company->getSocial());
 
@@ -195,7 +208,7 @@ class CompanyTest extends TestCase
     /** @test */
     public function it_has_supported_games()
     {
-        $company = $this->company(self::TEST_COMPANY);
+        $company = $this->company(self::TEST_COMPANY_ID);
 
         $this->assertInstanceOf(Game::class, $company->getGames());
 
@@ -206,7 +219,7 @@ class CompanyTest extends TestCase
     /** @test */
     public function it_has_a_member_count()
     {
-        $company = $this->company(self::TEST_COMPANY);
+        $company = $this->company(self::TEST_COMPANY_ID);
 
         $this->assertIsInt($company->getMembersCount());
     }
@@ -214,7 +227,7 @@ class CompanyTest extends TestCase
     /** @test */
     public function it_has_a_recruitment_state()
     {
-        $company = $this->company(self::TEST_COMPANY);
+        $company = $this->company(self::TEST_COMPANY_ID);
 
         $this->assertIsString($company->getRecruitment());
 
@@ -225,7 +238,7 @@ class CompanyTest extends TestCase
     /** @test */
     public function it_has_a_language()
     {
-        $company = $this->company(self::TEST_COMPANY);
+        $company = $this->company(self::TEST_COMPANY_ID);
 
         $this->assertIsString($company->getLanguage());
     }
@@ -233,7 +246,7 @@ class CompanyTest extends TestCase
     /** @test */
     public function if_it_is_verified()
     {
-        $company = $this->company(self::TEST_COMPANY);
+        $company = $this->company(self::TEST_COMPANY_ID);
 
         $this->assertIsBool($company->isVerified());
     }
@@ -241,7 +254,7 @@ class CompanyTest extends TestCase
     /** @test */
     public function if_it_is_validate()
     {
-        $company = $this->company(self::TEST_COMPANY);
+        $company = $this->company(self::TEST_COMPANY_ID);
 
         $this->assertIsBool($company->isValidated());
     }
@@ -249,7 +262,7 @@ class CompanyTest extends TestCase
     /** @test */
     public function it_has_a_created_at_test()
     {
-        $company = $this->company(self::TEST_COMPANY);
+        $company = $this->company(self::TEST_COMPANY_ID);
 
         $this->assertInstanceOf(Carbon::class, $company->getCreatedDate());
     }

@@ -111,6 +111,18 @@ class PlayerTest extends TestCase
     }
 
     /** @test */
+    public function it_has_an_active_ban_count()
+    {
+        $player = $this->player(self::TEST_ACCOUNT);
+
+        if ($player->isStaff()) {
+            $this->assertNull($player->getActiveBanCount());
+        } else {
+            $this->assertIsInt($player->getActiveBanCount());
+        }
+    }
+
+    /** @test */
     public function if_it_has_bans_hidden()
     {
         $player = $this->player(self::TEST_ACCOUNT);
@@ -196,7 +208,7 @@ class PlayerTest extends TestCase
         $player = $this->player(self::TEST_ACCOUNT);
 
         // We have to check if the Discord Snowflake is null first and then
-        // run a test to assert the value is null. Otherwise the test would
+        // run a test to assert the value is null. Otherwise, the test would
         // fail because no tests would have run.
         if ($player->getDiscordSnowflake() === null) {
             $this->assertNull($player->getDiscordSnowflake());

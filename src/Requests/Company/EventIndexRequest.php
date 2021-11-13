@@ -3,31 +3,30 @@
 namespace TruckersMP\APIClient\Requests\Company;
 
 use Psr\Http\Client\ClientExceptionInterface;
-use TruckersMP\APIClient\Collections\Company\PostCollection;
 use TruckersMP\APIClient\Exceptions\ApiErrorException;
-use TruckersMP\APIClient\Models\CompanyPost;
+use TruckersMP\APIClient\Models\CompanyEventIndex;
 use TruckersMP\APIClient\Requests\Request;
 
-class PostIndexRequest extends Request
+class EventIndexRequest extends Request
 {
     /**
-     * The ID or slug of the requested company.
+     * The ID of the requested company.
      *
-     * @var string|int
+     * @var int
      */
-    protected $companyKey;
+    protected $companyId;
 
     /**
-     * Create a new PostIndexRequest instance.
+     * Create a new EventIndexRequest instance.
      *
-     * @param  string|int  $companyKey
+     * @param int $id
      * @return void
      */
-    public function __construct(string $companyKey)
+    public function __construct(int $id)
     {
         parent::__construct();
 
-        $this->companyKey = $companyKey;
+        $this->companyId = $id;
     }
 
     /**
@@ -37,20 +36,20 @@ class PostIndexRequest extends Request
      */
     public function getEndpoint(): string
     {
-        return 'vtc/' . $this->companyKey . '/news';
+        return 'vtc/' . $this->companyId . '/events';
     }
 
     /**
      * Get the data for the request.
      *
-     * @return PostCollection|CompanyPost[]
+     * @return CompanyEventIndex
      *
      * @throws ApiErrorException
      * @throws ClientExceptionInterface
      */
-    public function get(): PostCollection
+    public function get(): CompanyEventIndex
     {
-        return new PostCollection(
+        return new CompanyEventIndex(
             $this->send()['response']
         );
     }
