@@ -2,7 +2,6 @@
 
 namespace TruckersMP\APIClient\Requests\Company;
 
-use Exception;
 use Psr\Http\Client\ClientExceptionInterface;
 use TruckersMP\APIClient\Exceptions\ApiErrorException;
 use TruckersMP\APIClient\Models\CompanyRole;

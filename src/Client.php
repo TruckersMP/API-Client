@@ -3,10 +3,10 @@
 namespace TruckersMP\APIClient;
 
 use TruckersMP\APIClient\Requests\BanRequest;
-use TruckersMP\APIClient\Requests\EventIndexRequest;
-use TruckersMP\APIClient\Requests\EventRequest;
 use TruckersMP\APIClient\Requests\CompanyIndexRequest;
 use TruckersMP\APIClient\Requests\CompanyRequest;
+use TruckersMP\APIClient\Requests\EventIndexRequest;
+use TruckersMP\APIClient\Requests\EventRequest;
 use TruckersMP\APIClient\Requests\GameTimeRequest;
 use TruckersMP\APIClient\Requests\PlayerRequest;
 use TruckersMP\APIClient\Requests\RuleRequest;

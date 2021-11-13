@@ -90,7 +90,6 @@ class TestCase extends BaseTestCase
      * Get or cache the given player.
      *
      * @param  int  $id
-     *
      * @return Player
      *
      * @throws PhpfastcacheInvalidArgumentException
@@ -114,7 +113,6 @@ class TestCase extends BaseTestCase
      * Get or cache the players bans.
      *
      * @param  int  $id
-     *
      * @return BanCollection|Ban[]
      *
      * @throws PhpfastcacheInvalidArgumentException
@@ -138,7 +136,6 @@ class TestCase extends BaseTestCase
      * Get or cache the bans for the player.
      *
      * @param  int  $id
-     *
      * @return BanCollection
      *
      * @throws PhpfastcacheInvalidArgumentException
@@ -228,7 +225,6 @@ class TestCase extends BaseTestCase
      * Get or cache the company with the specified id or slug.
      *
      * @param  string|int  $key
-     *
      * @return Company
      *
      * @throws PhpfastcacheInvalidArgumentException
@@ -252,7 +248,6 @@ class TestCase extends BaseTestCase
      * Get the news posts for the specified company.
      *
      * @param  int  $id
-     *
      * @return PostCollection|CompanyPost[]
      *
      * @throws PhpfastcacheInvalidArgumentException
@@ -277,7 +272,6 @@ class TestCase extends BaseTestCase
      *
      * @param  int  $companyId
      * @param  int  $postId
-     *
      * @return CompanyPost
      *
      * @throws PhpfastcacheInvalidArgumentException
@@ -304,7 +298,6 @@ class TestCase extends BaseTestCase
      * Get or cache the company roles.
      *
      * @param  int  $companyId
-     *
      * @return RoleCollection|CompanyRole[]
      *
      * @throws PhpfastcacheInvalidArgumentException
@@ -329,7 +322,6 @@ class TestCase extends BaseTestCase
      *
      * @param  int  $companyId
      * @param  int  $roleId
-     *
      * @return CompanyRole
      *
      * @throws PhpfastcacheInvalidArgumentException
@@ -356,7 +348,6 @@ class TestCase extends BaseTestCase
      * Get or cache the company members.
      *
      * @param  int  $companyId
-     *
      * @return mixed
      *
      * @throws PhpfastcacheInvalidArgumentException
@@ -384,7 +375,6 @@ class TestCase extends BaseTestCase
      *
      * @param  int  $companyId
      * @param  int  $memberId
-     *
      * @return CompanyMember
      *
      * @throws PhpfastcacheInvalidArgumentException
@@ -477,7 +467,6 @@ class TestCase extends BaseTestCase
      * Get or cache the event with the specified id.
      *
      * @param  int  $id
-     *
      * @return Event
      *
      * @throws PhpfastcacheInvalidArgumentException
@@ -501,7 +490,6 @@ class TestCase extends BaseTestCase
      * Get or cache the company events.
      *
      * @param  int  $companyId
-     *
      * @return CompanyEventIndex
      *
      * @throws PhpfastcacheInvalidArgumentException
@@ -529,7 +517,6 @@ class TestCase extends BaseTestCase
      *
      * @param  int  $companyId
      * @param  int  $eventId
-     *
      * @return Event
      *
      * @throws PhpfastcacheInvalidArgumentException
