@@ -62,7 +62,7 @@ class MemberIndexRequest extends Request
     public function bans(): BanIndexRequest
     {
         return new BanIndexRequest(
-            $this->companyId
+            $this->companyKey
         );
     }
 }
