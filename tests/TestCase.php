@@ -403,7 +403,6 @@ class TestCase extends BaseTestCase
      * Get the members within the specified company that are currently banned.
      *
      * @param  int  $id
-     *
      * @return CompanyBanCollection|CompanyBan[]
      *
      * @throws PhpfastcacheInvalidArgumentException
