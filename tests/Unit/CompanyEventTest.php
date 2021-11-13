@@ -2,7 +2,6 @@
 
 namespace Tests\Unit;
 
-use Carbon\Carbon;
 use Tests\TestCase;
 use TruckersMP\APIClient\Models\CompanyEventIndex;
 use TruckersMP\APIClient\Models\Event;
