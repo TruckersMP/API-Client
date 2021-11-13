@@ -3,11 +3,12 @@
 namespace TruckersMP\APIClient\Requests\Company;
 
 use Psr\Http\Client\ClientExceptionInterface;
+use TruckersMP\APIClient\Collections\Company\BanCollection;
 use TruckersMP\APIClient\Exceptions\ApiErrorException;
-use TruckersMP\APIClient\Models\CompanyMemberIndex;
+use TruckersMP\APIClient\Models\CompanyBan;
 use TruckersMP\APIClient\Requests\Request;
 
-class MemberIndexRequest extends Request
+class BanIndexRequest extends Request
 {
     /**
      * The ID or slug of the requested company.
@@ -17,7 +18,7 @@ class MemberIndexRequest extends Request
     protected $companyKey;
 
     /**
-     * Create a new MemberIndexRequest instance.
+     * Create a new BanIndexRequest instance.
      *
      * @param  string|int  $companyKey
      * @return void
@@ -36,33 +37,21 @@ class MemberIndexRequest extends Request
      */
     public function getEndpoint(): string
     {
-        return 'vtc/' . $this->companyKey . '/members';
+        return 'vtc/' . $this->companyKey . '/members/banned';
     }
 
     /**
      * Get the data for the request.
      *
-     * @return CompanyMemberIndex
+     * @return BanCollection|CompanyBan[]
      *
      * @throws ApiErrorException
      * @throws ClientExceptionInterface
      */
-    public function get(): CompanyMemberIndex
+    public function get(): BanCollection
     {
-        return new CompanyMemberIndex(
+        return new BanCollection(
             $this->send()['response']
-        );
-    }
-
-    /**
-     * Get the members within the company that are currently banned.
-     *
-     * @return BanIndexRequest
-     */
-    public function bans(): BanIndexRequest
-    {
-        return new BanIndexRequest(
-            $this->companyKey
         );
     }
 }
