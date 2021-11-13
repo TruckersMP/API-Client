@@ -1,5 +1,4 @@
 preset: psr12
-risky: true
 
 enabled:
   - align_phpdoc
@@ -72,5 +71,4 @@ enabled:
   - unalign_equals
   - unary_operator_spaces
   - union_type_without_spaces
-  - void_return
   - whitespace_after_comma_in_array
