@@ -23,11 +23,14 @@ use TruckersMP\APIClient\Collections\ServerCollection;
 use TruckersMP\APIClient\Exceptions\ApiErrorException;
 use TruckersMP\APIClient\Models\Ban;
 use TruckersMP\APIClient\Models\Company;
+use TruckersMP\APIClient\Models\CompanyEventIndex;
 use TruckersMP\APIClient\Models\CompanyIndex;
 use TruckersMP\APIClient\Models\CompanyMember;
 use TruckersMP\APIClient\Models\CompanyMemberIndex;
 use TruckersMP\APIClient\Models\CompanyPost;
 use TruckersMP\APIClient\Models\CompanyRole;
+use TruckersMP\APIClient\Models\Event;
+use TruckersMP\APIClient\Models\EventIndex;
 use TruckersMP\APIClient\Models\GameTime;
 use TruckersMP\APIClient\Models\Player;
 use TruckersMP\APIClient\Models\Rule;
@@ -446,5 +449,106 @@ class TestCase extends BaseTestCase
         }
 
         return $cachedRules->get();
+    }
+
+    /**
+     * Get or cache the recent events.
+     *
+     * @return EventIndex
+     *
+     * @throws PhpfastcacheInvalidArgumentException
+     * @throws ApiErrorException
+     * @throws ClientExceptionInterface
+     * @throws InvalidArgumentException
+     */
+    public function events(): EventIndex
+    {
+        $cachedEvents = self::$cache->getItem('recent_events');
+
+        if (!$cachedEvents->isHit()) {
+            $cachedEvents->set($this->client->events()->get());
+            self::$cache->save($cachedEvents);
+        }
+
+        return $cachedEvents->get();
+    }
+
+    /**
+     * Get or cache the event with the specified id.
+     *
+     * @param  int  $id
+     *
+     * @return Event
+     *
+     * @throws PhpfastcacheInvalidArgumentException
+     * @throws ApiErrorException
+     * @throws ClientExceptionInterface
+     * @throws InvalidArgumentException
+     */
+    public function event(int $id): Event
+    {
+        $cachedEvent = self::$cache->getItem('event_' . $id);
+
+        if (!$cachedEvent->isHit()) {
+            $cachedEvent->set($this->client->event($id)->get())->expiresAfter(self::CACHE_SECONDS);
+            self::$cache->save($cachedEvent);
+        }
+
+        return $cachedEvent->get();
+    }
+
+    /**
+     * Get or cache the company events.
+     *
+     * @param  int  $companyId
+     *
+     * @return CompanyEventIndex
+     *
+     * @throws PhpfastcacheInvalidArgumentException
+     * @throws ApiErrorException
+     * @throws ClientExceptionInterface
+     * @throws InvalidArgumentException
+     */
+    public function companyEvents(int $companyId): CompanyEventIndex
+    {
+        $cachedEvents = self::$cache->getItem('company_events_' . $companyId);
+
+        if (!$cachedEvents->isHit()) {
+            $cachedEvents->set(
+                $this->client->company($companyId)->events()->get()
+            );
+
+            self::$cache->save($cachedEvents);
+        }
+
+        return $cachedEvents->get();
+    }
+
+    /**
+     * Get or cache the company event.
+     *
+     * @param  int  $companyId
+     * @param  int  $eventId
+     *
+     * @return Event
+     *
+     * @throws PhpfastcacheInvalidArgumentException
+     * @throws ApiErrorException
+     * @throws ClientExceptionInterface
+     * @throws InvalidArgumentException
+     */
+    public function companyEvent(int $companyId, int $eventId): Event
+    {
+        $cachedEvent = self::$cache->getItem('company_event_' . $eventId);
+
+        if (!$cachedEvent->isHit()) {
+            $cachedEvent->set(
+                $this->client->company($companyId)->event($eventId)->get()
+            )->expiresAfter(self::CACHE_SECONDS);
+
+            self::$cache->save($cachedEvent);
+        }
+
+        return $cachedEvent->get();
     }
 }

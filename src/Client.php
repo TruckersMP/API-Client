@@ -3,6 +3,8 @@
 namespace TruckersMP\APIClient;
 
 use TruckersMP\APIClient\Requests\BanRequest;
+use TruckersMP\APIClient\Requests\EventIndexRequest;
+use TruckersMP\APIClient\Requests\EventRequest;
 use TruckersMP\APIClient\Requests\CompanyIndexRequest;
 use TruckersMP\APIClient\Requests\CompanyRequest;
 use TruckersMP\APIClient\Requests\GameTimeRequest;
@@ -128,6 +130,31 @@ class Client
     public function rules(): RuleRequest
     {
         return new RuleRequest();
+    }
+
+    /**
+     * Get the featured, today's and upcoming events.
+     *
+     * https://stats.truckersmp.com/api#events_index
+     *
+     * @return EventIndexRequest
+     */
+    public function events(): EventIndexRequest
+    {
+        return new EventIndexRequest();
+    }
+
+    /**
+     * Get the information for the event with the specified ID.
+     *
+     * https://stats.truckersmp.com/api#events_info
+     *
+     * @param  int  $id
+     * @return EventRequest
+     */
+    public function event(int $id): EventRequest
+    {
+        return new EventRequest($id);
     }
 
     /**
