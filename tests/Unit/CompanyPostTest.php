@@ -2,6 +2,7 @@
 
 namespace Tests\Unit;
 
+use Carbon\Carbon;
 use Illuminate\Support\Collection;
 use Tests\TestCase;
 use TruckersMP\APIClient\Models\CompanyPost;
@@ -94,5 +95,21 @@ class CompanyPostTest extends TestCase
         $post = $this->companyPost(self::TEST_COMPANY, self::TEST_POST);
 
         $this->assertIsBool($post->isPinned());
+    }
+
+    /** @test */
+    public function it_has_an_updated_at()
+    {
+        $post = $this->companyPost(self::TEST_COMPANY, self::TEST_POST);
+
+        $this->assertInstanceOf(Carbon::class, $post->getUpdatedAt());
+    }
+
+    /** @test */
+    public function it_has_a_published_at()
+    {
+        $post = $this->companyPost(self::TEST_COMPANY, self::TEST_POST);
+
+        $this->assertInstanceOf(Carbon::class, $post->getPublishedAt());
     }
 }

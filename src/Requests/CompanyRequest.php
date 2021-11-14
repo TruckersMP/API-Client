@@ -5,6 +5,8 @@ namespace TruckersMP\APIClient\Requests;
 use Psr\Http\Client\ClientExceptionInterface;
 use TruckersMP\APIClient\Exceptions\ApiErrorException;
 use TruckersMP\APIClient\Models\Company;
+use TruckersMP\APIClient\Requests\Company\EventIndexRequest;
+use TruckersMP\APIClient\Requests\Company\EventRequest;
 use TruckersMP\APIClient\Requests\Company\MemberIndexRequest;
 use TruckersMP\APIClient\Requests\Company\MemberRequest;
 use TruckersMP\APIClient\Requests\Company\PostIndexRequest;
@@ -15,23 +17,23 @@ use TruckersMP\APIClient\Requests\Company\RoleRequest;
 class CompanyRequest extends Request
 {
     /**
-     * The ID of the requested company.
+     * The ID or slug of the requested company.
      *
-     * @var int
+     * @var string|int
      */
-    protected $id;
+    protected $key;
 
     /**
      * Create a new CompanyRequest instance.
      *
-     * @param  int  $id
+     * @param  string|int  $key
      * @return void
      */
-    public function __construct(int $id)
+    public function __construct(string $key)
     {
         parent::__construct();
 
-        $this->id = $id;
+        $this->key = $key;
     }
 
     /**
@@ -41,7 +43,7 @@ class CompanyRequest extends Request
      */
     public function getEndpoint(): string
     {
-        return 'vtc/' . $this->id;
+        return 'vtc/' . $this->key;
     }
 
     /**
@@ -67,7 +69,7 @@ class CompanyRequest extends Request
     public function posts(): PostIndexRequest
     {
         return new PostIndexRequest(
-            $this->id
+            $this->key
         );
     }
 
@@ -80,7 +82,7 @@ class CompanyRequest extends Request
     public function post(int $id): PostRequest
     {
         return new PostRequest(
-            $this->id,
+            $this->key,
             $id
         );
     }
@@ -93,7 +95,7 @@ class CompanyRequest extends Request
     public function roles(): RoleIndexRequest
     {
         return new RoleIndexRequest(
-            $this->id
+            $this->key
         );
     }
 
@@ -106,7 +108,7 @@ class CompanyRequest extends Request
     public function role(int $id): RoleRequest
     {
         return new RoleRequest(
-            $this->id,
+            $this->key,
             $id
         );
     }
@@ -119,7 +121,7 @@ class CompanyRequest extends Request
     public function members(): MemberIndexRequest
     {
         return new MemberIndexRequest(
-            $this->id
+            $this->key
         );
     }
 
@@ -132,7 +134,33 @@ class CompanyRequest extends Request
     public function member(int $id): MemberRequest
     {
         return new MemberRequest(
-            $this->id,
+            $this->key,
+            $id
+        );
+    }
+
+    /**
+     * Get the events for the company.
+     *
+     * @return EventIndexRequest
+     */
+    public function events(): EventIndexRequest
+    {
+        return new EventIndexRequest(
+            $this->key
+        );
+    }
+
+    /**
+     * Get the event for the company with the specified ID.
+     *
+     * @param  int  $id
+     * @return EventRequest
+     */
+    public function event(int $id): EventRequest
+    {
+        return new EventRequest(
+            $this->key,
             $id
         );
     }

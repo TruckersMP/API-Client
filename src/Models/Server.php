@@ -82,6 +82,13 @@ class Server
     protected $maxPlayers;
 
     /**
+     * The map ID given to the server used by ETS2Map.
+     *
+     * @var int
+     */
+    protected $mapId;
+
+    /**
      * Determines the order in which servers are displayed.
      *
      * @var int
@@ -170,6 +177,7 @@ class Server
         $this->players = intval($server['players']);
         $this->queue = intval($server['queue']);
         $this->maxPlayers = intval($server['maxplayers']);
+        $this->mapId = intval($server['mapid']);
         $this->displayOrder = intval($server['displayorder']);
         $this->speedLimiter = boolval($server['speedlimiter']);
         $this->collisions = boolval($server['collisions']);
@@ -290,6 +298,16 @@ class Server
     public function getMaxPlayers(): int
     {
         return $this->maxPlayers;
+    }
+
+    /**
+     * Get the map ID given to the server used by ETS2Map.
+     *
+     * @return int
+     */
+    public function getMapId(): int
+    {
+        return $this->mapId;
     }
 
     /**

@@ -4,38 +4,29 @@ namespace TruckersMP\APIClient\Requests\Company;
 
 use Psr\Http\Client\ClientExceptionInterface;
 use TruckersMP\APIClient\Exceptions\ApiErrorException;
-use TruckersMP\APIClient\Models\CompanyRole;
+use TruckersMP\APIClient\Models\CompanyEventIndex;
 use TruckersMP\APIClient\Requests\Request;
 
-class RoleRequest extends Request
+class EventIndexRequest extends Request
 {
     /**
-     * The ID or slug of the requested company.
-     *
-     * @var string|int
-     */
-    protected $companyKey;
-
-    /**
-     * The ID of the requested role.
+     * The ID of the requested company.
      *
      * @var int
      */
-    protected $roleId;
+    protected $companyId;
 
     /**
-     * Create a new RoleRequest instance.
+     * Create a new EventIndexRequest instance.
      *
-     * @param  int  $companyKey
-     * @param  int  $roleId
+     * @param int $id
      * @return void
      */
-    public function __construct(int $companyKey, int $roleId)
+    public function __construct(int $id)
     {
         parent::__construct();
 
-        $this->companyKey = $companyKey;
-        $this->roleId = $roleId;
+        $this->companyId = $id;
     }
 
     /**
@@ -45,20 +36,20 @@ class RoleRequest extends Request
      */
     public function getEndpoint(): string
     {
-        return 'vtc/' . $this->companyKey . '/role/' . $this->roleId;
+        return 'vtc/' . $this->companyId . '/events';
     }
 
     /**
      * Get the data for the request.
      *
-     * @return CompanyRole
+     * @return CompanyEventIndex
      *
      * @throws ApiErrorException
      * @throws ClientExceptionInterface
      */
-    public function get(): CompanyRole
+    public function get(): CompanyEventIndex
     {
-        return new CompanyRole(
+        return new CompanyEventIndex(
             $this->send()['response']
         );
     }

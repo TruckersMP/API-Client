@@ -2,7 +2,6 @@
 
 namespace Tests;
 
-use Illuminate\Support\Collection;
 use Phpfastcache\CacheManager;
 use Phpfastcache\Config\ConfigurationOption;
 use Phpfastcache\Core\Pool\ExtendedCacheItemPoolInterface;
@@ -17,14 +16,23 @@ use Psr\Cache\InvalidArgumentException;
 use Psr\Http\Client\ClientExceptionInterface;
 use ReflectionException;
 use TruckersMP\APIClient\Client;
+use TruckersMP\APIClient\Collections\BanCollection;
+use TruckersMP\APIClient\Collections\Company\BanCollection as CompanyBanCollection;
+use TruckersMP\APIClient\Collections\Company\PostCollection;
+use TruckersMP\APIClient\Collections\Company\RoleCollection;
+use TruckersMP\APIClient\Collections\ServerCollection;
 use TruckersMP\APIClient\Exceptions\ApiErrorException;
 use TruckersMP\APIClient\Models\Ban;
 use TruckersMP\APIClient\Models\Company;
+use TruckersMP\APIClient\Models\CompanyBan;
+use TruckersMP\APIClient\Models\CompanyEventIndex;
 use TruckersMP\APIClient\Models\CompanyIndex;
 use TruckersMP\APIClient\Models\CompanyMember;
 use TruckersMP\APIClient\Models\CompanyMemberIndex;
 use TruckersMP\APIClient\Models\CompanyPost;
 use TruckersMP\APIClient\Models\CompanyRole;
+use TruckersMP\APIClient\Models\Event;
+use TruckersMP\APIClient\Models\EventIndex;
 use TruckersMP\APIClient\Models\GameTime;
 use TruckersMP\APIClient\Models\Player;
 use TruckersMP\APIClient\Models\Rule;
@@ -84,7 +92,6 @@ class TestCase extends BaseTestCase
      * Get or cache the given player.
      *
      * @param  int  $id
-     *
      * @return Player
      *
      * @throws PhpfastcacheInvalidArgumentException
@@ -108,15 +115,14 @@ class TestCase extends BaseTestCase
      * Get or cache the players bans.
      *
      * @param  int  $id
-     *
-     * @return Collection|Ban[]
+     * @return BanCollection|Ban[]
      *
      * @throws PhpfastcacheInvalidArgumentException
      * @throws ApiErrorException
      * @throws ClientExceptionInterface
      * @throws InvalidArgumentException
      */
-    public function playerBans(int $id): Collection
+    public function playerBans(int $id): BanCollection
     {
         $cachedBans = self::$cache->getItem('player_bans_' . $id);
 
@@ -132,15 +138,14 @@ class TestCase extends BaseTestCase
      * Get or cache the bans for the player.
      *
      * @param  int  $id
-     *
-     * @return Collection
+     * @return BanCollection
      *
      * @throws PhpfastcacheInvalidArgumentException
      * @throws ApiErrorException
      * @throws ClientExceptionInterface
      * @throws InvalidArgumentException
      */
-    public function bans(int $id): Collection
+    public function bans(int $id): BanCollection
     {
         $cachedBans = self::$cache->getItem('bans_' . $id);
 
@@ -155,14 +160,14 @@ class TestCase extends BaseTestCase
     /**
      * Get or cache the server request.
      *
-     * @return Collection|Server[]
+     * @return ServerCollection|Server[]
      *
      * @throws PhpfastcacheInvalidArgumentException
      * @throws ApiErrorException
      * @throws ClientExceptionInterface
      * @throws InvalidArgumentException
      */
-    public function servers(): Collection
+    public function servers(): ServerCollection
     {
         $cachedServers = self::$cache->getItem('servers');
 
@@ -219,10 +224,9 @@ class TestCase extends BaseTestCase
     }
 
     /**
-     * Get or cache the company with the specified id.
+     * Get or cache the company with the specified id or slug.
      *
-     * @param  int  $id
-     *
+     * @param  string|int  $key
      * @return Company
      *
      * @throws PhpfastcacheInvalidArgumentException
@@ -230,12 +234,12 @@ class TestCase extends BaseTestCase
      * @throws ClientExceptionInterface
      * @throws InvalidArgumentException
      */
-    public function company(int $id): Company
+    public function company(string $key): Company
     {
-        $cachedCompany = self::$cache->getItem('company_' . $id);
+        $cachedCompany = self::$cache->getItem('company_' . $key);
 
         if (!$cachedCompany->isHit()) {
-            $cachedCompany->set($this->client->company($id)->get())->expiresAfter(self::CACHE_SECONDS);
+            $cachedCompany->set($this->client->company($key)->get())->expiresAfter(self::CACHE_SECONDS);
             self::$cache->save($cachedCompany);
         }
 
@@ -246,15 +250,14 @@ class TestCase extends BaseTestCase
      * Get the news posts for the specified company.
      *
      * @param  int  $id
-     *
-     * @return Collection|CompanyPost[]
+     * @return PostCollection|CompanyPost[]
      *
      * @throws PhpfastcacheInvalidArgumentException
      * @throws ApiErrorException
      * @throws ClientExceptionInterface
      * @throws InvalidArgumentException
      */
-    public function companyPosts(int $id): Collection
+    public function companyPosts(int $id): PostCollection
     {
         $cachedNews = self::$cache->getItem('company_posts_' . $id);
 
@@ -271,7 +274,6 @@ class TestCase extends BaseTestCase
      *
      * @param  int  $companyId
      * @param  int  $postId
-     *
      * @return CompanyPost
      *
      * @throws PhpfastcacheInvalidArgumentException
@@ -298,15 +300,14 @@ class TestCase extends BaseTestCase
      * Get or cache the company roles.
      *
      * @param  int  $companyId
-     *
-     * @return Collection|CompanyRole[]
+     * @return RoleCollection|CompanyRole[]
      *
      * @throws PhpfastcacheInvalidArgumentException
      * @throws ApiErrorException
      * @throws ClientExceptionInterface
      * @throws InvalidArgumentException
      */
-    public function companyRoles(int $companyId): Collection
+    public function companyRoles(int $companyId): RoleCollection
     {
         $cachedRoles = self::$cache->getItem('company_roles_' . $companyId);
 
@@ -323,7 +324,6 @@ class TestCase extends BaseTestCase
      *
      * @param  int  $companyId
      * @param  int  $roleId
-     *
      * @return CompanyRole
      *
      * @throws PhpfastcacheInvalidArgumentException
@@ -350,7 +350,6 @@ class TestCase extends BaseTestCase
      * Get or cache the company members.
      *
      * @param  int  $companyId
-     *
      * @return mixed
      *
      * @throws PhpfastcacheInvalidArgumentException
@@ -378,7 +377,6 @@ class TestCase extends BaseTestCase
      *
      * @param  int  $companyId
      * @param  int  $memberId
-     *
      * @return CompanyMember
      *
      * @throws PhpfastcacheInvalidArgumentException
@@ -399,6 +397,29 @@ class TestCase extends BaseTestCase
         }
 
         return $cachedMember->get();
+    }
+
+    /**
+     * Get the members within the specified company that are currently banned.
+     *
+     * @param  int  $id
+     * @return CompanyBanCollection|CompanyBan[]
+     *
+     * @throws PhpfastcacheInvalidArgumentException
+     * @throws ApiErrorException
+     * @throws ClientExceptionInterface
+     * @throws InvalidArgumentException
+     */
+    public function companyBans(int $id): CompanyBanCollection
+    {
+        $cachedCompanyBans = self::$cache->getItem('company_bans_' . $id);
+
+        if (!$cachedCompanyBans->isHit()) {
+            $cachedCompanyBans->set($this->client->company($id)->members()->bans()->get())->expiresAfter(self::CACHE_SECONDS);
+            self::$cache->save($cachedCompanyBans);
+        }
+
+        return $cachedCompanyBans->get();
     }
 
     /**
@@ -443,5 +464,103 @@ class TestCase extends BaseTestCase
         }
 
         return $cachedRules->get();
+    }
+
+    /**
+     * Get or cache the recent events.
+     *
+     * @return EventIndex
+     *
+     * @throws PhpfastcacheInvalidArgumentException
+     * @throws ApiErrorException
+     * @throws ClientExceptionInterface
+     * @throws InvalidArgumentException
+     */
+    public function events(): EventIndex
+    {
+        $cachedEvents = self::$cache->getItem('recent_events');
+
+        if (!$cachedEvents->isHit()) {
+            $cachedEvents->set($this->client->events()->get());
+            self::$cache->save($cachedEvents);
+        }
+
+        return $cachedEvents->get();
+    }
+
+    /**
+     * Get or cache the event with the specified id.
+     *
+     * @param  int  $id
+     * @return Event
+     *
+     * @throws PhpfastcacheInvalidArgumentException
+     * @throws ApiErrorException
+     * @throws ClientExceptionInterface
+     * @throws InvalidArgumentException
+     */
+    public function event(int $id): Event
+    {
+        $cachedEvent = self::$cache->getItem('event_' . $id);
+
+        if (!$cachedEvent->isHit()) {
+            $cachedEvent->set($this->client->event($id)->get())->expiresAfter(self::CACHE_SECONDS);
+            self::$cache->save($cachedEvent);
+        }
+
+        return $cachedEvent->get();
+    }
+
+    /**
+     * Get or cache the company events.
+     *
+     * @param  int  $companyId
+     * @return CompanyEventIndex
+     *
+     * @throws PhpfastcacheInvalidArgumentException
+     * @throws ApiErrorException
+     * @throws ClientExceptionInterface
+     * @throws InvalidArgumentException
+     */
+    public function companyEvents(int $companyId): CompanyEventIndex
+    {
+        $cachedEvents = self::$cache->getItem('company_events_' . $companyId);
+
+        if (!$cachedEvents->isHit()) {
+            $cachedEvents->set(
+                $this->client->company($companyId)->events()->get()
+            );
+
+            self::$cache->save($cachedEvents);
+        }
+
+        return $cachedEvents->get();
+    }
+
+    /**
+     * Get or cache the company event.
+     *
+     * @param  int  $companyId
+     * @param  int  $eventId
+     * @return Event
+     *
+     * @throws PhpfastcacheInvalidArgumentException
+     * @throws ApiErrorException
+     * @throws ClientExceptionInterface
+     * @throws InvalidArgumentException
+     */
+    public function companyEvent(int $companyId, int $eventId): Event
+    {
+        $cachedEvent = self::$cache->getItem('company_event_' . $eventId);
+
+        if (!$cachedEvent->isHit()) {
+            $cachedEvent->set(
+                $this->client->company($companyId)->event($eventId)->get()
+            )->expiresAfter(self::CACHE_SECONDS);
+
+            self::$cache->save($cachedEvent);
+        }
+
+        return $cachedEvent->get();
     }
 }

@@ -4,38 +4,38 @@ namespace TruckersMP\APIClient\Requests\Company;
 
 use Psr\Http\Client\ClientExceptionInterface;
 use TruckersMP\APIClient\Exceptions\ApiErrorException;
-use TruckersMP\APIClient\Models\CompanyPost;
+use TruckersMP\APIClient\Models\Event;
 use TruckersMP\APIClient\Requests\Request;
 
-class PostRequest extends Request
+class EventRequest extends Request
 {
     /**
-     * The ID or slug of the requested company.
-     *
-     * @var string|int
-     */
-    protected $companyKey;
-
-    /**
-     * The ID of the requested post.
+     * The ID of the requested company.
      *
      * @var int
      */
-    protected $postId;
+    protected $companyId;
 
     /**
-     * Create a new PostRequest instance.
+     * The ID of the requested event.
      *
-     * @param  string|int  $companyKey
-     * @param  int  $postId
+     * @var int
+     */
+    protected $eventId;
+
+    /**
+     * Create a new EventRequest instance.
+     *
+     * @param int $companyId
+     * @param int $eventId
      * @return void
      */
-    public function __construct(string $companyKey, int $postId)
+    public function __construct(int $companyId, int $eventId)
     {
         parent::__construct();
 
-        $this->companyKey = $companyKey;
-        $this->postId = $postId;
+        $this->companyId = $companyId;
+        $this->eventId = $eventId;
     }
 
     /**
@@ -45,20 +45,20 @@ class PostRequest extends Request
      */
     public function getEndpoint(): string
     {
-        return 'vtc/' . $this->companyKey . '/news/' . $this->postId;
+        return 'vtc/' . $this->companyId . '/events/' . $this->eventId;
     }
 
     /**
      * Get the data for the request.
      *
-     * @return CompanyPost
+     * @return Event
      *
      * @throws ApiErrorException
      * @throws ClientExceptionInterface
      */
-    public function get(): CompanyPost
+    public function get(): Event
     {
-        return new CompanyPost(
+        return new Event(
             $this->send()['response']
         );
     }

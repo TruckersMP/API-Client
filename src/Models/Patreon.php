@@ -12,7 +12,7 @@ class Patreon
     protected $isPatron;
 
     /**
-     * If the players patron subscription is active.
+     * If the player's patron subscription is active.
      *
      * @var bool
      */
@@ -26,28 +26,28 @@ class Patreon
     protected $color;
 
     /**
-     * The players tier ID.
+     * The player's tier ID.
      *
      * @var int|null
      */
     protected $tierId;
 
     /**
-     * The players current pledge.
+     * The player's current pledge.
      *
      * @var int|null
      */
     protected $currentPledge;
 
     /**
-     * The players lifetime pledge.
+     * The player's lifetime pledge.
      *
      * @var int|null
      */
     protected $lifetimePledge;
 
     /**
-     * The players next pledge.
+     * The player's next pledge.
      *
      * @var int|null
      */
@@ -103,7 +103,7 @@ class Patreon
     }
 
     /**
-     * Get if the players patron subscription is active.
+     * Get if the player's patron subscription is active.
      *
      * @return mixed
      */
@@ -123,7 +123,7 @@ class Patreon
     }
 
     /**
-     * Get the players tier ID.
+     * Get the player's tier ID.
      *
      * @return int|null
      */
@@ -133,7 +133,7 @@ class Patreon
     }
 
     /**
-     * Get the players current pledge.
+     * Get the player's current pledge.
      *
      * @return int|null
      */
@@ -143,7 +143,7 @@ class Patreon
     }
 
     /**
-     * Get the players lifetime pledge.
+     * Get the player's lifetime pledge.
      *
      * @return int|null
      */
@@ -153,7 +153,7 @@ class Patreon
     }
 
     /**
-     * Get the players next pledge.
+     * Get the player's next pledge.
      *
      * @return int|null
      */

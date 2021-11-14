@@ -113,6 +113,14 @@ class ServerTest extends TestCase
     }
 
     /** @test */
+    public function it_has_a_map_id()
+    {
+        $server = $this->servers()[0];
+
+        $this->assertIsInt($server->getMapId());
+    }
+
+    /** @test */
     public function it_has_a_display_order()
     {
         $server = $this->servers()[0];

@@ -4,76 +4,76 @@ namespace TruckersMP\APIClient\Models;
 
 use Carbon\Carbon;
 
-class CompanyMember
+class CompanyBan
 {
     /**
-     * The player's member id within the company.
+     * The player's member ID within the company.
      *
      * @var int
      */
     protected $id;
 
     /**
-     * The player's account id.
+     * The ID of the user.
      *
      * @var int
      */
     protected $userId;
 
     /**
-     * The player's username.
+     * The username of the user.
      *
      * @var string
      */
     protected $username;
 
     /**
-     * The player's steam id.
+     * The Steam ID of the user.
      *
-     * @var string
+     * @var int
      */
     protected $steamId;
 
     /**
-     * The player's role id within the company.
+     * The player's role ID within the company.
      *
      * @var int
      */
     protected $roleId;
 
     /**
-     * The player's role within the company.
+     * The player's role name within the company.
      *
      * @var string
      */
-    protected $role;
+    protected $roleName;
 
     /**
-     * The date the player joined the company.
+     * The date at which the user joined the company.
      *
      * @var Carbon
      */
     protected $joinDate;
 
     /**
-     * Create a new CompanyMember instance.
+     * Create a new CompanyBan instance.
      *
-     * @param  array  $member
+     * @param  array  $ban
      * @return void
      */
-    public function __construct(array $member)
+    public function __construct(array $ban)
     {
-        $this->id = $member['id'];
-        $this->userId = $member['user_id'];
-        $this->username = $member['username'];
-        $this->steamId = $member['steam_id'];
-        $this->roleId = $member['role_id'];
-        $this->role = $member['role'];
-        $this->joinDate = new Carbon($member['joinDate'], 'UTC');
+        $this->id = $ban['id'];
+        $this->userId = $ban['user_id'];
+        $this->username = $ban['username'];
+        $this->steamId = $ban['steam_id'];
+        $this->roleId = $ban['role_id'];
+        $this->roleName = $ban['role'];
+        $this->joinDate = new Carbon($ban['joinDate'], 'UTC');
     }
 
     /**
-     * Get the company member ID.
+     * Get the player's member ID within the company.
      *
      * @return int
      */
@@ -83,7 +83,7 @@ class CompanyMember
     }
 
     /**
-     * Get the TMP player ID of the member.
+     * Get the ID of the user.
      *
      * @return int
      */
@@ -93,7 +93,7 @@ class CompanyMember
     }
 
     /**
-     * Get the name of the member.
+     * Get the username of the user.
      *
      * @return string
      */
@@ -103,17 +103,17 @@ class CompanyMember
     }
 
     /**
-     * Get the Steam ID of the member.
+     * Get the Steam ID of the user.
      *
-     * @return string
+     * @return int
      */
-    public function getSteamId(): string
+    public function getSteamId(): int
     {
         return $this->steamId;
     }
 
     /**
-     * Get the Role ID of the member.
+     * Get the ID of the member's role within the company.
      *
      * @return int
      */
@@ -123,17 +123,17 @@ class CompanyMember
     }
 
     /**
-     * Get the name of member's role.
+     * Get the name of the member's role within the company.
      *
      * @return string
      */
-    public function getRole(): string
+    public function getRoleName(): string
     {
-        return $this->role;
+        return $this->roleName;
     }
 
     /**
-     * Get the date that the member joined the company.
+     * Get the date the member joined the company.
      *
      * @return Carbon
      */
