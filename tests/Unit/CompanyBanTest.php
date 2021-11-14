@@ -4,7 +4,6 @@ namespace Tests\Unit;
 
 use Illuminate\Support\Collection;
 use Tests\TestCase;
-use TruckersMP\APIClient\Collections\Company\BanCollection;
 use TruckersMP\APIClient\Models\CompanyBan;
 
 class CompanyBanTest extends TestCase

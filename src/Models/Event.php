@@ -4,7 +4,6 @@ namespace TruckersMP\APIClient\Models;
 
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
-use TruckersMP\APIClient\Collections\DlcCollection;
 
 class Event
 {
