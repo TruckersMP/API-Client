@@ -3,6 +3,7 @@
 namespace TruckersMP\APIClient\Models;
 
 use Carbon\Carbon;
+use Illuminate\Support\Collection;
 use TruckersMP\APIClient\Collections\DlcCollection;
 
 class Event
@@ -150,7 +151,7 @@ class Event
     /**
      * The required event DLCs.
      *
-     * @var DlcCollection|null
+     * @var Collection|null
      */
     protected $dlcs;
 
@@ -241,7 +242,7 @@ class Event
             $event['attendances']['unsure_users'] ?? null
         );
 
-        $this->dlcs = new DlcCollection($event['dlcs']);
+        $this->dlcs = (new Collection($event['dlcs']))->mapInto(Dlc::class);
 
         $this->createdAt = new Carbon($event['created_at'], 'UTC');
         $this->updatedAt = new Carbon($event['updated_at'], 'UTC');
@@ -450,9 +451,9 @@ class Event
     /**
      * Get the required DLCs of the event.
      *
-     * @return DlcCollection|null
+     * @return Collection|null
      */
-    public function getDlcs(): ?DlcCollection
+    public function getDlcs(): ?Collection
     {
         return $this->dlcs;
     }

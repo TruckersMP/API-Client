@@ -2,28 +2,28 @@
 
 namespace TruckersMP\APIClient\Models;
 
-use TruckersMP\APIClient\Collections\EventCollection;
+use Illuminate\Support\Collection;
 
 class EventIndex
 {
     /**
      * The featured events.
      *
-     * @var EventCollection
+     * @var Collection
      */
     protected $featured;
 
     /**
      * Today's events.
      *
-     * @var EventCollection
+     * @var Collection
      */
     protected $today;
 
     /**
      * The upcoming events.
      *
-     * @var EventCollection
+     * @var Collection
      */
     protected $upcoming;
 
@@ -35,19 +35,19 @@ class EventIndex
      */
     public function __construct(array $response)
     {
-        $this->featured = new EventCollection($response['featured'] ?? []);
+        $this->featured = (new Collection($response['featured'] ?? []))->mapInto(Event::class);
 
-        $this->today = new EventCollection($response['today'] ?? []);
+        $this->today = (new Collection($response['today'] ?? []))->mapInto(Event::class);
 
-        $this->upcoming = new EventCollection($response['upcoming'] ?? []);
+        $this->upcoming = (new Collection($response['upcoming'] ?? []))->mapInto(Event::class);
     }
 
     /**
      * Get the featured events.
      *
-     * @return EventCollection
+     * @return Collection
      */
-    public function getFeatured(): EventCollection
+    public function getFeatured(): Collection
     {
         return $this->featured;
     }
@@ -55,9 +55,9 @@ class EventIndex
     /**
      * Get today's events.
      *
-     * @return EventCollection
+     * @return Collection
      */
-    public function getToday(): EventCollection
+    public function getToday(): Collection
     {
         return $this->today;
     }
@@ -65,9 +65,9 @@ class EventIndex
     /**
      * Get the upcoming events.
      *
-     * @return EventCollection
+     * @return Collection
      */
-    public function getUpcoming(): EventCollection
+    public function getUpcoming(): Collection
     {
         return $this->upcoming;
     }

@@ -2,7 +2,7 @@
 
 namespace TruckersMP\APIClient\Models;
 
-use TruckersMP\APIClient\Collections\EventAttendeeCollection;
+use Illuminate\Support\Collection;
 
 class EventAttendance
 {
@@ -23,14 +23,14 @@ class EventAttendance
     /**
      * The confirmed users.
      *
-     * @var EventAttendeeCollection|null
+     * @var Collection|null
      */
     protected $confirmedUsers;
 
     /**
      * The unsure users.
      *
-     * @var EventAttendeeCollection|null
+     * @var Collection|null
      */
     protected $unsureUsers;
 
@@ -52,10 +52,10 @@ class EventAttendance
         $this->confirmed = $confirmed;
         $this->unsure = $unsure;
         if (isset($confirmedUsers)) {
-            $this->confirmedUsers = new EventAttendeeCollection($confirmedUsers);
+            $this->confirmedUsers = (new Collection($confirmedUsers))->mapInto(EventAttendee::class);
         }
         if (isset($unsureUsers)) {
-            $this->unsureUsers = new EventAttendeeCollection($unsureUsers);
+            $this->unsureUsers = (new Collection($unsureUsers))->mapInto(EventAttendee::class);
         }
     }
 
@@ -82,9 +82,9 @@ class EventAttendance
     /**
      * Get the confirmed attendees.
      *
-     * @return EventAttendeeCollection|null
+     * @return Collection|null
      */
-    public function getConfirmedUsers(): ?EventAttendeeCollection
+    public function getConfirmedUsers(): ?Collection
     {
         return $this->confirmedUsers;
     }
@@ -92,9 +92,9 @@ class EventAttendance
     /**
      * Get the unsure attendees.
      *
-     * @return EventAttendeeCollection|null
+     * @return Collection|null
      */
-    public function getUnsureUsers(): ?EventAttendeeCollection
+    public function getUnsureUsers(): ?Collection
     {
         return $this->unsureUsers;
     }
