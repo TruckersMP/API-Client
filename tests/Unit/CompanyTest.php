@@ -3,8 +3,8 @@
 namespace Tests\Unit;
 
 use Carbon\Carbon;
+use Illuminate\Support\Collection;
 use Tests\TestCase;
-use TruckersMP\APIClient\Collections\CompanyCollection;
 use TruckersMP\APIClient\Models\Company;
 use TruckersMP\APIClient\Models\CompanyIndex;
 use TruckersMP\APIClient\Models\Game;
@@ -37,7 +37,8 @@ class CompanyTest extends TestCase
 
         $this->assertNotEmpty($companies);
 
-        $this->assertInstanceOf(CompanyCollection::class, $companies);
+        $this->assertInstanceOf(Collection::class, $companies);
+        $this->assertInstanceOf(Company::class, $companies->first());
     }
 
     /** @test */
@@ -47,7 +48,8 @@ class CompanyTest extends TestCase
 
         $this->assertNotEmpty($companies);
 
-        $this->assertInstanceOf(CompanyCollection::class, $companies);
+        $this->assertInstanceOf(Collection::class, $companies);
+        $this->assertInstanceOf(Company::class, $companies->first());
     }
 
     /** @test */
@@ -57,7 +59,8 @@ class CompanyTest extends TestCase
 
         $this->assertNotEmpty($companies);
 
-        $this->assertInstanceOf(CompanyCollection::class, $companies);
+        $this->assertInstanceOf(Collection::class, $companies);
+        $this->assertInstanceOf(Company::class, $companies->first());
     }
 
     /** @test */

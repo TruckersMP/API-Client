@@ -2,6 +2,7 @@
 
 namespace Tests;
 
+use Illuminate\Support\Collection;
 use Phpfastcache\CacheManager;
 use Phpfastcache\Config\ConfigurationOption;
 use Phpfastcache\Core\Pool\ExtendedCacheItemPoolInterface;
@@ -16,11 +17,6 @@ use Psr\Cache\InvalidArgumentException;
 use Psr\Http\Client\ClientExceptionInterface;
 use ReflectionException;
 use TruckersMP\APIClient\Client;
-use TruckersMP\APIClient\Collections\BanCollection;
-use TruckersMP\APIClient\Collections\Company\BanCollection as CompanyBanCollection;
-use TruckersMP\APIClient\Collections\Company\PostCollection;
-use TruckersMP\APIClient\Collections\Company\RoleCollection;
-use TruckersMP\APIClient\Collections\ServerCollection;
 use TruckersMP\APIClient\Exceptions\ApiErrorException;
 use TruckersMP\APIClient\Models\Ban;
 use TruckersMP\APIClient\Models\Company;
@@ -115,14 +111,14 @@ class TestCase extends BaseTestCase
      * Get or cache the players bans.
      *
      * @param  int  $id
-     * @return BanCollection|Ban[]
+     * @return Collection|Ban[]
      *
      * @throws PhpfastcacheInvalidArgumentException
      * @throws ApiErrorException
      * @throws ClientExceptionInterface
      * @throws InvalidArgumentException
      */
-    public function playerBans(int $id): BanCollection
+    public function playerBans(int $id): Collection
     {
         $cachedBans = self::$cache->getItem('player_bans_' . $id);
 
@@ -138,14 +134,14 @@ class TestCase extends BaseTestCase
      * Get or cache the bans for the player.
      *
      * @param  int  $id
-     * @return BanCollection
+     * @return Collection
      *
      * @throws PhpfastcacheInvalidArgumentException
      * @throws ApiErrorException
      * @throws ClientExceptionInterface
      * @throws InvalidArgumentException
      */
-    public function bans(int $id): BanCollection
+    public function bans(int $id): Collection
     {
         $cachedBans = self::$cache->getItem('bans_' . $id);
 
@@ -160,14 +156,14 @@ class TestCase extends BaseTestCase
     /**
      * Get or cache the server request.
      *
-     * @return ServerCollection|Server[]
+     * @return Collection|Server[]
      *
      * @throws PhpfastcacheInvalidArgumentException
      * @throws ApiErrorException
      * @throws ClientExceptionInterface
      * @throws InvalidArgumentException
      */
-    public function servers(): ServerCollection
+    public function servers(): Collection
     {
         $cachedServers = self::$cache->getItem('servers');
 
@@ -250,14 +246,14 @@ class TestCase extends BaseTestCase
      * Get the news posts for the specified company.
      *
      * @param  int  $id
-     * @return PostCollection|CompanyPost[]
+     * @return Collection|CompanyPost[]
      *
      * @throws PhpfastcacheInvalidArgumentException
      * @throws ApiErrorException
      * @throws ClientExceptionInterface
      * @throws InvalidArgumentException
      */
-    public function companyPosts(int $id): PostCollection
+    public function companyPosts(int $id): Collection
     {
         $cachedNews = self::$cache->getItem('company_posts_' . $id);
 
@@ -300,14 +296,14 @@ class TestCase extends BaseTestCase
      * Get or cache the company roles.
      *
      * @param  int  $companyId
-     * @return RoleCollection|CompanyRole[]
+     * @return Collection|CompanyRole[]
      *
      * @throws PhpfastcacheInvalidArgumentException
      * @throws ApiErrorException
      * @throws ClientExceptionInterface
      * @throws InvalidArgumentException
      */
-    public function companyRoles(int $companyId): RoleCollection
+    public function companyRoles(int $companyId): Collection
     {
         $cachedRoles = self::$cache->getItem('company_roles_' . $companyId);
 
@@ -403,14 +399,14 @@ class TestCase extends BaseTestCase
      * Get the members within the specified company that are currently banned.
      *
      * @param  int  $id
-     * @return CompanyBanCollection|CompanyBan[]
+     * @return Collection|CompanyBan[]
      *
      * @throws PhpfastcacheInvalidArgumentException
      * @throws ApiErrorException
      * @throws ClientExceptionInterface
      * @throws InvalidArgumentException
      */
-    public function companyBans(int $id): CompanyBanCollection
+    public function companyBans(int $id): Collection
     {
         $cachedCompanyBans = self::$cache->getItem('company_bans_' . $id);
 

@@ -2,9 +2,10 @@
 
 namespace TruckersMP\APIClient\Requests;
 
+use Illuminate\Support\Collection;
 use Psr\Http\Client\ClientExceptionInterface;
-use TruckersMP\APIClient\Collections\ServerCollection;
 use TruckersMP\APIClient\Exceptions\ApiErrorException;
+use TruckersMP\APIClient\Models\Server;
 
 class ServerRequest extends Request
 {
@@ -21,15 +22,14 @@ class ServerRequest extends Request
     /**
      * Get the data for the request.
      *
-     * @return ServerCollection
+     * @return Collection
      *
      * @throws ApiErrorException
      * @throws ClientExceptionInterface
      */
-    public function get(): ServerCollection
+    public function get(): Collection
     {
-        return new ServerCollection(
-            $this->send()['response']
-        );
+        return (new Collection($this->send()['response']))
+            ->mapInto(Server::class);
     }
 }

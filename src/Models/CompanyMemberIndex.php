@@ -2,7 +2,7 @@
 
 namespace TruckersMP\APIClient\Models;
 
-use TruckersMP\APIClient\Collections\Company\MemberCollection;
+use Illuminate\Support\Collection;
 
 class CompanyMemberIndex
 {
@@ -28,7 +28,8 @@ class CompanyMemberIndex
      */
     public function __construct(array $response)
     {
-        $this->members = new MemberCollection($response['members']);
+        $this->members = (new Collection($response['members']))
+            ->mapInto(CompanyMember::class);
 
         $this->count = $response['members_count'];
     }
@@ -36,9 +37,9 @@ class CompanyMemberIndex
     /**
      * Get the collection of company members.
      *
-     * @return MemberCollection
+     * @return Collection
      */
-    public function getMembers(): MemberCollection
+    public function getMembers(): Collection
     {
         return $this->members;
     }

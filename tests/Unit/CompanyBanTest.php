@@ -2,8 +2,8 @@
 
 namespace Tests\Unit;
 
+use Illuminate\Support\Collection;
 use Tests\TestCase;
-use TruckersMP\APIClient\Collections\Company\BanCollection;
 use TruckersMP\APIClient\Models\CompanyBan;
 
 class CompanyBanTest extends TestCase
@@ -18,7 +18,7 @@ class CompanyBanTest extends TestCase
     {
         $bans = $this->companyBans(self::TEST_COMPANY);
 
-        $this->assertInstanceOf(BanCollection::class, $bans);
+        $this->assertInstanceOf(Collection::class, $bans);
 
         if ($bans->count() > 0) {
             $ban = $bans[0];

@@ -3,8 +3,8 @@
 namespace TruckersMP\APIClient\Models;
 
 use Carbon\Carbon;
+use Illuminate\Support\Collection;
 use Psr\Http\Client\ClientExceptionInterface;
-use TruckersMP\APIClient\Collections\BanCollection;
 use TruckersMP\APIClient\Exceptions\ApiErrorException;
 use TruckersMP\APIClient\Requests\BanRequest;
 use TruckersMP\APIClient\Requests\Company\MemberRequest;
@@ -451,12 +451,12 @@ class Player
     /**
      * Get the player's bans.
      *
-     * @return BanCollection
+     * @return Collection
      *
      * @throws ApiErrorException
      * @throws ClientExceptionInterface
      */
-    public function getBans(): BanCollection
+    public function getBans(): Collection
     {
         return (new BanRequest($this->id))->get();
     }

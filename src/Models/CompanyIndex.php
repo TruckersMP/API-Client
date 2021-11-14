@@ -2,28 +2,28 @@
 
 namespace TruckersMP\APIClient\Models;
 
-use TruckersMP\APIClient\Collections\CompanyCollection;
+use Illuminate\Support\Collection;
 
 class CompanyIndex
 {
     /**
      * The recently created companies.
      *
-     * @var CompanyCollection
+     * @var Collection
      */
     protected $recent;
 
     /**
      * The featured companies.
      *
-     * @var CompanyCollection
+     * @var Collection
      */
     protected $featured;
 
     /**
      * The featured companies on the cover page.
      *
-     * @var CompanyCollection
+     * @var Collection
      */
     protected $featuredCovered;
 
@@ -35,19 +35,22 @@ class CompanyIndex
      */
     public function __construct(array $response)
     {
-        $this->recent = new CompanyCollection($response['recent']);
+        $this->recent = (new Collection($response['recent']))
+            ->mapInto(Company::class);
 
-        $this->featured = new CompanyCollection($response['featured']);
+        $this->featured = (new Collection($response['featured']))
+            ->mapInto(Company::class);
 
-        $this->featuredCovered = new CompanyCollection($response['featured_cover']);
+        $this->featuredCovered = (new Collection($response['featured_cover']))
+            ->mapInto(Company::class);
     }
 
     /**
      * Get the last 4 companies created.
      *
-     * @return CompanyCollection
+     * @return Collection
      */
-    public function getRecent(): CompanyCollection
+    public function getRecent(): Collection
     {
         return $this->recent;
     }
@@ -55,9 +58,9 @@ class CompanyIndex
     /**
      * Get the featured companies on the VTC page.
      *
-     * @return CompanyCollection
+     * @return Collection
      */
-    public function getFeatured(): CompanyCollection
+    public function getFeatured(): Collection
     {
         return $this->featured;
     }
@@ -65,9 +68,9 @@ class CompanyIndex
     /**
      * Get the companies with featured cover images on the VTC page.
      *
-     * @return CompanyCollection
+     * @return Collection
      */
-    public function getFeaturedCovered(): CompanyCollection
+    public function getFeaturedCovered(): Collection
     {
         return $this->featuredCovered;
     }

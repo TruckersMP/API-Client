@@ -3,8 +3,8 @@
 namespace Tests\Unit;
 
 use Carbon\Carbon;
+use Illuminate\Support\Collection;
 use Tests\TestCase;
-use TruckersMP\APIClient\Collections\Company\MemberCollection;
 use TruckersMP\APIClient\Models\CompanyMember;
 use TruckersMP\APIClient\Models\CompanyMemberIndex;
 
@@ -27,8 +27,9 @@ class CompanyMemberTest extends TestCase
 
         $this->assertInstanceOf(CompanyMemberIndex::class, $members);
 
-        $this->assertInstanceOf(MemberCollection::class, $members->getMembers());
+        $this->assertInstanceOf(Collection::class, $members->getMembers());
         $this->assertIsInt($members->getCount());
+        $this->assertInstanceOf(CompanyMember::class, $members->getMembers()->first());
     }
 
     /** @test */

@@ -3,10 +3,8 @@
 namespace Tests\Unit;
 
 use Carbon\Carbon;
+use Illuminate\Support\Collection;
 use Tests\TestCase;
-use TruckersMP\APIClient\Collections\DlcCollection;
-use TruckersMP\APIClient\Collections\EventAttendeeCollection;
-use TruckersMP\APIClient\Collections\EventCollection;
 use TruckersMP\APIClient\Models\Event;
 use TruckersMP\APIClient\Models\EventAttendance;
 use TruckersMP\APIClient\Models\EventCompany;
@@ -40,7 +38,7 @@ class EventTest extends TestCase
 
         $this->assertNotEmpty($events);
 
-        $this->assertInstanceOf(EventCollection::class, $events);
+        $this->assertInstanceOf(Collection::class, $events);
     }
 
     /** @test */
@@ -50,7 +48,7 @@ class EventTest extends TestCase
 
         $this->assertNotEmpty($events);
 
-        $this->assertInstanceOf(EventCollection::class, $events);
+        $this->assertInstanceOf(Collection::class, $events);
     }
 
     /** @test */
@@ -60,7 +58,7 @@ class EventTest extends TestCase
 
         $this->assertNotEmpty($events);
 
-        $this->assertInstanceOf(EventCollection::class, $events);
+        $this->assertInstanceOf(Collection::class, $events);
     }
 
     /** @test */
@@ -293,7 +291,7 @@ class EventTest extends TestCase
         $event = $this->event(self::TEST_EVENT);
 
         if ($event->getAttendance()->getConfirmedUsers() !== null) {
-            $this->assertInstanceOf(EventAttendeeCollection::class, $event->getAttendance()->getConfirmedUsers());
+            $this->assertInstanceOf(Collection::class, $event->getAttendance()->getConfirmedUsers());
         } else {
             $this->assertNull($event->getAttendance()->getConfirmedUsers());
         }
@@ -313,7 +311,7 @@ class EventTest extends TestCase
         $event = $this->event(self::TEST_EVENT);
 
         if ($event->getAttendance()->getUnsureUsers() !== null) {
-            $this->assertInstanceOf(EventAttendeeCollection::class, $event->getAttendance()->getUnsureUsers());
+            $this->assertInstanceOf(Collection::class, $event->getAttendance()->getUnsureUsers());
         } else {
             $this->assertNull($event->getAttendance()->getUnsureUsers());
         }
@@ -324,7 +322,7 @@ class EventTest extends TestCase
     {
         $event = $this->event(self::TEST_EVENT);
 
-        $this->assertInstanceOf(DlcCollection::class, $event->getDlcs());
+        $this->assertInstanceOf(Collection::class, $event->getDlcs());
     }
 
     /** @test */

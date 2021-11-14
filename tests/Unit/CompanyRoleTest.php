@@ -3,8 +3,8 @@
 namespace Tests\Unit;
 
 use Carbon\Carbon;
+use Illuminate\Support\Collection;
 use Tests\TestCase;
-use TruckersMP\APIClient\Collections\Company\RoleCollection;
 use TruckersMP\APIClient\Models\CompanyRole;
 
 class CompanyRoleTest extends TestCase
@@ -24,7 +24,7 @@ class CompanyRoleTest extends TestCase
     {
         $roles = $this->companyRoles(self::TEST_COMPANY);
 
-        $this->assertInstanceOf(RoleCollection::class, $roles);
+        $this->assertInstanceOf(Collection::class, $roles);
 
         if ($roles->count() > 0) {
             $role = $roles[0];

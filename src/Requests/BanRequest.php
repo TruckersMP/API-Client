@@ -2,9 +2,10 @@
 
 namespace TruckersMP\APIClient\Requests;
 
+use Illuminate\Support\Collection;
 use Psr\Http\Client\ClientExceptionInterface;
-use TruckersMP\APIClient\Collections\BanCollection;
 use TruckersMP\APIClient\Exceptions\ApiErrorException;
+use TruckersMP\APIClient\Models\Ban;
 
 class BanRequest extends Request
 {
@@ -41,15 +42,14 @@ class BanRequest extends Request
     /**
      * Get the data for the request.
      *
-     * @return BanCollection
+     * @return Collection
      *
      * @throws ApiErrorException
      * @throws ClientExceptionInterface
      */
-    public function get(): BanCollection
+    public function get(): Collection
     {
-        return new BanCollection(
-            $this->send()['response']
-        );
+        return (new Collection($this->send()['response']))
+            ->mapInto(Ban::class);
     }
 }

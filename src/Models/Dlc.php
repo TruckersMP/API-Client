@@ -21,15 +21,15 @@ class Dlc
     /**
      * Create a new Dlc instance.
      *
-     * @param  int  $id
+     * @param  string  $id
      * @param  string  $name
      * @return void
      */
     public function __construct(
-        int $id,
+        string $id,
         string $name
     ) {
-        $this->id = $id;
+        $this->id = intval($id);
         $this->name = $name;
     }
 
