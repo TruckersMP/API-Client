@@ -36,7 +36,7 @@ class Client
     /**
      * Get the information for the player with the specified ID.
      *
-     * https://stats.truckersmp.com/api#players_lookup
+     * https://truckersmp.com/developers/api#operation/get-player-id
      *
      * @param  int  $id
      * @return PlayerRequest
@@ -49,7 +49,7 @@ class Client
     /**
      * Get the bans for the player with the specified ID.
      *
-     * https://stats.truckersmp.com/api#ban_lookup
+     * https://truckersmp.com/developers/api#operation/get-bans-id
      *
      * @param  int  $id
      * @return BanRequest
@@ -62,7 +62,7 @@ class Client
     /**
      * Get the information about the servers.
      *
-     * https://stats.truckersmp.com/api#servers_list
+     * https://truckersmp.com/developers/api#operation/get-servers
      *
      * @return ServerRequest
      */
@@ -74,7 +74,7 @@ class Client
     /**
      * Get the current game time.
      *
-     * https://stats.truckersmp.com/api#game_time
+     * https://truckersmp.com/developers/api#operation/get-game_time
      *
      * @return GameTimeRequest
      */
@@ -86,7 +86,7 @@ class Client
     /**
      * Get the recent and featured companies.
      *
-     * https://stats.truckersmp.com/api#vtc_index
+     * https://truckersmp.com/developers/api#operation/get-vtc
      *
      * @return CompanyIndexRequest
      */
@@ -98,7 +98,7 @@ class Client
     /**
      * Get the information for the company with the specified ID or slug.
      *
-     * https://stats.truckersmp.com/api#vtc_info
+     * https://truckersmp.com/developers/api#operation/get-vtc-id
      *
      * @param  string|int  $key
      * @return CompanyRequest
@@ -111,7 +111,7 @@ class Client
     /**
      * Get the TruckersMP version for ETS2 and ATS.
      *
-     * https://stats.truckersmp.com/api#truckersmp_version
+     * https://truckersmp.com/developers/api#operation/get-version
      *
      * @return VersionRequest
      */
@@ -123,7 +123,7 @@ class Client
     /**
      * Get the current in-game rules.
      *
-     * https://stats.truckersmp.com/api#truckersmp_rules
+     * https://truckersmp.com/developers/api#operation/get-rules
      *
      * @return RuleRequest
      */
@@ -133,9 +133,9 @@ class Client
     }
 
     /**
-     * Get the featured, today's and upcoming events.
+     * Get the featured, current, and upcoming events.
      *
-     * https://stats.truckersmp.com/api#events_index
+     * https://truckersmp.com/developers/api#operation/get-v2-events
      *
      * @return EventIndexRequest
      */
@@ -147,7 +147,7 @@ class Client
     /**
      * Get the information for the event with the specified ID.
      *
-     * https://stats.truckersmp.com/api#events_info
+     * https://truckersmp.com/developers/api#operation/get-events-id
      *
      * @param  int  $id
      * @return EventRequest
