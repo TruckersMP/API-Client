@@ -20,7 +20,7 @@ class CompanyTest extends TestCase
     /**
      * The slug of the validated/verified company to use in the tests.
      */
-    private const TEST_COMPANY_SLUG = 'phoenix';
+    private const TEST_COMPANY_SLUG = 'viva-trucking';
 
     /** @test */
     public function it_can_get_all_the_companies()
