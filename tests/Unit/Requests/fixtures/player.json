@@ -1,0 +1,44 @@
+{
+    "error": false,
+    "response": {
+        "id": 1287455,
+        "name": "Name",
+        "avatar": "https://static.truckersmp.com/avatarsN/avatar.png",
+        "smallAvatar": "https://static.truckersmp.com/avatarsN/small/avatar.png",
+        "joinDate": "2017-01-09 18:17:28",
+        "steamID64": 76561198083585955,
+        "steamID": "76561198083585955",
+        "discordSnowflake": null,
+        "displayVTCHistory": true,
+        "groupName": "Game Developer",
+        "groupColor": "#673ab7",
+        "groupID": 55,
+        "banned": false,
+        "bannedUntil": null,
+        "bansCount": 0,
+        "displayBans": false,
+        "patreon": {
+            "isPatron": true,
+            "active": true,
+            "color": "#DAA520",
+            "tierId": 1234567,
+            "currentPledge": 500,
+            "lifetimePledge": 150000,
+            "nextPledge": 500,
+            "hidden": false
+        },
+        "permissions": {
+            "isStaff": true,
+            "isUpperStaff": true,
+            "isGameAdmin": true,
+            "showDetailedOnWebMaps": false
+        },
+        "vtc": {
+            "id": 1,
+            "name": "TruckersMP Developers",
+            "tag": "TMP-DEV",
+            "inVTC": true,
+            "memberID": 1
+        }
+    }
+}

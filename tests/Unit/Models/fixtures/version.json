@@ -1,0 +1,16 @@
+{
+    "name": "1.2.3.4.5",
+    "numeric": "12345",
+    "stage": "Alpha",
+    "ets2mp_checksum": {
+        "dll": "ets2mp_checksum_dll",
+        "adb": "ets2mp_checksum_adb"
+    },
+    "atsmp_checksum": {
+        "dll": "atsmp_checksum_dll",
+        "adb": "atsmp_checksum_adb"
+    },
+    "time": "2023-01-04 11:20:03",
+    "supported_game_version": "1.46.2.13s",
+    "supported_ats_game_version": "1.46.2.11s"
+}

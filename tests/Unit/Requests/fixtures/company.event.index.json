@@ -1,0 +1,55 @@
+{
+    "error": false,
+    "response": [
+        {
+            "id": 45,
+            "event_type": {
+                "key": "convoy",
+                "name": "Convoy"
+            },
+            "name": "Convoy",
+            "slug": "45-convoy",
+            "game": "ETS2",
+            "server": {
+                "id": 12,
+                "name": "Server"
+            },
+            "language": "English",
+            "departure": {
+                "location": "Hotel",
+                "city": "Prague"
+            },
+            "arrive": {
+                "location": "Quarry",
+                "city": "Stuttgart"
+            },
+            "start_at": "2023-01-04 14:32:28",
+            "banner": "https://static.truckersmp.com/images/event/cover/cover.png",
+            "map": "https://static.truckersmp.com/images/event/map/map.png",
+            "description": "Description",
+            "rule": null,
+            "voice_link": "https://discord.gg/truckersmp",
+            "external_link": "https://truckersmp.com",
+            "featured": "Official",
+            "vtc": {
+                "id": 22,
+                "name": "Company"
+            },
+            "user": {
+                "id": 68,
+                "username": "User"
+            },
+            "attendances": {
+                "confirmed": 24,
+                "unsure": 4
+            },
+            "dlcs": {
+                "304212": "Scandinavia",
+                "558244": "Italia"
+            },
+            "url": "/events/45-convoy",
+            "created_at": "2023-01-04 14:37:30",
+            "updated_at": "2023-01-04 14:37:46"
+        }
+    ]
+}

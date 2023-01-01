@@ -1,0 +1,17 @@
+{
+    "error": false,
+    "response": {
+        "members": [
+            {
+                "id": 123,
+                "user_id": 1,
+                "username": "User",
+                "steam_id": 76561198083585955,
+                "role_id": 25,
+                "role": "Role",
+                "joinDate": "2023-01-04 11:35:05"
+            }
+        ],
+        "members_count": 1
+    }
+}

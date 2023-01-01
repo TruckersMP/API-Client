@@ -1,0 +1,34 @@
+{
+    "error": false,
+    "response": {
+        "id": 1,
+        "name": "TruckersMP Developers",
+        "owner_id": 1287455,
+        "owner_username": "Owner",
+        "slogan": "$company->create();",
+        "tag": "TMP-DEV",
+        "logo": "https://static.truckersmp.com/images/vtc/logo/logo.png",
+        "cover": "https://static.truckersmp.com/images/vtc/cover/cover.jpeg",
+        "information": "Description",
+        "rules": "Rules",
+        "requirements": "Requirements",
+        "website": "https://truckersmp.com",
+        "socials": {
+            "twitter": "https://twitter.com/truckersmp",
+            "facebook": "https://www.facebook.com/truckersmpofficial/",
+            "twitch": "https://www.twitch.tv/truckersmp_official",
+            "discord": "https://discord.gg/truckersmp",
+            "youtube": "https://www.youtube.com/c/TruckersMPOfficial/"
+        },
+        "games": {
+            "ats": true,
+            "ets": true
+        },
+        "members_count": 5,
+        "recruitment": "Close",
+        "language": "English",
+        "verified": false,
+        "validated": false,
+        "created": "2019-07-13 14:26:49"
+    }
+}

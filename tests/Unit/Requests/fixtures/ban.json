@@ -1,0 +1,13 @@
+{
+    "error": false,
+    "response": [
+        {
+            "expiration": "2080-01-01 12:00:00",
+            "timeAdded": "2023-01-01 12:00:00",
+            "active": true,
+            "reason": "Reason",
+            "adminName": "Admin",
+            "adminID": 123
+        }
+    ]
+}
