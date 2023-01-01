@@ -29,6 +29,7 @@ class CompanyIndexRequest extends Request
     public function get(): CompanyIndex
     {
         return new CompanyIndex(
+            $this->client,
             $this->send()['response']
         );
     }

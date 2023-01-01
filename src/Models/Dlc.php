@@ -9,14 +9,14 @@ class Dlc
      *
      * @var int
      */
-    protected $id;
+    protected int $id;
 
     /**
      * The DLC name.
      *
      * @var string
      */
-    protected $name;
+    protected string $name;
 
     /**
      * Create a new Dlc instance.

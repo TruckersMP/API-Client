@@ -3,6 +3,7 @@
 namespace TruckersMP\APIClient\Requests\Company;
 
 use Psr\Http\Client\ClientExceptionInterface;
+use TruckersMP\APIClient\Client;
 use TruckersMP\APIClient\Exceptions\ApiErrorException;
 use TruckersMP\APIClient\Models\Event;
 use TruckersMP\APIClient\Requests\Request;
@@ -14,25 +15,26 @@ class EventRequest extends Request
      *
      * @var int
      */
-    protected $companyId;
+    protected int $companyId;
 
     /**
      * The ID of the requested event.
      *
      * @var int
      */
-    protected $eventId;
+    protected int $eventId;
 
     /**
      * Create a new EventRequest instance.
      *
-     * @param int $companyId
-     * @param int $eventId
+     * @param  Client  $client
+     * @param  int  $companyId
+     * @param  int  $eventId
      * @return void
      */
-    public function __construct(int $companyId, int $eventId)
+    public function __construct(Client $client, int $companyId, int $eventId)
     {
-        parent::__construct();
+        parent::__construct($client);
 
         $this->companyId = $companyId;
         $this->eventId = $eventId;
@@ -59,6 +61,7 @@ class EventRequest extends Request
     public function get(): Event
     {
         return new Event(
+            $this->client,
             $this->send()['response']
         );
     }

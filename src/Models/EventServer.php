@@ -9,14 +9,14 @@ class EventServer
      *
      * @var int
      */
-    protected $id;
+    protected int $id;
 
     /**
      * The event server name.
      *
      * @var string
      */
-    protected $name;
+    protected string $name;
 
     /**
      * Create a new EventServer instance.

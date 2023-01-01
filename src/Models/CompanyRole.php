@@ -3,65 +3,69 @@
 namespace TruckersMP\APIClient\Models;
 
 use Carbon\Carbon;
+use TruckersMP\APIClient\Client;
 
-class CompanyRole
+class CompanyRole extends Model
 {
     /**
      * The ID of the requested role.
      *
      * @var int
      */
-    protected $id;
+    protected int $id;
 
     /**
      * The name of the role.
      *
      * @var string
      */
-    protected $name;
+    protected string $name;
 
     /**
      * The order in which the role is displayed.
      *
      * @var int
      */
-    protected $order;
+    protected int $order;
 
     /**
      * The owner of the company.
      *
      * @var bool
      */
-    protected $owner;
+    protected bool $owner;
 
     /**
      * The date at which the role was created.
      *
      * @var Carbon
      */
-    protected $createdAt;
+    protected Carbon $createdAt;
 
     /**
      * The date at which the role was last updated.
      *
      * @var Carbon
      */
-    protected $updatedAt;
+    protected Carbon $updatedAt;
 
     /**
      * Create a new CompanyRole instance.
      *
+     * @param  Client  $client
      * @param  array  $role
      * @return void
      */
-    public function __construct(array $role)
+    public function __construct(Client $client, array $role)
     {
-        $this->id = $role['id'];
-        $this->name = $role['name'];
-        $this->order = $role['order'];
-        $this->owner = $role['owner'];
-        $this->createdAt = new Carbon($role['created_at'], 'UTC');
-        $this->updatedAt = new Carbon($role['updated_at'], 'UTC');
+        parent::__construct($client, $role);
+
+        $this->id = $this->getValue('id');
+        $this->name = $this->getValue('name');
+        $this->order = $this->getValue('order');
+        $this->owner = $this->getValue('owner', false);
+        $this->createdAt = new Carbon($this->getValue('created_at'), 'UTC');
+        $this->updatedAt = new Carbon($this->getValue('updated_at'), 'UTC');
     }
 
     /**

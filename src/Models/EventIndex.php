@@ -3,6 +3,7 @@
 namespace TruckersMP\APIClient\Models;
 
 use Illuminate\Support\Collection;
+use TruckersMP\APIClient\Client;
 
 class EventIndex
 {
@@ -11,35 +12,36 @@ class EventIndex
      *
      * @var Collection
      */
-    protected $featured;
+    protected Collection $featured;
 
     /**
      * Today's events.
      *
      * @var Collection
      */
-    protected $today;
+    protected Collection $today;
 
     /**
      * The upcoming events.
      *
      * @var Collection
      */
-    protected $upcoming;
+    protected Collection $upcoming;
 
     /**
      * Create a new EventIndex instance.
      *
+     * @param  Client  $client
      * @param  array  $response
      * @return void
      */
-    public function __construct(array $response)
+    public function __construct(Client $client, array $response)
     {
-        $this->featured = (new Collection($response['featured'] ?? []))->mapInto(Event::class);
+        $mapEvent = fn (array $event) => new Event($client, $event);
 
-        $this->today = (new Collection($response['today'] ?? []))->mapInto(Event::class);
-
-        $this->upcoming = (new Collection($response['upcoming'] ?? []))->mapInto(Event::class);
+        $this->featured = (new Collection($response['featured'] ?? []))->map($mapEvent);
+        $this->today = (new Collection($response['today'] ?? []))->map($mapEvent);
+        $this->upcoming = (new Collection($response['upcoming'] ?? []))->map($mapEvent);
     }
 
     /**

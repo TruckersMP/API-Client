@@ -3,6 +3,7 @@
 namespace Tests;
 
 use Illuminate\Support\Collection;
+use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 use Phpfastcache\CacheManager;
 use Phpfastcache\Config\ConfigurationOption;
 use Phpfastcache\Core\Pool\ExtendedCacheItemPoolInterface;
@@ -36,6 +37,8 @@ use TruckersMP\APIClient\Models\Version;
 
 class TestCase extends BaseTestCase
 {
+    use MockeryPHPUnitIntegration;
+
     /**
      * The number of seconds we should cache the data for.
      */
@@ -46,7 +49,7 @@ class TestCase extends BaseTestCase
      *
      * @var Client
      */
-    protected $client;
+    protected Client $client;
 
     /**
      * The current cache instance.

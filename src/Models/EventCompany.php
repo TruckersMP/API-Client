@@ -9,14 +9,14 @@ class EventCompany
      *
      * @var int
      */
-    protected $id;
+    protected int $id;
 
     /**
      * The event company name.
      *
      * @var string
      */
-    protected $name;
+    protected string $name;
 
     /**
      * Create a new EventCompany instance.

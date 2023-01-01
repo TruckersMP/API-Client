@@ -3,8 +3,9 @@
 namespace TruckersMP\APIClient\Models;
 
 use Carbon\Carbon;
+use TruckersMP\APIClient\Client;
 
-class Company
+class Company extends Model
 {
     /**
      * The value used if recruitment is closed.
@@ -16,197 +17,185 @@ class Company
      *
      * @var int
      */
-    protected $id;
+    protected int $id;
 
     /**
      * The name of the company.
      *
      * @var string
      */
-    protected $name;
+    protected string $name;
 
     /**
      * Get the owner's ID.
      *
      * @var int
      */
-    protected $ownerId;
+    protected int $ownerId;
 
     /**
      * Get the owner's name.
      *
      * @var string
      */
-    protected $ownerName;
+    protected string $ownerName;
 
     /**
      * Get the slogan of the company.
      *
      * @var string
      */
-    protected $slogan;
+    protected string $slogan;
 
     /**
      * Get the tag of the company.
      *
      * @var string
      */
-    protected $tag;
+    protected string $tag;
 
     /**
      * Get the company's logo image URL.
      *
-     * @var string
+     * @var string|null
      */
-    protected $logo;
+    protected ?string $logo;
 
     /**
      * Get the company's cover image URL.
      *
-     * @var string
+     * @var string|null
      */
-    protected $cover;
+    protected ?string $cover;
 
     /**
      * Get the company information.
      *
-     * @var string
+     * @var string|null
      */
-    protected $information;
+    protected ?string $information;
 
     /**
      * Get the company rules.
      *
-     * @var string
+     * @var string|null
      */
-    protected $rules;
+    protected ?string $rules;
 
     /**
      * Get the company requirements.
      *
-     * @var string
+     * @var string|null
      */
-    protected $requirements;
+    protected ?string $requirements;
 
     /**
      * Get the company's website.
      *
      * @var string|null
      */
-    protected $website;
+    protected ?string $website;
 
     /**
      * Get the company's social information.
      *
      * @var Social
      */
-    protected $social;
+    protected Social $social;
 
     /**
      * Get the games the company supports.
      *
      * @var Game
      */
-    protected $games;
+    protected Game $games;
 
     /**
      * The number of members in the company.
      *
      * @var int
      */
-    protected $membersCount;
+    protected int $membersCount;
 
     /**
      * The recruitment status of the company.
      *
      * @var string
      */
-    protected $recruitment;
+    protected string $recruitment;
 
     /**
      * The language of the company.
      *
      * @var string
      */
-    protected $language;
+    protected string $language;
 
     /**
      * If the company is verified.
      *
      * @var bool
      */
-    protected $verified;
+    protected bool $verified;
 
     /**
      * If the company is validated.
      *
      * @var bool
      */
-    protected $validated;
+    protected bool $validated;
 
     /**
      * The date and time the company was created.
      *
      * @var Carbon
      */
-    protected $createdAt;
+    protected Carbon $createdAt;
 
     /**
      * Create a new Company instance.
      *
+     * @param  Client  $client
      * @param  array  $company
      * @return void
      */
-    public function __construct(array $company)
+    public function __construct(Client $client, array $company)
     {
-        $this->id = $company['id'];
-        $this->name = $company['name'];
-        $this->ownerId = $company['owner_id'];
-        $this->ownerName = $company['owner_username'];
-        $this->slogan = $company['slogan'];
-        $this->tag = $company['tag'];
+        parent::__construct($client, $company);
 
-        if (array_key_exists('logo', $company)) {
-            $this->logo = $company['logo'];
-        }
+        $this->id = $this->getValue('id');
+        $this->name = $this->getValue('name');
+        $this->ownerId = $this->getValue('owner_id');
+        $this->ownerName = $this->getValue('owner_username');
+        $this->slogan = $this->getValue('slogan');
+        $this->tag = $this->getValue('tag');
 
-        if (array_key_exists('cover', $company)) {
-            $this->cover = $company['cover'];
-        }
-
-        if (array_key_exists('information', $company)) {
-            $this->information = $company['information'];
-        }
-
-        if (array_key_exists('rules', $company)) {
-            $this->rules = $company['rules'];
-        }
-
-        if (array_key_exists('requirements', $company)) {
-            $this->requirements = $company['requirements'];
-        }
-
-        $this->website = $company['website'];
+        $this->logo = $this->getValue('logo');
+        $this->cover = $this->getValue('cover');
+        $this->information = $this->getValue('information');
+        $this->rules = $this->getValue('rules');
+        $this->requirements = $this->getValue('requirements');
+        $this->website = $this->getValue('website');
 
         $this->social = new Social(
-            $company['socials']['twitter'],
-            $company['socials']['facebook'],
-            $company['socials']['twitch'],
-            $company['socials']['discord'],
-            $company['socials']['youtube']
+            $this->getValue('socials.twitter'),
+            $this->getValue('socials.facebook'),
+            $this->getValue('socials.twitch'),
+            $this->getValue('socials.discord'),
+            $this->getValue('socials.youtube'),
         );
 
         $this->games = new Game(
-            $company['games']['ats'],
-            $company['games']['ets']
+            $this->getValue('games.ats'),
+            $this->getValue('games.ets'),
         );
 
-        $this->membersCount = intval($company['members_count']);
-        $this->recruitment = $company['recruitment'];
-        $this->language = $company['language'];
-        $this->verified = boolval($company['verified']);
-        $this->validated = boolval($company['validated']);
-        $this->createdAt = new Carbon($company['created'], 'UTC');
+        $this->membersCount = $this->getValue('members_count');
+        $this->recruitment = $this->getValue('recruitment');
+        $this->language = $this->getValue('language');
+        $this->verified = $this->getValue('verified');
+        $this->validated = $this->getValue('validated');
+        $this->createdAt = new Carbon($this->getValue('created'), 'UTC');
     }
 
     /**
@@ -272,9 +261,9 @@ class Company
     /**
      * Get the URL to the company's logo.
      *
-     * @return string
+     * @return string|null
      */
-    public function getLogo(): string
+    public function getLogo(): ?string
     {
         return $this->logo;
     }
@@ -282,9 +271,9 @@ class Company
     /**
      * Get the URL to the company's cover image.
      *
-     * @return string
+     * @return string|null
      */
-    public function getCover(): string
+    public function getCover(): ?string
     {
         return $this->cover;
     }
@@ -292,9 +281,9 @@ class Company
     /**
      * Get the information about the company.
      *
-     * @return string
+     * @return string|null
      */
-    public function getInformation(): string
+    public function getInformation(): ?string
     {
         return $this->information;
     }
@@ -302,9 +291,9 @@ class Company
     /**
      * Get the company's rules.
      *
-     * @return string
+     * @return string|null
      */
-    public function getRules(): string
+    public function getRules(): ?string
     {
         return $this->rules;
     }
@@ -312,9 +301,9 @@ class Company
     /**
      * Get the company's requirements.
      *
-     * @return string
+     * @return string|null
      */
-    public function getRequirements(): string
+    public function getRequirements(): ?string
     {
         return $this->requirements;
     }
@@ -360,7 +349,7 @@ class Company
     }
 
     /**
-     * Get the company's recruitment status i.e. Open or Closed.
+     * Get the company's recruitment status i.e. Open or Close.
      *
      * @return string
      */

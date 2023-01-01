@@ -3,90 +3,94 @@
 namespace TruckersMP\APIClient\Models;
 
 use Carbon\Carbon;
+use TruckersMP\APIClient\Client;
 
-class Version
+class Version extends Model
 {
     /**
      * Name of the current version.
      *
      * @var string
      */
-    protected $name;
+    protected string $name;
 
     /**
      * The numeric name of the current version.
      *
      * @var string
      */
-    protected $numeric;
+    protected string $numeric;
 
     /**
      * The current stage in the development process.
      *
      * @var string
      */
-    protected $stage;
+    protected string $stage;
 
     /**
      * The ETS2MP checksum.
      *
      * @var Checksum
      */
-    protected $ets2mpChecksum;
+    protected Checksum $ets2mpChecksum;
 
     /**
      * The ATSMP checksum.
      *
      * @var Checksum
      */
-    protected $atsmpChecksum;
+    protected Checksum $atsmpChecksum;
 
     /**
      * The time that the version was released.
      *
      * @var Carbon
      */
-    protected $time;
+    protected Carbon $time;
 
     /**
      * The ETS2 version that is supported.
      *
      * @var string
      */
-    protected $supportedETS2GameVersion;
+    protected string $supportedETS2GameVersion;
 
     /**
      * The ATS version that is supported.
      *
      * @var string
      */
-    protected $supportedATSGameVersion;
+    protected string $supportedATSGameVersion;
 
     /**
      * Create a new Version instance.
      *
+     * @param  Client  $client
      * @param  array  $version
      * @return void
      */
-    public function __construct(array $version)
+    public function __construct(Client $client, array $version)
     {
-        $this->name = $version['name'];
-        $this->numeric = $version['numeric'];
-        $this->stage = $version['stage'];
+        parent::__construct($client, $version);
+
+        $this->name = $this->getValue('name');
+        $this->numeric = $this->getValue('numeric');
+        $this->stage = $this->getValue('stage');
 
         $this->ets2mpChecksum = new Checksum(
-            $version['ets2mp_checksum']['dll'],
-            $version['ets2mp_checksum']['adb']
+            $this->getValue('ets2mp_checksum.dll'),
+            $this->getValue('ets2mp_checksum.adb'),
         );
 
         $this->atsmpChecksum = new Checksum(
-            $version['atsmp_checksum']['dll'],
-            $version['atsmp_checksum']['adb']
+            $this->getValue('atsmp_checksum.dll'),
+            $this->getValue('atsmp_checksum.adb'),
         );
 
-        $this->time = new Carbon($version['time'], 'UTC');
-        $this->supportedETS2GameVersion = $version['supported_game_version'];
-        $this->supportedATSGameVersion = $version['supported_ats_game_version'];
+        $this->time = new Carbon($this->getValue('time'), 'UTC');
+        $this->supportedETS2GameVersion = $this->getValue('supported_game_version');
+        $this->supportedATSGameVersion = $this->getValue('supported_ats_game_version');
     }
 
     /**

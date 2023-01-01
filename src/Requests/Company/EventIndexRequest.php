@@ -3,6 +3,7 @@
 namespace TruckersMP\APIClient\Requests\Company;
 
 use Psr\Http\Client\ClientExceptionInterface;
+use TruckersMP\APIClient\Client;
 use TruckersMP\APIClient\Exceptions\ApiErrorException;
 use TruckersMP\APIClient\Models\CompanyEventIndex;
 use TruckersMP\APIClient\Requests\Request;
@@ -14,17 +15,18 @@ class EventIndexRequest extends Request
      *
      * @var int
      */
-    protected $companyId;
+    protected int $companyId;
 
     /**
      * Create a new EventIndexRequest instance.
      *
-     * @param int $id
+     * @param  Client  $client
+     * @param  int  $id
      * @return void
      */
-    public function __construct(int $id)
+    public function __construct(Client $client, int $id)
     {
-        parent::__construct();
+        parent::__construct($client);
 
         $this->companyId = $id;
     }
@@ -50,6 +52,7 @@ class EventIndexRequest extends Request
     public function get(): CompanyEventIndex
     {
         return new CompanyEventIndex(
+            $this->client,
             $this->send()['response']
         );
     }

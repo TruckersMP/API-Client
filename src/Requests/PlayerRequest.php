@@ -3,6 +3,7 @@
 namespace TruckersMP\APIClient\Requests;
 
 use Psr\Http\Client\ClientExceptionInterface;
+use TruckersMP\APIClient\Client;
 use TruckersMP\APIClient\Exceptions\ApiErrorException;
 use TruckersMP\APIClient\Models\Player;
 
@@ -13,17 +14,18 @@ class PlayerRequest extends Request
      *
      * @var int
      */
-    protected $id;
+    protected int $id;
 
     /**
      * Create a new PlayerRequest instance.
      *
+     * @param  Client  $client
      * @param  int  $id
      * @return void
      */
-    public function __construct(int $id)
+    public function __construct(Client $client, int $id)
     {
-        parent::__construct();
+        parent::__construct($client);
 
         $this->id = $id;
     }
@@ -49,6 +51,7 @@ class PlayerRequest extends Request
     public function get(): Player
     {
         return new Player(
+            $this->client,
             $this->send()['response']
         );
     }
@@ -61,6 +64,7 @@ class PlayerRequest extends Request
     public function bans(): BanRequest
     {
         return new BanRequest(
+            $this->client,
             $this->id
         );
     }

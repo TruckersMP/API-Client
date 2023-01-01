@@ -9,14 +9,14 @@ class Game
      *
      * @var bool
      */
-    protected $ats;
+    protected bool $ats;
 
     /**
      * Whether the entity has/supports Euro Truck Simulator 2.
      *
      * @var bool
      */
-    protected $ets;
+    protected bool $ets;
 
     /**
      * Create a new Game instance.

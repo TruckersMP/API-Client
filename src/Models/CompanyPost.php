@@ -3,93 +3,93 @@
 namespace TruckersMP\APIClient\Models;
 
 use Carbon\Carbon;
+use TruckersMP\APIClient\Client;
 
-class CompanyPost
+class CompanyPost extends Model
 {
     /**
      * The ID of the post.
      *
      * @var int
      */
-    protected $id;
+    protected int $id;
 
     /**
      * The post title.
      *
      * @var string
      */
-    protected $title;
+    protected string $title;
 
     /**
      * A summary of the post content.
      *
      * @var string
      */
-    protected $summary;
+    protected string $summary;
 
     /**
      * The content of the post.
      *
-     * @var string
+     * @var string|null
      */
-    protected $content;
+    protected ?string $content;
 
     /**
      * The ID of the author who wrote the post.
      *
      * @var int
      */
-    protected $authorId;
+    protected int $authorId;
 
     /**
      * The author who wrote the post.
      *
      * @var string
      */
-    protected $author;
+    protected string $author;
 
     /**
      * If the post is pinned.
      *
      * @var bool
      */
-    protected $pinned;
+    protected bool $pinned;
 
     /**
      * The date at which the post was last updated at.
      *
      * @var Carbon
      */
-    protected $updatedAt;
+    protected Carbon $updatedAt;
 
     /**
      * The date at which the post was published.
      *
      * @var Carbon
      */
-    protected $publishedAt;
+    protected Carbon $publishedAt;
 
     /**
      * Create a new Post instance.
      *
+     * @param  Client  $client
      * @param  array  $post
      * @return void
      */
-    public function __construct(array $post)
+    public function __construct(Client $client, array $post)
     {
-        $this->id = $post['id'];
-        $this->title = $post['title'];
-        $this->summary = $post['content_summary'];
+        parent::__construct($client, $post);
 
-        if (isset($post['content'])) {
-            $this->content = $post['content'];
-        }
-
-        $this->authorId = $post['author_id'];
-        $this->author = $post['author'];
-        $this->pinned = $post['pinned'];
-        $this->updatedAt = new Carbon($post['updated_at'], 'UTC');
-        $this->publishedAt = new Carbon($post['published_at'], 'UTC');
+        $this->id = $this->getValue('id');
+        $this->title = $this->getValue('title');
+        $this->summary = $this->getValue('content_summary');
+        $this->content = $this->getValue('content');
+        $this->authorId = $this->getValue('author_id');
+        $this->author = $this->getValue('author');
+        $this->pinned = $this->getValue('pinned', false);
+        $this->updatedAt = new Carbon($this->getValue('updated_at'), 'UTC');
+        $this->publishedAt = new Carbon($this->getValue('published_at'), 'UTC');
     }
 
     /**
@@ -125,9 +125,9 @@ class CompanyPost
     /**
      * Get the post content.
      *
-     * @return string
+     * @return string|null
      */
-    public function getContent(): string
+    public function getContent(): ?string
     {
         return $this->content;
     }

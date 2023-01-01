@@ -3,73 +3,77 @@
 namespace TruckersMP\APIClient\Models;
 
 use Carbon\Carbon;
+use TruckersMP\APIClient\Client;
 
-class CompanyMember
+class CompanyMember extends Model
 {
     /**
-     * The player's member id within the company.
+     * The player's member ID within the company.
      *
      * @var int
      */
-    protected $id;
+    protected int $id;
 
     /**
-     * The player's account id.
+     * The player's account ID.
      *
      * @var int
      */
-    protected $userId;
+    protected int $userId;
 
     /**
      * The player's username.
      *
      * @var string
      */
-    protected $username;
+    protected string $username;
 
     /**
-     * The player's steam id.
+     * The player's Steam ID.
      *
      * @var string
      */
-    protected $steamId;
+    protected string $steamId;
 
     /**
-     * The player's role id within the company.
+     * The player's role ID within the company.
      *
      * @var int
      */
-    protected $roleId;
+    protected int $roleId;
 
     /**
      * The player's role within the company.
      *
      * @var string
      */
-    protected $role;
+    protected string $role;
 
     /**
      * The date the player joined the company.
      *
      * @var Carbon
      */
-    protected $joinDate;
+    protected Carbon $joinDate;
 
     /**
      * Create a new CompanyMember instance.
      *
+     * @param  Client  $client
      * @param  array  $member
      * @return void
      */
-    public function __construct(array $member)
+    public function __construct(Client $client, array $member)
     {
-        $this->id = $member['id'];
-        $this->userId = $member['user_id'];
-        $this->username = $member['username'];
-        $this->steamId = $member['steam_id'];
-        $this->roleId = $member['role_id'];
-        $this->role = $member['role'];
-        $this->joinDate = new Carbon($member['joinDate'], 'UTC');
+        parent::__construct($client, $member);
+
+        $this->id = $this->getValue('id');
+        $this->userId = $this->getValue('user_id');
+        $this->username = $this->getValue('username');
+        $this->steamId = (string) $this->getValue('steam_id');
+        $this->roleId = $this->getValue('role_id');
+        $this->role = $this->getValue('role');
+        $this->joinDate = new Carbon($this->getValue('joinDate'), 'UTC');
     }
 
     /**

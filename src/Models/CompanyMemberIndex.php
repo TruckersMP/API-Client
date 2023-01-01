@@ -3,33 +3,35 @@
 namespace TruckersMP\APIClient\Models;
 
 use Illuminate\Support\Collection;
+use TruckersMP\APIClient\Client;
 
 class CompanyMemberIndex
 {
     /**
      * The company members.
      *
-     * @var MemberCollection
+     * @var Collection
      */
-    protected $members;
+    protected Collection $members;
 
     /**
      * The number of members in the company.
      *
      * @var int
      */
-    protected $count;
+    protected int $count;
 
     /**
      * Create a new CompanyMemberIndex instance.
      *
+     * @param  Client  $client
      * @param  array  $response
      * @return void
      */
-    public function __construct(array $response)
+    public function __construct(Client $client, array $response)
     {
         $this->members = (new Collection($response['members']))
-            ->mapInto(CompanyMember::class);
+            ->map(fn (array $member) => new CompanyMember($client, $member));
 
         $this->count = $response['members_count'];
     }

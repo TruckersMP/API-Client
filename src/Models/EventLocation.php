@@ -9,14 +9,14 @@ class EventLocation
      *
      * @var string
      */
-    protected $location;
+    protected string $location;
 
     /**
      * The event city.
      *
      * @var string
      */
-    protected $city;
+    protected string $city;
 
     /**
      * Create a new EventLocation instance.

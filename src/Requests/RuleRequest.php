@@ -29,6 +29,7 @@ class RuleRequest extends Request
     public function get(): Rule
     {
         return new Rule(
+            $this->client,
             $this->send()
         );
     }

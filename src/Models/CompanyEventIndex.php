@@ -3,6 +3,7 @@
 namespace TruckersMP\APIClient\Models;
 
 use Illuminate\Support\Collection;
+use TruckersMP\APIClient\Client;
 
 class CompanyEventIndex
 {
@@ -11,17 +12,19 @@ class CompanyEventIndex
      *
      * @var Collection
      */
-    protected $events;
+    protected Collection $events;
 
     /**
      * Create a new CompanyEventIndex instance.
      *
+     * @param  Client  $client
      * @param  array  $response
      * @return void
      */
-    public function __construct(array $response)
+    public function __construct(Client $client, array $response)
     {
-        $this->events = (new Collection($response))->mapInto(Event::class);
+        $this->events = (new Collection($response))
+            ->map(fn (array $event) => new Event($client, $event));
     }
 
     /**

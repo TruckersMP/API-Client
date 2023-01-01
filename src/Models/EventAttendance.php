@@ -3,60 +3,56 @@
 namespace TruckersMP\APIClient\Models;
 
 use Illuminate\Support\Collection;
+use TruckersMP\APIClient\Client;
 
-class EventAttendance
+class EventAttendance extends Model
 {
     /**
      * The confirmed attendee count.
      *
      * @var int
      */
-    protected $confirmed;
+    protected int $confirmed;
 
     /**
      * The unsure attendee count.
      *
      * @var int
      */
-    protected $unsure;
+    protected int $unsure;
 
     /**
      * The confirmed users.
      *
-     * @var Collection|null
+     * @var Collection
      */
-    protected $confirmedUsers;
+    protected Collection $confirmedUsers;
 
     /**
      * The unsure users.
      *
-     * @var Collection|null
+     * @var Collection
      */
-    protected $unsureUsers;
+    protected Collection $unsureUsers;
 
     /**
      * Create a new EventAttendance instance.
      *
-     * @param  int  $confirmed
-     * @param  int  $unsure
-     * @param  array|null  $confirmedUsers
-     * @param  array|null  $unsureUsers
+     * @param  Client  $client
+     * @param  array  $attendance
      * @return void
      */
-    public function __construct(
-        int $confirmed,
-        int $unsure,
-        ?array $confirmedUsers,
-        ?array $unsureUsers
-    ) {
-        $this->confirmed = $confirmed;
-        $this->unsure = $unsure;
-        if (isset($confirmedUsers)) {
-            $this->confirmedUsers = (new Collection($confirmedUsers))->mapInto(EventAttendee::class);
-        }
-        if (isset($unsureUsers)) {
-            $this->unsureUsers = (new Collection($unsureUsers))->mapInto(EventAttendee::class);
-        }
+    public function __construct(Client $client, array $attendance)
+    {
+        parent::__construct($client, $attendance);
+
+        $this->confirmed = $this->getValue('confirmed');
+        $this->unsure = $this->getValue('unsure');
+
+        $mapAttendee = fn (array $attendee) => new EventAttendee($client, $attendee);
+
+        $this->confirmedUsers = (new Collection($this->getValue('confirmed_users', [])))->map($mapAttendee);
+        $this->unsureUsers = (new Collection($this->getValue('unsure_users', [])))->map($mapAttendee);
     }
 
     /**
@@ -82,9 +78,9 @@ class EventAttendance
     /**
      * Get the confirmed attendees.
      *
-     * @return Collection|null
+     * @return Collection
      */
-    public function getConfirmedUsers(): ?Collection
+    public function getConfirmedUsers(): Collection
     {
         return $this->confirmedUsers;
     }
@@ -92,9 +88,9 @@ class EventAttendance
     /**
      * Get the unsure attendees.
      *
-     * @return Collection|null
+     * @return Collection
      */
-    public function getUnsureUsers(): ?Collection
+    public function getUnsureUsers(): Collection
     {
         return $this->unsureUsers;
     }

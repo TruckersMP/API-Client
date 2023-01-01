@@ -2,7 +2,6 @@
 
 namespace TruckersMP\APIClient\Requests;
 
-use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\Psr7\Request as GuzzleRequest;
 use Psr\Http\Client\ClientExceptionInterface;
 use TruckersMP\APIClient\Client;
@@ -11,33 +10,20 @@ use TruckersMP\APIClient\Exceptions\ApiErrorException;
 abstract class Request
 {
     /**
-     * The API endpoint URL to retrieve the data form.
-     */
-    private const API_ENDPOINT = 'api.truckersmp.com';
-
-    /**
-     * The version of the API to use.
-     */
-    private const API_VERSION = 'v2';
-
-    /**
-     * The instance of the guzzle client.
+     * The TruckersMP API client.
      *
-     * @var GuzzleClient
+     * @var Client
      */
-    protected $client;
+    protected Client $client;
 
     /**
      * Create a new Request instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Client $client)
     {
-        $config = Client::config();
-        $config['base_uri'] = 'https://' . self::API_ENDPOINT . '/' . self::API_VERSION . '/';
-
-        $this->client = new GuzzleClient($config);
+        $this->client = $client;
     }
 
     /**
@@ -65,7 +51,7 @@ abstract class Request
     public function send(): array
     {
         $request = new GuzzleRequest('GET', $this->getEndpoint());
-        $requestResponse = $this->client->sendRequest($request);
+        $requestResponse = $this->client->getHttpClient()->send($request);
 
         $response = json_decode($requestResponse->getBody(), true, 512, JSON_BIGINT_AS_STRING);
 
@@ -81,7 +67,7 @@ abstract class Request
     /**
      * Check if the response contains an error.
      *
-     * @param $response
+     * @param  mixed  $response
      * @return bool
      */
     protected function hasError($response): bool
