@@ -20,7 +20,6 @@ use TruckersMP\APIClient\Client;
 use TruckersMP\APIClient\Exceptions\ApiErrorException;
 use TruckersMP\APIClient\Models\Ban;
 use TruckersMP\APIClient\Models\Company;
-use TruckersMP\APIClient\Models\CompanyBan;
 use TruckersMP\APIClient\Models\CompanyEventIndex;
 use TruckersMP\APIClient\Models\CompanyIndex;
 use TruckersMP\APIClient\Models\CompanyMember;
@@ -399,7 +398,7 @@ class TestCase extends BaseTestCase
      * Get the members within the specified company that are currently banned.
      *
      * @param  int  $id
-     * @return Collection|CompanyBan[]
+     * @return Collection|CompanyMember[]
      *
      * @throws PhpfastcacheInvalidArgumentException
      * @throws ApiErrorException
