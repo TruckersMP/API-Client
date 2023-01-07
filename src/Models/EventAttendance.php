@@ -8,20 +8,6 @@ use TruckersMP\APIClient\Client;
 class EventAttendance extends Model
 {
     /**
-     * The confirmed attendee count.
-     *
-     * @var int
-     */
-    protected int $confirmed;
-
-    /**
-     * The unsure attendee count.
-     *
-     * @var int
-     */
-    protected int $unsure;
-
-    /**
      * The confirmed users.
      *
      * @var Collection
@@ -46,9 +32,6 @@ class EventAttendance extends Model
     {
         parent::__construct($client, $attendance);
 
-        $this->confirmed = $this->getValue('confirmed');
-        $this->unsure = $this->getValue('unsure');
-
         $mapAttendee = fn (array $attendee) => new EventAttendee($client, $attendee);
 
         $this->confirmedUsers = (new Collection($this->getValue('confirmed_users', [])))->map($mapAttendee);
@@ -59,20 +42,24 @@ class EventAttendance extends Model
      * Get the confirmed attendee count.
      *
      * @return int
+     *
+     * @deprecated Use the collection of confirmed users instead.
      */
     public function getConfirmed(): int
     {
-        return $this->confirmed;
+        return $this->getConfirmedUsers()->count();
     }
 
     /**
      * Get the unsure attendee count.
      *
      * @return int
+     *
+     * @deprecated Use the collection of unsure users instead.
      */
     public function getUnsure(): int
     {
-        return $this->unsure;
+        return $this->getUnsureUsers()->count();
     }
 
     /**
