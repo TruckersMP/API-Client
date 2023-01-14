@@ -4,7 +4,7 @@ namespace Tests\Unit;
 
 use Illuminate\Support\Collection;
 use Tests\TestCase;
-use TruckersMP\APIClient\Models\CompanyBan;
+use TruckersMP\APIClient\Models\CompanyMember;
 
 class CompanyBanTest extends TestCase
 {
@@ -23,7 +23,7 @@ class CompanyBanTest extends TestCase
         if ($bans->count() > 0) {
             $ban = $bans[0];
 
-            $this->assertInstanceOf(CompanyBan::class, $ban);
+            $this->assertInstanceOf(CompanyMember::class, $ban);
         }
     }
 }
