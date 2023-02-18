@@ -162,7 +162,7 @@ class Player extends Model
     protected bool $isInCompany;
 
     /**
-     * The player's company member id.
+     * The player's company member ID.
      *
      * @var int
      */
@@ -174,6 +174,13 @@ class Player extends Model
      * @var string|null
      */
     protected ?string $discordSnowflake;
+
+    /**
+     * The player's history of company memberships sorted from the newest.
+     *
+     * @var Collection
+     */
+    protected Collection $companyHistory;
 
     /**
      * Create a new Player instance.
@@ -204,6 +211,9 @@ class Player extends Model
         $this->displayBans = $this->getValue('displayBans', false);
 
         $this->patreon = new Patreon($client, $this->getValue('patreon', []));
+
+        $history = new Collection($this->getValue('vtcHistory', []));
+        $this->companyHistory = $history->map(fn (array $entry) => new PlayerCompanyHistory($client, $entry));
 
         $this->isStaff = $this->getValue('permissions.isStaff', false);
         $this->isUpperStaff = $this->getValue('permissions.isUpperStaff', false);
@@ -447,6 +457,16 @@ class Player extends Model
     public function getCompanyMemberId(): int
     {
         return $this->companyMemberId;
+    }
+
+    /**
+     * Get the player's history of company memberships.
+     *
+     * @return Collection
+     */
+    public function getCompanyHistory(): Collection
+    {
+        return $this->companyHistory;
     }
 
     /**

@@ -11,6 +11,7 @@ use TruckersMP\APIClient\Models\Company;
 use TruckersMP\APIClient\Models\CompanyMember;
 use TruckersMP\APIClient\Models\Patreon;
 use TruckersMP\APIClient\Models\Player;
+use TruckersMP\APIClient\Models\PlayerCompanyHistory;
 
 class PlayerTest extends TestCase
 {
@@ -110,6 +111,16 @@ class PlayerTest extends TestCase
         $this->assertSame('TruckersMP Developers', $this->player->getCompanyName());
         $this->assertSame('TMP-DEV', $this->player->getCompanyTag());
         $this->assertSame(1, $this->player->getCompanyMemberId());
+    }
+
+    public function testItHasACompanyHistory()
+    {
+        $history = $this->player->getCompanyHistory();
+
+        $this->assertInstanceOf(Collection::class, $history);
+        $this->assertCount(1, $history);
+
+        $this->assertInstanceOf(PlayerCompanyHistory::class, $history->first());
     }
 
     public function testItCanGetBans()
