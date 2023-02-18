@@ -47,6 +47,11 @@ class CompanyMemberTest extends TestCase
         $this->assertSame('Role', $this->member->getRole());
     }
 
+    public function testItHasOwnerPermissions()
+    {
+        $this->assertTrue($this->member->isOwner());
+    }
+
     public function testItHasAJoinDate()
     {
         $this->assertDate('2023-01-04 11:35:05', $this->member->getJoinDate());
