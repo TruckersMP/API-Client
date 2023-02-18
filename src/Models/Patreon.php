@@ -2,94 +2,85 @@
 
 namespace TruckersMP\APIClient\Models;
 
-class Patreon
+use TruckersMP\APIClient\Client;
+
+class Patreon extends Model
 {
     /**
      * If the current player is a patron.
      *
      * @var bool
      */
-    protected $isPatron;
+    protected bool $isPatron;
 
     /**
      * If the player's patron subscription is active.
      *
      * @var bool
      */
-    protected $active;
+    protected bool $active;
 
     /**
      * The HEX code for subscribed tier.
      *
      * @var string|null
      */
-    protected $color;
+    protected ?string $color;
 
     /**
      * The player's tier ID.
      *
      * @var int|null
      */
-    protected $tierId;
+    protected ?int $tierId;
 
     /**
      * The player's current pledge.
      *
      * @var int|null
      */
-    protected $currentPledge;
+    protected ?int $currentPledge;
 
     /**
      * The player's lifetime pledge.
      *
      * @var int|null
      */
-    protected $lifetimePledge;
+    protected ?int $lifetimePledge;
 
     /**
      * The player's next pledge.
      *
      * @var int|null
      */
-    protected $nextPledge;
+    protected ?int $nextPledge;
 
     /**
      * If the user has their patreon information hidden.
      *
      * @var bool
      */
-    protected $hidden;
+    protected ?bool $hidden;
 
     /**
      * Create a new Patreon instance.
      *
-     * @param  bool  $isPatron
-     * @param  bool  $active
-     * @param  string|null  $color
-     * @param  int|null  $tierId
-     * @param  int|null  $currentPledge
-     * @param  int|null  $lifetimePledge
-     * @param  int|null  $nextPledge
-     * @param  bool|null  $hidden
+     * @param  Client  $client
+     * @param  array  $data
+     * @return void
      */
-    public function __construct(
-        bool $isPatron,
-        bool $active,
-        ?string $color,
-        ?int $tierId,
-        ?int $currentPledge,
-        ?int $lifetimePledge,
-        ?int $nextPledge,
-        ?bool $hidden
-    ) {
-        $this->isPatron = $isPatron;
-        $this->active = $active;
-        $this->color = $color;
-        $this->tierId = $tierId;
-        $this->currentPledge = $currentPledge;
-        $this->lifetimePledge = $lifetimePledge;
-        $this->nextPledge = $nextPledge;
-        $this->hidden = $hidden;
+    public function __construct(Client $client, array $data)
+    {
+        parent::__construct($client, $data);
+
+        $this->isPatron = $this->getValue('isPatron', false);
+        $this->active = $this->getValue('active', false);
+        $this->color = $this->getValue('color');
+        $this->tierId = $this->getValue('tierId');
+        $this->currentPledge = $this->getValue('currentPledge');
+        $this->lifetimePledge = $this->getValue('lifetimePledge');
+        $this->nextPledge = $this->getValue('nextPledge');
+        $this->hidden = $this->getValue('hidden');
     }
 
     /**

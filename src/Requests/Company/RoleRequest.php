@@ -3,6 +3,7 @@
 namespace TruckersMP\APIClient\Requests\Company;
 
 use Psr\Http\Client\ClientExceptionInterface;
+use TruckersMP\APIClient\Client;
 use TruckersMP\APIClient\Exceptions\ApiErrorException;
 use TruckersMP\APIClient\Models\CompanyRole;
 use TruckersMP\APIClient\Requests\Request;
@@ -21,18 +22,19 @@ class RoleRequest extends Request
      *
      * @var int
      */
-    protected $roleId;
+    protected int $roleId;
 
     /**
      * Create a new RoleRequest instance.
      *
-     * @param  int  $companyKey
+     * @param  Client  $client
+     * @param  string|int  $companyKey
      * @param  int  $roleId
      * @return void
      */
-    public function __construct(int $companyKey, int $roleId)
+    public function __construct(Client $client, $companyKey, int $roleId)
     {
-        parent::__construct();
+        parent::__construct($client);
 
         $this->companyKey = $companyKey;
         $this->roleId = $roleId;
@@ -59,6 +61,7 @@ class RoleRequest extends Request
     public function get(): CompanyRole
     {
         return new CompanyRole(
+            $this->client,
             $this->send()['response']
         );
     }

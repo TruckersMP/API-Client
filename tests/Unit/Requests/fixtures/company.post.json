@@ -1,0 +1,14 @@
+{
+    "error": false,
+    "response": {
+        "id": 365,
+        "title": "Title",
+        "content_summary": "Summary",
+        "content": "Content",
+        "author_id": 46,
+        "author": "Author",
+        "pinned": false,
+        "updated_at": "2023-01-04 15:21:34",
+        "published_at": "2023-01-04 15:23:13"
+    }
+}

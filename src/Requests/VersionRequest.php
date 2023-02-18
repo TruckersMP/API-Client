@@ -29,6 +29,7 @@ class VersionRequest extends Request
     public function get(): Version
     {
         return new Version(
+            $this->client,
             $this->send()
         );
     }

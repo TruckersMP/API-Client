@@ -3,57 +3,61 @@
 namespace TruckersMP\APIClient\Models;
 
 use Carbon\Carbon;
+use TruckersMP\APIClient\Client;
 
-class EventAttendee
+class EventAttendee extends Model
 {
     /**
      * The attendee's user ID.
      *
      * @var int
      */
-    protected $id;
+    protected int $id;
 
     /**
      * The attendee's username.
      *
      * @var string
      */
-    protected $username;
+    protected string $username;
 
     /**
      * If the attendee is following the event.
      *
      * @var bool
      */
-    protected $following;
+    protected bool $following;
 
     /**
      * The event attendee created at date.
      *
      * @var Carbon
      */
-    protected $createdAt;
+    protected Carbon $createdAt;
 
     /**
      * The event attendee updated at date.
      *
      * @var Carbon
      */
-    protected $updatedAt;
+    protected Carbon $updatedAt;
 
     /**
      * Create a new EventAttendee instance.
      *
+     * @param  Client  $client
      * @param  array  $attendee
      * @return void
      */
-    public function __construct(array $attendee)
+    public function __construct(Client $client, array $attendee)
     {
-        $this->id = $attendee['id'];
-        $this->username = $attendee['username'];
-        $this->following = $attendee['following'];
-        $this->createdAt = new Carbon($attendee['created_at'], 'UTC');
-        $this->updatedAt = new Carbon($attendee['updated_at'], 'UTC');
+        parent::__construct($client, $attendee);
+
+        $this->id = $this->getValue('id');
+        $this->username = $this->getValue('username');
+        $this->following = $this->getValue('following', false);
+        $this->createdAt = new Carbon($this->getValue('created_at'), 'UTC');
+        $this->updatedAt = new Carbon($this->getValue('updated_at'), 'UTC');
     }
 
     /**

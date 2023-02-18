@@ -3,6 +3,7 @@
 namespace TruckersMP\APIClient\Requests\Company;
 
 use Psr\Http\Client\ClientExceptionInterface;
+use TruckersMP\APIClient\Client;
 use TruckersMP\APIClient\Exceptions\ApiErrorException;
 use TruckersMP\APIClient\Models\CompanyPost;
 use TruckersMP\APIClient\Requests\Request;
@@ -21,18 +22,19 @@ class PostRequest extends Request
      *
      * @var int
      */
-    protected $postId;
+    protected int $postId;
 
     /**
      * Create a new PostRequest instance.
      *
+     * @param  Client  $client
      * @param  string|int  $companyKey
      * @param  int  $postId
      * @return void
      */
-    public function __construct(string $companyKey, int $postId)
+    public function __construct(Client $client, string $companyKey, int $postId)
     {
-        parent::__construct();
+        parent::__construct($client);
 
         $this->companyKey = $companyKey;
         $this->postId = $postId;
@@ -59,6 +61,7 @@ class PostRequest extends Request
     public function get(): CompanyPost
     {
         return new CompanyPost(
+            $this->client,
             $this->send()['response']
         );
     }

@@ -1,0 +1,157 @@
+{
+    "error": false,
+    "response": {
+        "featured": [
+            {
+                "id": 1,
+                "event_type": {
+                    "key": "convoy",
+                    "name": "Convoy"
+                },
+                "name": "Featured Convoy",
+                "slug": "1-featured-convoy",
+                "game": "ETS2",
+                "server": {
+                    "id": 14,
+                    "name": "Event Server"
+                },
+                "language": "English",
+                "departure": {
+                    "location": "Hotel",
+                    "city": "Duisburg"
+                },
+                "arrive": {
+                    "location": "Bus Station",
+                    "city": "Stuttgart"
+                },
+                "start_at": "2023-01-15 19:00:00",
+                "banner": "https://static.truckersmp.com/images/event/cover/cover.jpeg",
+                "map": "https://static.truckersmp.com/images/event/map/map.png",
+                "description": "Description",
+                "rule": "Rules",
+                "voice_link": "https://discord.gg/voice",
+                "external_link": "https://truckersmp.com",
+                "featured": "Featured",
+                "vtc": {
+                    "id": 666,
+                    "name": "Company"
+                },
+                "user": {
+                    "id": 654,
+                    "username": "User"
+                },
+                "attendances": {
+                    "confirmed": 247,
+                    "unsure": 13,
+                    "vtcs": 50
+                },
+                "dlcs": [],
+                "url": "/events/1-featured-convoy",
+                "created_at": "2023-01-01 06:53:11",
+                "updated_at": "2023-01-03 17:36:13"
+            }
+        ],
+        "today": [
+            {
+                "id": 2,
+                "event_type": {
+                    "key": "convoy",
+                    "name": "Convoy"
+                },
+                "name": "Today's Convoy",
+                "slug": "2-todays-convoy",
+                "game": "ETS2",
+                "server": {
+                    "id": 4,
+                    "name": "Server"
+                },
+                "language": "English",
+                "departure": {
+                    "location": "Hotel",
+                    "city": "Prague"
+                },
+                "arrive": {
+                    "location": "Quarry",
+                    "city": "Stuttgart"
+                },
+                "start_at": "2023-01-04 17:00:00",
+                "banner": "https://static.truckersmp.com/images/event/cover/cover.png",
+                "map": "https://static.truckersmp.com/images/event/map/map.jpeg",
+                "description": "",
+                "rule": null,
+                "voice_link": null,
+                "external_link": null,
+                "featured": "",
+                "vtc": {
+                    "id": 789,
+                    "name": "Example Logistics"
+                },
+                "user": {
+                    "id": 33,
+                    "username": "Organizer"
+                },
+                "attendances": {
+                    "confirmed": 11,
+                    "unsure": 5,
+                    "vtcs": 4
+                },
+                "dlcs": {
+                    "304212": "Scandinavia"
+                },
+                "url": "/events/2-todays-convoy",
+                "created_at": "2022-01-04 17:04:58",
+                "updated_at": "2022-01-04 17:13:15"
+            }
+        ],
+        "upcoming": [
+            {
+                "id": 3,
+                "event_type": {
+                    "key": "convoy",
+                    "name": "Convoy"
+                },
+                "name": "Upcoming Convoy",
+                "slug": "3-upcoming-convoy",
+                "game": "ETS2",
+                "server": {
+                    "id": 35,
+                    "name": "Convoy Server"
+                },
+                "language": "English",
+                "departure": {
+                    "location": "Departure",
+                    "city": "Hanover"
+                },
+                "arrive": {
+                    "location": "Arrive",
+                    "city": "Dover"
+                },
+                "start_at": "2023-01-07 13:00:00",
+                "banner": "https://static.truckersmp.com/images/event/cover/cover.jpeg",
+                "map": "https://static.truckersmp.com/images/event/map/map.png",
+                "description": "Description",
+                "rule": null,
+                "voice_link": "https://discord.gg/example",
+                "external_link": null,
+                "featured": "",
+                "vtc": {
+                    "id": 0,
+                    "name": null
+                },
+                "user": {
+                    "id": 645,
+                    "username": "Username"
+                },
+                "attendances": {
+                    "confirmed": 35,
+                    "unsure": 2,
+                    "vtcs": 4
+                },
+                "dlcs": [],
+                "url": "/events/3-upcoming-convoy",
+                "created_at": "2023-01-04 16:33:01",
+                "updated_at": "2023-01-04 17:13:14"
+            }
+        ]
+    }
+}

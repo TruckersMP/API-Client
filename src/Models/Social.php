@@ -9,35 +9,35 @@ class Social
      *
      * @var string|null
      */
-    protected $twitter;
+    protected ?string $twitter;
 
     /**
      * The Facebook URL.
      *
      * @var string|null
      */
-    protected $facebook;
+    protected ?string $facebook;
 
     /**
      * The Twitch URL.
      *
      * @var string|null
      */
-    protected $twitch;
+    protected ?string $twitch;
 
     /**
      * The Discord invite URL.
      *
      * @var string|null
      */
-    protected $discord;
+    protected ?string $discord;
 
     /**
      * The YouTube URL.
      *
      * @var string|null
      */
-    protected $youtube;
+    protected ?string $youtube;
 
     /**
      * Create a new Social instance.

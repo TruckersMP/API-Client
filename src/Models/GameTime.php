@@ -3,25 +3,29 @@
 namespace TruckersMP\APIClient\Models;
 
 use Carbon\Carbon;
+use TruckersMP\APIClient\Client;
 
-class GameTime
+class GameTime extends Model
 {
     /**
      * The game time.
      *
      * @var Carbon
      */
-    protected $time;
+    protected Carbon $time;
 
     /**
      * Create a new GameTime instance.
      *
+     * @param  Client  $client
      * @param  array  $gameTime
      * @return void
      */
-    public function __construct(array $gameTime)
+    public function __construct(Client $client, array $gameTime)
     {
-        $time['minutes'] = $gameTime['game_time'];
+        parent::__construct($client, $gameTime);
+
+        $time['minutes'] = $this->getValue('game_time', 0);
 
         $time['hours'] = $time['minutes'] / 60;
         $time['minutes'] %= 60;

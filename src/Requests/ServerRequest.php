@@ -30,6 +30,6 @@ class ServerRequest extends Request
     public function get(): Collection
     {
         return (new Collection($this->send()['response']))
-            ->mapInto(Server::class);
+            ->map(fn (array $server) => new Server($this->client, $server));
     }
 }

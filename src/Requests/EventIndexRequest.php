@@ -29,6 +29,7 @@ class EventIndexRequest extends Request
     public function get(): EventIndex
     {
         return new EventIndex(
+            $this->client,
             $this->send()['response']
         );
     }

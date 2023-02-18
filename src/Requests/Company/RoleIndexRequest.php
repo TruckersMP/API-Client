@@ -5,6 +5,7 @@ namespace TruckersMP\APIClient\Requests\Company;
 use Exception;
 use Illuminate\Support\Collection;
 use Psr\Http\Client\ClientExceptionInterface;
+use TruckersMP\APIClient\Client;
 use TruckersMP\APIClient\Exceptions\ApiErrorException;
 use TruckersMP\APIClient\Models\CompanyRole;
 use TruckersMP\APIClient\Requests\Request;
@@ -21,12 +22,13 @@ class RoleIndexRequest extends Request
     /**
      * Create a new RoleIndexRequest instance.
      *
+     * @param  Client  $client
      * @param  string|int  $companyKey
      * @return void
      */
-    public function __construct(string $companyKey)
+    public function __construct(Client $client, $companyKey)
     {
-        parent::__construct();
+        parent::__construct($client);
 
         $this->companyKey = $companyKey;
     }
@@ -53,6 +55,6 @@ class RoleIndexRequest extends Request
     public function get(): Collection
     {
         return (new Collection($this->send()['response']['roles']))
-            ->mapInto(CompanyRole::class);
+            ->map(fn (array $role) => new CompanyRole($this->client, $role));
     }
 }

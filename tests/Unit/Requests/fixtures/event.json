@@ -1,0 +1,71 @@
+{
+    "error": false,
+    "response": {
+        "id": 45,
+        "event_type": {
+            "key": "convoy",
+            "name": "Convoy"
+        },
+        "name": "Convoy",
+        "slug": "45-convoy",
+        "game": "ETS2",
+        "server": {
+            "id": 12,
+            "name": "Server"
+        },
+        "language": "English",
+        "departure": {
+            "location": "Hotel",
+            "city": "Prague"
+        },
+        "arrive": {
+            "location": "Quarry",
+            "city": "Stuttgart"
+        },
+        "start_at": "2023-01-04 14:32:28",
+        "banner": "https://static.truckersmp.com/images/event/cover/cover.png",
+        "map": "https://static.truckersmp.com/images/event/map/map.png",
+        "description": "Description",
+        "rule": "Rules",
+        "voice_link": "https://discord.gg/truckersmp",
+        "external_link": "https://truckersmp.com",
+        "featured": "Official",
+        "vtc": {
+            "id": 22,
+            "name": "Company"
+        },
+        "user": {
+            "id": 68,
+            "username": "User"
+        },
+        "attendances": {
+            "confirmed": 1,
+            "unsure": 1,
+            "confirmed_users": [
+                {
+                    "id": 879,
+                    "username": "Attendee",
+                    "following": false,
+                    "created_at": "2023-01-04 14:43:05",
+                    "updated_at": "2023-01-04 14:43:08"
+                }
+            ],
+            "unsure_users": [
+                {
+                    "id": 5,
+                    "username": "Unsure",
+                    "following": false,
+                    "created_at": "2023-01-04 14:45:29",
+                    "updated_at": "2023-01-04 14:45:37"
+                }
+            ]
+        },
+        "dlcs": {
+            "304212": "Scandinavia",
+            "558244": "Italia"
+        },
+        "url": "/events/45-convoy",
+        "created_at": "2023-01-04 14:37:30",
+        "updated_at": "2023-01-04 14:37:46"
+    }
+}

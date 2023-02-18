@@ -3,6 +3,7 @@
 namespace TruckersMP\APIClient\Models;
 
 use Illuminate\Support\Collection;
+use TruckersMP\APIClient\Client;
 
 class CompanyIndex
 {
@@ -11,38 +12,36 @@ class CompanyIndex
      *
      * @var Collection
      */
-    protected $recent;
+    protected Collection $recent;
 
     /**
      * The featured companies.
      *
      * @var Collection
      */
-    protected $featured;
+    protected Collection $featured;
 
     /**
      * The featured companies on the cover page.
      *
      * @var Collection
      */
-    protected $featuredCovered;
+    protected Collection $featuredCovered;
 
     /**
      * Create a new CompanyIndex instance.
      *
+     * @param  Client  $client
      * @param  array  $response
      * @return void
      */
-    public function __construct(array $response)
+    public function __construct(Client $client, array $response)
     {
-        $this->recent = (new Collection($response['recent']))
-            ->mapInto(Company::class);
+        $mapCompany = fn (array $company) => new Company($client, $company);
 
-        $this->featured = (new Collection($response['featured']))
-            ->mapInto(Company::class);
-
-        $this->featuredCovered = (new Collection($response['featured_cover']))
-            ->mapInto(Company::class);
+        $this->recent = (new Collection($response['recent']))->map($mapCompany);
+        $this->featured = (new Collection($response['featured']))->map($mapCompany);
+        $this->featuredCovered = (new Collection($response['featured_cover']))->map($mapCompany);
     }
 
     /**

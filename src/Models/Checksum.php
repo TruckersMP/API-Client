@@ -9,14 +9,14 @@ class Checksum
      *
      * @var string
      */
-    protected $dll;
+    protected string $dll;
 
     /**
      * The checksum ADB.
      *
      * @var string
      */
-    protected $adb;
+    protected string $adb;
 
     /**
      * Create a new Checksum instance.

@@ -3,6 +3,7 @@
 namespace TruckersMP\APIClient\Requests\Company;
 
 use Psr\Http\Client\ClientExceptionInterface;
+use TruckersMP\APIClient\Client;
 use TruckersMP\APIClient\Exceptions\ApiErrorException;
 use TruckersMP\APIClient\Models\CompanyMember;
 use TruckersMP\APIClient\Requests\Request;
@@ -21,18 +22,19 @@ class MemberRequest extends Request
      *
      * @var int
      */
-    protected $memberId;
+    protected int $memberId;
 
     /**
      * Create a new MemberRequest instance.
      *
+     * @param  Client  $client
      * @param  string|int  $companyKey
      * @param  int  $memberId
      * @return void
      */
-    public function __construct(string $companyKey, int $memberId)
+    public function __construct(Client $client, string $companyKey, int $memberId)
     {
-        parent::__construct();
+        parent::__construct($client);
 
         $this->companyKey = $companyKey;
         $this->memberId = $memberId;
@@ -59,6 +61,7 @@ class MemberRequest extends Request
     public function get(): CompanyMember
     {
         return new CompanyMember(
+            $this->client,
             $this->send()['response']
         );
     }

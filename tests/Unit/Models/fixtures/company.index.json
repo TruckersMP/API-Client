@@ -1,0 +1,59 @@
+{
+    "recent": [
+        {
+            "id": 1,
+            "name": "Recent",
+            "owner_id": 13,
+            "owner_username": "Owner 1",
+            "slogan": "Slogan 1",
+            "tag": "TAG1",
+            "website": "https://1.company.com",
+            "socials": {
+                "twitter": "https://twitter.com/twitter_1",
+                "facebook": "https://www.facebook.com/facebook_1",
+                "twitch": "https://twitch.tv/twitch_1",
+                "discord": "https://discord.gg/discord_1",
+                "youtube": "https://www.youtube.com/@youtube_1"
+            },
+            "games": {
+                "ats": false,
+                "ets": true
+            },
+            "members_count": 1111,
+            "recruitment": "Open",
+            "language": "English",
+            "verified": false,
+            "validated": false,
+            "created": "2023-01-04 14:13:45"
+        }
+    ],
+    "featured": [
+        {
+            "id": 2,
+            "name": "Featured",
+            "owner_id": 22,
+            "owner_username": "Owner 2",
+            "slogan": "Slogan 2",
+            "tag": "TAG2",
+            "website": "https://2.company.com",
+            "socials": {
+                "twitter": "https://twitter.com/twitter_2",
+                "facebook": "https://www.facebook.com/facebook_2",
+                "twitch": "https://twitch.tv/twitch_2",
+                "discord": "https://discord.gg/discord_2",
+                "youtube": "https://www.youtube.com/@youtube_2"
+            },
+            "games": {
+                "ats": true,
+                "ets": true
+            },
+            "members_count": 73,
+            "recruitment": "Open",
+            "language": "Korean",
+            "verified": true,
+            "validated": false,
+            "created": "2023-01-04 13:11:56"
+        }
+    ],
+    "featured_cover": []
+}

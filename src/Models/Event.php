@@ -4,247 +4,246 @@ namespace TruckersMP\APIClient\Models;
 
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
+use TruckersMP\APIClient\Client;
 
-class Event
+class Event extends Model
 {
     /**
      * The ID of the event.
      *
      * @var int
      */
-    protected $id;
+    protected int $id;
 
     /**
      * The event type.
      *
      * @var EventType
      */
-    protected $eventType;
+    protected EventType $eventType;
 
     /**
      * The event name.
      *
      * @var string
      */
-    protected $name;
+    protected string $name;
 
     /**
      * The event slug.
      *
      * @var string
      */
-    protected $slug;
+    protected string $slug;
 
     /**
      * The event game.
      *
      * @var string
      */
-    protected $game;
+    protected string $game;
 
     /**
      * The event server.
      *
      * @var EventServer
      */
-    protected $server;
+    protected EventServer $server;
 
     /**
      * The event language.
      *
      * @var string
      */
-    protected $language;
+    protected string $language;
 
     /**
      * The event departure location.
      *
      * @var EventLocation
      */
-    protected $departure;
+    protected EventLocation $departure;
 
     /**
      * The event arrival location.
      *
      * @var EventLocation
      */
-    protected $arrive;
+    protected EventLocation $arrive;
 
     /**
      * The event start date.
      *
-     * @var string
+     * @var Carbon
      */
-    protected $startAt;
+    protected Carbon $startAt;
 
     /**
      * The event banner.
      *
      * @var string|null
      */
-    protected $banner;
+    protected ?string $banner;
 
     /**
      * The event map.
      *
      * @var string|null
      */
-    protected $map;
+    protected ?string $map;
 
     /**
      * The event description.
      *
      * @var string
      */
-    protected $description;
+    protected string $description;
 
     /**
      * The event rule.
      *
      * @var string|null
      */
-    protected $rule;
+    protected ?string $rule;
 
     /**
      * The event voice link.
      *
      * @var string|null
      */
-    protected $voiceLink;
+    protected ?string $voiceLink;
 
     /**
      * The event external link.
      *
      * @var string|null
      */
-    protected $externalLink;
+    protected ?string $externalLink;
 
     /**
      * The event featured status
      *
      * @var string|null
      */
-    protected $featured;
+    protected ?string $featured;
 
     /**
      * The event company.
      *
      * @var EventCompany|null
      */
-    protected $company;
+    protected ?EventCompany $company;
 
     /**
      * The event organizer.
      *
      * @var EventOrganizer
      */
-    protected $organizer;
+    protected EventOrganizer $organizer;
 
     /**
      * The event attendance.
      *
      * @var EventAttendance
      */
-    protected $attendance;
+    protected EventAttendance $attendance;
 
     /**
      * The required event DLCs.
      *
-     * @var Collection|null
+     * @var Collection
      */
-    protected $dlcs;
+    protected Collection $dlcs;
 
     /**
      * The event url.
      *
      * @var string
      */
-    protected $url;
+    protected string $url;
 
     /**
      * The event created at date.
      *
      * @var Carbon
      */
-    protected $createdAt;
+    protected Carbon $createdAt;
 
     /**
      * The event updated at date.
      *
      * @var Carbon
      */
-    protected $updatedAt;
+    protected Carbon $updatedAt;
 
     /**
      * Create a new Event instance.
      *
+     * @param  Client  $client
      * @param  array  $event
      * @return void
      */
-    public function __construct(array $event)
+    public function __construct(Client $client, array $event)
     {
-        $this->id = $event['id'];
+        parent::__construct($client, $event);
+
+        $this->id = $this->getValue('id');
 
         $this->eventType = new EventType(
-            $event['event_type']['key'],
-            $event['event_type']['name']
+            $this->getValue('event_type.key'),
+            $this->getValue('event_type.name'),
         );
 
-        $this->name = $event['name'];
-        $this->slug = $event['slug'];
-        $this->game = $event['game'];
+        $this->name = $this->getValue('name');
+        $this->slug = $this->getValue('slug');
+        $this->game = $this->getValue('game');
 
         $this->server = new EventServer(
-            $event['server']['id'],
-            $event['server']['name']
+            $this->getValue('server.id'),
+            $this->getValue('server.name'),
         );
 
-        $this->language = $event['language'];
+        $this->language = $this->getValue('language');
 
         $this->departure = new EventLocation(
-            $event['departure']['location'],
-            $event['departure']['city']
+            $this->getValue('departure.location'),
+            $this->getValue('departure.city'),
         );
 
         $this->arrive = new EventLocation(
-            $event['arrive']['location'],
-            $event['arrive']['city']
+            $this->getValue('arrive.location'),
+            $this->getValue('arrive.city'),
         );
 
-        $this->startAt = new Carbon($event['start_at'], 'UTC');
-        $this->banner = $event['banner'];
-        $this->map = $event['map'];
-        $this->description = $event['description'];
-        $this->rule = $event['rule'];
-        $this->voiceLink = $event['voice_link'];
-        $this->externalLink = $event['external_link'];
-        $this->featured = $event['featured'];
+        $this->startAt = new Carbon($this->getValue('start_at'), 'UTC');
+        $this->banner = $this->getValue('banner');
+        $this->map = $this->getValue('map');
+        $this->description = $this->getValue('description');
+        $this->rule = $this->getValue('rule');
+        $this->voiceLink = $this->getValue('voice_link');
+        $this->externalLink = $this->getValue('external_link');
+        $this->featured = $this->getValue('featured');
 
-        if ($event['vtc']['id'] !== 0 && isset($event['vtc']['name'])) {
+        if ($this->getValue('vtc.id', 0) !== 0 && $this->getValue('vtc.name')) {
             $this->company = new EventCompany(
-                $event['vtc']['id'],
-                $event['vtc']['name']
+                $this->getValue('vtc.id'),
+                $this->getValue('vtc.name'),
             );
         }
 
         $this->organizer = new EventOrganizer(
-            $event['user']['id'],
-            $event['user']['username']
+            $this->getValue('user.id'),
+            $this->getValue('user.username'),
         );
 
-        $this->url = $event['url'];
+        $this->url = $this->getValue('url');
 
-        $this->attendance = new EventAttendance(
-            $event['attendances']['confirmed'],
-            $event['attendances']['unsure'],
-            $event['attendances']['confirmed_users'] ?? null,
-            $event['attendances']['unsure_users'] ?? null
-        );
+        $this->attendance = new EventAttendance($client, $this->getValue('attendances', []));
 
-        $this->dlcs = (new Collection($event['dlcs']))->mapInto(Dlc::class);
+        $this->dlcs = (new Collection($this->getValue('dlcs', [])))->mapInto(Dlc::class);
 
-        $this->createdAt = new Carbon($event['created_at'], 'UTC');
-        $this->updatedAt = new Carbon($event['updated_at'], 'UTC');
+        $this->createdAt = new Carbon($this->getValue('created_at'), 'UTC');
+        $this->updatedAt = new Carbon($this->getValue('updated_at'), 'UTC');
     }
 
     /**
@@ -340,9 +339,9 @@ class Event
     /**
      * Get the start date of the event.
      *
-     * @return string
+     * @return Carbon
      */
-    public function getStartAt()
+    public function getStartAt(): Carbon
     {
         return $this->startAt;
     }

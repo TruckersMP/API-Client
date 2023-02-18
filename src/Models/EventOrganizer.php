@@ -9,14 +9,14 @@ class EventOrganizer
      *
      * @var int
      */
-    protected $id;
+    protected int $id;
 
     /**
      * The organizer's username.
      *
      * @var string
      */
-    protected $username;
+    protected string $username;
 
     /**
      * Create a new EventOrganizer instance.

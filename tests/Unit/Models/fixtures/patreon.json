@@ -1,0 +1,10 @@
+{
+    "isPatron": true,
+    "active": true,
+    "color": "#DAA520",
+    "tierId": 1234567,
+    "currentPledge": 500,
+    "lifetimePledge": 150000,
+    "nextPledge": 450,
+    "hidden": false
+}

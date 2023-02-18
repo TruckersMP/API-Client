@@ -9,14 +9,14 @@ class EventType
      *
      * @var string
      */
-    protected $key;
+    protected string $key;
 
     /**
      * The name of the event type.
      *
      * @var string
      */
-    protected $name;
+    protected string $name;
 
     /**
      * Create a new EventType instance.

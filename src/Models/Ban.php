@@ -3,80 +3,78 @@
 namespace TruckersMP\APIClient\Models;
 
 use Carbon\Carbon;
+use TruckersMP\APIClient\Client;
 
-class Ban
+class Ban extends Model
 {
     /**
      * The time the ban will expire.
      *
-     * @var Carbon
+     * @var Carbon|null
      */
-    protected $expiration;
+    protected ?Carbon $expiration;
 
     /**
      * The time the ban was issued.
      *
      * @var Carbon
      */
-    protected $timeAdded;
+    protected Carbon $timeAdded;
 
     /**
      * If the ban is still active.
      *
      * @var bool
      */
-    protected $active;
+    protected bool $active;
 
     /**
      * The reason for the ban.
      *
      * @var string
      */
-    protected $reason;
+    protected string $reason;
 
     /**
      * The name of the admin that banned the user.
      *
      * @var string
      */
-    protected $adminName;
+    protected string $adminName;
 
     /**
      * The TruckersMP ID for the admin that banned the user.
      *
      * @var int
      */
-    protected $adminId;
+    protected int $adminId;
 
     /**
      * Create a new Ban instance.
      *
+     * @param  Client  $client
      * @param  array  $ban
      * @return void
      */
-    public function __construct(array $ban)
+    public function __construct(Client $client, array $ban)
     {
-        // Expiration
-        if ($ban['expiration'] !== null) {
-            $this->expiration = new Carbon($ban['expiration'], 'UTC');
-        } else {
-            $this->expiration = null;
-        }
+        parent::__construct($client, $ban);
 
-        // Time Added
-        $this->timeAdded = new Carbon($ban['timeAdded'], 'UTC');
+        $expiration = $this->getValue('expiration');
+        $this->expiration = $expiration ? new Carbon($expiration, 'UTC') : null;
 
-        // Active
-        $this->active = boolval($ban['active']);
-        if (!is_null($this->expiration) && $this->active) {
-            if (!$this->expiration->greaterThan(Carbon::now('UTC'))) {
+        $this->timeAdded = new Carbon($this->getValue('timeAdded'), 'UTC');
+        $this->active = $this->getValue('active', false);
+
+        if ($this->expiration !== null && $this->active) {
+            if ($this->expiration->lessThan(Carbon::now('UTC'))) {
                 $this->active = false;
             }
         }
 
-        $this->reason = $ban['reason'];
-        $this->adminName = $ban['adminName'];
-        $this->adminId = intval($ban['adminID']);
+        $this->reason = $this->getValue('reason');
+        $this->adminName = $this->getValue('adminName');
+        $this->adminId = $this->getValue('adminID');
     }
 
     /**

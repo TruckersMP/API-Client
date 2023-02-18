@@ -5,217 +5,215 @@ namespace TruckersMP\APIClient\Models;
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
 use Psr\Http\Client\ClientExceptionInterface;
+use TruckersMP\APIClient\Client;
 use TruckersMP\APIClient\Exceptions\ApiErrorException;
 use TruckersMP\APIClient\Requests\BanRequest;
 use TruckersMP\APIClient\Requests\Company\MemberRequest;
 use TruckersMP\APIClient\Requests\Company\RoleRequest;
 use TruckersMP\APIClient\Requests\CompanyRequest;
 
-class Player
+class Player extends Model
 {
     /**
      * The ID of the user requested.
      *
      * @var int
      */
-    protected $id;
+    protected int $id;
 
     /**
      * The name of the user.
      *
      * @var string
      */
-    protected $name;
+    protected string $name;
 
     /**
      * URL to the avatar used on the website.
      *
      * @var string
      */
-    protected $avatar;
+    protected string $avatar;
 
     /**
      * URL to the small avatar on the website.
      *
      * @var string
      */
-    protected $smallAvatar;
+    protected string $smallAvatar;
 
     /**
      * The date and time the user registered (UTC).
      *
      * @var Carbon
      */
-    protected $joinDate;
+    protected Carbon $joinDate;
 
     /**
      * The SteamID64 of the user.
      *
      * @var string
      */
-    protected $steamID64;
+    protected string $steamID64;
 
     /**
      * The ID of the group the user belongs to.
      *
      * @var int
      */
-    protected $groupId;
+    protected int $groupId;
 
     /**
      * The name of the group the user belongs to.
      *
      * @var string
      */
-    protected $groupName;
+    protected string $groupName;
 
     /**
      * The hex color of the player's groups.
      *
      * @var string
      */
-    protected $groupColor;
+    protected string $groupColor;
 
     /**
      * If the user is currently banned.
      *
      * @var bool
      */
-    protected $isBanned;
+    protected bool $isBanned;
 
     /**
      * The date and time the ban will expire (UTC) or null if not banned or ban is permanent.
      *
      * @var Carbon|null
      */
-    protected $bannedUntil;
+    protected ?Carbon $bannedUntil;
 
     /**
      * The number of active bans a user has, or null if staff.
      *
      * @var int|null
      */
-    protected $activeBanCount;
+    protected ?int $activeBanCount;
 
     /**
      * If the user has their bans hidden.
      *
      * @var bool
      */
-    protected $displayBans;
+    protected bool $displayBans;
 
     /**
      * Get the player's patreon information.
      *
      * @var Patreon
      */
-    protected $patreon;
+    protected Patreon $patreon;
 
     /**
      * If the user is a staff member.
      *
      * @var bool
      */
-    protected $isStaff;
+    protected bool $isStaff;
 
     /**
      * If the user is an upper staff member.
      *
      * @var bool
      */
-    protected $isUpperStaff;
+    protected bool $isUpperStaff;
 
     /**
      * If user is an in-game admin.
      *
      * @var bool
      */
-    protected $inGameAdmin;
+    protected bool $inGameAdmin;
 
     /**
      * The player's company ID.
      *
      * @var int
      */
-    protected $companyId;
+    protected int $companyId;
 
     /**
      * The player's company name.
      *
      * @var string
      */
-    protected $companyName;
+    protected string $companyName;
 
     /**
      * The player's company tag.
      *
      * @var string
      */
-    protected $companyTag;
+    protected string $companyTag;
 
     /**
      * If the player is in a company.
      *
      * @var bool
      */
-    protected $isInCompany;
+    protected bool $isInCompany;
 
     /**
      * The player's company member id.
      *
      * @var int
      */
-    protected $companyMemberId;
+    protected int $companyMemberId;
 
     /**
      * The player's Discord Snowflake.
      *
      * @var string|null
      */
-    protected $discordSnowflake;
+    protected ?string $discordSnowflake;
 
     /**
      * Create a new Player instance.
      *
+     * @param  Client  $client
      * @param  array  $player
      * @return void
      */
-    public function __construct(array $player)
+    public function __construct(Client $client, array $player)
     {
-        $this->id = $player['id'];
-        $this->name = $player['name'];
-        $this->avatar = $player['avatar'];
-        $this->smallAvatar = $player['smallAvatar'];
-        $this->joinDate = new Carbon($player['joinDate'], 'UTC');
-        $this->steamID64 = $player['steamID64'];
-        $this->groupId = $player['groupID'];
-        $this->groupName = $player['groupName'];
-        $this->groupColor = $player['groupColor'];
-        $this->isBanned = $player['banned'];
-        $this->bannedUntil = new Carbon($player['bannedUntil'], 'UTC');
-        $this->activeBanCount = $player['bansCount'];
-        $this->displayBans = $player['displayBans'];
+        parent::__construct($client, $player);
 
-        $this->patreon = new Patreon(
-            $player['patreon']['isPatron'],
-            $player['patreon']['active'],
-            $player['patreon']['color'],
-            $player['patreon']['tierId'],
-            $player['patreon']['currentPledge'],
-            $player['patreon']['lifetimePledge'],
-            $player['patreon']['nextPledge'],
-            $player['patreon']['hidden']
-        );
+        $this->id = $this->getValue('id');
+        $this->name = $this->getValue('name');
+        $this->avatar = $this->getValue('avatar');
+        $this->smallAvatar = $this->getValue('smallAvatar');
+        $this->joinDate = new Carbon($this->getValue('joinDate'), 'UTC');
+        $this->steamID64 = $this->getValue('steamID');
+        $this->groupId = $this->getValue('groupID');
+        $this->groupName = $this->getValue('groupName');
+        $this->groupColor = $this->getValue('groupColor');
 
-        $this->isStaff = $player['permissions']['isStaff'];
-        $this->isUpperStaff = $player['permissions']['isUpperStaff'];
-        $this->inGameAdmin = $player['permissions']['isGameAdmin'];
-        $this->companyId = $player['vtc']['id'];
-        $this->companyName = $player['vtc']['name'];
-        $this->companyTag = $player['vtc']['tag'];
-        $this->isInCompany = $player['vtc']['inVTC'];
-        $this->companyMemberId = $player['vtc']['memberID'];
-        $this->discordSnowflake = $player['discordSnowflake'];
+        $bannedUntil = $this->getValue('bannedUntil');
+        $this->bannedUntil = $bannedUntil ? new Carbon($bannedUntil, 'UTC') : null;
+
+        $this->isBanned = $this->getValue('banned');
+        $this->activeBanCount = $this->getValue('bansCount');
+        $this->displayBans = $this->getValue('displayBans', false);
+
+        $this->patreon = new Patreon($client, $this->getValue('patreon', []));
+
+        $this->isStaff = $this->getValue('permissions.isStaff', false);
+        $this->isUpperStaff = $this->getValue('permissions.isUpperStaff', false);
+        $this->inGameAdmin = $this->getValue('permissions.isGameAdmin', false);
+        $this->companyId = $this->getValue('vtc.id');
+        $this->companyName = $this->getValue('vtc.name');
+        $this->companyTag = $this->getValue('vtc.tag');
+        $this->isInCompany = $this->getValue('vtc.inVTC', false);
+        $this->companyMemberId = $this->getValue('vtc.memberID');
+        $this->discordSnowflake = $this->getValue('discordSnowflake');
     }
 
     /**
@@ -352,8 +350,21 @@ class Player
      * Get the player's patreon information.
      *
      * @return Patreon
+     *
+     * @deprecated Renamed to a proper get method.
+     * @see Player::getPatreon()
      */
     public function patreon(): Patreon
+    {
+        return $this->patreon;
+    }
+
+    /**
+     * Get the player's Patreon information.
+     *
+     * @return Patreon
+     */
+    public function getPatreon(): Patreon
     {
         return $this->patreon;
     }
@@ -458,7 +469,7 @@ class Player
      */
     public function getBans(): Collection
     {
-        return (new BanRequest($this->id))->get();
+        return (new BanRequest($this->client, $this->id))->get();
     }
 
     /**
@@ -474,7 +485,12 @@ class Player
         $company = null;
 
         if ($this->isInCompany()) {
-            $company = (new CompanyRequest($this->companyId))->get();
+            $request = new CompanyRequest(
+                $this->client,
+                $this->companyId,
+            );
+
+            $company = $request->get();
         }
 
         return $company;
@@ -493,7 +509,13 @@ class Player
         $member = null;
 
         if ($this->isInCompany()) {
-            $member = (new MemberRequest($this->companyId, $this->companyMemberId))->get();
+            $request = new MemberRequest(
+                $this->client,
+                $this->companyId,
+                $this->companyMemberId,
+            );
+
+            $member = $request->get();
         }
 
         return $member;
@@ -506,13 +528,23 @@ class Player
      *
      * @throws ApiErrorException
      * @throws ClientExceptionInterface
+     *
+     * @deprecated Not recommended to use due to another internal request.
      */
     public function getCompanyRole(): ?CompanyRole
     {
         $role = null;
 
         if ($this->isInCompany()) {
-            $role = (new RoleRequest($this->companyId, $this->getCompanyMember()->getRoleId()))->get();
+            $member = $this->getCompanyMember();
+
+            $request = new RoleRequest(
+                $this->client,
+                $this->companyId,
+                $member->getRoleId(),
+            );
+
+            $role = $request->get();
         }
 
         return $role;

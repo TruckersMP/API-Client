@@ -2,192 +2,198 @@
 
 namespace TruckersMP\APIClient\Models;
 
-class Server
+use TruckersMP\APIClient\Client;
+
+class Server extends Model
 {
     /**
      * The ID given to the server.
      *
      * @var int
      */
-    protected $id;
+    protected int $id;
 
     /**
      * What game the server is for.
      *
      * @var string
      */
-    protected $game;
+    protected string $game;
 
     /**
      * The server ip address.
      *
      * @var string
      */
-    protected $ip;
+    protected string $ip;
 
     /**
      * The port that the server runs on.
      *
      * @var int
      */
-    protected $port;
+    protected int $port;
 
     /**
      * The name of the server.
      *
      * @var string
      */
-    protected $name;
+    protected string $name;
 
     /**
      * The short name for the server.
      *
      * @var string
      */
-    protected $shortName;
+    protected string $shortName;
 
     /**
      * Shown in-game in front of a player's ID.
      *
      * @var string|null
      */
-    protected $idPrefix;
+    protected ?string $idPrefix;
 
     /**
      * If the server is online or not.
      *
      * @var bool
      */
-    protected $online;
+    protected bool $online;
 
     /**
      * How many players are currently on the server.
      *
      * @var int
      */
-    protected $players;
+    protected int $players;
 
     /**
      * Amount of players waiting in the queue to join the server.
      *
      * @var int
      */
-    protected $queue;
+    protected int $queue;
 
     /**
      * The max amount of players allowed on the server at once.
      *
      * @var int
      */
-    protected $maxPlayers;
+    protected int $maxPlayers;
 
     /**
      * The map ID given to the server used by ETS2Map.
      *
      * @var int
      */
-    protected $mapId;
+    protected int $mapId;
 
     /**
      * Determines the order in which servers are displayed.
      *
      * @var int
      */
-    protected $displayOrder;
+    protected int $displayOrder;
 
     /**
      * If the speed limiter is enabled on the server (110 kmh for ETS2 and 80 mph for ATS).
      *
      * @var bool
      */
-    protected $speedLimiter;
+    protected bool $speedLimiter;
 
     /**
      * If server wide collisions is enabled.
      *
      * @var bool
      */
-    protected $collisions;
+    protected bool $collisions;
 
     /**
      * If cars are enabled for players.
      *
      * @var bool
      */
-    protected $carsForPlayers;
+    protected bool $carsForPlayers;
 
     /**
      * If police cars can be driven by players.
      *
      * @var bool
      */
-    protected $policeCarsForPlayers;
+    protected bool $policeCarsForPlayers;
 
     /**
      * If AFK kick is enabled for players.
      *
      * @var bool
      */
-    protected $afkEnabled;
+    protected bool $afkEnabled;
 
     /**
      * If the server is an event server.
      *
      * @var bool
      */
-    protected $event;
+    protected bool $event;
 
     /**
      * Determine whether the server hosts special event file.
      *
      * @var bool
      */
-    protected $specialEvent;
+    protected bool $specialEvent;
 
     /**
      * Determine whether the server hosts ProMods.
      *
      * @var bool
      */
-    protected $promods;
+    protected bool $promods;
 
     /**
      * The server tick rate.
      *
      * @var int
      */
-    protected $syncDelay;
+    protected int $syncDelay;
 
     /**
      * Create a new Server instance.
      *
+     * @param  Client  $client
      * @param  array  $server
      * @return void
      */
-    public function __construct(array $server)
+    public function __construct(Client $client, array $server)
     {
-        $this->id = $server['id'];
-        $this->game = $server['game'];
-        $this->ip = $server['ip'];
-        $this->port = intval($server['port']);
-        $this->name = $server['name'];
-        $this->shortName = $server['shortname'];
-        $this->idPrefix = $server['idprefix'];
-        $this->online = boolval($server['online']);
-        $this->players = intval($server['players']);
-        $this->queue = intval($server['queue']);
-        $this->maxPlayers = intval($server['maxplayers']);
-        $this->mapId = intval($server['mapid']);
-        $this->displayOrder = intval($server['displayorder']);
-        $this->speedLimiter = boolval($server['speedlimiter']);
-        $this->collisions = boolval($server['collisions']);
-        $this->carsForPlayers = boolval($server['carsforplayers']);
-        $this->policeCarsForPlayers = boolval($server['policecarsforplayers']);
-        $this->afkEnabled = boolval($server['afkenabled']);
-        $this->event = boolval($server['event']);
-        $this->specialEvent = boolval($server['specialEvent']);
-        $this->promods = boolval($server['promods']);
-        $this->syncDelay = intval($server['syncdelay']);
+        parent::__construct($client, $server);
+
+        $this->id = $this->getValue('id');
+        $this->game = $this->getValue('game');
+        $this->ip = $this->getValue('ip');
+        $this->port = $this->getValue('port');
+        $this->name = $this->getValue('name');
+        $this->shortName = $this->getValue('shortname');
+        $this->idPrefix = $this->getValue('idprefix');
+        $this->online = $this->getValue('online');
+        $this->players = $this->getValue('players');
+        $this->queue = $this->getValue('queue');
+        $this->maxPlayers = $this->getValue('maxplayers');
+        $this->mapId = $this->getValue('mapid');
+        $this->displayOrder = $this->getValue('displayorder');
+        $this->syncDelay = $this->getValue('syncdelay');
+
+        $this->speedLimiter = $this->getValue('speedlimiter', false);
+        $this->collisions = $this->getValue('collisions', false);
+        $this->carsForPlayers = $this->getValue('carsforplayers', false);
+        $this->policeCarsForPlayers = $this->getValue('policecarsforplayers', false);
+        $this->afkEnabled = $this->getValue('afkenabled', false);
+        $this->event = $this->getValue('event', false);
+        $this->specialEvent = $this->getValue('specialEvent', false);
+        $this->promods = $this->getValue('promods', false);
     }
 
     /**
@@ -392,11 +398,11 @@ class Server
     }
 
     /**
-     * Check if the server has promods enabled.
+     * Check if the server has ProMods enabled.
      *
      * @return bool
      */
-    public function hasPromods(): bool
+    public function hasProMods(): bool
     {
         return $this->promods;
     }

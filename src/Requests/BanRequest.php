@@ -4,6 +4,7 @@ namespace TruckersMP\APIClient\Requests;
 
 use Illuminate\Support\Collection;
 use Psr\Http\Client\ClientExceptionInterface;
+use TruckersMP\APIClient\Client;
 use TruckersMP\APIClient\Exceptions\ApiErrorException;
 use TruckersMP\APIClient\Models\Ban;
 
@@ -14,17 +15,18 @@ class BanRequest extends Request
      *
      * @var int
      */
-    protected $id;
+    protected int $id;
 
     /**
      * Create a new BanRequest instance.
      *
+     * @param  Client  $client
      * @param  int  $id
      * @return void
      */
-    public function __construct(int $id)
+    public function __construct(Client $client, int $id)
     {
-        parent::__construct();
+        parent::__construct($client);
 
         $this->id = $id;
     }
@@ -50,6 +52,6 @@ class BanRequest extends Request
     public function get(): Collection
     {
         return (new Collection($this->send()['response']))
-            ->mapInto(Ban::class);
+            ->map(fn (array $ban) => new Ban($this->client, $ban));
     }
 }

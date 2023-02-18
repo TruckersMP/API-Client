@@ -2,6 +2,8 @@
 
 namespace TruckersMP\APIClient;
 
+use GuzzleHttp\Client as GuzzleClient;
+use GuzzleHttp\ClientInterface;
 use TruckersMP\APIClient\Requests\BanRequest;
 use TruckersMP\APIClient\Requests\CompanyIndexRequest;
 use TruckersMP\APIClient\Requests\CompanyRequest;
@@ -16,11 +18,25 @@ use TruckersMP\APIClient\Requests\VersionRequest;
 class Client
 {
     /**
-     * The configuration to use for Guzzle.
+     * The API domain including the scheme.
      *
-     * @var array
+     * @var string
      */
-    protected static $config = [];
+    protected string $domain = 'https://api.truckersmp.com';
+
+    /**
+     * The currently used API version.
+     *
+     * @var int
+     */
+    protected int $version = 2;
+
+    /**
+     * The instance of an HTTP client.
+     *
+     * @var ClientInterface
+     */
+    protected ClientInterface $httpClient;
 
     /**
      * Create a new Client instance.
@@ -30,7 +46,36 @@ class Client
      */
     public function __construct(array $config = [])
     {
-        self::$config = $config;
+        $config = array_merge_recursive($config, [
+            'base_uri' => $this->domain . '/v' . $this->version . '/',
+            'headers' => [
+                'User-Agent' => 'TruckersMP API Client (https://github.com/TruckersMP/API-Client)',
+                'Content-Type' => 'application/json',
+            ],
+        ]);
+
+        $this->httpClient = new GuzzleClient($config);
+    }
+
+    /**
+     * Get the configured HTTP client.
+     *
+     * @return ClientInterface
+     */
+    public function getHttpClient(): ClientInterface
+    {
+        return $this->httpClient;
+    }
+
+    /**
+     * Set the instance of the HTTP client.
+     *
+     * @param  ClientInterface  $httpClient
+     * @return void
+     */
+    public function setHttpClient(ClientInterface $httpClient): void
+    {
+        $this->httpClient = $httpClient;
     }
 
     /**
@@ -43,7 +88,7 @@ class Client
      */
     public function player(int $id): PlayerRequest
     {
-        return new PlayerRequest($id);
+        return new PlayerRequest($this, $id);
     }
 
     /**
@@ -56,7 +101,7 @@ class Client
      */
     public function bans(int $id): BanRequest
     {
-        return new BanRequest($id);
+        return new BanRequest($this, $id);
     }
 
     /**
@@ -68,7 +113,7 @@ class Client
      */
     public function servers(): ServerRequest
     {
-        return new ServerRequest();
+        return new ServerRequest($this);
     }
 
     /**
@@ -80,7 +125,7 @@ class Client
      */
     public function gameTime(): GameTimeRequest
     {
-        return new GameTimeRequest();
+        return new GameTimeRequest($this);
     }
 
     /**
@@ -92,7 +137,7 @@ class Client
      */
     public function companies(): CompanyIndexRequest
     {
-        return new CompanyIndexRequest();
+        return new CompanyIndexRequest($this);
     }
 
     /**
@@ -105,7 +150,7 @@ class Client
      */
     public function company(string $key): CompanyRequest
     {
-        return new CompanyRequest($key);
+        return new CompanyRequest($this, $key);
     }
 
     /**
@@ -117,7 +162,7 @@ class Client
      */
     public function version(): VersionRequest
     {
-        return new VersionRequest();
+        return new VersionRequest($this);
     }
 
     /**
@@ -129,7 +174,7 @@ class Client
      */
     public function rules(): RuleRequest
     {
-        return new RuleRequest();
+        return new RuleRequest($this);
     }
 
     /**
@@ -141,7 +186,7 @@ class Client
      */
     public function events(): EventIndexRequest
     {
-        return new EventIndexRequest();
+        return new EventIndexRequest($this);
     }
 
     /**
@@ -154,16 +199,6 @@ class Client
      */
     public function event(int $id): EventRequest
     {
-        return new EventRequest($id);
-    }
-
-    /**
-     * Get the configuration to use for Guzzle.
-     *
-     * @return array
-     */
-    public static function config(): array
-    {
-        return self::$config;
+        return new EventRequest($this, $id);
     }
 }
