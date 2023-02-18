@@ -9,6 +9,7 @@ use Tests\Unit\MockModelData;
 use TruckersMP\APIClient\Models\Ban;
 use TruckersMP\APIClient\Models\Company;
 use TruckersMP\APIClient\Models\CompanyMember;
+use TruckersMP\APIClient\Models\Event;
 use TruckersMP\APIClient\Models\Patreon;
 use TruckersMP\APIClient\Models\Player;
 
@@ -122,6 +123,18 @@ class PlayerTest extends TestCase
         $this->assertNotEmpty($bans);
 
         $this->assertInstanceOf(Ban::class, $bans->first());
+    }
+
+    public function testItCanGetEvents()
+    {
+        $this->mockRequest('event.user.json', 'events/user/1287455');
+
+        $events = $this->player->getEvents();
+
+        $this->assertInstanceOf(Collection::class, $events);
+        $this->assertNotEmpty($events);
+
+        $this->assertInstanceOf(Event::class, $events->first());
     }
 
     public function testItCanGetACompany()

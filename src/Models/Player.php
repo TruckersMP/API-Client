@@ -11,6 +11,7 @@ use TruckersMP\APIClient\Requests\BanRequest;
 use TruckersMP\APIClient\Requests\Company\MemberRequest;
 use TruckersMP\APIClient\Requests\Company\RoleRequest;
 use TruckersMP\APIClient\Requests\CompanyRequest;
+use TruckersMP\APIClient\Requests\EventUserRequest;
 
 class Player extends Model
 {
@@ -470,6 +471,24 @@ class Player extends Model
     public function getBans(): Collection
     {
         return (new BanRequest($this->client, $this->id))->get();
+    }
+
+    /**
+     * Get events created by the player.
+     *
+     * @return Collection
+     *
+     * @throws ApiErrorException
+     * @throws ClientExceptionInterface
+     */
+    public function getEvents(): Collection
+    {
+        $request = new EventUserRequest(
+            $this->client,
+            $this->id,
+        );
+
+        return $request->get();
     }
 
     /**
