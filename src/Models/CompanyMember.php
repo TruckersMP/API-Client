@@ -50,6 +50,13 @@ class CompanyMember extends Model
     protected string $role;
 
     /**
+     * If the member has owner permissions.
+     *
+     * @var bool
+     */
+    protected bool $owner;
+
+    /**
      * The date the player joined the company.
      *
      * @var Carbon
@@ -73,6 +80,7 @@ class CompanyMember extends Model
         $this->steamId = (string) $this->getValue('steam_id');
         $this->roleId = $this->getValue('role_id');
         $this->role = $this->getValue('role');
+        $this->owner = $this->getValue('is_owner', false);
         $this->joinDate = new Carbon($this->getValue('joinDate'), 'UTC');
     }
 
@@ -134,6 +142,16 @@ class CompanyMember extends Model
     public function getRole(): string
     {
         return $this->role;
+    }
+
+    /**
+     * Check whether the member has owner permissions.
+     *
+     * @return bool
+     */
+    public function isOwner(): bool
+    {
+        return $this->owner;
     }
 
     /**
