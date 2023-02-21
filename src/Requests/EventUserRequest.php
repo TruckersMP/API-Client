@@ -49,7 +49,7 @@ class EventUserRequest extends Request
      * @throws ClientExceptionInterface
      * @throws ApiErrorException
      */
-    public function get()
+    public function get(): Collection
     {
         return (new Collection($this->send()['response']))
             ->map(fn (array $event) => new Event($this->client, $event));
