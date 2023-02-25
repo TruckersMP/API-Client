@@ -24,7 +24,7 @@ class EventAttendeeTest extends TestCase
      */
     protected function setUp(): void
     {
-        $data = $this->getFixtureData('event.attendee.json');
+        $data = $this->getFixtureData('event.attendee.user.json');
 
         $this->attendee = new EventAttendee($this->client, $data);
     }

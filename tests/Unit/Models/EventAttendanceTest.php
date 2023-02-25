@@ -7,6 +7,7 @@ use Tests\TestCase;
 use Tests\Unit\MockModelData;
 use TruckersMP\APIClient\Models\EventAttendance;
 use TruckersMP\APIClient\Models\EventAttendee;
+use TruckersMP\APIClient\Models\EventCompanyAttendee;
 
 class EventAttendanceTest extends TestCase
 {
@@ -49,5 +50,15 @@ class EventAttendanceTest extends TestCase
         $this->assertCount(2, $users);
 
         $this->assertInstanceOf(EventAttendee::class, $users->first());
+    }
+
+    public function testItHasConfirmedCompanies()
+    {
+        $companies = $this->attendance->getConfirmedCompanies();
+
+        $this->assertInstanceOf(Collection::class, $companies);
+        $this->assertCount(1, $companies);
+
+        $this->assertInstanceOf(EventCompanyAttendee::class, $companies->first());
     }
 }

@@ -22,6 +22,13 @@ class EventAttendance extends Model
     protected Collection $unsureUsers;
 
     /**
+     * The confirmed companies.
+     *
+     * @var Collection
+     */
+    protected Collection $confirmedCompanies;
+
+    /**
      * Create a new EventAttendance instance.
      *
      * @param  Client  $client
@@ -32,10 +39,12 @@ class EventAttendance extends Model
     {
         parent::__construct($client, $attendance);
 
-        $mapAttendee = fn (array $attendee) => new EventAttendee($client, $attendee);
+        $mapUser = fn (array $attendee) => new EventAttendee($client, $attendee);
+        $mapCompany = fn (array $attendee) => new EventCompanyAttendee($client, $attendee);
 
-        $this->confirmedUsers = (new Collection($this->getValue('confirmed_users', [])))->map($mapAttendee);
-        $this->unsureUsers = (new Collection($this->getValue('unsure_users', [])))->map($mapAttendee);
+        $this->confirmedUsers = (new Collection($this->getValue('confirmed_users', [])))->map($mapUser);
+        $this->unsureUsers = (new Collection($this->getValue('unsure_users', [])))->map($mapUser);
+        $this->confirmedCompanies = (new Collection($this->getValue('confirmed_vtcs', [])))->map($mapCompany);
     }
 
     /**
@@ -80,5 +89,15 @@ class EventAttendance extends Model
     public function getUnsureUsers(): Collection
     {
         return $this->unsureUsers;
+    }
+
+    /**
+     * Get the confirmed companies.
+     *
+     * @return Collection
+     */
+    public function getConfirmedCompanies(): Collection
+    {
+        return $this->confirmedCompanies;
     }
 }

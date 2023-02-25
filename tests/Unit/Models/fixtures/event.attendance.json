@@ -1,6 +1,7 @@
 {
     "confirmed": 1,
     "unsure": 2,
+    "vtcs": 1,
     "confirmed_users": [
         {
             "id": 879,
@@ -24,6 +25,15 @@
             "following": false,
             "created_at": "2023-01-04 18:59:01",
             "updated_at": "2023-01-04 18:59:22"
+        }
+    ],
+    "confirmed_vtcs": [
+        {
+            "id": 2,
+            "name": "TruckersMP Team",
+            "following": false,
+            "created_at": "2023-02-25 11:01:05",
+            "updated_at": "2023-02-25 11:02:08"
         }
     ]
 }
