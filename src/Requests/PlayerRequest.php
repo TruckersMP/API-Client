@@ -68,4 +68,17 @@ class PlayerRequest extends Request
             $this->id
         );
     }
+
+    /**
+     * Get all events created by the player.
+     *
+     * @return EventUserRequest
+     */
+    public function events(): EventUserRequest
+    {
+        return new EventUserRequest(
+            $this->client,
+            $this->id,
+        );
+    }
 }
