@@ -41,7 +41,8 @@
             },
             "attendances": {
                 "confirmed": 24,
-                "unsure": 4
+                "unsure": 4,
+                "vtcs": 2
             },
             "dlcs": {
                 "304212": "Scandinavia",
