@@ -26,7 +26,7 @@ class CompanyRole extends Model
      *
      * @var int
      */
-    protected int $order;
+    protected ?int $order;
 
     /**
      * The owner of the company.
@@ -62,7 +62,7 @@ class CompanyRole extends Model
 
         $this->id = $this->getValue('id');
         $this->name = $this->getValue('name');
-        $this->order = $this->getValue('order');
+        $this->order = $this->getValue('order', null);
         $this->owner = $this->getValue('owner', false);
         $this->createdAt = new Carbon($this->getValue('created_at'), 'UTC');
         $this->updatedAt = new Carbon($this->getValue('updated_at'), 'UTC');
