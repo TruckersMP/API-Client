@@ -62,7 +62,7 @@ class CompanyRole extends Model
 
         $this->id = $this->getValue('id');
         $this->name = $this->getValue('name');
-        $this->order = $this->getValue('order', null);
+        $this->order = $this->getValue('order');
         $this->owner = $this->getValue('owner', false);
         $this->createdAt = new Carbon($this->getValue('created_at'), 'UTC');
         $this->updatedAt = new Carbon($this->getValue('updated_at'), 'UTC');
