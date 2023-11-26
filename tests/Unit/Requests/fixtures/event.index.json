@@ -76,6 +76,7 @@
                     "city": "Stuttgart"
                 },
                 "start_at": "2023-01-04 17:00:00",
+                "meetup_at": "2023-01-04 16:00:00",
                 "banner": "https://static.truckersmp.com/images/event/cover/cover.png",
                 "map": "https://static.truckersmp.com/images/event/map/map.jpeg",
                 "description": "",
@@ -128,6 +129,7 @@
                     "city": "Dover"
                 },
                 "start_at": "2023-01-07 13:00:00",
+                "meetup_at": "2023-01-07 12:00:00",
                 "banner": "https://static.truckersmp.com/images/event/cover/cover.jpeg",
                 "map": "https://static.truckersmp.com/images/event/map/map.png",
                 "description": "Description",
