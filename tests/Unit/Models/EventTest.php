@@ -106,6 +106,11 @@ class EventTest extends TestCase
         $this->assertDate('2023-01-04 14:32:28', $this->event->getStartAt());
     }
 
+    public function testItHasAMeetupDate()
+    {
+        $this->assertDate('2023-01-04 14:02:28', $this->event->getMeetupAt());
+    }
+
     public function testItHasABanner()
     {
         $this->assertSame('https://static.truckersmp.com/images/event/cover/cover.png', $this->event->getBanner());

@@ -79,6 +79,13 @@ class Event extends Model
     protected Carbon $startAt;
 
     /**
+     * The event meetup date.
+     *
+     * @var Carbon|null
+     */
+    protected ?Carbon $meetupAt;
+
+    /**
      * The event banner.
      *
      * @var string|null
@@ -216,6 +223,10 @@ class Event extends Model
         );
 
         $this->startAt = new Carbon($this->getValue('start_at'), 'UTC');
+
+        $meetupAt = $this->getValue('meetup_at');
+        $this->meetupAt = $meetupAt ? new Carbon($meetupAt, 'UTC') : null;
+
         $this->banner = $this->getValue('banner');
         $this->map = $this->getValue('map');
         $this->description = $this->getValue('description');
@@ -344,6 +355,16 @@ class Event extends Model
     public function getStartAt(): Carbon
     {
         return $this->startAt;
+    }
+
+    /**
+     * Get the start date of the event.
+     *
+     * @return Carbon|null
+     */
+    public function getMeetupAt(): ?Carbon
+    {
+        return $this->meetupAt;
     }
 
     /**
