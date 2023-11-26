@@ -223,7 +223,10 @@ class Event extends Model
         );
 
         $this->startAt = new Carbon($this->getValue('start_at'), 'UTC');
-        $this->meetupAt = $this->getValue('meetup_at') !== null ? new Carbon($this->getValue('meetup_at'), 'UTC') : $this->getValue('meetup_at');
+
+        $meetupAt = $this->getValue('meetup_at');
+        $this->meetupAt = $meetupAt ? new Carbon($meetupAt, 'UTC') : null;
+
         $this->banner = $this->getValue('banner');
         $this->map = $this->getValue('map');
         $this->description = $this->getValue('description');
