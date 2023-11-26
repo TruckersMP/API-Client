@@ -358,7 +358,7 @@ class Event extends Model
     }
 
     /**
-     * Get the start date of the event.
+     * Get the meetup date of the event.
      *
      * @return Carbon|null
      */
