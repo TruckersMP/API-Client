@@ -25,6 +25,7 @@
                     "city": "Stuttgart"
                 },
                 "start_at": "2023-01-15 19:00:00",
+                "meetup_at": "2023-01-15 18:00:00",
                 "banner": "https://static.truckersmp.com/images/event/cover/cover.jpeg",
                 "map": "https://static.truckersmp.com/images/event/map/map.png",
                 "description": "Description",
