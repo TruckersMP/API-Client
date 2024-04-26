@@ -4,7 +4,7 @@ enabled:
   - align_phpdoc
   - alpha_ordered_imports
   - array_indentation
-  - binary_operator_spaces
+  - binary_operator_exactly_one_space
   - blank_line_before_return
   - cast_spaces
   - clean_namespace
@@ -69,6 +69,8 @@ enabled:
   # - trailing_comma_in_multiline_definition - available only for PHP 8.0 and newer
   - trim_array_spaces
   - unalign_equals
-  - unary_operator_spaces
   - union_type_without_spaces
   - whitespace_after_comma_in_array
+
+disabled:
+  - binary_operator_at_least_one_space
