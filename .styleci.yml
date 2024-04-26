@@ -69,6 +69,5 @@ enabled:
   # - trailing_comma_in_multiline_definition - available only for PHP 8.0 and newer
   - trim_array_spaces
   - unalign_equals
-  - unary_operator_spaces
   - union_type_without_spaces
   - whitespace_after_comma_in_array
