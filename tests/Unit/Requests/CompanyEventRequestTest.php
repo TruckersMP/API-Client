@@ -14,9 +14,9 @@ class CompanyEventRequestTest extends TestCase
 
     public function testItCanGetAllCompanyEvents()
     {
-        $this->mockRequest('company.event.index.json', 'vtc/258/events');
+        $this->mockRequest('company.event.index.json', 'vtc/22/events');
 
-        $index = $this->client->company(258)->events()->get();
+        $index = $this->client->company(22)->events()->get();
 
         $this->assertInstanceOf(CompanyEventIndex::class, $index);
 
@@ -30,10 +30,22 @@ class CompanyEventRequestTest extends TestCase
 
     public function testItCanGetASpecificCompanyEvent()
     {
-        $this->mockRequest('event.json', 'vtc/258/events/45');
+        $this->mockRequest('event.json', 'vtc/22/events/45');
 
-        $event = $this->client->company(258)->event(45)->get();
+        $event = $this->client->company(22)->event(45)->get();
 
         $this->assertInstanceOf(Event::class, $event);
+    }
+
+    public function testItCanGetEventsThatACompanyIsAttending()
+    {
+        $this->mockRequest('company.event.attending.json', 'vtc/22/events/attending');
+
+        $events = $this->client->company(22)->events()->attending()->get();
+
+        $this->assertInstanceOf(Collection::class, $events);
+        $this->assertCount(1, $events);
+
+        $this->assertInstanceOf(Event::class, $events->first());
     }
 }

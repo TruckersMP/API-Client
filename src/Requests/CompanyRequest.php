@@ -149,7 +149,7 @@ class CompanyRequest extends Request
     }
 
     /**
-     * Get the events for the company.
+     * Get the events created by the company.
      *
      * @return EventIndexRequest
      */
@@ -162,7 +162,7 @@ class CompanyRequest extends Request
     }
 
     /**
-     * Get the event for the company with the specified ID.
+     * Get the event created by the company with the specified ID.
      *
      * @param  int  $id
      * @return EventRequest

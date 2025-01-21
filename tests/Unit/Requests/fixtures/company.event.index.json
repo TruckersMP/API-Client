@@ -24,6 +24,7 @@
                 "city": "Stuttgart"
             },
             "start_at": "2023-01-04 14:32:28",
+            "meetup_at": "2023-01-04 14:02:28",
             "banner": "https://static.truckersmp.com/images/event/cover/cover.png",
             "map": "https://static.truckersmp.com/images/event/map/map.png",
             "description": "Description",
