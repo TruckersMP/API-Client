@@ -2,13 +2,14 @@
 
 namespace TruckersMP\APIClient\Requests\Company;
 
+use Illuminate\Support\Collection;
 use Psr\Http\Client\ClientExceptionInterface;
 use TruckersMP\APIClient\Client;
 use TruckersMP\APIClient\Exceptions\ApiErrorException;
-use TruckersMP\APIClient\Models\CompanyEventIndex;
+use TruckersMP\APIClient\Models\Event;
 use TruckersMP\APIClient\Requests\Request;
 
-class EventIndexRequest extends Request
+class EventAttendingRequest extends Request
 {
     /**
      * The ID of the requested company.
@@ -18,7 +19,7 @@ class EventIndexRequest extends Request
     protected int $companyId;
 
     /**
-     * Create a new EventIndexRequest instance.
+     * Create a new EventAttendingRequest instance.
      *
      * @param  Client  $client
      * @param  int  $id
@@ -38,35 +39,20 @@ class EventIndexRequest extends Request
      */
     public function getEndpoint(): string
     {
-        return 'vtc/' . $this->companyId . '/events';
+        return 'vtc/' . $this->companyId . '/events/attending';
     }
 
     /**
      * Get the data for the request.
      *
-     * @return CompanyEventIndex
+     * @return Collection|Event[]
      *
      * @throws ApiErrorException
      * @throws ClientExceptionInterface
      */
-    public function get(): CompanyEventIndex
+    public function get(): Collection
     {
-        return new CompanyEventIndex(
-            $this->client,
-            $this->send()['response']
-        );
-    }
-
-    /**
-     * Get all events that the company is attending.
-     *
-     * @return EventAttendingRequest
-     */
-    public function attending(): EventAttendingRequest
-    {
-        return new EventAttendingRequest(
-            $this->client,
-            $this->companyId,
-        );
+        return (new Collection($this->send()['response']))
+            ->map(fn (array $event) => new Event($this->client, $event));
     }
 }
