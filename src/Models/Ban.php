@@ -22,7 +22,12 @@ class Ban extends Model
     protected Carbon $timeAdded;
 
     /**
-     * If the ban is still active.
+     * If the ban is still active or was disabled.
+     *
+     * When a ban was issued by mistake, staff may deactivate it manually, but
+     * it still shows as inactive in the ban history.
+     *
+     * Does not change if the ban expires naturally on the expiration date.
      *
      * @var bool
      */
@@ -38,12 +43,16 @@ class Ban extends Model
     /**
      * The name of the admin that banned the user.
      *
+     * This field is generally redacted when accessing the public API.
+     *
      * @var string
      */
     protected string $adminName;
 
     /**
      * The TruckersMP ID for the admin that banned the user.
+     *
+     * This field is generally redacted when accessing the public API.
      *
      * @var int
      */
@@ -98,7 +107,12 @@ class Ban extends Model
     }
 
     /**
-     * Determine if the ban is active or not.
+     * Determine if the ban is active or was disabled.
+     *
+     * When a ban was issued by mistake, staff may deactivate it manually, but
+     * it still shows as inactive in the ban history.
+     *
+     * Does not change if the ban expires naturally on the expiration date.
      *
      * @return bool
      */
@@ -120,6 +134,8 @@ class Ban extends Model
     /**
      * Get the name of the admin who banned the player.
      *
+     * This field is generally redacted when accessing the public API.
+     *
      * @return string
      */
     public function getAdminName(): string
@@ -129,6 +145,8 @@ class Ban extends Model
 
     /**
      * Get the TMP ID of the admin who banned the player.
+     *
+     * This field is generally redacted when accessing the public API.
      *
      * @return int
      */
