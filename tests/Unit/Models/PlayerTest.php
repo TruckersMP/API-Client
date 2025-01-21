@@ -12,6 +12,8 @@ use TruckersMP\APIClient\Models\CompanyMember;
 use TruckersMP\APIClient\Models\Event;
 use TruckersMP\APIClient\Models\Patreon;
 use TruckersMP\APIClient\Models\Player;
+use TruckersMP\APIClient\Models\PlayerAchievement;
+use TruckersMP\APIClient\Models\PlayerAward;
 use TruckersMP\APIClient\Models\PlayerCompanyHistory;
 
 class PlayerTest extends TestCase
@@ -122,6 +124,26 @@ class PlayerTest extends TestCase
         $this->assertCount(1, $history);
 
         $this->assertInstanceOf(PlayerCompanyHistory::class, $history->first());
+    }
+
+    public function testItHasAnAchievementsList()
+    {
+        $achievements = $this->player->getAchievements();
+
+        $this->assertInstanceOf(Collection::class, $achievements);
+        $this->assertCount(2, $achievements);
+
+        $this->assertInstanceOf(PlayerAchievement::class, $achievements->first());
+    }
+
+    public function testItHasAnAwardList()
+    {
+        $awards = $this->player->getAwards();
+
+        $this->assertInstanceOf(Collection::class, $awards);
+        $this->assertCount(1, $awards);
+
+        $this->assertInstanceOf(PlayerAward::class, $awards->first());
     }
 
     public function testItCanGetBans()

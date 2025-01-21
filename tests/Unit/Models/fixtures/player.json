@@ -45,5 +45,29 @@
             "joinDate": "2018-04-25 20:24:03",
             "leftDate": "2019-07-13 15:39:58"
         }
+    ],
+    "achievements": [
+        {
+            "id": 1,
+            "title": "Operation HQ",
+            "description": "Let's build a home for the TruckersMP community!",
+            "image_url": "https://static.truckersmp.com/images/achievements/achievement.png",
+            "achieved_at": "2022-02-14T12:42:24.000000Z"
+        },
+        {
+            "id": 3,
+            "title": "Celebrate TMP9",
+            "description": "Join the celebrations of TruckersMP's ninth anniversary.",
+            "image_url": "https://static.truckersmp.com/images/achievements/achievement.png",
+            "achieved_at": "2023-04-28T16:33:42.000000Z"
+        }
+    ],
+    "awards": [
+        {
+            "id": 2,
+            "name": "Easter Egg Hunt 2019",
+            "image_url": "https://static.truckersmp.com/images/awards/award.png",
+            "awarded_at": "2020-12-11T14:30:25.000000Z"
+        }
     ]
 }

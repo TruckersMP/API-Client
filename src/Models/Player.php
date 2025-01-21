@@ -184,6 +184,20 @@ class Player extends Model
     protected Collection $companyHistory;
 
     /**
+     * The player's achievements sorted from the oldest.
+     *
+     * @var Collection
+     */
+    protected Collection $achievements;
+
+    /**
+     * The player's awards sorted from the oldest.
+     *
+     * @var Collection
+     */
+    protected Collection $awards;
+
+    /**
      * Create a new Player instance.
      *
      * @param  Client  $client
@@ -215,6 +229,12 @@ class Player extends Model
 
         $history = new Collection($this->getValue('vtcHistory', []));
         $this->companyHistory = $history->map(fn (array $entry) => new PlayerCompanyHistory($client, $entry));
+
+        $achievements = new Collection($this->getValue('achievements', []));
+        $this->achievements = $achievements->map(fn (array $entry) => new PlayerAchievement($client, $entry));
+
+        $awards = new Collection($this->getValue('awards', []));
+        $this->awards = $awards->map(fn (array $entry) => new PlayerAward($client, $entry));
 
         $this->isStaff = $this->getValue('permissions.isStaff', false);
         $this->isUpperStaff = $this->getValue('permissions.isUpperStaff', false);
@@ -478,6 +498,30 @@ class Player extends Model
     public function getDiscordSnowflake(): ?string
     {
         return $this->discordSnowflake;
+    }
+
+    /**
+     * Get the player's achievements sorted from the oldest.
+     *
+     * Returns an empty collection if they are private.
+     *
+     * @return Collection
+     */
+    public function getAchievements(): Collection
+    {
+        return $this->achievements;
+    }
+
+    /**
+     * Get the player's awards sorted from the oldest.
+     *
+     * Returns an empty collection if they are private.
+     *
+     * @return Collection
+     */
+    public function getAwards(): Collection
+    {
+        return $this->awards;
     }
 
     /**
