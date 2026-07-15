@@ -251,7 +251,8 @@ class Event extends Model
 
         $this->attendance = new EventAttendance($client, $this->getValue('attendances', []));
 
-        $this->dlcs = (new Collection($this->getValue('dlcs', [])))->mapInto(Dlc::class);
+        $this->dlcs = (new Collection($this->getValue('dlcs', [])))
+            ->map(fn (string $name, $id) => new Dlc($id, $name));
 
         $this->createdAt = new Carbon($this->getValue('created_at'), 'UTC');
         $this->updatedAt = new Carbon($this->getValue('updated_at'), 'UTC');

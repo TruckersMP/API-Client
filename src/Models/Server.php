@@ -161,6 +161,13 @@ class Server extends Model
     protected int $syncDelay;
 
     /**
+     * The event request currently assigned to the server.
+     *
+     * @var ServerEventRequest|null
+     */
+    protected ?ServerEventRequest $eventRequest;
+
+    /**
      * Create a new Server instance.
      *
      * @param  Client  $client
@@ -194,6 +201,9 @@ class Server extends Model
         $this->event = $this->getValue('event', false);
         $this->specialEvent = $this->getValue('specialEvent', false);
         $this->promods = $this->getValue('promods', false);
+
+        $eventRequest = $this->getValue('event_request');
+        $this->eventRequest = $eventRequest ? new ServerEventRequest($client, $eventRequest) : null;
     }
 
     /**
@@ -415,5 +425,17 @@ class Server extends Model
     public function getSyncDelay(): int
     {
         return $this->syncDelay;
+    }
+
+    /**
+     * Get the event request currently assigned to the server.
+     *
+     * Only an event server may have an event request assigned, but it is not guaranteed.
+     *
+     * @return ServerEventRequest|null
+     */
+    public function getEventRequest(): ?ServerEventRequest
+    {
+        return $this->eventRequest;
     }
 }

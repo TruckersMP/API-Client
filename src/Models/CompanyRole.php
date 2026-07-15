@@ -29,6 +29,13 @@ class CompanyRole extends Model
     protected int $order;
 
     /**
+     * The color of the role.
+     *
+     * @var string
+     */
+    protected string $color;
+
+    /**
      * The owner of the company.
      *
      * @var bool
@@ -63,6 +70,7 @@ class CompanyRole extends Model
         $this->id = $this->getValue('id');
         $this->name = $this->getValue('name');
         $this->order = $this->getValue('order');
+        $this->color = $this->getValue('color');
         $this->owner = $this->getValue('owner', false);
         $this->createdAt = new Carbon($this->getValue('created_at'), 'UTC');
         $this->updatedAt = new Carbon($this->getValue('updated_at'), 'UTC');
@@ -96,6 +104,16 @@ class CompanyRole extends Model
     public function getOrder(): int
     {
         return $this->order;
+    }
+
+    /**
+     * Get the color of the role.
+     *
+     * @return string
+     */
+    public function getColor(): string
+    {
+        return $this->color;
     }
 
     /**

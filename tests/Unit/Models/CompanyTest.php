@@ -2,9 +2,11 @@
 
 namespace Tests\Unit\Models;
 
+use Illuminate\Support\Collection;
 use Tests\TestCase;
 use Tests\Unit\MockModelData;
 use TruckersMP\APIClient\Models\Company;
+use TruckersMP\APIClient\Models\Dlc;
 use TruckersMP\APIClient\Models\Game;
 use TruckersMP\APIClient\Models\Social;
 
@@ -108,6 +110,20 @@ class CompanyTest extends TestCase
 
         $this->assertTrue($games->isAts());
         $this->assertTrue($games->isEts());
+    }
+
+    public function testItHasDlcs()
+    {
+        $dlcs = $this->company->getDlcs();
+
+        $this->assertInstanceOf(Collection::class, $dlcs);
+        $this->assertCount(1, $dlcs);
+
+        $dlc = $dlcs->first();
+
+        $this->assertInstanceOf(Dlc::class, $dlc);
+        $this->assertSame(304212, $dlc->getId());
+        $this->assertSame('Scandinavia', $dlc->getName());
     }
 
     public function testItHasAMemberCount()

@@ -1,0 +1,79 @@
+{
+    "error": false,
+    "response": {
+        "partners": [
+            {
+                "id": 21,
+                "status": "Accepted",
+                "created_at": "2025-03-08T17:30:06.000000Z",
+                "updated_at": "2025-03-10T20:39:08.000000Z",
+                "sender": {
+                    "id": 1,
+                    "name": "TruckersMP Developers",
+                    "owner_id": 1287455,
+                    "owner_username": "Owner",
+                    "slogan": "$company->create();",
+                    "tag": "TMP-DEV",
+                    "logo": "https://static.truckersmp.com/images/vtc/logo/logo.png",
+                    "cover": "https://static.truckersmp.com/images/vtc/cover/cover.jpeg",
+                    "information": "Information",
+                    "rules": "Rules",
+                    "requirements": "Requirements",
+                    "website": "https://truckersmp.com",
+                    "socials": {
+                        "twitter": "https://twitter.com/truckersmp",
+                        "facebook": "https://www.facebook.com/truckersmpofficial/",
+                        "twitch": "https://www.twitch.tv/truckersmp_official",
+                        "discord": "https://discord.gg/truckersmp",
+                        "youtube": "https://www.youtube.com/c/TruckersMPOfficial/"
+                    },
+                    "games": {
+                        "ats": true,
+                        "ets": true
+                    },
+                    "dlcs": {
+                        "304212": "Scandinavia"
+                    },
+                    "members_count": 5,
+                    "recruitment": "Close",
+                    "language": "English",
+                    "verified": true,
+                    "validated": false,
+                    "created": "2019-07-13 14:26:49"
+                },
+                "receiver": {
+                    "id": 22,
+                    "name": "TruckersMP Team",
+                    "owner_id": 42,
+                    "owner_username": "Owner",
+                    "slogan": "Slogan",
+                    "tag": "TMP",
+                    "logo": "https://static.truckersmp.com/images/vtc/logo/logo.png",
+                    "cover": "https://static.truckersmp.com/images/vtc/cover/cover.jpeg",
+                    "information": "Information",
+                    "rules": "Rules",
+                    "requirements": "Requirements",
+                    "website": null,
+                    "socials": {
+                        "twitter": null,
+                        "facebook": null,
+                        "twitch": null,
+                        "discord": null,
+                        "youtube": null
+                    },
+                    "games": {
+                        "ats": false,
+                        "ets": true
+                    },
+                    "members_count": 3,
+                    "recruitment": "Open",
+                    "language": "English",
+                    "verified": false,
+                    "validated": false,
+                    "created": "2019-07-13 15:39:58"
+                }
+            }
+        ],
+        "pending_requests_count": 1
+    }
+}

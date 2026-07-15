@@ -44,6 +44,11 @@ class CompanyRoleTest extends TestCase
         $this->assertSame(2, $this->role->getOrder());
     }
 
+    public function testItHasAColor()
+    {
+        $this->assertSame('#67a6a8', $this->role->getColor());
+    }
+
     public function testItIsAnOwner()
     {
         $this->assertTrue($this->role->isOwner());

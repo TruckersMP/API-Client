@@ -10,6 +10,7 @@ use TruckersMP\APIClient\Requests\Company\EventIndexRequest;
 use TruckersMP\APIClient\Requests\Company\EventRequest;
 use TruckersMP\APIClient\Requests\Company\MemberIndexRequest;
 use TruckersMP\APIClient\Requests\Company\MemberRequest;
+use TruckersMP\APIClient\Requests\Company\PartnerIndexRequest;
 use TruckersMP\APIClient\Requests\Company\PostIndexRequest;
 use TruckersMP\APIClient\Requests\Company\PostRequest;
 use TruckersMP\APIClient\Requests\Company\RoleIndexRequest;
@@ -173,6 +174,19 @@ class CompanyRequest extends Request
             $this->client,
             $this->key,
             $id
+        );
+    }
+
+    /**
+     * Get the partners of the company.
+     *
+     * @return PartnerIndexRequest
+     */
+    public function partners(): PartnerIndexRequest
+    {
+        return new PartnerIndexRequest(
+            $this->client,
+            $this->key
         );
     }
 }

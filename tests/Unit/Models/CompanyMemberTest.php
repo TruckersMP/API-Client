@@ -2,9 +2,11 @@
 
 namespace Tests\Unit\Models;
 
+use Illuminate\Support\Collection;
 use Tests\TestCase;
 use Tests\Unit\MockModelData;
 use TruckersMP\APIClient\Models\CompanyMember;
+use TruckersMP\APIClient\Models\CompanyRole;
 
 class CompanyMemberTest extends TestCase
 {
@@ -41,10 +43,28 @@ class CompanyMemberTest extends TestCase
         $this->assertSame('76561198083585955', $this->member->getSteamId());
     }
 
+    public function testItHasAnAvatar()
+    {
+        $this->assertSame('https://static.truckersmp.com/avatarsN/avatar.png', $this->member->getAvatar());
+    }
+
     public function testItHasARole()
     {
         $this->assertSame(25, $this->member->getRoleId());
         $this->assertSame('Role', $this->member->getRole());
+    }
+
+    public function testItHasRoles()
+    {
+        $roles = $this->member->getRoles();
+
+        $this->assertInstanceOf(Collection::class, $roles);
+        $this->assertCount(1, $roles);
+
+        $role = $roles->first();
+
+        $this->assertInstanceOf(CompanyRole::class, $role);
+        $this->assertSame(25, $role->getId());
     }
 
     public function testItHasOwnerPermissions()

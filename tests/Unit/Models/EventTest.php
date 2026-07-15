@@ -5,6 +5,7 @@ namespace Tests\Unit\Models;
 use Illuminate\Support\Collection;
 use Tests\TestCase;
 use Tests\Unit\MockModelData;
+use TruckersMP\APIClient\Models\Dlc;
 use TruckersMP\APIClient\Models\Event;
 use TruckersMP\APIClient\Models\EventAttendance;
 use TruckersMP\APIClient\Models\EventCompany;
@@ -177,6 +178,20 @@ class EventTest extends TestCase
 
         $this->assertInstanceOf(Collection::class, $attendance->getUnsureUsers());
         $this->assertCount(1, $attendance->getUnsureUsers());
+    }
+
+    public function testItHasDlcs()
+    {
+        $dlcs = $this->event->getDlcs();
+
+        $this->assertInstanceOf(Collection::class, $dlcs);
+        $this->assertCount(2, $dlcs);
+
+        $dlc = $dlcs->first();
+
+        $this->assertInstanceOf(Dlc::class, $dlc);
+        $this->assertSame(304212, $dlc->getId());
+        $this->assertSame('Scandinavia', $dlc->getName());
     }
 
     public function testItHasAnUrl()
