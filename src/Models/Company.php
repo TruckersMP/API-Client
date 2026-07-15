@@ -3,6 +3,7 @@
 namespace TruckersMP\APIClient\Models;
 
 use Carbon\Carbon;
+use Illuminate\Support\Collection;
 use TruckersMP\APIClient\Client;
 
 class Company extends Model
@@ -111,6 +112,13 @@ class Company extends Model
     protected Game $games;
 
     /**
+     * The required DLCs of the company.
+     *
+     * @var Collection
+     */
+    protected Collection $dlcs;
+
+    /**
      * The number of members in the company.
      *
      * @var int
@@ -189,6 +197,9 @@ class Company extends Model
             $this->getValue('games.ats'),
             $this->getValue('games.ets'),
         );
+
+        $this->dlcs = (new Collection($this->getValue('dlcs', [])))
+            ->map(fn (string $name, $id) => new Dlc($id, $name));
 
         $this->membersCount = $this->getValue('members_count');
         $this->recruitment = $this->getValue('recruitment');
@@ -336,6 +347,16 @@ class Company extends Model
     public function getGames(): Game
     {
         return $this->games;
+    }
+
+    /**
+     * Get the required DLCs of the company.
+     *
+     * @return Collection
+     */
+    public function getDlcs(): Collection
+    {
+        return $this->dlcs;
     }
 
     /**

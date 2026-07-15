@@ -1,24 +1,25 @@
 <?php
 
-namespace TruckersMP\APIClient\Requests;
+namespace TruckersMP\APIClient\Requests\Event;
 
+use Illuminate\Support\Collection;
 use Psr\Http\Client\ClientExceptionInterface;
 use TruckersMP\APIClient\Client;
 use TruckersMP\APIClient\Exceptions\ApiErrorException;
-use TruckersMP\APIClient\Models\Event;
-use TruckersMP\APIClient\Requests\Event\SlotIndexRequest;
+use TruckersMP\APIClient\Models\EventSlot;
+use TruckersMP\APIClient\Requests\Request;
 
-class EventRequest extends Request
+class SlotIndexRequest extends Request
 {
     /**
      * The ID of the requested event.
      *
      * @var int
      */
-    protected int $id;
+    protected int $eventId;
 
     /**
-     * Create a new EventRequest instance.
+     * Create a new SlotIndexRequest instance.
      *
      * @param  Client  $client
      * @param  int  $id
@@ -28,7 +29,7 @@ class EventRequest extends Request
     {
         parent::__construct($client);
 
-        $this->id = $id;
+        $this->eventId = $id;
     }
 
     /**
@@ -38,35 +39,20 @@ class EventRequest extends Request
      */
     public function getEndpoint(): string
     {
-        return 'events/' . $this->id;
+        return 'events/' . $this->eventId . '/slots';
     }
 
     /**
      * Get the data for the request.
      *
-     * @return Event
+     * @return Collection|EventSlot[]
      *
      * @throws ApiErrorException
      * @throws ClientExceptionInterface
      */
-    public function get(): Event
+    public function get(): Collection
     {
-        return new Event(
-            $this->client,
-            $this->send()['response']
-        );
-    }
-
-    /**
-     * Get the slots of the event.
-     *
-     * @return SlotIndexRequest
-     */
-    public function slots(): SlotIndexRequest
-    {
-        return new SlotIndexRequest(
-            $this->client,
-            $this->id,
-        );
+        return (new Collection($this->send()['response']))
+            ->map(fn (array $slot) => new EventSlot($this->client, $slot));
     }
 }

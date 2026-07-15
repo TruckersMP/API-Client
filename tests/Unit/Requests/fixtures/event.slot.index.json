@@ -1,0 +1,30 @@
+{
+    "error": false,
+    "response": [
+        {
+            "number": 1,
+            "name": "Slot A1",
+            "image_url": "https://static.truckersmp.com/images/event/slot/slot.png",
+            "total_spaces": 10,
+            "available": true,
+            "eligibility": "all",
+            "requesters": [
+                {
+                    "id": 1,
+                    "name": "TruckersMP Developers",
+                    "logo_url": "https://static.truckersmp.com/images/vtc/logo/logo.png",
+                    "expected_attendees": 8
+                }
+            ]
+        },
+        {
+            "number": 2,
+            "name": "Slot A2",
+            "image_url": "https://static.truckersmp.com/images/event/slot/slot.png",
+            "total_spaces": 5,
+            "available": false,
+            "eligibility": "partners",
+            "requesters": []
+        }
+    ]
+}

@@ -121,11 +121,11 @@ class Player extends Model
     protected bool $isStaff;
 
     /**
-     * If the user is an upper staff member.
+     * If the user is part of management within the TruckersMP team.
      *
      * @var bool
      */
-    protected bool $isUpperStaff;
+    protected bool $isManagement;
 
     /**
      * If user is an in-game admin.
@@ -237,7 +237,7 @@ class Player extends Model
         $this->awards = $awards->map(fn (array $entry) => new PlayerAward($client, $entry));
 
         $this->isStaff = $this->getValue('permissions.isStaff', false);
-        $this->isUpperStaff = $this->getValue('permissions.isUpperStaff', false);
+        $this->isManagement = $this->getValue('permissions.isManagement', false);
         $this->inGameAdmin = $this->getValue('permissions.isGameAdmin', false);
         $this->companyId = $this->getValue('vtc.id');
         $this->companyName = $this->getValue('vtc.name');
@@ -414,10 +414,23 @@ class Player extends Model
      * Check if the player is an upper staff member.
      *
      * @return bool
+     *
+     * @deprecated Renamed by the API to management.
+     * @see Player::isManagement()
      */
     public function isUpperStaff(): bool
     {
-        return $this->isUpperStaff;
+        return $this->isManagement;
+    }
+
+    /**
+     * Check if the player is part of management within the TruckersMP team.
+     *
+     * @return bool
+     */
+    public function isManagement(): bool
+    {
+        return $this->isManagement;
     }
 
     /**

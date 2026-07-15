@@ -4,7 +4,19 @@
         "id": 123,
         "user_id": 1,
         "username": "User",
+        "avatar": "https://static.truckersmp.com/avatarsN/avatar.png",
         "steam_id": 76561198083585955,
+        "roles": [
+            {
+                "id": 25,
+                "name": "Role",
+                "order": 1,
+                "color": "#67a6a8",
+                "owner": true,
+                "created_at": "2023-01-04 11:35:05",
+                "updated_at": "2023-01-04 11:35:05"
+            }
+        ],
         "role_id": 25,
         "role": "Role",
         "is_owner": true,

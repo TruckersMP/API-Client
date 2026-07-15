@@ -134,4 +134,9 @@ class ServerTest extends TestCase
     {
         $this->assertSame(250, $this->server->getSyncDelay());
     }
+
+    public function testItDoesNotHaveAnEventRequest()
+    {
+        $this->assertNull($this->server->getEventRequest());
+    }
 }

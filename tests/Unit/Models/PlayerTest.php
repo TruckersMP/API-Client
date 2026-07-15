@@ -102,6 +102,7 @@ class PlayerTest extends TestCase
     public function testItHasPermissions()
     {
         $this->assertTrue($this->player->isStaff());
+        $this->assertTrue($this->player->isManagement());
         $this->assertTrue($this->player->isUpperStaff());
         $this->assertTrue($this->player->isAdmin());
     }

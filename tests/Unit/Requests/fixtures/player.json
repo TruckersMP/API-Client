@@ -29,7 +29,7 @@
         },
         "permissions": {
             "isStaff": true,
-            "isUpperStaff": true,
+            "isManagement": true,
             "isGameAdmin": true,
             "showDetailedOnWebMaps": false
         },

@@ -22,6 +22,9 @@
         "ats": true,
         "ets": true
     },
+    "dlcs": {
+        "304212": "Scandinavia"
+    },
     "members_count": 5,
     "recruitment": "Close",
     "language": "English",
